@@ -4,10 +4,11 @@ A content database for [mangos-zero][10], and *World of Warcraft Client Patch
 1.12* - [_Drums of War_][50]. It is compatible with client 1.12.1 (build 5875),
 and 1.12.2 (build 6005).
 
-**mangos-zero-database** is released under the GPL v3.  The file (`LICENSE.mdown`)
-**must** be a part of any redistributable packages made from this software.  No
-licenses should be removed from this software if you are making redistributable
-copies.
+**mangos-zero-database** is released under for free under the terms of the
+Creative Commons Attribution-NonCommercial-ShareAlike license. The file
+`LICENSE.md` **must** be a part of any redistributable packages made from
+this software.  No licenses should be removed from this software if you are
+making redistributable copies.
 
 
 Development
@@ -23,9 +24,9 @@ reports.
 
 Compatibility
 -------------
-The *mangos-zero* database is compatible with [mangos-zero commit 543f0ca46165c4590ee50125e34d0ada25249a89][10]
-and newer.  It also requires [scriptdev0 commit cd2f4366fe3c22249705c7753a444723a4146fe5][11]
-or newer in order to be fully enjoyable.
+The *mangos-zero* database is compatible with [mangos-zero version z2381][10]
+and newer.  It also requires [scripts version z2673][11] or newer in order to
+be fully enjoyable.
 
 
 Getting started
@@ -82,11 +83,11 @@ to provide a detailed report, and are available to verify any solution to the
 issue provided by the developers of this repository.
 
 
-[1]: https://github.com/mangos-zero "mangos-zero"
+[1]: https://github.com/mangoszero "mangos-zero"
 
-[10]: https://github.com/mangos-zero/server "mangos zero"
-[11]: https://github.com/mangos-zero/scriptdev0 "script bindings"
-[12]: https://github.com/mangos-zero/database "content database"
+[10]: https://github.com/mangoszero/server "mangos zero"
+[11]: https://github.com/mangoszero/scripts "script bindings"
+[12]: https://github.com/mangoszero/database "content database"
 
 [50]: http://eu.blizzard.com/en-gb/games/wow/ "World of Warcraft"
 [51]: http://www.wowpedia.org/Patch_1.12.0 "WoW 1.12.0 - Drums of War"
