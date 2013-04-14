@@ -7,6 +7,7 @@
 -- Select character database
 USE `zp_characters`;
 
+-- Drop content and reset any auto incremented keys
 TRUNCATE `auction`;
 TRUNCATE `bugreport`;
 TRUNCATE `characters`;
@@ -54,3 +55,7 @@ TRUNCATE `pet_spell`;
 TRUNCATE `pet_spell_cooldown`;
 TRUNCATE `saved_variables`;
 TRUNCATE `world`;
+
+-- Insert character database version
+INSERT INTO `character_db_version` VALUES
+    (NULL);

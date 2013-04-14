@@ -132,9 +132,9 @@ TRUNCATE `spell_threat`;
 TRUNCATE `transports`;
 TRUNCATE `world_template`;
 
+-- Insert world database version
 UPDATE
     `db_version`
 SET
     `version` = 'mangos-zero - Version 1.0.0 (Community Rebuild)',
     `creature_ai_version` = 'mangos-zero Artificial Creature Intelligence - Version 1.0.0 (Community Rebuild)';
-

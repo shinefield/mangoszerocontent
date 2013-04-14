@@ -12,6 +12,7 @@ TRUNCATE `gossip_texts`;
 TRUNCATE `script_texts`;
 TRUNCATE `script_waypoint`;
 
+-- Insert script library database version
 UPDATE
     `sd2_db_version`
 SET
