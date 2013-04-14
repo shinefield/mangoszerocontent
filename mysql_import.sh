@@ -52,6 +52,6 @@ for x in ./zp_world/*.sql; do
     import $x
 done
 
-for x in ./_extras/*_optimize.sql; do
-    import $x
-done
+# for x in ./_extras/*_optimize.sql; do
+#     import $x
+# done
