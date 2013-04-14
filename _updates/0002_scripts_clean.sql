@@ -11,9 +11,9 @@ TRUNCATE `custom_texts`;
 TRUNCATE `gossip_texts`;
 TRUNCATE `script_texts`;
 TRUNCATE `script_waypoint`;
+TRUNCATE `sd2_db_version`;
 
 -- Insert script library database version
-UPDATE
-    `sd2_db_version`
-SET
-    `version` = 'ScriptDev2 - Version 1.0.0 (Community Rebuild)';
+INSERT INTO `sd2_db_version` VALUES
+    ('ScriptDev2 - Version 1.0.0 (Community Rebuild)');
+
