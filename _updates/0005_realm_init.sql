@@ -27,3 +27,7 @@ INSERT INTO `account` VALUES
 -- Create a player account
 INSERT INTO `account` VALUES
     (4,'PLAYER','3ce8a96d17c5ae88a30681024e86279f1a38c041',0,'','0','0','','2006-04-25 10:19:35','127.0.0.1',0,0,'0000-00-00 00:00:00',0,0,0,0);
+
+-- "Touch" realm list database version
+INSERT INTO `realmd_db_version` VALUES
+    (NULL);
