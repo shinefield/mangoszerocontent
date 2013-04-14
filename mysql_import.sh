@@ -1,0 +1,57 @@
+#!/bin/bash
+#
+# This script will import the contents of the sql/ directory to the MySQL database.
+#
+
+# - Include common libraries and settings ------------------------------------
+source "libui.sh" || { echo "Something went wrong while sourcing library lib-ui.sh" >&2 ; exit 2; }
+source "mysql_info.sh"
+
+# - Prepare required variables -----------------------------------------------
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+TMP_FOLDER=${TMPDIR-/tmp}
+# ----------------------------------------------------------------------------
+
+# Table prefix
+PFX=
+
+function import ()
+{
+    db=${PFX}`sed -ne '/^--.*Database: /{' -e 's/.*Database: //' -e 'p' -e '}' $1`
+    echo -n "Importing $1 into ${db} ..."
+    # Check if database exists
+    err=`echo "quit" | mysql${OPTS} ${db} 2>&1`
+    if [ $? != 0 ]; then
+        if echo "${err}" | grep -q "Access denied"; then
+            echo -e "\nDATABASE ${db} EXISTS BUT USER ${USER} DOES NOT HAVE ACCESS TO IT, ABORTING"
+            exit
+        fi
+        echo -n "[creating ${db}]"
+        if ! echo "CREATE DATABASE ${db};" | mysql${OPTS} 2>/dev/null ; then
+            echo -e "\nDATABASE ${db} DOES NOT EXIST AND I FAILED TO CREATE IT, ABORTING"
+            exit
+        fi
+    fi
+    mysql${OPTS} ${db} <$1
+    echo " done"
+}
+
+for x in ./zp_characters/*.sql; do
+    import $x
+done
+
+for x in ./zp_realm/*.sql; do
+    import $x
+done
+
+for x in ./zp_scripts/*.sql; do
+    import $x
+done
+
+for x in ./zp_world/*.sql; do
+    import $x
+done
+
+for x in ./_extras/*_optimize.sql; do
+    import $x
+done

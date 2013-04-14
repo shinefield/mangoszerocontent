@@ -1,0 +1,97 @@
+mangos-zero-database ![Project status](http://getmangos.com/assets/img/repository-status-maintained.png)
+====================
+A content database for [mangos-zero][10], and *World of Warcraft Client Patch
+1.12* - [_Drums of War_][50]. It is compatible with client 1.12.1 (build 5875),
+and 1.12.2 (build 6005).
+
+**mangos-zero-database** is released under the GPL v3.  The file (`LICENSE.mdown`)
+**must** be a part of any redistributable packages made from this software.  No
+licenses should be removed from this software if you are making redistributable
+copies.
+
+
+Development
+-----------
+The **develop** branch is where the development of *mangos-zero database* is
+done. Any of the commits submitted here may or may not become part of the next
+release.
+
+It is recommended to use the **master** branch for stable systems, and only use
+the **develop** branch if you intend to test commits and submit issues and/or
+reports.
+
+
+Compatibility
+-------------
+The *mangos-zero* database is compatible with [mangos-zero commit 543f0ca46165c4590ee50125e34d0ada25249a89][10]
+and newer.  It also requires [scriptdev0 commit cd2f4366fe3c22249705c7753a444723a4146fe5][11]
+or newer in order to be fully enjoyable.
+
+
+Getting started
+---------------
+The basic principle behind this customized database repository is to keep the
+databases stored as individual tables, and all content rows stored as single
+lines to make changes more trackable for the user (that would be you).
+
+The repository is developed and maintained using the excellent [git-flow][110]
+extension for git, to provide a clear, and visible [workflow][111] to the user.
+
+
+Installation
+------------
+By default **mangos-zero** uses four databases:
+
+* `zp_characters`: where all character data is stored,
+* `zp_realm`: where user accounts, and realms are defined,
+* `zp_world`: where the world with creatures, items, objects, quests, etc. is defined,
+* `zp_scripts`: and the ScriptDevZero database.
+
+In order to use this database repository, you will have to edit `mysql_info`,
+and edit in the desired username, hostname, and password.
+
+Once you have the desired database user and rights configured in MySQL, you may
+use the `mysql_import` script to load the individual data tables into your
+databases.  Should your database user have wildcard rights, the script creates
+the database - if not existent - and then populates them.
+
+If you make changes to the database, either by adding/modifying content, or by
+making changes to the database structure, you may execute `mysql_dump` to save
+each table into the repository.  Should you add or remove tables, add `dump_data`,
+`dump_struc` commands to `mysql_dump`, or remove them as needed.
+
+
+Configuring you realm list
+--------------------------
+Connect to your MySQL server and execute the following command:
+
+    UPDATE
+        `zp_realm`.`realmlist`
+    SET
+        `address` = '192.168.2.101'
+    WHERE
+        `realmlist`.`id` = 1;
+
+Please replace `192.168.2.101` with your local IP address!
+
+
+And if something goes wrong?
+----------------------------
+_If_ you feel like submitting an issue, please do so *only* if you are willing
+to provide a detailed report, and are available to verify any solution to the
+issue provided by the developers of this repository.
+
+
+[1]: https://github.com/mangos-zero "mangos-zero"
+
+[10]: https://github.com/mangos-zero/server "mangos zero"
+[11]: https://github.com/mangos-zero/scriptdev0 "script bindings"
+[12]: https://github.com/mangos-zero/database "content database"
+
+[50]: http://eu.blizzard.com/en-gb/games/wow/ "World of Warcraft"
+[51]: http://www.wowpedia.org/Patch_1.12.0 "WoW 1.12.0 - Drums of War"
+
+[101]: http://github.com/ "github - social coding"
+
+[110]: http://nvie.com/posts/a-successful-git-branching-model/ "git flow extension"
+[111]: http://yakiloo.com/getting-started-git-flow/ "git flow workflow"
