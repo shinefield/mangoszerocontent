@@ -6,6 +6,97 @@
 -- Select world database
 USE `zp_world`;
 
+-- Provide variables for various item stats
+-- -> item classes, and allowed item subclasses
+SET @ITEM_CLASS_CONSUMABLE                      = 0;
+SET @ITEM_SUBCLASS_CONSUMABLE_CONSUMABLE        = 0;
+
+SET @ITEM_CLASS_CONTAINER                       = 1;
+SET @ITEM_SUBCLASS_CONTAINER_BAG                = 0;
+SET @ITEM_SUBCLASS_CONTAINER_SOUL_BAG           = 1;
+SET @ITEM_SUBCLASS_CONTAINER_HERB_BAG           = 2;
+SET @ITEM_SUBCLASS_CONTAINER_ENCHANTING_BAG     = 3;
+SET @ITEM_SUBCLASS_CONTAINER_ENGINEERING_BAG    = 4;
+
+SET @ITEM_CLASS_WEAPON                          = 2;
+SET @ITEM_SUBCLASS_WEAPON_AXE_1H                = 0;
+SET @ITEM_SUBCLASS_WEAPON_AXE_2H                = 1;
+SET @ITEM_SUBCLASS_WEAPON_BOW                   = 2;
+SET @ITEM_SUBCLASS_WEAPON_GUN                   = 3;
+SET @ITEM_SUBCLASS_WEAPON_MACE_1H               = 4;
+SET @ITEM_SUBCLASS_WEAPON_MACE_2H               = 5;
+SET @ITEM_SUBCLASS_WEAPON_POLEARM               = 6;
+SET @ITEM_SUBCLASS_WEAPON_SWORD_1H              = 7;
+SET @ITEM_SUBCLASS_WEAPON_SWORD_2H              = 8;
+SET @ITEM_SUBCLASS_WEAPON_STAFF                 = 10;
+SET @ITEM_SUBCLASS_WEAPON_FIST_WEAPON           = 13;
+SET @ITEM_SUBCLASS_WEAPON_MISCELLANEOUS         = 14;
+SET @ITEM_SUBCLASS_WEAPON_DAGGER                = 15;
+SET @ITEM_SUBCLASS_WEAPON_THROWN                = 16;
+SET @ITEM_SUBCLASS_WEAPON_SPEAR                 = 17;
+SET @ITEM_SUBCLASS_WEAPON_CROSSBOW              = 18;
+SET @ITEM_SUBCLASS_WEAPON_WAND                  = 19;
+SET @ITEM_SUBCLASS_WEAPON_FISHING_POLE          = 20;
+
+SET @ITEM_CLASS_ARMOR                           = 4;
+SET @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS          = 0;
+SET @ITEM_SUBCLASS_ARMOR_CLOTH                  = 1;
+SET @ITEM_SUBCLASS_ARMOR_LEATHER                = 2;
+SET @ITEM_SUBCLASS_ARMOR_MAIL                   = 3;
+SET @ITEM_SUBCLASS_ARMOR_PLATE                  = 4;
+SET @ITEM_SUBCLASS_ARMOR_SHIELD                 = 6;
+SET @ITEM_SUBCLASS_ARMOR_LIBRAM                 = 7;
+SET @ITEM_SUBCLASS_ARMOR_IDOL                   = 8;
+SET @ITEM_SUBCLASS_ARMOR_TOTEM                  = 9;
+
+SET @ITEM_CLASS_REAGENT                         = 5;
+SET @ITEM_SUBCLASS_REAGENT_REAGENT              = 0;
+
+SET @ITEM_CLASS_PROJECTILE                      = 6;
+SET @ITEM_SUBCLASS_PROJECTILE_ARROW             = 2;
+SET @ITEM_SUBCLASS_PROJECTILE_BULLET            = 3;
+
+SET @ITEM_CLASS_TRADE_GOODS                     = 7;
+SET @ITEM_SUBCLASS_TRADE_GOODS_TRADE_GOODS      = 0;
+SET @ITEM_SUBCLASS_TRADE_GOODS_PARTS            = 1;
+SET @ITEM_SUBCLASS_TRADE_GOODS_EXPLOSIVES       = 2;
+SET @ITEM_SUBCLASS_TRADE_GOODS_DEVICES          = 3;
+
+SET @ITEM_CLASS_RECIPE                          = 9;
+SET @ITEM_SUBCLASS_RECIPE_BOOK                  = 0;
+SET @ITEM_SUBCLASS_RECIPE_LEATHERWORKING        = 1;
+SET @ITEM_SUBCLASS_RECIPE_TAILORING             = 2;
+SET @ITEM_SUBCLASS_RECIPE_ENGINEERING           = 3;
+SET @ITEM_SUBCLASS_RECIPE_BLACKSMITHING         = 4;
+SET @ITEM_SUBCLASS_RECIPE_COOKING               = 5;
+SET @ITEM_SUBCLASS_RECIPE_ALCHEMY               = 6;
+SET @ITEM_SUBCLASS_RECIPE_FIRST_AID             = 7;
+SET @ITEM_SUBCLASS_RECIPE_ENCHANTING            = 8;
+SET @ITEM_SUBCLASS_RECIPE_FISHING               = 9;
+
+SET @ITEM_CLASS_QUIVER                          = 11;
+SET @ITEM_SUBCLASS_QUIVER_QUIVER                = 2;
+SET @ITEM_SUBCLASS_QUIVER_AMMO_POUCH            = 3;
+
+SET @ITEM_CLASS_QUEST                           = 12;
+SET @ITEM_SUBCLASS_QUEST_QUEST                  = 0;
+
+SET @ITEM_CLASS_KEY                             = 13;
+SET @ITEM_SUBCLASS_KEY_KEY                      = 0;
+SET @ITEM_SUBCLASS_KEY_LOCKPICK                 = 1;
+
+SET @ITEM_CLASS_MISCELLANEOUS                   = 15;
+SET @ITEM_SUBCLASS_MISCELLANEOUS_JUNK           = 0;
+
+-- -> item quality
+SET @ITEM_QUALITY_POOR                          = 0; -- Color: Grey
+SET @ITEM_QUALITY_COMMON                        = 1; -- Color: White
+SET @ITEM_QUALITY_UNCOMMON                      = 2; -- Color: Green
+SET @ITEM_QUALITY_RARE                          = 3; -- Color: Blue
+SET @ITEM_QUALITY_EPIC                          = 4; -- Color: Purple
+SET @ITEM_QUALITY_LEGENDARY                     = 5; -- Color: Orange
+SET @ITEM_QUALITY_ARTIFACT                      = 6; -- Color: Red
+
 -- Insert item templates for start outfits
 INSERT INTO `item_template` VALUES
     (25, 2, 7, "Worn Shortsword", 1542, 1, 0, 1, 35, 7, 21, -1, -1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1900, 0, 0, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 1, 0, 0, 0, 1, 3, 0, 0, 0, 20, 0, 0, 0, "", 0, 0, 0, 0, 0, 0),
