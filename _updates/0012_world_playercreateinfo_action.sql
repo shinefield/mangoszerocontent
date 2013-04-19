@@ -123,7 +123,7 @@ INSERT INTO `playercreateinfo_action` VALUES
     (@RACE_ORC,         @CLASS_HUNTER,  0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
     (@RACE_ORC,         @CLASS_HUNTER,  1,      @SPELL_RAPTOR_STRIKE,           @ACTION_TYPE_SPELL),
     (@RACE_ORC,         @CLASS_HUNTER,  2,      @SPELL_AUTO_SHOT,               @ACTION_TYPE_SPELL),
-    (@RACE_ORC,         @CLASS_HUNTER,  4,      @SPELL_BLOOD_FURY,              @ACTION_TYPE_SPELL),
+    (@RACE_ORC,         @CLASS_HUNTER,  3,      @SPELL_BLOOD_FURY,              @ACTION_TYPE_SPELL),
     (@RACE_ORC,         @CLASS_HUNTER,  10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM),
     (@RACE_ORC,         @CLASS_HUNTER,  11,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM);
 
@@ -213,6 +213,7 @@ INSERT INTO `playercreateinfo_action` VALUES
     (@RACE_NIGHT_ELF,   @CLASS_ROGUE,   1,      @SPELL_SINISTER_STRIKE,         @ACTION_TYPE_SPELL),
     (@RACE_NIGHT_ELF,   @CLASS_ROGUE,   2,      @SPELL_EVISCERATE,              @ACTION_TYPE_SPELL),
     (@RACE_NIGHT_ELF,   @CLASS_ROGUE,   3,      @SPELL_THROW,                   @ACTION_TYPE_SPELL),
+    (@RACE_NIGHT_ELF,   @CLASS_ROGUE,   4,      @SPELL_SHADOWMELD,              @ACTION_TYPE_SPELL),
     (@RACE_NIGHT_ELF,   @CLASS_ROGUE,   11,     @ITEM_TOUGH_HUNK_OF_BREAD,      @ACTION_TYPE_ITEM);
 
 INSERT INTO `playercreateinfo_action` VALUES
