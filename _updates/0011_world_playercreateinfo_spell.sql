@@ -7,25 +7,25 @@
 USE `zp_world`;
 
 -- Provide variables for races, and classes
-SET @RACE_HUMAN     = 1;
-SET @RACE_ORC       = 2;
-SET @RACE_DWARF     = 3;
-SET @RACE_NIGHT_ELF = 4;
-SET @RACE_UNDEAD    = 5;
-SET @RACE_TAUREN    = 6;
-SET @RACE_GNOME     = 7;
-SET @RACE_TROLL     = 8;
-SET @RACE_GOBLIN    = 9;
+SET @RACE_HUMAN                                 = 1;
+SET @RACE_ORC                                   = 2;
+SET @RACE_DWARF                                 = 3;
+SET @RACE_NIGHT_ELF                             = 4;
+SET @RACE_UNDEAD                                = 5;
+SET @RACE_TAUREN                                = 6;
+SET @RACE_GNOME                                 = 7;
+SET @RACE_TROLL                                 = 8;
+SET @RACE_GOBLIN                                = 9;
 
-SET @CLASS_WARRIOR  = 1;
-SET @CLASS_PALADIN  = 2;
-SET @CLASS_HUNTER   = 3;
-SET @CLASS_ROGUE    = 4;
-SET @CLASS_PRIEST   = 5;
-SET @CLASS_SHAMAN   = 7;
-SET @CLASS_MAGE     = 8;
-SET @CLASS_WARLOCK  = 9;
-SET @CLASS_DRUID    = 11;
+SET @CLASS_WARRIOR                              = 1;
+SET @CLASS_PALADIN                              = 2;
+SET @CLASS_HUNTER                               = 3;
+SET @CLASS_ROGUE                                = 4;
+SET @CLASS_PRIEST                               = 5;
+SET @CLASS_SHAMAN                               = 7;
+SET @CLASS_MAGE                                 = 8;
+SET @CLASS_WARLOCK                              = 9;
+SET @CLASS_DRUID                                = 11;
 
 -- Insert information for player characters and their spells
 INSERT INTO `playercreateinfo_spell` VALUES
