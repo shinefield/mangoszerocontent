@@ -61,16 +61,16 @@ SET @SPELL_HEALING_TOUCH                        = 5185;
 SET @SPELL_ATTACK                               = 6603;
 SET @SPELL_SEAL_OF_RIGHTEOUSNESS                = 21084;
 
--- Provide variables for racial spells
-SET @SPELL_FIND_TREASURE                        = 2481;
-SET @SPELL_WAR_STOMP                            = 20549;
-SET @SPELL_BLOOD_FURY                           = 20572;
-SET @SPELL_CANNIBALIZE                          = 20577;
-SET @SPELL_SHADOWMELD                           = 20580;
-SET @SPELL_STONEFORM                            = 20594;
-SET @SPELL_BERSERKING_MANA                      = 20554;
-SET @SPELL_BERSERKING_RAGE                      = 26296;
-SET @SPELL_BERSERKING_ENERGY                    = 26297;
+-- Provide variables for active racial spells
+SET @SPELL_FIND_TREASURE                        = 2481;  -- Dwarf racial
+SET @SPELL_STONEFORM                            = 20594; -- Dwarf racial
+SET @SPELL_WAR_STOMP                            = 20549; -- Tauren racial
+SET @SPELL_BLOOD_FURY                           = 20572; -- Orc racial
+SET @SPELL_CANNIBALIZE                          = 20577; -- Undead racial
+SET @SPELL_SHADOWMELD                           = 20580; -- Night Elf racial
+SET @SPELL_BERSERKING_MANA                      = 20554; -- Troll racial
+SET @SPELL_BERSERKING_RAGE                      = 26296; -- Troll racial
+SET @SPELL_BERSERKING_ENERGY                    = 26297; -- Troll racial
 
 -- Insert information for player characters and their default action buttons
 INSERT INTO `playercreateinfo_action` VALUES
