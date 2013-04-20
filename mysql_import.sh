@@ -55,3 +55,7 @@ done
 for x in ./_updates/*.sql; do
      import $x
 done
+
+for x in ./_extras/*_optimize.sql; do
+     import $x
+done
