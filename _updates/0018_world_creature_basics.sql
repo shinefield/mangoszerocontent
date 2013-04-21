@@ -213,10 +213,11 @@ INSERT INTO `creature_template`
     (`entry`,   `modelid_1`,    `name`,                 `subname`,   `faction_A`, `faction_H`, `rank`, `minlevel`, `maxlevel`, `minhealth`, `maxhealth`, `dmgschool`, `attackpower`, `baseattacktime`, `mindmg`, `maxdmg`, `minrangedmg`, `maxrangedmg`, `rangeattacktime`, `rangedattackpower`, `speed_walk`, `speed_run`, `MovementType`, `InhabitType`, `AIName`, `ScriptName`) VALUES
     (1,         10045,          'Waypoint',             'GM Visual', 35,          35,          3,      63,         63,         9999,        9999,        0,           3,              2000,            7,        7,        1.76,          2.42,           2200,             100,                  0.91,        1.14286,     0,              7,             NULL,      NULL),
     (2,         262,            'Spawnpoint',           'GM Visual', 35,          35,          3,      63,         63,         9999,        9999,        0,           3,              2000,            7,        7,        1.76,          2.42,           2200,             100,                  0.91,        1.14286,     0,              7,             NULL,      NULL),
-    (5764,      7029,           'Guardian of Blizzard', NULL,        44,          44,          3,      63,         63,         8832,        8832,        0,           265,            1020,            520,      628,      88.8624,       122.186,        1122,             100,                  1.3,         1.14286,     0,              1,             NULL,      'npc_guardian'),
+    (5764,      7029,           'Guardian of Blizzard', NULL,        44,          44,          3,      63,         63,         8832,        8832,        0,           265,            1020,            520,      628,      88.8624,       122.186,        1122,             100,                  1.3,         1.14286,     1,              1,             NULL,      'npc_guardian'),
     (6491,      5233,           'Spirit Healer',        NULL,        35,          35,          0,      60,         60,         7680,        7680,        0,           87,             2000,            164,      212,      74.448,        102.366,        0,                100,                  1,           1,           0,              1,             NULL,      NULL);
 
 -- Modify creature templates with matching flags
+-- Modify creature #1
 UPDATE `creature_template`
 SET
     `npcflag`               = @CREATURE_FLAG_NPC_NONE,
@@ -232,6 +233,7 @@ SET
 WHERE
     `entry`                 = 1;
 
+-- Modify creature #2
 UPDATE `creature_template`
 SET
     `npcflag`               = @CREATURE_FLAG_NPC_NONE,
@@ -247,6 +249,7 @@ SET
 WHERE
     `entry`                 = 2;
 
+-- Modify creature #5764
 UPDATE `creature_template`
 SET
     `npcflag`               = @CREATURE_FLAG_NPC_NONE,
@@ -262,6 +265,7 @@ SET
 WHERE
     `entry`                 = 5764;
 
+-- Modify creature #6491
 UPDATE `creature_template`
 SET
     `npcflag`               = @CREATURE_FLAG_NPC_GOSSIP | @CREATURE_FLAG_NPC_SPIRITHEALER,
@@ -281,6 +285,7 @@ WHERE
 INSERT INTO `creature_template_addon` VALUES
     (6491, 0, 16777216, 1, 16, 0, 0, NULL);
 
+-- Insert spawns for creature #6491
 INSERT INTO `creature` VALUES
     (1,     6491, 0, 5233, 0, 1819.41, 219.233, 60.0732, 0.337883, 25, 0, 0, 7680, 0, 0, 0),
     (2,     6491, 1, 5233, 0, -8591.09, -3623.91, 13.478, 4.54902, 60, 0, 0, 7680, 0, 0, 0),
@@ -379,6 +384,7 @@ INSERT INTO `creature` VALUES
     (95,    6491, 1, 5233, 0, 10394.7, 825.111, 1317.52, 3.753, 60, 0, 0, 7680, 0, 0, 0),
     (96,    6491, 30, 0, 0, 673.16, -369.1, 29.96, 2.18, 60, 0, 0, 7680, 0, 0, 0);
 
+-- Insert gossip dialogue for spawns of creature #6491
 INSERT INTO `npc_gossip` VALUES
     (1, 580),
     (2, 580),
@@ -477,17 +483,17 @@ INSERT INTO `npc_gossip` VALUES
     (95, 580),
     (96, 580);
 
+-- Insert gossip text
 INSERT INTO `npc_text` VALUES
     (580, 'It is not yet your time. I shall aid your journey back to the realm of the living... for a price.', '', 0, 100, 0, 0, 0, 0, 0, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 0);
 
+-- Turn dialogue into a menu
 INSERT INTO `gossip_menu` VALUES
     (83, 580, 0, 0);
 
+-- ... and add the spirit healer option
 INSERT INTO `gossip_menu_option` VALUES
     (83, 0, 4, 'Return me to life.', 6, 32, 0, 0, 0, 0, 0, '', 0);
 
-UPDATE `creature_template`
-SET
-    `gossip_menu_id`        = 83
-WHERE
-    `entry`                 = 6491;
+-- Finally add gossip menu to creature #6491
+UPDATE `creature_template` SET `gossip_menu_id`        = 83 WHERE `entry` = 6491;
