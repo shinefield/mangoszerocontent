@@ -43,6 +43,7 @@ SET @SPELL_SCHOOL_SHADOW                        = 5;
 SET @SPELL_SCHOOL_ARCANE                        = 6;
 
 -- Provide variables for NPC classes
+SET @CREATURE_CLASS_NONE                        = 0;
 SET @CREATURE_CLASS_WARRIOR                     = 1;
 SET @CREATURE_CLASS_PALADIN                     = 2;
 SET @CREATURE_CLASS_ROGUE                       = 4;
@@ -75,6 +76,7 @@ SET @CREATURE_TYPE_NONCOMBAT_PET                = 12;
 SET @CREATURE_TYPE_GAS_CLOUD                    = 13;
 
 -- Provide variables for creature of type 1 (Beast)
+SET @CREATURE_BEAST_FAMILY_NONE                 = 0;
 SET @CREATURE_BEAST_FAMILY_WOLF                 = 1;
 SET @CREATURE_BEAST_FAMILY_CAT                  = 2;
 SET @CREATURE_BEAST_FAMILY_SPIDER               = 3;
@@ -116,6 +118,18 @@ SET @CREATURE_BEAST_FAMILY_WASP                 = 38;
 SET @CREATURE_BEAST_FAMILY_CORE_HOUND           = 39;
 SET @CREATURE_BEAST_FAMILY_SPIRIT_BEAST         = 40;
 
+-- Provide variables for creature type flags
+SET @CREATURE_TYPE_FLAG_NONE                    = 0;
+SET @CREATURE_TYPE_FLAG_TAMEABLE                = 1;
+SET @CREATURE_TYPE_FLAG_NOT_ATTACKABLE          = 2;
+SET @CREATURE_TYPE_FLAG_ATTACKABLE              = 8;
+SET @CREATURE_TYPE_FLAG_NOT_ATTACKABLE_2        = 128;
+SET @CREATURE_TYPE_FLAG_NON_PVP_PLAYER          = 136;
+SET @CREATURE_TYPE_FLAG_HERBABLE                = 256;
+SET @CREATURE_TYPE_FLAG_MINEABLE                = 512;
+SET @CREATURE_TYPE_FLAG_ANIMATION_FROZEN        = 1024;
+SET @CREATURE_TYPE_FLAG_WAR_PLAYER              = 4096;
+
 -- Provide variables for creatures flagged as trainer
 SET @CREATURE_TRAINER_TYPE_CLASS            = 0;
 SET @CREATURE_TRAINER_TYPE_MOUNTS           = 1;
@@ -130,10 +144,12 @@ SET @CREATURE_MOVEMENT_WAYPOINT             = 2;
 -- Provide variables for creature inhabit types
 SET @CREATURE_INHABIT_GROUND                = 1;
 SET @CREATURE_INHABIT_WATER                 = 2;
-SET @CREATURE_INHABIT_GROUND_WATER          = 3;
+SET @CREATURE_INHABIT_GROUND_WATER          = @CREATURE_INHABIT_GROUND | @CREATURE_INHABIT_WATER;
 SET @CREATURE_INHABIT_AIR                   = 4;
+SET @CREATURE_INHABIT_ANY                   = @CREATURE_INHABIT_GROUND_WATER | @CREATURE_INHABIT_AIR;
 
 -- Provide varbiables for creature immunity masks
+SET @CREATURE_IMMUNITY_NONE                 = 0;
 SET @CREATURE_IMMUNITY_CHARM                = 1;
 SET @CREATURE_IMMUNITY_CONFUSED             = 2;
 SET @CREATURE_IMMUNITY_DISARM               = 4;
@@ -166,6 +182,7 @@ SET @CREATURE_IMMUNITY_IMMUNE_SHIELD        = 268435456;
 SET @CREATURE_IMMUNITY_SAPPED               = 536870912;
 
 -- Provide variables for creature extra flags
+SET @CREATURE_FLAG_EXTRA_NONE               = 0;
 SET @CREATURE_FLAG_EXTRA_INSTANCE_BIND      = 1;
 SET @CREATURE_FLAG_EXTRA_CIVILIAN           = 2;
 SET @CREATURE_FLAG_EXTRA_NO_PARRY           = 4;
@@ -192,14 +209,73 @@ INSERT INTO `creature_model_info` VALUES
     (10045, 1,      1.5, @MODEL_GENDER_NONE, 0, 0);
 
 -- Insert basic creatures
--- Waypoint helpers are used by game masters and developers
--- Guardian of Blizzard is used to seal of unfinished areas
--- Spirit Healer is required to resurrect dead players
-INSERT INTO `creature_template` VALUES
-    (1,     0,  0,  10045,  0,  'Waypoint',             'GM Visual',    0, 63, 63, 9999, 9999, 0, 0, 0, 35, 35,  0, 0.91, 1.14286, 0, 3,   7,   7, 0,   3, 1, 2000, 2200, 0, 4096, 0, 8, 0, 0, 0, 0,    1.76,    2.42, 100, 8, 5242886, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 7, 0, 0, 1, 0, 0, 0, 0, 130, ''),
-    (2,     0,  0,  262,    0,  'Spawn Point',          'GM Visual',    0, 63, 63, 9999, 9999, 0, 0, 0, 35, 35,  0,    0, 1.14286, 0, 3,  11,  11, 0,   5, 1, 1800, 1900, 0,    0, 0, 0, 0, 0, 0, 0,   387.6,  532.95, 100, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 222, 1110, '', 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, ''),
-    (5764,  0,  0,  7029,   0,  'Guardian of Blizzard', NULL,           0, 63, 63, 8832, 8832, 0, 0, 0, 44, 44,  0,  1.3, 1.14286, 0, 3, 520, 628, 0, 265, 1, 1020, 1122, 0,    0, 0, 4, 0, 0, 0, 0, 88.8624, 122.186, 100, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 'npc_guardian'),
-    (6491,  0,  0,  5233,   0,  'Spirit Healer',        NULL,          83, 60, 60, 7680, 7680, 0, 0, 0, 35, 35, 33,    1,       1, 0, 0, 164, 212, 0,  87, 1, 2000,    0, 1,  768, 0, 0, 0, 0, 0, 0,  74.448, 102.366, 100, 7, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 1, 0, 0, 1, 0, 0, 0, 0, 2, '');
+INSERT INTO `creature_template`
+    (`entry`,   `modelid_1`,    `name`,                 `subname`,   `faction_A`, `faction_H`, `rank`, `minlevel`, `maxlevel`, `minhealth`, `maxhealth`, `dmgschool`, `attackpower`, `baseattacktime`, `mindmg`, `maxdmg`, `minrangedmg`, `maxrangedmg`, `rangeattacktime`, `rangedattackpower`, `speed_walk`, `speed_run`, `MovementType`, `InhabitType`, `AIName`, `ScriptName`) VALUES
+    (1,         10045,          'Waypoint',             'GM Visual', 35,          35,          3,      63,         63,         9999,        9999,        0,           3,              2000,            7,        7,        1.76,          2.42,           2200,             100,                  0.91,        1.14286,     0,              7,             NULL,      NULL),
+    (2,         262,            'Spawnpoint',           'GM Visual', 35,          35,          3,      63,         63,         9999,        9999,        0,           3,              2000,            7,        7,        1.76,          2.42,           2200,             100,                  0.91,        1.14286,     0,              7,             NULL,      NULL),
+    (5764,      7029,           'Guardian of Blizzard', NULL,        44,          44,          3,      63,         63,         8832,        8832,        0,           265,            1020,            520,      628,      88.8624,       122.186,        1122,             100,                  1.3,         1.14286,     0,              1,             NULL,      'npc_guardian'),
+    (6491,      5233,           'Spirit Healer',        NULL,        35,          35,          0,      60,         60,         7680,        7680,        0,           87,             2000,            164,      212,      74.448,        102.366,        0,                100,                  1,           1,           0,              1,             NULL,      NULL);
+
+-- Modify creature templates with matching flags
+UPDATE `creature_template`
+SET
+    `npcflag`               = @CREATURE_FLAG_NPC_NONE,
+    `dynamicflags`          = @CREATURE_FLAG_DYN_NONE,
+    `unit_class`            = @CREATURE_CLASS_NONE,
+    `unit_flags`            = 4096,
+    `flags_extra`           = @CREATURE_FLAG_EXTRA_CIVILIAN | @CREATURE_FLAG_EXTRA_INVISIBLE,
+    `type`                  = @CREATURE_TYPE_CRITTER,
+    `type_flags`            = 5242886,
+    `mechanic_immune_mask`  = @CREATURE_IMMUNITY_NONE,
+    `RegenHealth`           = 1,
+    `family`                = @CREATURE_BEAST_FAMILY_NONE
+WHERE
+    `entry`                 = 1;
+
+UPDATE `creature_template`
+SET
+    `npcflag`               = @CREATURE_FLAG_NPC_NONE,
+    `dynamicflags`          = @CREATURE_FLAG_DYN_NONE,
+    `unit_class`            = @CREATURE_CLASS_NONE,
+    `unit_flags`            = 4096,
+    `flags_extra`           = @CREATURE_FLAG_EXTRA_CIVILIAN | @CREATURE_FLAG_EXTRA_INVISIBLE,
+    `type`                  = @CREATURE_TYPE_CRITTER,
+    `type_flags`            = 5242886,
+    `mechanic_immune_mask`  = @CREATURE_IMMUNITY_NONE,
+    `RegenHealth`           = 1,
+    `family`                = @CREATURE_BEAST_FAMILY_NONE
+WHERE
+    `entry`                 = 2;
+
+UPDATE `creature_template`
+SET
+    `npcflag`               = @CREATURE_FLAG_NPC_NONE,
+    `dynamicflags`          = @CREATURE_FLAG_DYN_NONE,
+    `unit_class`            = @CREATURE_CLASS_NONE,
+    `unit_flags`            = 0,
+    `flags_extra`           = @CREATURE_FLAG_EXTRA_NONE,
+    `type`                  = @CREATURE_TYPE_DEMON,
+    `type_flags`            = @CREATURE_TYPE_FLAG_NONE,
+    `mechanic_immune_mask`  = @CREATURE_IMMUNITY_NONE,
+    `RegenHealth`           = 1,
+    `family`                = @CREATURE_BEAST_FAMILY_NONE
+WHERE
+    `entry`                 = 5764;
+
+UPDATE `creature_template`
+SET
+    `npcflag`               = @CREATURE_FLAG_NPC_GOSSIP | @CREATURE_FLAG_NPC_SPIRITHEALER,
+    `dynamicflags`          = @CREATURE_FLAG_DYN_NONE,
+    `unit_class`            = @CREATURE_CLASS_WARRIOR,
+    `unit_flags`            = 768,
+    `flags_extra`           = @CREATURE_FLAG_EXTRA_CIVILIAN,
+    `type`                  = @CREATURE_TYPE_HUMANOID,
+    `type_flags`            = @CREATURE_TYPE_FLAG_NOT_ATTACKABLE,
+    `mechanic_immune_mask`  = @CREATURE_IMMUNITY_NONE,
+    `RegenHealth`           = 1,
+    `family`                = @CREATURE_BEAST_FAMILY_NONE
+WHERE
+    `entry`                 = 6491;
 
 -- Insert template addon for creature #6491 (Spirit Healer)
 INSERT INTO `creature_template_addon` VALUES
@@ -409,3 +485,9 @@ INSERT INTO `gossip_menu` VALUES
 
 INSERT INTO `gossip_menu_option` VALUES
     (83, 0, 4, 'Return me to life.', 6, 32, 0, 0, 0, 0, 0, '', 0);
+
+UPDATE `creature_template`
+SET
+    `gossip_menu_id`        = 83
+WHERE
+    `entry`                 = 6491;
