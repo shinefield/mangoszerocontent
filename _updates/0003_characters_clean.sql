@@ -1,11 +1,10 @@
+-- Host: localhost    Database: zp_characters
+-- ------------------------------------------------------
 -- Wipe clean all data tables.
 --
 -- Do not get scared, we will be rebuilding all game data from scratch with
 -- the following updates.
 --
-
--- Select character database
-USE `zp_characters`;
 
 -- Drop content and reset any auto incremented keys
 TRUNCATE `auction`;

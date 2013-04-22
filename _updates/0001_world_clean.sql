@@ -1,11 +1,10 @@
+-- Host: localhost    Database: zp_world
+-- ------------------------------------------------------
 -- Wipe clean all data tables.
 --
 -- Do not get scared, we will be rebuilding all game data from scratch with
 -- the following updates.
 --
-
--- Select world database
-USE `zp_world`;
 
 -- Drop content and reset any auto incremented keys
 TRUNCATE `areatrigger_involvedrelation`;

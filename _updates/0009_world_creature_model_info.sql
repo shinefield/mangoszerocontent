@@ -1,10 +1,9 @@
+-- Host: localhost    Database: zp_world
+-- ------------------------------------------------------
 -- Add initial data to world database
 --
 -- We will add model information used to display player characters.
 --
-
--- Select world database
-USE `zp_world`;
 
 -- Provide variables for gender
 SET @MODEL_GENDER_MALE                          = 0;

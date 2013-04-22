@@ -1,10 +1,9 @@
+-- Host: localhost    Database: zp_world
+-- ------------------------------------------------------
 -- Add initial data to world database
 --
 -- We will add player information for experience gains
 --
-
--- Select world database
-USE `zp_world`;
 
 -- Insert information for player character experience gain
 INSERT INTO `player_xp_for_level` VALUES

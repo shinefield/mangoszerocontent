@@ -1,11 +1,10 @@
+-- Host: localhost    Database: zp_realm
+-- ------------------------------------------------------
 -- Wipe clean all data tables.
 --
 -- Do not get scared, we will be rebuilding all game data from scratch with
 -- the following updates.
 --
-
--- Select realm list database
-USE `zp_realm`;
 
 -- Drop content and reset any auto incremented keys
 TRUNCATE `account`;

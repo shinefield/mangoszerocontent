@@ -1,10 +1,9 @@
+-- Host: localhost    Database: zp_world
+-- ------------------------------------------------------
 -- Add initial data to world database
 --
 -- We will add weather data
 --
-
--- Select world database
-USE `zp_world`;
 
 -- Insert weather data for each zone
 -- Dun_Morogh

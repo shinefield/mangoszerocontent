@@ -1,11 +1,10 @@
+-- Host: localhost    Database: zp_world
+-- ------------------------------------------------------
 -- Add initial data to world database
 --
 -- We will add basic creature templates which are required to either
 -- manage or play the game.
 --
-
--- Select world database
-USE `zp_world`;
 
 -- Provide variables for NPC flags
 SET @CREATURE_FLAG_NPC_NONE                     = 0;

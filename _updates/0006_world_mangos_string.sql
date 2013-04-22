@@ -1,10 +1,9 @@
+-- Host: localhost    Database: zp_world
+-- ------------------------------------------------------
 -- Add initial data to world database
 --
 -- We will add strings used by the world server.
 --
-
--- Select world database
-USE `zp_world`;
 
 -- Insert internal world server string into `mangos_string` table
 INSERT INTO `mangos_string` VALUES

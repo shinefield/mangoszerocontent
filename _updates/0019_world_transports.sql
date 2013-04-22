@@ -1,11 +1,10 @@
+-- Host: localhost    Database: zp_world
+-- ------------------------------------------------------
 -- Add initial data to world database
 --
 -- We will add basic gameobject templates and transports which are required
 -- to either manage or play the game.
 --
-
--- Select world database
-USE `zp_world`;
 
 -- Insert transport game objects
 INSERT INTO `gameobject_template` VALUES

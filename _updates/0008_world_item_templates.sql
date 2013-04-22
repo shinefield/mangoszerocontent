@@ -1,10 +1,9 @@
+-- Host: localhost    Database: zp_world
+-- ------------------------------------------------------
 -- Add initial data to world database
 --
 -- We will add item templates used for character creation.
 --
-
--- Select world database
-USE `zp_world`;
 
 -- Provide variables for various item stats
 -- -> item classes, and allowed item subclasses

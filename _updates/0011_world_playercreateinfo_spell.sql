@@ -1,10 +1,9 @@
+-- Host: localhost    Database: zp_world
+-- ------------------------------------------------------
 -- Add initial data to world database
 --
 -- We will add player information for spells avalable.
 --
-
--- Select world database
-USE `zp_world`;
 
 -- Provide variables for races, and classes
 SET @RACE_HUMAN                                 = 1;

@@ -1,10 +1,9 @@
+-- Host: localhost    Database: zp_world
+-- ------------------------------------------------------
 -- Add initial data to world database
 --
 -- We will add world server commands with their descriptions.
 --
-
--- Select world database
-USE `zp_world`;
 
 -- Insert world server commands into `commands` table
 INSERT INTO `command` VALUES

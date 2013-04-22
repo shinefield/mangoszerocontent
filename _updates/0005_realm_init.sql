@@ -1,11 +1,10 @@
+-- Host: localhost    Database: zp_realm
+-- ------------------------------------------------------
 -- Add initial data to realm list server
 --
 -- We will add a test realm, along with accounts for each available
 -- account type.
 --
-
--- Select realm list database
-USE `zp_realm`;
 
 -- Create a default realm, set to PvE, and allowing access to
 -- client builds 5875 (1.12.1), and 6005 (1.12.2).

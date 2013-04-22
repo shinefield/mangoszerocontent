@@ -1,3 +1,5 @@
+-- Host: localhost    Database: zp_world
+-- ------------------------------------------------------
 -- Add initial data to world database
 --
 -- We will add player information for stat increases upon leveling.

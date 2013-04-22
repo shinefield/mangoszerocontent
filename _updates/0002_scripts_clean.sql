@@ -1,11 +1,10 @@
+-- Host: localhost    Database: zp_scripts
+-- ------------------------------------------------------
 -- Wipe clean all data tables.
 --
 -- Do not get scared, we will be rebuilding all game data from scratch with
 -- the following updates.
 --
-
--- Select script library database
-USE `zp_scripts`;
 
 TRUNCATE `custom_texts`;
 TRUNCATE `gossip_texts`;

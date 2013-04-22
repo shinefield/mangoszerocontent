@@ -1,11 +1,10 @@
+-- Host: localhost    Database: zp_world
+-- ------------------------------------------------------
 -- Add initial data to world database
 --
 -- We will add graveyard data for determining where dead players should
 -- be transported upon death.
 --
-
--- Select world database
-USE `zp_world`;
 
 -- Provide variables for graveyard faction
 SET @FACTION_ANY                                = 0;
