@@ -93,7 +93,6 @@ INSERT INTO `command` VALUES
     ('explorecheat', 3, 'Syntax: .explorecheat #flag\r\n\r\nReveal  or hide all maps for the selected player. If no player is selected, hide or reveal maps to you.Use a #flag of value 1 to reveal, use a #flag value of 0 to hide all maps.'),
     ('gm', 1, 'Syntax: .gm [on/off]\r\n\r\nEnable or Disable in game GM MODE or show current state of on/off not provided.'),
     ('gm chat', 1, 'Syntax: .gm chat [on/off]\r\n\r\nEnable or disable chat GM MODE (show gm badge in messages) or show current state of on/off not provided.'),
-    ('gm fly', 3, 'Syntax: .gm fly [on/off]\r\n\r\nEnable/disable gm fly mode.'),
     ('gm ingame', 0, 'Syntax: .gm ingame\r\n\r\nDisplay a list of available in game Game Masters.'),
     ('gm list', 3, 'Syntax: .gm list\r\n\r\nDisplay a list of all Game Masters accounts and security levels.'),
     ('gm setview', 1, 'Syntax: .gm setview\r\n\r\nSet farsight view on selected unit. Select yourself to set view back.'),
