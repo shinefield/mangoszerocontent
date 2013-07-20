@@ -24,9 +24,8 @@ reports.
 
 Compatibility
 -------------
-The *mangos-zero* database is compatible with [mangos-zero version z2381][10]
-and newer.  It also requires [scripts version z2673][11] or newer in order to
-be fully enjoyable.
+The *mangos-zero* database is compatible with [mangos-zero][10].  It also
+requires [scripts][11] in order to be fully enjoyable.
 
 
 Getting started
