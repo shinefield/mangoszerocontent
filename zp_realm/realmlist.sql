@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `realmlist`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `realmlist` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Realm identifier',
   `name` varchar(32) NOT NULL DEFAULT '',
   `address` varchar(32) NOT NULL DEFAULT '127.0.0.1',
   `port` int(11) NOT NULL DEFAULT '8085',

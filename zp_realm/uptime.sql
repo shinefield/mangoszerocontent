@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `uptime`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `uptime` (
-  `realmid` int(11) unsigned NOT NULL,
+  `realmid` int(11) unsigned NOT NULL COMMENT 'Realm identifier',
   `starttime` bigint(20) unsigned NOT NULL DEFAULT '0',
   `startstring` varchar(64) NOT NULL DEFAULT '',
   `uptime` bigint(20) unsigned NOT NULL DEFAULT '0',

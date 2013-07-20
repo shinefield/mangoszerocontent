@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `account_banned`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `account_banned` (
-  `id` int(11) NOT NULL DEFAULT '0' COMMENT 'Account id',
+  `id` int(11) unsigned NOT NULL COMMENT 'Account identifier',
   `bandate` bigint(40) NOT NULL DEFAULT '0',
   `unbandate` bigint(40) NOT NULL DEFAULT '0',
   `bannedby` varchar(50) NOT NULL,

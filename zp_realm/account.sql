@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `account`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `account` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Identifier',
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Account identifier',
   `username` varchar(32) NOT NULL DEFAULT '',
   `sha_pass_hash` varchar(40) NOT NULL DEFAULT '',
   `gmlevel` tinyint(3) unsigned NOT NULL DEFAULT '0',

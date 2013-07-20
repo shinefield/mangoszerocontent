@@ -23,8 +23,8 @@ DROP TABLE IF EXISTS `realmcharacters`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `realmcharacters` (
-  `realmid` int(11) unsigned NOT NULL DEFAULT '0',
-  `acctid` bigint(20) unsigned NOT NULL,
+  `realmid` int(11) unsigned NOT NULL COMMENT 'Realm identifier',
+  `acctid` int(11) unsigned NOT NULL COMMENT 'Account identifier',
   `numchars` tinyint(3) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`realmid`,`acctid`),
   KEY `acctid` (`acctid`)
