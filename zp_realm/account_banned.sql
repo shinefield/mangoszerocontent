@@ -29,7 +29,8 @@ CREATE TABLE `account_banned` (
   `bannedby` varchar(50) NOT NULL,
   `banreason` varchar(255) NOT NULL,
   `active` tinyint(4) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`,`bandate`)
+  PRIMARY KEY (`id`,`bandate`),
+  CONSTRAINT `account_banned_ibfk_1` FOREIGN KEY (`id`) REFERENCES `account` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Ban List';
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

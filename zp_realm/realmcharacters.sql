@@ -27,7 +27,9 @@ CREATE TABLE `realmcharacters` (
   `acctid` int(11) unsigned NOT NULL COMMENT 'Account identifier',
   `numchars` tinyint(3) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`realmid`,`acctid`),
-  KEY `acctid` (`acctid`)
+  KEY `acctid` (`acctid`),
+  CONSTRAINT `realmcharacters_ibfk_2` FOREIGN KEY (`acctid`) REFERENCES `account` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `realmcharacters_ibfk_1` FOREIGN KEY (`realmid`) REFERENCES `realmlist` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Realm Character Tracker';
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

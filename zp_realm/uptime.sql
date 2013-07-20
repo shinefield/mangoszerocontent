@@ -28,7 +28,8 @@ CREATE TABLE `uptime` (
   `startstring` varchar(64) NOT NULL DEFAULT '',
   `uptime` bigint(20) unsigned NOT NULL DEFAULT '0',
   `maxplayers` smallint(5) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`realmid`,`starttime`)
+  PRIMARY KEY (`realmid`,`starttime`),
+  CONSTRAINT `uptime_ibfk_1` FOREIGN KEY (`realmid`) REFERENCES `realmlist` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Uptime system';
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
