@@ -1,8 +1,8 @@
 -- MySQL dump 10.13  Distrib 5.5.29, for debian-linux-gnu (x86_64)
 --
--- Host: localhost    Database: zp_realm
+-- Host: localhost    Database: zp_world
 -- ------------------------------------------------------
--- Server version	5.5.29-0ubuntu0.12.10.1
+-- Server version   5.5.29-0ubuntu0.12.10.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,26 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `realmd_db_version`
+-- Table structure for table `spell_linked`
 --
 
-DROP TABLE IF EXISTS `realmd_db_version`;
+DROP TABLE IF EXISTS `spell_linked`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `realmd_db_version` (
-  `required_c12484_02_realmd_account_access` bit(1) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Last applied sql update to DB';
+CREATE TABLE `spell_linked` (
+  `entry` int(10) unsigned NOT NULL COMMENT 'Spell entry',
+  `linked_entry` int(10) unsigned NOT NULL COMMENT 'Linked spell entry',
+  `type` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Type of link',
+  `effect_mask`int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'mask of effect (NY)',
+  `comment` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`entry`,`linked_entry`,`type`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Item System';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `realmd_db_version`
+-- Dumping data for table `spell_linked`
 --
 
-LOCK TABLES `realmd_db_version` WRITE;
-/*!40000 ALTER TABLE `realmd_db_version` DISABLE KEYS */;
-INSERT INTO `realmd_db_version` VALUES
-(NULL);
-/*!40000 ALTER TABLE `realmd_db_version` ENABLE KEYS */;
+LOCK TABLES `spell_linked` WRITE;
+/*!40000 ALTER TABLE `spell_linked` DISABLE KEYS */;
+/*!40000 ALTER TABLE `spell_linked` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

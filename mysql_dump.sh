@@ -216,6 +216,7 @@ dump_data  zp_world spell_chain
 dump_data  zp_world spell_elixir
 dump_data  zp_world spell_facing
 dump_data  zp_world spell_learn_spell
+dump_data  zp_world spell_linked
 dump_data  zp_world spell_pet_auras
 dump_data  zp_world spell_proc_event
 dump_data  zp_world spell_proc_item_enchant
