@@ -29,7 +29,7 @@ CREATE TABLE `spell_linked` (
   `effect_mask`int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'mask of effect (NY)',
   `comment` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`entry`,`linked_entry`,`type`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Item System';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Item System';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

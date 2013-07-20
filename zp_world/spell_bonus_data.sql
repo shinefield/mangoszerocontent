@@ -30,7 +30,7 @@ CREATE TABLE `spell_bonus_data` (
   `ap_dot_bonus` float NOT NULL DEFAULT '0',
   `comments` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`entry`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
