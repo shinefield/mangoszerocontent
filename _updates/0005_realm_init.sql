@@ -11,6 +11,7 @@
 INSERT INTO `realmlist` VALUES
     (1, 'mangos-zero', '127.0.0.1', 8085, 0, 2, 0, 0, 0, '5875 6005');
 
+-- Insert default accounts
 INSERT INTO `account` VALUES
 -- Create an administrator account
     (1,'ADMINISTRATOR','a34b29541b87b7e4823683ce6c7bf6ae68beaaac',3,'','0','0','','2006-04-25 10:18:56','127.0.0.1',0,0,'0000-00-00 00:00:00',0,0,0,0),
