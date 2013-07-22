@@ -24,6 +24,7 @@ SET @ZONE_DUSTWALLOW_MARSH                      = 15;
 SET @ZONE_AZSHARA                               = 16;
 SET @ZONE_THE_BARRENS                           = 17;
 SET @ZONE_PROGRAMMER_ISLE                       = 22;
+SET @ZONE_BLACKROCK_MOUNTAIN                    = 25;
 SET @ZONE_WESTERN_PLAGUELANDS                   = 28;
 SET @ZONE_STRANGLETHORN_VALE                    = 33;
 SET @ZONE_ALTERAC_MOUNTAINS                     = 36;
@@ -201,15 +202,15 @@ INSERT INTO `game_graveyard_zone` VALUES
     (631,   @ZONE_DUSTWALLOW_MARSH,             @FACTION_HORDE),
     (631,   @ZONE_ONYXIAS_LAIR,                 @FACTION_HORDE),
     (632,   @ZONE_BURNING_STEPPES,              @FACTION_ANY),
-    (632,   @ZONE_BLACKROCK_SPIRE,              @FACTION_ANY),
-    (632,   @ZONE_BLACKROCK_DEPTHS,             @FACTION_ANY),
-    (632,   @ZONE_BLACKWING_LAIR,               @FACTION_ANY),
-    (632,   @ZONE_MOLTEN_CORE,                  @FACTION_ANY),
     (633,   @ZONE_MOONGLADE,                    @FACTION_ANY),
     (634,   @ZONE_EASTERN_PLAGUELANDS,          @FACTION_ANY),
     (635,   @ZONE_FELWOOD,                      @FACTION_ANY),
     (636,   @ZONE_SEARING_GORGE,                @FACTION_ANY),
     (636,   @ZONE_BLACKROCK_DEPTHS,             @FACTION_ANY),
+    (636,   @ZONE_BLACKROCK_MOUNTAIN,           @FACTION_ANY),
+    (636,   @ZONE_BLACKROCK_SPIRE,              @FACTION_ANY),
+    (636,   @ZONE_MOLTEN_CORE,                  @FACTION_ANY),
+    (636,   @ZONE_BLACKWING_LAIR,               @FACTION_ANY),
     (649,   @ZONE_DUROTAR,                      @FACTION_HORDE),
     (669,   @ZONE_PROGRAMMER_ISLE,              @FACTION_ANY),
     (670,   @ZONE_PROGRAMMER_ISLE,              @FACTION_ANY),
