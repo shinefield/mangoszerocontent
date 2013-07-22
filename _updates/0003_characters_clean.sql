@@ -6,6 +6,9 @@
 -- the following updates.
 --
 
+-- Temporary disable foreign key checks
+SET foreign_key_checks = 0;
+
 -- Drop content and reset any auto incremented keys
 TRUNCATE `auction`;
 TRUNCATE `bugreport`;
@@ -54,6 +57,9 @@ TRUNCATE `pet_spell`;
 TRUNCATE `pet_spell_cooldown`;
 TRUNCATE `saved_variables`;
 TRUNCATE `world`;
+
+-- Enable foreign key checks
+SET foreign_key_checks = 1;
 
 -- Insert character database version
 INSERT INTO `character_db_version` VALUES

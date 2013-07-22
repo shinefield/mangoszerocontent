@@ -6,6 +6,9 @@
 -- the following updates.
 --
 
+-- Temporary disable foreign key checks
+SET foreign_key_checks = 0;
+
 -- Drop content and reset any auto incremented keys
 TRUNCATE `areatrigger_involvedrelation`;
 TRUNCATE `areatrigger_tavern`;
@@ -132,7 +135,9 @@ TRUNCATE `spell_threat`;
 TRUNCATE `transports`;
 TRUNCATE `world_template`;
 
+-- Enable foreign key checks
+SET foreign_key_checks = 1;
+
 -- Insert world database version
 INSERT INTO `db_version` VALUES
-    ('mangos-zero - Version 1.0.0 (Community Rebuild)','mangos-zero Artificial Creature Intelligence - Version 1.0.0 (Community Rebuild)',NULL);
-
+    ('mangos-zero - Version 0.1.0 (Community Rebuild)','mangos-zero Artificial Creature Intelligence - Version 0.1.0 (Community Rebuild)',NULL);
