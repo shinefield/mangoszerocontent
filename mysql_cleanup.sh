@@ -5,7 +5,6 @@
 
 # - Include common libraries and settings ------------------------------------
 source "libui.sh" || { echo "Something went wrong while sourcing library lib-ui.sh" >&2 ; exit 2; }
-source "mysql_info.sh"
 
 # - Prepare required variables -----------------------------------------------
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
