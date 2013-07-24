@@ -1,8 +1,8 @@
-NPC Modell Prüfung
+NPC Modell Check
 ==================
 
-Vertauschte Geschlechter
-------------------------
+Gender models switched
+----------------------
 11180   10734   7   Bloodvenom Post Brave
 3380    4196    7   Burning Blade Acolyte
 3379    4198    7   Burning Blade Bruiser
