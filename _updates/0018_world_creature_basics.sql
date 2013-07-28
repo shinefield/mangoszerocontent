@@ -71,8 +71,6 @@ SET @CREATURE_TYPE_CRITTER                      = 8;
 SET @CREATURE_TYPE_MECHANICAL                   = 9;
 SET @CREATURE_TYPE_NOT_SPECIFIED                = 10;
 SET @CREATURE_TYPE_TOTEM                        = 11;
-SET @CREATURE_TYPE_NONCOMBAT_PET                = 12;
-SET @CREATURE_TYPE_GAS_CLOUD                    = 13;
 
 -- Provide variables for creature of type 1 (Beast)
 SET @CREATURE_BEAST_FAMILY_NONE                 = 0;
