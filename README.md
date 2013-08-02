@@ -4,6 +4,8 @@ A content database for [mangos-zero][10], and *World of Warcraft Client Patch
 1.12* - [_Drums of War_][50]. It is compatible with client 1.12.1 (build 5875),
 and 1.12.2 (build 6005).
 
+License
+-------
 **mangos-zero-database** is released under for free under the terms of the
 Creative Commons Attribution-NonCommercial-ShareAlike license. The file
 `LICENSE.md` **must** be a part of any redistributable packages made from
