@@ -6,7 +6,7 @@ and 1.12.2 (build 6005).
 
 License
 -------
-**mangos-zero-database** is released under for free under the terms of the
+**mangos-zero-database** is released for free under the terms of the
 Creative Commons Attribution-NonCommercial-ShareAlike license. The file
 `LICENSE.md` **must** be a part of any redistributable packages made from
 this software.  No licenses should be removed from this software if you are
