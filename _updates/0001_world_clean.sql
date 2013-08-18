@@ -115,7 +115,7 @@ TRUNCATE `reputation_reward_rate`;
 TRUNCATE `reputation_spillover_template`;
 TRUNCATE `reserved_name`;
 TRUNCATE `scripted_areatrigger`;
-TRUNCATE `scripted_event_id`;
+TRUNCATE `scripted_event`;
 TRUNCATE `skill_fishing_base_level`;
 TRUNCATE `skinning_loot_template`;
 TRUNCATE `spell_affect`;

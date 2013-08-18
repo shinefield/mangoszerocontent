@@ -206,7 +206,7 @@ dump_data  zp_world reputation_reward_rate
 dump_data  zp_world reputation_spillover_template
 dump_data  zp_world reserved_name
 dump_data  zp_world scripted_areatrigger
-dump_data  zp_world scripted_event_id
+dump_data  zp_world scripted_event
 dump_data  zp_world skill_fishing_base_level
 dump_data  zp_world skinning_loot_template
 dump_data  zp_world spell_affect
