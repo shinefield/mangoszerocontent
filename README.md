@@ -4,6 +4,7 @@ A content database for [mangos-zero][10], and *World of Warcraft Client Patch
 1.12* - [_Drums of War_][50]. It is compatible with client 1.12.1 (build 5875),
 and 1.12.2 (build 6005).
 
+
 License
 -------
 **mangos-zero-database** is released for free under the terms of the
@@ -33,7 +34,7 @@ The `mysql_import.sh` script will initially load the database structure, and
 then load any update supplied in the `_updates` folder. Updates are kept small
 so that each update can be considered atomic since it will add a single feature
 or data unit, which fully works without any other updates. This allows us to
-gradually research, verify, and add the games' content to our database.
+gradually research, verify, and add the game's content to our database.
 
 Once the import script is done, it will execute a optimization query, which
 tries to order every database table in a readable fashion.
@@ -46,6 +47,7 @@ For those who have not yet encountered the [mangos-zero database][12], we
 have added tutorials for common activities you might be interested in.
 
 If anything is missing, submit an issue, and we will add it.
+
 
 Compatibility
 -------------
@@ -69,11 +71,6 @@ Once you have the desired database user and rights configured in MySQL, you may
 use the `mysql_import` script to load the individual data tables into your
 databases.  Should your database user have wildcard rights, the script creates
 the database - if not existent - and then populates them.
-
-If you make changes to the database, either by adding/modifying content, or by
-making changes to the database structure, you may execute `mysql_dump` to save
-each table into the repository.  Should you add or remove tables, add `dump_data`,
-`dump_struc` commands to `mysql_dump`, or remove them as needed.
 
 
 Configuring you realm list
