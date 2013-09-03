@@ -1,4 +1,4 @@
-mangos-zero-database ![Project status](http://getmangos.com/assets/img/repository-status-maintained.png)
+mangos-zero-database ![Project status](https://bitbucket.org/danielsreichenbach/mangos-zero-database/wiki/img/repository-status-maintained.png)
 ====================
 A content database for [mangos-zero][10], and *World of Warcraft Client Patch
 1.12* - [_Drums of War_][50]. It is compatible with client 1.12.1 (build 5875),
