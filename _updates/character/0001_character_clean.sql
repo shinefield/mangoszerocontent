@@ -1,15 +1,15 @@
 -- Host: localhost    Database: character
--- ------------------------------------------------------
+-- ---------------------------------------------------------------------------
 -- Wipe clean all data tables.
 --
 -- Do not get scared, we will be rebuilding all game data from scratch with
 -- the following updates.
 --
 
--- Temporary disable foreign key checks
+-- Temporary disable foreign key checks --------------------------------------
 SET foreign_key_checks = 0;
 
--- Drop content and reset any auto incremented keys
+-- Drop content and reset any auto incremented keys --------------------------
 TRUNCATE `auction`;
 TRUNCATE `bugreport`;
 TRUNCATE `characters`;
@@ -58,5 +58,5 @@ TRUNCATE `pet_spell_cooldown`;
 TRUNCATE `saved_variables`;
 TRUNCATE `world`;
 
--- Enable foreign key checks
+-- Enable foreign key checks -------------------------------------------------
 SET foreign_key_checks = 1;
