@@ -7,7 +7,7 @@
 # populate your databases with the latest available releases.
 
 # - Include settings ---------------------------------------------------------
-source "mysql_info.sh"
+source "mysql_info.sh" || { echo "Could not open database configuration." >&2 ; exit 2; }
 
 # - Prepare required variables -----------------------------------------------
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
