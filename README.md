@@ -59,10 +59,10 @@ Installation
 ------------
 By default **mangos-zero** uses four databases:
 
-* `zp_characters`: where all character data is stored,
-* `zp_realm`: where user accounts, and realms are defined,
-* `zp_world`: where the world with creatures, items, objects, quests, etc. is defined,
-* `zp_scripts`: and the ScriptDevZero database.
+* `character`: where all character data is stored,
+* `realm`: where user accounts, and realms are defined,
+* `world`: where the world with creatures, items, objects, quests, etc. is defined,
+* `script`: and the ScriptDev2 database.
 
 In order to use this database repository, you will have to edit `mysql_info`,
 and edit in the desired username, hostname, and password.
@@ -75,16 +75,19 @@ the database - if not existent - and then populates them.
 
 Configuring you realm list
 --------------------------
-Connect to your MySQL server and execute the following command:
+Connect to your MySQL server and execute the following command on the realm
+list database:
 
     UPDATE
-        `zp_realm`.`realmlist`
+        `realmlist`
     SET
         `address` = '192.168.2.101'
     WHERE
         `realmlist`.`id` = 1;
 
-Please replace `192.168.2.101` with your local IP address!
+
+Please replace `192.168.2.101` with your local/public IP address, and make
+sure that you configured the same IP address in your mangos configuration!
 
 
 Development

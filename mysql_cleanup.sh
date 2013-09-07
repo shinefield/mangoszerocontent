@@ -2,9 +2,9 @@
 #
 # This script will turn single-line INSERT statements in the SQL dumps
 # into readable multi-line statements.
-
-# - Include common libraries and settings ------------------------------------
-source "libui.sh" || { echo "Something went wrong while sourcing library lib-ui.sh" >&2 ; exit 2; }
+#
+# The primary purpose of this script is to avoid huge single line inserts,
+# since they will not be editable in most text editors.
 
 # - Prepare required variables -----------------------------------------------
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -16,4 +16,3 @@ find ${DIR} -name '*.sql' -type f -exec perl -pi -e 's/VALUES \(/VALUES\n\(/g' {
 
 # - Replace huge insert by multi-line inserts --------------------------------
 find ${DIR} -name '*.sql' -type f -exec perl -pi -e 's/\),\(/\),\n\(/g' {} \;
-

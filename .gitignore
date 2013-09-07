@@ -39,6 +39,7 @@ nbproject
 Thumbs.db
 
 # Configuration files to be customized
+/mysql_info.sh
 
 # Cache and log files
 
