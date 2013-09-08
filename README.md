@@ -4,7 +4,6 @@ A content database for [mangos-zero][10], and *World of Warcraft Client Patch
 1.12* - [_Drums of War_][50]. It is compatible with client 1.12.1 (build 5875),
 and 1.12.2 (build 6005).
 
-
 License
 -------
 **mangos-zero-database** is released for free under the terms of the
@@ -12,7 +11,6 @@ Creative Commons Attribution-NonCommercial-ShareAlike license. The file
 `LICENSE.md` **must** be a part of any redistributable packages made from
 this software.  No licenses should be removed from this software if you are
 making redistributable copies.
-
 
 Getting started
 ---------------
@@ -22,7 +20,6 @@ lines to make changes more trackable for the user (that would be you).
 
 The repository is developed and maintained using the excellent [git-flow][110]
 extension for git, to provide a clear, and visible [workflow][111] to the user.
-
 
 How this works
 --------------
@@ -48,12 +45,10 @@ have added tutorials for common activities you might be interested in.
 
 If anything is missing, submit an issue, and we will add it.
 
-
 Compatibility
 -------------
 The *mangos-zero* database is compatible with [mangos-zero][10].  It also
 requires [scripts][11] in order to be fully enjoyable.
-
 
 Installation
 ------------
@@ -72,7 +67,6 @@ use the `mysql_import` script to load the individual data tables into your
 databases.  Should your database user have wildcard rights, the script creates
 the database - if not existent - and then populates them.
 
-
 Configuring you realm list
 --------------------------
 Connect to your MySQL server and execute the following command on the realm
@@ -85,10 +79,8 @@ list database:
     WHERE
         `realmlist`.`id` = 1;
 
-
 Please replace `192.168.2.101` with your local/public IP address, and make
 sure that you configured the same IP address in your mangos configuration!
-
 
 Development
 -----------
@@ -99,13 +91,6 @@ release.
 It is recommended to use the **master** branch for stable systems, and only use
 the **develop** branch if you intend to test commits and submit issues and/or
 reports.
-
-
-And if something goes wrong?
-----------------------------
-_If_ you feel like submitting an issue, please do so *only* if you are willing
-to provide a detailed report, and are available to verify any solution to the
-issue provided by the developers of this repository.
 
 
 [1]: https://github.com/mangoszero "mangos-zero"
@@ -123,3 +108,6 @@ issue provided by the developers of this repository.
 
 [110]: http://nvie.com/posts/a-successful-git-branching-model/ "git flow extension"
 [111]: http://yakiloo.com/getting-started-git-flow/ "git flow workflow"
+
+[121]: http://creativecommons.org/licenses/by-nc-sa/3.0/ "Creative Commons Attribution-NonCommercial-ShareAlike 3.0"
+[122]: http://creativecommons.org/ "Creative Commons"
