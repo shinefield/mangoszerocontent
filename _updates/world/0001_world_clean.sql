@@ -1,15 +1,15 @@
 -- Host: localhost    Database: world
--- ------------------------------------------------------
+-- ---------------------------------------------------------------------------
 -- Wipe clean all data tables.
 --
 -- Do not get scared, we will be rebuilding all game data from scratch with
 -- the following updates.
 --
 
--- Temporary disable foreign key checks
+-- Temporary disable foreign key checks --------------------------------------
 SET foreign_key_checks = 0;
 
--- Drop content and reset any auto incremented keys
+-- Drop content and reset any auto incremented keys --------------------------
 TRUNCATE `areatrigger_involvedrelation`;
 TRUNCATE `areatrigger_tavern`;
 TRUNCATE `areatrigger_teleport`;
@@ -135,5 +135,5 @@ TRUNCATE `spell_threat`;
 TRUNCATE `transports`;
 TRUNCATE `world_template`;
 
--- Enable foreign key checks
+-- Enable foreign key checks -------------------------------------------------
 SET foreign_key_checks = 1;

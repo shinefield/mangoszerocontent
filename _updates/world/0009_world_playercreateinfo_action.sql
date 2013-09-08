@@ -72,302 +72,422 @@ SET @SPELL_BERSERKING_RAGE                      = 26296; -- Troll racial
 SET @SPELL_BERSERKING_ENERGY                    = 26297; -- Troll racial
 
 -- Insert information for player characters and their default action buttons
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_HUMAN,       @CLASS_WARRIOR, 72,     @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_HUMAN,       @CLASS_WARRIOR, 73,     @SPELL_HEROIC_STRIKE,           @ACTION_TYPE_SPELL),
-    (@RACE_HUMAN,       @CLASS_WARRIOR, 83,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_HUMAN,       @CLASS_WARRIOR, 72,     @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_HUMAN,       @CLASS_WARRIOR, 73,     @SPELL_HEROIC_STRIKE,           @ACTION_TYPE_SPELL)
+    ,(@RACE_HUMAN,       @CLASS_WARRIOR, 83,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_HUMAN,       @CLASS_PALADIN, 0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_HUMAN,       @CLASS_PALADIN, 1,      @SPELL_SEAL_OF_RIGHTEOUSNESS,   @ACTION_TYPE_SPELL),
-    (@RACE_HUMAN,       @CLASS_PALADIN, 2,      @SPELL_HOLY_LIGHT,              @ACTION_TYPE_SPELL),
-    (@RACE_HUMAN,       @CLASS_PALADIN, 10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM),
-    (@RACE_HUMAN,       @CLASS_PALADIN, 11,     @ITEM_DARNASSIAN_BLEU,          @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_HUMAN,       @CLASS_PALADIN, 0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_HUMAN,       @CLASS_PALADIN, 1,      @SPELL_SEAL_OF_RIGHTEOUSNESS,   @ACTION_TYPE_SPELL)
+    ,(@RACE_HUMAN,       @CLASS_PALADIN, 2,      @SPELL_HOLY_LIGHT,              @ACTION_TYPE_SPELL)
+    ,(@RACE_HUMAN,       @CLASS_PALADIN, 10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM)
+    ,(@RACE_HUMAN,       @CLASS_PALADIN, 11,     @ITEM_DARNASSIAN_BLEU,          @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_HUMAN,       @CLASS_ROGUE,   0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_HUMAN,       @CLASS_ROGUE,   1,      @SPELL_SINISTER_STRIKE,         @ACTION_TYPE_SPELL),
-    (@RACE_HUMAN,       @CLASS_ROGUE,   2,      @SPELL_EVISCERATE,              @ACTION_TYPE_SPELL),
-    (@RACE_HUMAN,       @CLASS_ROGUE,   3,      @SPELL_THROW,                   @ACTION_TYPE_SPELL),
-    (@RACE_HUMAN,       @CLASS_ROGUE,   11,     @ITEM_DARNASSIAN_BLEU,          @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_HUMAN,       @CLASS_ROGUE,   0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_HUMAN,       @CLASS_ROGUE,   1,      @SPELL_SINISTER_STRIKE,         @ACTION_TYPE_SPELL)
+    ,(@RACE_HUMAN,       @CLASS_ROGUE,   2,      @SPELL_EVISCERATE,              @ACTION_TYPE_SPELL)
+    ,(@RACE_HUMAN,       @CLASS_ROGUE,   3,      @SPELL_THROW,                   @ACTION_TYPE_SPELL)
+    ,(@RACE_HUMAN,       @CLASS_ROGUE,   11,     @ITEM_DARNASSIAN_BLEU,          @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_HUMAN,       @CLASS_PRIEST,  0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_HUMAN,       @CLASS_PRIEST,  1,      @SPELL_SMITE,                   @ACTION_TYPE_SPELL),
-    (@RACE_HUMAN,       @CLASS_PRIEST,  2,      @SPELL_LESSER_HEAL,             @ACTION_TYPE_SPELL),
-    (@RACE_HUMAN,       @CLASS_PRIEST,  10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM),
-    (@RACE_HUMAN,       @CLASS_PRIEST,  11,     @ITEM_DARNASSIAN_BLEU,          @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_HUMAN,       @CLASS_PRIEST,  0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_HUMAN,       @CLASS_PRIEST,  1,      @SPELL_SMITE,                   @ACTION_TYPE_SPELL)
+    ,(@RACE_HUMAN,       @CLASS_PRIEST,  2,      @SPELL_LESSER_HEAL,             @ACTION_TYPE_SPELL)
+    ,(@RACE_HUMAN,       @CLASS_PRIEST,  10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM)
+    ,(@RACE_HUMAN,       @CLASS_PRIEST,  11,     @ITEM_DARNASSIAN_BLEU,          @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_HUMAN,       @CLASS_MAGE,    0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_HUMAN,       @CLASS_MAGE,    1,      @SPELL_FIREBALL,                @ACTION_TYPE_SPELL),
-    (@RACE_HUMAN,       @CLASS_MAGE,    2,      @SPELL_FROST_ARMOR,             @ACTION_TYPE_SPELL),
-    (@RACE_HUMAN,       @CLASS_MAGE,    10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM),
-    (@RACE_HUMAN,       @CLASS_MAGE,    11,     @ITEM_DARNASSIAN_BLEU,          @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_HUMAN,       @CLASS_MAGE,    0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_HUMAN,       @CLASS_MAGE,    1,      @SPELL_FIREBALL,                @ACTION_TYPE_SPELL)
+    ,(@RACE_HUMAN,       @CLASS_MAGE,    2,      @SPELL_FROST_ARMOR,             @ACTION_TYPE_SPELL)
+    ,(@RACE_HUMAN,       @CLASS_MAGE,    10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM)
+    ,(@RACE_HUMAN,       @CLASS_MAGE,    11,     @ITEM_DARNASSIAN_BLEU,          @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_HUMAN,       @CLASS_WARLOCK, 0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_HUMAN,       @CLASS_WARLOCK, 1,      @SPELL_SHADOW_BOLT,             @ACTION_TYPE_SPELL),
-    (@RACE_HUMAN,       @CLASS_WARLOCK, 2,      @SPELL_DEMON_SKIN,              @ACTION_TYPE_SPELL),
-    (@RACE_HUMAN,       @CLASS_WARLOCK, 10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM),
-    (@RACE_HUMAN,       @CLASS_WARLOCK, 11,     @ITEM_FOREST_MUSHROOM_CAP,      @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_HUMAN,       @CLASS_WARLOCK, 0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_HUMAN,       @CLASS_WARLOCK, 1,      @SPELL_SHADOW_BOLT,             @ACTION_TYPE_SPELL)
+    ,(@RACE_HUMAN,       @CLASS_WARLOCK, 2,      @SPELL_DEMON_SKIN,              @ACTION_TYPE_SPELL)
+    ,(@RACE_HUMAN,       @CLASS_WARLOCK, 10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM)
+    ,(@RACE_HUMAN,       @CLASS_WARLOCK, 11,     @ITEM_FOREST_MUSHROOM_CAP,      @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_ORC,         @CLASS_WARRIOR, 72,     @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_ORC,         @CLASS_WARRIOR, 73,     @SPELL_HEROIC_STRIKE,           @ACTION_TYPE_SPELL),
-    (@RACE_ORC,         @CLASS_WARRIOR, 74,     @SPELL_BLOOD_FURY,              @ACTION_TYPE_SPELL),
-    (@RACE_ORC,         @CLASS_WARRIOR, 83,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_ORC,         @CLASS_WARRIOR, 72,     @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_ORC,         @CLASS_WARRIOR, 73,     @SPELL_HEROIC_STRIKE,           @ACTION_TYPE_SPELL)
+    ,(@RACE_ORC,         @CLASS_WARRIOR, 74,     @SPELL_BLOOD_FURY,              @ACTION_TYPE_SPELL)
+    ,(@RACE_ORC,         @CLASS_WARRIOR, 83,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_ORC,         @CLASS_HUNTER,  0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_ORC,         @CLASS_HUNTER,  1,      @SPELL_RAPTOR_STRIKE,           @ACTION_TYPE_SPELL),
-    (@RACE_ORC,         @CLASS_HUNTER,  2,      @SPELL_AUTO_SHOT,               @ACTION_TYPE_SPELL),
-    (@RACE_ORC,         @CLASS_HUNTER,  3,      @SPELL_BLOOD_FURY,              @ACTION_TYPE_SPELL),
-    (@RACE_ORC,         @CLASS_HUNTER,  10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM),
-    (@RACE_ORC,         @CLASS_HUNTER,  11,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_ORC,         @CLASS_HUNTER,  0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_ORC,         @CLASS_HUNTER,  1,      @SPELL_RAPTOR_STRIKE,           @ACTION_TYPE_SPELL)
+    ,(@RACE_ORC,         @CLASS_HUNTER,  2,      @SPELL_AUTO_SHOT,               @ACTION_TYPE_SPELL)
+    ,(@RACE_ORC,         @CLASS_HUNTER,  3,      @SPELL_BLOOD_FURY,              @ACTION_TYPE_SPELL)
+    ,(@RACE_ORC,         @CLASS_HUNTER,  10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM)
+    ,(@RACE_ORC,         @CLASS_HUNTER,  11,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_ORC,         @CLASS_ROGUE,   0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_ORC,         @CLASS_ROGUE,   1,      @SPELL_SINISTER_STRIKE,         @ACTION_TYPE_SPELL),
-    (@RACE_ORC,         @CLASS_ROGUE,   2,      @SPELL_EVISCERATE,              @ACTION_TYPE_SPELL),
-    (@RACE_ORC,         @CLASS_ROGUE,   3,      @SPELL_THROW,                   @ACTION_TYPE_SPELL),
-    (@RACE_ORC,         @CLASS_ROGUE,   4,      @SPELL_BLOOD_FURY,              @ACTION_TYPE_SPELL),
-    (@RACE_ORC,         @CLASS_ROGUE,   11,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_ORC,         @CLASS_ROGUE,   0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_ORC,         @CLASS_ROGUE,   1,      @SPELL_SINISTER_STRIKE,         @ACTION_TYPE_SPELL)
+    ,(@RACE_ORC,         @CLASS_ROGUE,   2,      @SPELL_EVISCERATE,              @ACTION_TYPE_SPELL)
+    ,(@RACE_ORC,         @CLASS_ROGUE,   3,      @SPELL_THROW,                   @ACTION_TYPE_SPELL)
+    ,(@RACE_ORC,         @CLASS_ROGUE,   4,      @SPELL_BLOOD_FURY,              @ACTION_TYPE_SPELL)
+    ,(@RACE_ORC,         @CLASS_ROGUE,   11,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_ORC,         @CLASS_SHAMAN,  0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_ORC,         @CLASS_SHAMAN,  1,      @SPELL_LIGHTNING_BOLT,          @ACTION_TYPE_SPELL),
-    (@RACE_ORC,         @CLASS_SHAMAN,  2,      @SPELL_HEALING_WAVE,            @ACTION_TYPE_SPELL),
-    (@RACE_ORC,         @CLASS_SHAMAN,  3,      @SPELL_BLOOD_FURY,              @ACTION_TYPE_SPELL),
-    (@RACE_ORC,         @CLASS_SHAMAN,  10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM),
-    (@RACE_ORC,         @CLASS_SHAMAN,  11,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_ORC,         @CLASS_SHAMAN,  0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_ORC,         @CLASS_SHAMAN,  1,      @SPELL_LIGHTNING_BOLT,          @ACTION_TYPE_SPELL)
+    ,(@RACE_ORC,         @CLASS_SHAMAN,  2,      @SPELL_HEALING_WAVE,            @ACTION_TYPE_SPELL)
+    ,(@RACE_ORC,         @CLASS_SHAMAN,  3,      @SPELL_BLOOD_FURY,              @ACTION_TYPE_SPELL)
+    ,(@RACE_ORC,         @CLASS_SHAMAN,  10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM)
+    ,(@RACE_ORC,         @CLASS_SHAMAN,  11,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_ORC,         @CLASS_WARLOCK, 0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_ORC,         @CLASS_WARLOCK, 1,      @SPELL_SHADOW_BOLT,             @ACTION_TYPE_SPELL),
-    (@RACE_ORC,         @CLASS_WARLOCK, 2,      @SPELL_DEMON_SKIN,              @ACTION_TYPE_SPELL),
-    (@RACE_ORC,         @CLASS_WARLOCK, 3,      @SPELL_BLOOD_FURY,              @ACTION_TYPE_SPELL),
-    (@RACE_ORC,         @CLASS_WARLOCK, 10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM),
-    (@RACE_ORC,         @CLASS_WARLOCK, 11,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_ORC,         @CLASS_WARLOCK, 0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_ORC,         @CLASS_WARLOCK, 1,      @SPELL_SHADOW_BOLT,             @ACTION_TYPE_SPELL)
+    ,(@RACE_ORC,         @CLASS_WARLOCK, 2,      @SPELL_DEMON_SKIN,              @ACTION_TYPE_SPELL)
+    ,(@RACE_ORC,         @CLASS_WARLOCK, 3,      @SPELL_BLOOD_FURY,              @ACTION_TYPE_SPELL)
+    ,(@RACE_ORC,         @CLASS_WARLOCK, 10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM)
+    ,(@RACE_ORC,         @CLASS_WARLOCK, 11,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_DWARF,       @CLASS_WARRIOR, 72,     @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_DWARF,       @CLASS_WARRIOR, 73,     @SPELL_HEROIC_STRIKE,           @ACTION_TYPE_SPELL),
-    (@RACE_DWARF,       @CLASS_WARRIOR, 74,     @SPELL_STONEFORM,               @ACTION_TYPE_SPELL),
-    (@RACE_DWARF,       @CLASS_WARRIOR, 75,     @SPELL_FIND_TREASURE,           @ACTION_TYPE_SPELL),
-    (@RACE_DWARF,       @CLASS_WARRIOR, 83,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_DWARF,       @CLASS_WARRIOR, 72,     @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_DWARF,       @CLASS_WARRIOR, 73,     @SPELL_HEROIC_STRIKE,           @ACTION_TYPE_SPELL)
+    ,(@RACE_DWARF,       @CLASS_WARRIOR, 74,     @SPELL_STONEFORM,               @ACTION_TYPE_SPELL)
+    ,(@RACE_DWARF,       @CLASS_WARRIOR, 75,     @SPELL_FIND_TREASURE,           @ACTION_TYPE_SPELL)
+    ,(@RACE_DWARF,       @CLASS_WARRIOR, 83,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_DWARF,       @CLASS_PALADIN, 0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_DWARF,       @CLASS_PALADIN, 1,      @SPELL_SEAL_OF_RIGHTEOUSNESS,   @ACTION_TYPE_SPELL),
-    (@RACE_DWARF,       @CLASS_PALADIN, 2,      @SPELL_HOLY_LIGHT,              @ACTION_TYPE_SPELL),
-    (@RACE_DWARF,       @CLASS_PALADIN, 3,      @SPELL_STONEFORM,               @ACTION_TYPE_SPELL),
-    (@RACE_DWARF,       @CLASS_PALADIN, 4,      @SPELL_FIND_TREASURE,           @ACTION_TYPE_SPELL),
-    (@RACE_DWARF,       @CLASS_PALADIN, 10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM),
-    (@RACE_DWARF,       @CLASS_PALADIN, 11,     @ITEM_TOUGH_HUNK_OF_BREAD,      @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_DWARF,       @CLASS_PALADIN, 0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_DWARF,       @CLASS_PALADIN, 1,      @SPELL_SEAL_OF_RIGHTEOUSNESS,   @ACTION_TYPE_SPELL)
+    ,(@RACE_DWARF,       @CLASS_PALADIN, 2,      @SPELL_HOLY_LIGHT,              @ACTION_TYPE_SPELL)
+    ,(@RACE_DWARF,       @CLASS_PALADIN, 3,      @SPELL_STONEFORM,               @ACTION_TYPE_SPELL)
+    ,(@RACE_DWARF,       @CLASS_PALADIN, 4,      @SPELL_FIND_TREASURE,           @ACTION_TYPE_SPELL)
+    ,(@RACE_DWARF,       @CLASS_PALADIN, 10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM)
+    ,(@RACE_DWARF,       @CLASS_PALADIN, 11,     @ITEM_TOUGH_HUNK_OF_BREAD,      @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_DWARF,       @CLASS_HUNTER,  0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_DWARF,       @CLASS_HUNTER,  1,      @SPELL_RAPTOR_STRIKE,           @ACTION_TYPE_SPELL),
-    (@RACE_DWARF,       @CLASS_HUNTER,  2,      @SPELL_AUTO_SHOT,               @ACTION_TYPE_SPELL),
-    (@RACE_DWARF,       @CLASS_HUNTER,  3,      @SPELL_STONEFORM,               @ACTION_TYPE_SPELL),
-    (@RACE_DWARF,       @CLASS_HUNTER,  4,      @SPELL_FIND_TREASURE,           @ACTION_TYPE_SPELL),
-    (@RACE_DWARF,       @CLASS_HUNTER,  10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM),
-    (@RACE_DWARF,       @CLASS_HUNTER,  11,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_DWARF,       @CLASS_HUNTER,  0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_DWARF,       @CLASS_HUNTER,  1,      @SPELL_RAPTOR_STRIKE,           @ACTION_TYPE_SPELL)
+    ,(@RACE_DWARF,       @CLASS_HUNTER,  2,      @SPELL_AUTO_SHOT,               @ACTION_TYPE_SPELL)
+    ,(@RACE_DWARF,       @CLASS_HUNTER,  3,      @SPELL_STONEFORM,               @ACTION_TYPE_SPELL)
+    ,(@RACE_DWARF,       @CLASS_HUNTER,  4,      @SPELL_FIND_TREASURE,           @ACTION_TYPE_SPELL)
+    ,(@RACE_DWARF,       @CLASS_HUNTER,  10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM)
+    ,(@RACE_DWARF,       @CLASS_HUNTER,  11,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_DWARF,       @CLASS_ROGUE,   0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_DWARF,       @CLASS_ROGUE,   1,      @SPELL_SINISTER_STRIKE,         @ACTION_TYPE_SPELL),
-    (@RACE_DWARF,       @CLASS_ROGUE,   2,      @SPELL_EVISCERATE,              @ACTION_TYPE_SPELL),
-    (@RACE_DWARF,       @CLASS_ROGUE,   3,      @SPELL_THROW,                   @ACTION_TYPE_SPELL),
-    (@RACE_DWARF,       @CLASS_ROGUE,   4,      @SPELL_STONEFORM,               @ACTION_TYPE_SPELL),
-    (@RACE_DWARF,       @CLASS_ROGUE,   5,      @SPELL_FIND_TREASURE,           @ACTION_TYPE_SPELL),
-    (@RACE_DWARF,       @CLASS_ROGUE,   11,     @ITEM_TOUGH_HUNK_OF_BREAD,      @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_DWARF,       @CLASS_ROGUE,   0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_DWARF,       @CLASS_ROGUE,   1,      @SPELL_SINISTER_STRIKE,         @ACTION_TYPE_SPELL)
+    ,(@RACE_DWARF,       @CLASS_ROGUE,   2,      @SPELL_EVISCERATE,              @ACTION_TYPE_SPELL)
+    ,(@RACE_DWARF,       @CLASS_ROGUE,   3,      @SPELL_THROW,                   @ACTION_TYPE_SPELL)
+    ,(@RACE_DWARF,       @CLASS_ROGUE,   4,      @SPELL_STONEFORM,               @ACTION_TYPE_SPELL)
+    ,(@RACE_DWARF,       @CLASS_ROGUE,   5,      @SPELL_FIND_TREASURE,           @ACTION_TYPE_SPELL)
+    ,(@RACE_DWARF,       @CLASS_ROGUE,   11,     @ITEM_TOUGH_HUNK_OF_BREAD,      @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_DWARF,       @CLASS_PRIEST,  0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_DWARF,       @CLASS_PRIEST,  1,      @SPELL_SMITE,                   @ACTION_TYPE_SPELL),
-    (@RACE_DWARF,       @CLASS_PRIEST,  2,      @SPELL_LESSER_HEAL,             @ACTION_TYPE_SPELL),
-    (@RACE_DWARF,       @CLASS_PRIEST,  3,      @SPELL_STONEFORM,               @ACTION_TYPE_SPELL),
-    (@RACE_DWARF,       @CLASS_PRIEST,  4,      @SPELL_FIND_TREASURE,           @ACTION_TYPE_SPELL),
-    (@RACE_DWARF,       @CLASS_PRIEST,  10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM),
-    (@RACE_DWARF,       @CLASS_PRIEST,  11,     @ITEM_TOUGH_HUNK_OF_BREAD,      @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_DWARF,       @CLASS_PRIEST,  0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_DWARF,       @CLASS_PRIEST,  1,      @SPELL_SMITE,                   @ACTION_TYPE_SPELL)
+    ,(@RACE_DWARF,       @CLASS_PRIEST,  2,      @SPELL_LESSER_HEAL,             @ACTION_TYPE_SPELL)
+    ,(@RACE_DWARF,       @CLASS_PRIEST,  3,      @SPELL_STONEFORM,               @ACTION_TYPE_SPELL)
+    ,(@RACE_DWARF,       @CLASS_PRIEST,  4,      @SPELL_FIND_TREASURE,           @ACTION_TYPE_SPELL)
+    ,(@RACE_DWARF,       @CLASS_PRIEST,  10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM)
+    ,(@RACE_DWARF,       @CLASS_PRIEST,  11,     @ITEM_TOUGH_HUNK_OF_BREAD,      @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_NIGHT_ELF,   @CLASS_WARRIOR, 72,     @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_NIGHT_ELF,   @CLASS_WARRIOR, 73,     @SPELL_HEROIC_STRIKE,           @ACTION_TYPE_SPELL),
-    (@RACE_NIGHT_ELF,   @CLASS_WARRIOR, 74,     @SPELL_SHADOWMELD,              @ACTION_TYPE_SPELL),
-    (@RACE_NIGHT_ELF,   @CLASS_WARRIOR, 83,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_NIGHT_ELF,   @CLASS_WARRIOR, 72,     @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_NIGHT_ELF,   @CLASS_WARRIOR, 73,     @SPELL_HEROIC_STRIKE,           @ACTION_TYPE_SPELL)
+    ,(@RACE_NIGHT_ELF,   @CLASS_WARRIOR, 74,     @SPELL_SHADOWMELD,              @ACTION_TYPE_SPELL)
+    ,(@RACE_NIGHT_ELF,   @CLASS_WARRIOR, 83,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_NIGHT_ELF,   @CLASS_HUNTER,  0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_NIGHT_ELF,   @CLASS_HUNTER,  1,      @SPELL_RAPTOR_STRIKE,           @ACTION_TYPE_SPELL),
-    (@RACE_NIGHT_ELF,   @CLASS_HUNTER,  2,      @SPELL_AUTO_SHOT,               @ACTION_TYPE_SPELL),
-    (@RACE_NIGHT_ELF,   @CLASS_HUNTER,  3,      @SPELL_SHADOWMELD,              @ACTION_TYPE_SPELL),
-    (@RACE_NIGHT_ELF,   @CLASS_HUNTER,  10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM),
-    (@RACE_NIGHT_ELF,   @CLASS_HUNTER,  11,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_NIGHT_ELF,   @CLASS_HUNTER,  0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_NIGHT_ELF,   @CLASS_HUNTER,  1,      @SPELL_RAPTOR_STRIKE,           @ACTION_TYPE_SPELL)
+    ,(@RACE_NIGHT_ELF,   @CLASS_HUNTER,  2,      @SPELL_AUTO_SHOT,               @ACTION_TYPE_SPELL)
+    ,(@RACE_NIGHT_ELF,   @CLASS_HUNTER,  3,      @SPELL_SHADOWMELD,              @ACTION_TYPE_SPELL)
+    ,(@RACE_NIGHT_ELF,   @CLASS_HUNTER,  10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM)
+    ,(@RACE_NIGHT_ELF,   @CLASS_HUNTER,  11,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_NIGHT_ELF,   @CLASS_ROGUE,   0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_NIGHT_ELF,   @CLASS_ROGUE,   1,      @SPELL_SINISTER_STRIKE,         @ACTION_TYPE_SPELL),
-    (@RACE_NIGHT_ELF,   @CLASS_ROGUE,   2,      @SPELL_EVISCERATE,              @ACTION_TYPE_SPELL),
-    (@RACE_NIGHT_ELF,   @CLASS_ROGUE,   3,      @SPELL_THROW,                   @ACTION_TYPE_SPELL),
-    (@RACE_NIGHT_ELF,   @CLASS_ROGUE,   4,      @SPELL_SHADOWMELD,              @ACTION_TYPE_SPELL),
-    (@RACE_NIGHT_ELF,   @CLASS_ROGUE,   11,     @ITEM_TOUGH_HUNK_OF_BREAD,      @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_NIGHT_ELF,   @CLASS_ROGUE,   0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_NIGHT_ELF,   @CLASS_ROGUE,   1,      @SPELL_SINISTER_STRIKE,         @ACTION_TYPE_SPELL)
+    ,(@RACE_NIGHT_ELF,   @CLASS_ROGUE,   2,      @SPELL_EVISCERATE,              @ACTION_TYPE_SPELL)
+    ,(@RACE_NIGHT_ELF,   @CLASS_ROGUE,   3,      @SPELL_THROW,                   @ACTION_TYPE_SPELL)
+    ,(@RACE_NIGHT_ELF,   @CLASS_ROGUE,   4,      @SPELL_SHADOWMELD,              @ACTION_TYPE_SPELL)
+    ,(@RACE_NIGHT_ELF,   @CLASS_ROGUE,   11,     @ITEM_TOUGH_HUNK_OF_BREAD,      @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_NIGHT_ELF,   @CLASS_PRIEST,  0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_NIGHT_ELF,   @CLASS_PRIEST,  1,      @SPELL_SMITE,                   @ACTION_TYPE_SPELL),
-    (@RACE_NIGHT_ELF,   @CLASS_PRIEST,  2,      @SPELL_LESSER_HEAL,             @ACTION_TYPE_SPELL),
-    (@RACE_NIGHT_ELF,   @CLASS_PRIEST,  3,      @SPELL_SHADOWMELD,              @ACTION_TYPE_SPELL),
-    (@RACE_NIGHT_ELF,   @CLASS_PRIEST,  10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM),
-    (@RACE_NIGHT_ELF,   @CLASS_PRIEST,  11,     @ITEM_DARNASSIAN_BLEU,          @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_NIGHT_ELF,   @CLASS_PRIEST,  0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_NIGHT_ELF,   @CLASS_PRIEST,  1,      @SPELL_SMITE,                   @ACTION_TYPE_SPELL)
+    ,(@RACE_NIGHT_ELF,   @CLASS_PRIEST,  2,      @SPELL_LESSER_HEAL,             @ACTION_TYPE_SPELL)
+    ,(@RACE_NIGHT_ELF,   @CLASS_PRIEST,  3,      @SPELL_SHADOWMELD,              @ACTION_TYPE_SPELL)
+    ,(@RACE_NIGHT_ELF,   @CLASS_PRIEST,  10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM)
+    ,(@RACE_NIGHT_ELF,   @CLASS_PRIEST,  11,     @ITEM_DARNASSIAN_BLEU,          @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_NIGHT_ELF,   @CLASS_DRUID,   0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_NIGHT_ELF,   @CLASS_DRUID,   1,      @SPELL_WRATH,                   @ACTION_TYPE_SPELL),
-    (@RACE_NIGHT_ELF,   @CLASS_DRUID,   2,      @SPELL_HEALING_TOUCH,           @ACTION_TYPE_SPELL),
-    (@RACE_NIGHT_ELF,   @CLASS_DRUID,   3,      @SPELL_SHADOWMELD,              @ACTION_TYPE_SPELL),
-    (@RACE_NIGHT_ELF,   @CLASS_DRUID,   10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM),
-    (@RACE_NIGHT_ELF,   @CLASS_DRUID,   11,     @ITEM_SHINY_RED_APPLE,          @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_NIGHT_ELF,   @CLASS_DRUID,   0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_NIGHT_ELF,   @CLASS_DRUID,   1,      @SPELL_WRATH,                   @ACTION_TYPE_SPELL)
+    ,(@RACE_NIGHT_ELF,   @CLASS_DRUID,   2,      @SPELL_HEALING_TOUCH,           @ACTION_TYPE_SPELL)
+    ,(@RACE_NIGHT_ELF,   @CLASS_DRUID,   3,      @SPELL_SHADOWMELD,              @ACTION_TYPE_SPELL)
+    ,(@RACE_NIGHT_ELF,   @CLASS_DRUID,   10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM)
+    ,(@RACE_NIGHT_ELF,   @CLASS_DRUID,   11,     @ITEM_SHINY_RED_APPLE,          @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_UNDEAD,      @CLASS_WARRIOR, 72,     @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_UNDEAD,      @CLASS_WARRIOR, 73,     @SPELL_HEROIC_STRIKE,           @ACTION_TYPE_SPELL),
-    (@RACE_UNDEAD,      @CLASS_WARRIOR, 74,     @SPELL_CANNIBALIZE,             @ACTION_TYPE_SPELL),
-    (@RACE_UNDEAD,      @CLASS_WARRIOR, 83,     @ITEM_FOREST_MUSHROOM_CAP,      @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_UNDEAD,      @CLASS_WARRIOR, 72,     @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_UNDEAD,      @CLASS_WARRIOR, 73,     @SPELL_HEROIC_STRIKE,           @ACTION_TYPE_SPELL)
+    ,(@RACE_UNDEAD,      @CLASS_WARRIOR, 74,     @SPELL_CANNIBALIZE,             @ACTION_TYPE_SPELL)
+    ,(@RACE_UNDEAD,      @CLASS_WARRIOR, 83,     @ITEM_FOREST_MUSHROOM_CAP,      @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_UNDEAD,      @CLASS_ROGUE,   0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_UNDEAD,      @CLASS_ROGUE,   1,      @SPELL_SINISTER_STRIKE,         @ACTION_TYPE_SPELL),
-    (@RACE_UNDEAD,      @CLASS_ROGUE,   2,      @SPELL_EVISCERATE,              @ACTION_TYPE_SPELL),
-    (@RACE_UNDEAD,      @CLASS_ROGUE,   3,      @SPELL_THROW,                   @ACTION_TYPE_SPELL),
-    (@RACE_UNDEAD,      @CLASS_ROGUE,   4,      @SPELL_CANNIBALIZE,             @ACTION_TYPE_SPELL),
-    (@RACE_UNDEAD,      @CLASS_ROGUE,   11,     @ITEM_FOREST_MUSHROOM_CAP,      @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_UNDEAD,      @CLASS_ROGUE,   0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_UNDEAD,      @CLASS_ROGUE,   1,      @SPELL_SINISTER_STRIKE,         @ACTION_TYPE_SPELL)
+    ,(@RACE_UNDEAD,      @CLASS_ROGUE,   2,      @SPELL_EVISCERATE,              @ACTION_TYPE_SPELL)
+    ,(@RACE_UNDEAD,      @CLASS_ROGUE,   3,      @SPELL_THROW,                   @ACTION_TYPE_SPELL)
+    ,(@RACE_UNDEAD,      @CLASS_ROGUE,   4,      @SPELL_CANNIBALIZE,             @ACTION_TYPE_SPELL)
+    ,(@RACE_UNDEAD,      @CLASS_ROGUE,   11,     @ITEM_FOREST_MUSHROOM_CAP,      @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_UNDEAD,      @CLASS_PRIEST,  0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_UNDEAD,      @CLASS_PRIEST,  1,      @SPELL_SMITE,                   @ACTION_TYPE_SPELL),
-    (@RACE_UNDEAD,      @CLASS_PRIEST,  2,      @SPELL_LESSER_HEAL,             @ACTION_TYPE_SPELL),
-    (@RACE_UNDEAD,      @CLASS_PRIEST,  3,      @SPELL_CANNIBALIZE,             @ACTION_TYPE_SPELL),
-    (@RACE_UNDEAD,      @CLASS_PRIEST,  10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM),
-    (@RACE_UNDEAD,      @CLASS_PRIEST,  11,     @ITEM_FOREST_MUSHROOM_CAP,      @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_UNDEAD,      @CLASS_PRIEST,  0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_UNDEAD,      @CLASS_PRIEST,  1,      @SPELL_SMITE,                   @ACTION_TYPE_SPELL)
+    ,(@RACE_UNDEAD,      @CLASS_PRIEST,  2,      @SPELL_LESSER_HEAL,             @ACTION_TYPE_SPELL)
+    ,(@RACE_UNDEAD,      @CLASS_PRIEST,  3,      @SPELL_CANNIBALIZE,             @ACTION_TYPE_SPELL)
+    ,(@RACE_UNDEAD,      @CLASS_PRIEST,  10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM)
+    ,(@RACE_UNDEAD,      @CLASS_PRIEST,  11,     @ITEM_FOREST_MUSHROOM_CAP,      @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_UNDEAD,      @CLASS_MAGE,    0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_UNDEAD,      @CLASS_MAGE,    1,      @SPELL_FIREBALL,                @ACTION_TYPE_SPELL),
-    (@RACE_UNDEAD,      @CLASS_MAGE,    2,      @SPELL_FROST_ARMOR,             @ACTION_TYPE_SPELL),
-    (@RACE_UNDEAD,      @CLASS_MAGE,    3,      @SPELL_CANNIBALIZE,             @ACTION_TYPE_SPELL),
-    (@RACE_UNDEAD,      @CLASS_MAGE,    10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM),
-    (@RACE_UNDEAD,      @CLASS_MAGE,    11,     @ITEM_FOREST_MUSHROOM_CAP,      @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_UNDEAD,      @CLASS_MAGE,    0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_UNDEAD,      @CLASS_MAGE,    1,      @SPELL_FIREBALL,                @ACTION_TYPE_SPELL)
+    ,(@RACE_UNDEAD,      @CLASS_MAGE,    2,      @SPELL_FROST_ARMOR,             @ACTION_TYPE_SPELL)
+    ,(@RACE_UNDEAD,      @CLASS_MAGE,    3,      @SPELL_CANNIBALIZE,             @ACTION_TYPE_SPELL)
+    ,(@RACE_UNDEAD,      @CLASS_MAGE,    10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM)
+    ,(@RACE_UNDEAD,      @CLASS_MAGE,    11,     @ITEM_FOREST_MUSHROOM_CAP,      @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_UNDEAD,      @CLASS_WARLOCK, 0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_UNDEAD,      @CLASS_WARLOCK, 1,      @SPELL_SHADOW_BOLT,             @ACTION_TYPE_SPELL),
-    (@RACE_UNDEAD,      @CLASS_WARLOCK, 2,      @SPELL_DEMON_SKIN,              @ACTION_TYPE_SPELL),
-    (@RACE_UNDEAD,      @CLASS_WARLOCK, 3,      @SPELL_CANNIBALIZE,             @ACTION_TYPE_SPELL),
-    (@RACE_UNDEAD,      @CLASS_WARLOCK, 10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM),
-    (@RACE_UNDEAD,      @CLASS_WARLOCK, 11,     @ITEM_FOREST_MUSHROOM_CAP,      @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_UNDEAD,      @CLASS_WARLOCK, 0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_UNDEAD,      @CLASS_WARLOCK, 1,      @SPELL_SHADOW_BOLT,             @ACTION_TYPE_SPELL)
+    ,(@RACE_UNDEAD,      @CLASS_WARLOCK, 2,      @SPELL_DEMON_SKIN,              @ACTION_TYPE_SPELL)
+    ,(@RACE_UNDEAD,      @CLASS_WARLOCK, 3,      @SPELL_CANNIBALIZE,             @ACTION_TYPE_SPELL)
+    ,(@RACE_UNDEAD,      @CLASS_WARLOCK, 10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM)
+    ,(@RACE_UNDEAD,      @CLASS_WARLOCK, 11,     @ITEM_FOREST_MUSHROOM_CAP,      @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_TAUREN,      @CLASS_WARRIOR, 72,     @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_TAUREN,      @CLASS_WARRIOR, 73,     @SPELL_HEROIC_STRIKE,           @ACTION_TYPE_SPELL),
-    (@RACE_TAUREN,      @CLASS_WARRIOR, 74,     @SPELL_WAR_STOMP,               @ACTION_TYPE_SPELL),
-    (@RACE_TAUREN,      @CLASS_WARRIOR, 83,     @ITEM_TOUGH_HUNK_OF_BREAD,      @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_TAUREN,      @CLASS_WARRIOR, 72,     @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_TAUREN,      @CLASS_WARRIOR, 73,     @SPELL_HEROIC_STRIKE,           @ACTION_TYPE_SPELL)
+    ,(@RACE_TAUREN,      @CLASS_WARRIOR, 74,     @SPELL_WAR_STOMP,               @ACTION_TYPE_SPELL)
+    ,(@RACE_TAUREN,      @CLASS_WARRIOR, 83,     @ITEM_TOUGH_HUNK_OF_BREAD,      @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_TAUREN,      @CLASS_HUNTER,  0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_TAUREN,      @CLASS_HUNTER,  1,      @SPELL_RAPTOR_STRIKE,           @ACTION_TYPE_SPELL),
-    (@RACE_TAUREN,      @CLASS_HUNTER,  2,      @SPELL_AUTO_SHOT,               @ACTION_TYPE_SPELL),
-    (@RACE_TAUREN,      @CLASS_HUNTER,  3,      @SPELL_WAR_STOMP,               @ACTION_TYPE_SPELL),
-    (@RACE_TAUREN,      @CLASS_HUNTER,  10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM),
-    (@RACE_TAUREN,      @CLASS_HUNTER,  11,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_TAUREN,      @CLASS_HUNTER,  0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_TAUREN,      @CLASS_HUNTER,  1,      @SPELL_RAPTOR_STRIKE,           @ACTION_TYPE_SPELL)
+    ,(@RACE_TAUREN,      @CLASS_HUNTER,  2,      @SPELL_AUTO_SHOT,               @ACTION_TYPE_SPELL)
+    ,(@RACE_TAUREN,      @CLASS_HUNTER,  3,      @SPELL_WAR_STOMP,               @ACTION_TYPE_SPELL)
+    ,(@RACE_TAUREN,      @CLASS_HUNTER,  10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM)
+    ,(@RACE_TAUREN,      @CLASS_HUNTER,  11,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_TAUREN,      @CLASS_SHAMAN,  0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_TAUREN,      @CLASS_SHAMAN,  1,      @SPELL_LIGHTNING_BOLT,          @ACTION_TYPE_SPELL),
-    (@RACE_TAUREN,      @CLASS_SHAMAN,  2,      @SPELL_HEALING_WAVE,            @ACTION_TYPE_SPELL),
-    (@RACE_TAUREN,      @CLASS_SHAMAN,  3,      @SPELL_WAR_STOMP,               @ACTION_TYPE_SPELL),
-    (@RACE_TAUREN,      @CLASS_SHAMAN,  10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM),
-    (@RACE_TAUREN,      @CLASS_SHAMAN,  11,     @ITEM_FOREST_MUSHROOM_CAP,      @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_TAUREN,      @CLASS_SHAMAN,  0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_TAUREN,      @CLASS_SHAMAN,  1,      @SPELL_LIGHTNING_BOLT,          @ACTION_TYPE_SPELL)
+    ,(@RACE_TAUREN,      @CLASS_SHAMAN,  2,      @SPELL_HEALING_WAVE,            @ACTION_TYPE_SPELL)
+    ,(@RACE_TAUREN,      @CLASS_SHAMAN,  3,      @SPELL_WAR_STOMP,               @ACTION_TYPE_SPELL)
+    ,(@RACE_TAUREN,      @CLASS_SHAMAN,  10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM)
+    ,(@RACE_TAUREN,      @CLASS_SHAMAN,  11,     @ITEM_FOREST_MUSHROOM_CAP,      @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_TAUREN,      @CLASS_DRUID,   0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_TAUREN,      @CLASS_DRUID,   1,      @SPELL_WRATH,                   @ACTION_TYPE_SPELL),
-    (@RACE_TAUREN,      @CLASS_DRUID,   2,      @SPELL_HEALING_TOUCH,           @ACTION_TYPE_SPELL),
-    (@RACE_TAUREN,      @CLASS_DRUID,   3,      @SPELL_WAR_STOMP,               @ACTION_TYPE_SPELL),
-    (@RACE_TAUREN,      @CLASS_DRUID,   10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM),
-    (@RACE_TAUREN,      @CLASS_DRUID,   11,     @ITEM_SHINY_RED_APPLE,          @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_TAUREN,      @CLASS_DRUID,   0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_TAUREN,      @CLASS_DRUID,   1,      @SPELL_WRATH,                   @ACTION_TYPE_SPELL)
+    ,(@RACE_TAUREN,      @CLASS_DRUID,   2,      @SPELL_HEALING_TOUCH,           @ACTION_TYPE_SPELL)
+    ,(@RACE_TAUREN,      @CLASS_DRUID,   3,      @SPELL_WAR_STOMP,               @ACTION_TYPE_SPELL)
+    ,(@RACE_TAUREN,      @CLASS_DRUID,   10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM)
+    ,(@RACE_TAUREN,      @CLASS_DRUID,   11,     @ITEM_SHINY_RED_APPLE,          @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_GNOME,       @CLASS_WARRIOR, 72,     @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_GNOME,       @CLASS_WARRIOR, 73,     @SPELL_HEROIC_STRIKE,           @ACTION_TYPE_SPELL),
-    (@RACE_GNOME,       @CLASS_WARRIOR, 83,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_GNOME,       @CLASS_WARRIOR, 72,     @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_GNOME,       @CLASS_WARRIOR, 73,     @SPELL_HEROIC_STRIKE,           @ACTION_TYPE_SPELL)
+    ,(@RACE_GNOME,       @CLASS_WARRIOR, 83,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_GNOME,       @CLASS_ROGUE,   0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_GNOME,       @CLASS_ROGUE,   1,      @SPELL_SINISTER_STRIKE,         @ACTION_TYPE_SPELL),
-    (@RACE_GNOME,       @CLASS_ROGUE,   2,      @SPELL_EVISCERATE,              @ACTION_TYPE_SPELL),
-    (@RACE_GNOME,       @CLASS_ROGUE,   3,      @SPELL_THROW,                   @ACTION_TYPE_SPELL),
-    (@RACE_GNOME,       @CLASS_ROGUE,   11,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_GNOME,       @CLASS_ROGUE,   0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_GNOME,       @CLASS_ROGUE,   1,      @SPELL_SINISTER_STRIKE,         @ACTION_TYPE_SPELL)
+    ,(@RACE_GNOME,       @CLASS_ROGUE,   2,      @SPELL_EVISCERATE,              @ACTION_TYPE_SPELL)
+    ,(@RACE_GNOME,       @CLASS_ROGUE,   3,      @SPELL_THROW,                   @ACTION_TYPE_SPELL)
+    ,(@RACE_GNOME,       @CLASS_ROGUE,   11,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_GNOME,       @CLASS_MAGE,    0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_GNOME,       @CLASS_MAGE,    1,      @SPELL_FIREBALL,                @ACTION_TYPE_SPELL),
-    (@RACE_GNOME,       @CLASS_MAGE,    2,      @SPELL_FROST_ARMOR,             @ACTION_TYPE_SPELL),
-    (@RACE_GNOME,       @CLASS_MAGE,    10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM),
-    (@RACE_GNOME,       @CLASS_MAGE,    11,     @ITEM_SHINY_RED_APPLE,          @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_GNOME,       @CLASS_MAGE,    0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_GNOME,       @CLASS_MAGE,    1,      @SPELL_FIREBALL,                @ACTION_TYPE_SPELL)
+    ,(@RACE_GNOME,       @CLASS_MAGE,    2,      @SPELL_FROST_ARMOR,             @ACTION_TYPE_SPELL)
+    ,(@RACE_GNOME,       @CLASS_MAGE,    10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM)
+    ,(@RACE_GNOME,       @CLASS_MAGE,    11,     @ITEM_SHINY_RED_APPLE,          @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_GNOME,       @CLASS_WARLOCK, 0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_GNOME,       @CLASS_WARLOCK, 1,      @SPELL_SHADOW_BOLT,             @ACTION_TYPE_SPELL),
-    (@RACE_GNOME,       @CLASS_WARLOCK, 2,      @SPELL_DEMON_SKIN,              @ACTION_TYPE_SPELL),
-    (@RACE_GNOME,       @CLASS_WARLOCK, 10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM),
-    (@RACE_GNOME,       @CLASS_WARLOCK, 11,     @ITEM_FOREST_MUSHROOM_CAP,      @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_GNOME,       @CLASS_WARLOCK, 0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_GNOME,       @CLASS_WARLOCK, 1,      @SPELL_SHADOW_BOLT,             @ACTION_TYPE_SPELL)
+    ,(@RACE_GNOME,       @CLASS_WARLOCK, 2,      @SPELL_DEMON_SKIN,              @ACTION_TYPE_SPELL)
+    ,(@RACE_GNOME,       @CLASS_WARLOCK, 10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM)
+    ,(@RACE_GNOME,       @CLASS_WARLOCK, 11,     @ITEM_FOREST_MUSHROOM_CAP,      @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_TROLL,       @CLASS_WARRIOR, 72,     @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_TROLL,       @CLASS_WARRIOR, 73,     @SPELL_HEROIC_STRIKE,           @ACTION_TYPE_SPELL),
-    (@RACE_TROLL,       @CLASS_WARRIOR, 74,     @SPELL_THROW,                   @ACTION_TYPE_SPELL),
-    (@RACE_TROLL,       @CLASS_WARRIOR, 75,     @SPELL_BERSERKING_RAGE,         @ACTION_TYPE_SPELL),
-    (@RACE_TROLL,       @CLASS_WARRIOR, 83,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_TROLL,       @CLASS_WARRIOR, 72,     @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_TROLL,       @CLASS_WARRIOR, 73,     @SPELL_HEROIC_STRIKE,           @ACTION_TYPE_SPELL)
+    ,(@RACE_TROLL,       @CLASS_WARRIOR, 74,     @SPELL_THROW,                   @ACTION_TYPE_SPELL)
+    ,(@RACE_TROLL,       @CLASS_WARRIOR, 75,     @SPELL_BERSERKING_RAGE,         @ACTION_TYPE_SPELL)
+    ,(@RACE_TROLL,       @CLASS_WARRIOR, 83,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_TROLL,       @CLASS_HUNTER,  0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_TROLL,       @CLASS_HUNTER,  1,      @SPELL_RAPTOR_STRIKE,           @ACTION_TYPE_SPELL),
-    (@RACE_TROLL,       @CLASS_HUNTER,  2,      @SPELL_AUTO_SHOT,               @ACTION_TYPE_SPELL),
-    (@RACE_TROLL,       @CLASS_HUNTER,  3,      @SPELL_BERSERKING_MANA,         @ACTION_TYPE_SPELL),
-    (@RACE_TROLL,       @CLASS_HUNTER,  10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM),
-    (@RACE_TROLL,       @CLASS_HUNTER,  11,     @ITEM_FOREST_MUSHROOM_CAP,      @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_TROLL,       @CLASS_HUNTER,  0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_TROLL,       @CLASS_HUNTER,  1,      @SPELL_RAPTOR_STRIKE,           @ACTION_TYPE_SPELL)
+    ,(@RACE_TROLL,       @CLASS_HUNTER,  2,      @SPELL_AUTO_SHOT,               @ACTION_TYPE_SPELL)
+    ,(@RACE_TROLL,       @CLASS_HUNTER,  3,      @SPELL_BERSERKING_MANA,         @ACTION_TYPE_SPELL)
+    ,(@RACE_TROLL,       @CLASS_HUNTER,  10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM)
+    ,(@RACE_TROLL,       @CLASS_HUNTER,  11,     @ITEM_FOREST_MUSHROOM_CAP,      @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_TROLL,       @CLASS_ROGUE,   0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_TROLL,       @CLASS_ROGUE,   1,      @SPELL_SINISTER_STRIKE,         @ACTION_TYPE_SPELL),
-    (@RACE_TROLL,       @CLASS_ROGUE,   2,      @SPELL_EVISCERATE,              @ACTION_TYPE_SPELL),
-    (@RACE_TROLL,       @CLASS_ROGUE,   3,      @SPELL_THROW,                   @ACTION_TYPE_SPELL),
-    (@RACE_TROLL,       @CLASS_ROGUE,   4,      @SPELL_BERSERKING_ENERGY,       @ACTION_TYPE_SPELL),
-    (@RACE_TROLL,       @CLASS_ROGUE,   11,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_TROLL,       @CLASS_ROGUE,   0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_TROLL,       @CLASS_ROGUE,   1,      @SPELL_SINISTER_STRIKE,         @ACTION_TYPE_SPELL)
+    ,(@RACE_TROLL,       @CLASS_ROGUE,   2,      @SPELL_EVISCERATE,              @ACTION_TYPE_SPELL)
+    ,(@RACE_TROLL,       @CLASS_ROGUE,   3,      @SPELL_THROW,                   @ACTION_TYPE_SPELL)
+    ,(@RACE_TROLL,       @CLASS_ROGUE,   4,      @SPELL_BERSERKING_ENERGY,       @ACTION_TYPE_SPELL)
+    ,(@RACE_TROLL,       @CLASS_ROGUE,   11,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_TROLL,       @CLASS_PRIEST,  0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_TROLL,       @CLASS_PRIEST,  1,      @SPELL_SMITE,                   @ACTION_TYPE_SPELL),
-    (@RACE_TROLL,       @CLASS_PRIEST,  2,      @SPELL_LESSER_HEAL,             @ACTION_TYPE_SPELL),
-    (@RACE_TROLL,       @CLASS_PRIEST,  3,      @SPELL_BERSERKING_MANA,         @ACTION_TYPE_SPELL),
-    (@RACE_TROLL,       @CLASS_PRIEST,  10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM),
-    (@RACE_TROLL,       @CLASS_PRIEST,  11,     @ITEM_TOUGH_HUNK_OF_BREAD,      @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_TROLL,       @CLASS_PRIEST,  0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_TROLL,       @CLASS_PRIEST,  1,      @SPELL_SMITE,                   @ACTION_TYPE_SPELL)
+    ,(@RACE_TROLL,       @CLASS_PRIEST,  2,      @SPELL_LESSER_HEAL,             @ACTION_TYPE_SPELL)
+    ,(@RACE_TROLL,       @CLASS_PRIEST,  3,      @SPELL_BERSERKING_MANA,         @ACTION_TYPE_SPELL)
+    ,(@RACE_TROLL,       @CLASS_PRIEST,  10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM)
+    ,(@RACE_TROLL,       @CLASS_PRIEST,  11,     @ITEM_TOUGH_HUNK_OF_BREAD,      @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_TROLL,       @CLASS_SHAMAN,  0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_TROLL,       @CLASS_SHAMAN,  1,      @SPELL_LIGHTNING_BOLT,          @ACTION_TYPE_SPELL),
-    (@RACE_TROLL,       @CLASS_SHAMAN,  2,      @SPELL_HEALING_WAVE,            @ACTION_TYPE_SPELL),
-    (@RACE_TROLL,       @CLASS_SHAMAN,  3,      @SPELL_BERSERKING_MANA,         @ACTION_TYPE_SPELL),
-    (@RACE_TROLL,       @CLASS_SHAMAN,  10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM),
-    (@RACE_TROLL,       @CLASS_SHAMAN,  11,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_TROLL,       @CLASS_SHAMAN,  0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_TROLL,       @CLASS_SHAMAN,  1,      @SPELL_LIGHTNING_BOLT,          @ACTION_TYPE_SPELL)
+    ,(@RACE_TROLL,       @CLASS_SHAMAN,  2,      @SPELL_HEALING_WAVE,            @ACTION_TYPE_SPELL)
+    ,(@RACE_TROLL,       @CLASS_SHAMAN,  3,      @SPELL_BERSERKING_MANA,         @ACTION_TYPE_SPELL)
+    ,(@RACE_TROLL,       @CLASS_SHAMAN,  10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM)
+    ,(@RACE_TROLL,       @CLASS_SHAMAN,  11,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM)
+;
 
-INSERT INTO `playercreateinfo_action` VALUES
-    (@RACE_TROLL,       @CLASS_MAGE,    0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL),
-    (@RACE_TROLL,       @CLASS_MAGE,    1,      @SPELL_FIREBALL,                @ACTION_TYPE_SPELL),
-    (@RACE_TROLL,       @CLASS_MAGE,    2,      @SPELL_FROST_ARMOR,             @ACTION_TYPE_SPELL),
-    (@RACE_TROLL,       @CLASS_MAGE,    3,      @SPELL_BERSERKING_MANA,         @ACTION_TYPE_SPELL),
-    (@RACE_TROLL,       @CLASS_MAGE,    10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM),
-    (@RACE_TROLL,       @CLASS_MAGE,    11,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM);
+INSERT INTO `playercreateinfo_action`
+    (`race`, `class`, `button`, `action`, `type`)
+VALUES
+     (@RACE_TROLL,       @CLASS_MAGE,    0,      @SPELL_ATTACK,                  @ACTION_TYPE_SPELL)
+    ,(@RACE_TROLL,       @CLASS_MAGE,    1,      @SPELL_FIREBALL,                @ACTION_TYPE_SPELL)
+    ,(@RACE_TROLL,       @CLASS_MAGE,    2,      @SPELL_FROST_ARMOR,             @ACTION_TYPE_SPELL)
+    ,(@RACE_TROLL,       @CLASS_MAGE,    3,      @SPELL_BERSERKING_MANA,         @ACTION_TYPE_SPELL)
+    ,(@RACE_TROLL,       @CLASS_MAGE,    10,     @ITEM_REFRESHING_SPRING_WATER,  @ACTION_TYPE_ITEM)
+    ,(@RACE_TROLL,       @CLASS_MAGE,    11,     @ITEM_TOUGH_JERKY,              @ACTION_TYPE_ITEM)
+;
