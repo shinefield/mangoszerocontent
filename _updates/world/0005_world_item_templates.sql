@@ -5,8 +5,8 @@
 -- We will add item templates used for character creation.
 --
 
--- Provide variables for various item stats -----------------------------------
--- -> classes and subclasses
+-- Provide variables for various item stats ----------------------------------
+-- -> classes and subclasses -------------------------------------------------
 SET @ITEM_CLASS_CONSUMABLE                      = 0;
 SET @ITEM_SUBCLASS_CONSUMABLE_CONSUMABLE        = 0;
 
@@ -87,7 +87,7 @@ SET @ITEM_SUBCLASS_KEY_LOCKPICK                 = 1;
 SET @ITEM_CLASS_MISCELLANEOUS                   = 15;
 SET @ITEM_SUBCLASS_MISCELLANEOUS_JUNK           = 0;
 
--- -> item quality
+-- -> item quality -----------------------------------------------------------
 SET @ITEM_QUALITY_POOR                          = 0;        -- Color: Grey
 SET @ITEM_QUALITY_COMMON                        = 1;        -- Color: White
 SET @ITEM_QUALITY_UNCOMMON                      = 2;        -- Color: Green
@@ -96,7 +96,7 @@ SET @ITEM_QUALITY_EPIC                          = 4;        -- Color: Purple
 SET @ITEM_QUALITY_LEGENDARY                     = 5;        -- Color: Orange
 SET @ITEM_QUALITY_ARTIFACT                      = 6;        -- Color: Red
 
--- -> Flags
+-- -> Flags ------------------------------------------------------------------
 SET @ITEM_FLAG_NONE                             = 0;        -- No flag
 SET @ITEM_FLAG_CONJURED                         = 2;        -- Items created by spells having a SPELL_EFFECT_CREATE_ITEM
 SET @ITEM_FLAG_LOOTABLE                         = 4;        -- Used on items of any class != 1 (containers), allows for looting an item
@@ -113,12 +113,12 @@ SET @ITEM_FLAG_PVP_REWARD                       = 32768;    -- Item is PvP rewar
 SET @ITEM_FLAG_UNK16                            = 65536;    -- Item is unique or allows for only one stack
 SET @ITEM_FLAG_UNK17                            = 131072;   -- Item is related to world event
 
--- -> Extra flags
+-- -> Extra flags ------------------------------------------------------------
 SET @ITEM_EXTRA_FLAG_NONE                       = 0;        -- No flag
 SET @ITEM_EXTRA_FLAG_NOT_CONSUMABLE             = 1;        -- Item is not consumable
 SET @ITEM_EXTRA_FLAG_REALTIME_DURATION          = 2;        -- Item exires with real time instead of game time
 
--- -> Inventory types
+-- -> Inventory types --------------------------------------------------------
 SET @INVTYPE_NON_EQUIP                          = 0;
 SET @INVTYPE_HEAD                               = 1;
 SET @INVTYPE_NECK                               = 2;
@@ -149,7 +149,7 @@ SET @INVTYPE_RANGEDRIGHT                        = 26;
 SET @INVTYPE_QUIVER                             = 27;
 SET @INVTYPE_RELIC                              = 28;
 
--- -> Materials
+-- -> Materials --------------------------------------------------------------
 SET @MATERIAL_METAL                             = 1;
 SET @MATERIAL_WOOD                              = 2;
 SET @MATERIAL_LIQUID                            = 3;
@@ -159,7 +159,7 @@ SET @MATERIAL_PLATE                             = 6;
 SET @MATERIAL_CLOTH                             = 7;
 SET @MATERIAL_LEATHER                           = 8;
 
--- -> Damage schools
+-- -> Damage schools ---------------------------------------------------------
 SET @DMG_PHYSICAL                               = 0;
 SET @DMG_HOLY                                   = 1;
 SET @DMG_FIRE                                   = 2;
@@ -168,21 +168,21 @@ SET @DMG_FROST                                  = 4;
 SET @DMG_SHADOW                                 = 5;
 SET @DMG_ARCANE                                 = 6;
 
--- -> Item bonding
+-- -> Item bonding -----------------------------------------------------------
 SET @BIND_NONE                                  = 0;
 SET @BIND_WHEN_PICKED_UP                        = 1;
 SET @BIND_WHEN_EQUIPPED                         = 2;
 SET @BIND_WHEN_USE                              = 3;
 SET @BIND_QUEST_ITEM                            = 4;
 
--- -> Spell trigger variations
+-- -> Spell trigger variations -----------------------------------------------
 SET @SPELLTRIGGER_ON_USE                        = 0;
 SET @SPELLTRIGGER_ON_EQUIP                      = 1;
 SET @SPELLTRIGGER_CHANCE_ON_HIT                 = 2;
 SET @SPELLTRIGGER_SOULSTONE                     = 4;
 SET @SPELLTRIGGER_ON_NO_DELAY_USE               = 5;
 
--- -> Item stat modifier types
+-- -> Item stat modifier types -----------------------------------------------
 SET @ITEM_MOD_NONE                              = 0;
 SET @ITEM_MOD_HEALTH                            = 1;
 SET @ITEM_MOD_AGILITY                           = 3;
@@ -195,70 +195,70 @@ SET @ITEM_MOD_STAMINA                           = 7;
 INSERT INTO `item_template`
     (`entry`, `class`, `subclass`, `Quality`, `displayid`, `name`)
 VALUES
-     (25,    @ITEM_CLASS_WEAPON,        @ITEM_SUBCLASS_WEAPON_SWORD_1H,         @ITEM_QUALITY_COMMON,   1542,   "Worn Shortsword")
-    ,(35,    @ITEM_CLASS_WEAPON,        @ITEM_SUBCLASS_WEAPON_STAFF,            @ITEM_QUALITY_COMMON,   472,    "Bent Staff")
-    ,(36,    @ITEM_CLASS_WEAPON,        @ITEM_SUBCLASS_WEAPON_MACE_1H,          @ITEM_QUALITY_COMMON,   5194,   "Worn Mace")
+     (25,    @ITEM_CLASS_WEAPON,        @ITEM_SUBCLASS_WEAPON_SWORD_1H,         @ITEM_QUALITY_COMMON,    1542,  "Worn Shortsword")
+    ,(35,    @ITEM_CLASS_WEAPON,        @ITEM_SUBCLASS_WEAPON_STAFF,            @ITEM_QUALITY_COMMON,     472,  "Bent Staff")
+    ,(36,    @ITEM_CLASS_WEAPON,        @ITEM_SUBCLASS_WEAPON_MACE_1H,          @ITEM_QUALITY_COMMON,    5194,  "Worn Mace")
     ,(37,    @ITEM_CLASS_WEAPON,        @ITEM_SUBCLASS_WEAPON_AXE_1H,           @ITEM_QUALITY_COMMON,   14029,  "Worn Axe")
-    ,(38,    @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,   9891,   "Recruis Shirt")
-    ,(39,    @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_CLOTH,             @ITEM_QUALITY_POOR,     9892,   "Recruit's Pants")
+    ,(38,    @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,    9891,  "Recruis Shirt")
+    ,(39,    @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_CLOTH,             @ITEM_QUALITY_POOR,      9892,  "Recruit's Pants")
     ,(40,    @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,   10141,  "Recruit's Boots")
     ,(43,    @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,   10272,  "Squire's Boots")
-    ,(44,    @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_CLOTH,             @ITEM_QUALITY_POOR,     9937,   "Squire's Pants")
-    ,(45,    @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,   3265,   "Squire's Shirt")
-    ,(47,    @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,   9915,   "Footpad's Shoes")
-    ,(48,    @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_CLOTH,             @ITEM_QUALITY_POOR,     9913,   "Footpad's Pants")
-    ,(49,    @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,   9906,   "Footpad's Shirt")
-    ,(51,    @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,   9946,   "Neophyte's Boots")
-    ,(52,    @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_CLOTH,             @ITEM_QUALITY_POOR,     9945,   "Neophyte's Pants")
-    ,(53,    @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,   9944,   "Neophyte's Shirt")
-    ,(55,    @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,   9929,   "Apprentice's Boots")
+    ,(44,    @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_CLOTH,             @ITEM_QUALITY_POOR,      9937,  "Squire's Pants")
+    ,(45,    @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,    3265,  "Squire's Shirt")
+    ,(47,    @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,    9915,  "Footpad's Shoes")
+    ,(48,    @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_CLOTH,             @ITEM_QUALITY_POOR,      9913,  "Footpad's Pants")
+    ,(49,    @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,    9906,  "Footpad's Shirt")
+    ,(51,    @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,    9946,  "Neophyte's Boots")
+    ,(52,    @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_CLOTH,             @ITEM_QUALITY_POOR,      9945,  "Neophyte's Pants")
+    ,(53,    @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,    9944,  "Neophyte's Shirt")
+    ,(55,    @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,    9929,  "Apprentice's Boots")
     ,(56,    @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_CLOTH,             @ITEM_QUALITY_POOR,     12647,  "Apprentice's Robe")
     ,(57,    @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_CLOTH,             @ITEM_QUALITY_POOR,     12645,  "Acolyte's Robe")
-    ,(59,    @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,   3261,   "Acolyte's Shoes")
-    ,(117,   @ITEM_CLASS_CONSUMABLE,    @ITEM_SUBCLASS_CONSUMABLE_CONSUMABLE,   @ITEM_QUALITY_COMMON,   2473,   "Tough Jerky")
+    ,(59,    @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,    3261,  "Acolyte's Shoes")
+    ,(117,   @ITEM_CLASS_CONSUMABLE,    @ITEM_SUBCLASS_CONSUMABLE_CONSUMABLE,   @ITEM_QUALITY_COMMON,    2473,  "Tough Jerky")
     ,(120,   @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_CLOTH,             @ITEM_QUALITY_POOR,     10006,  "Thug Pants")
     ,(121,   @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,   10008,  "Thug Boots")
-    ,(127,   @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,   9996,   "Trapper's Shirt")
-    ,(129,   @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,   9977,   "Rugged Trapper's Boots")
-    ,(139,   @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_CLOTH,             @ITEM_QUALITY_POOR,     9988,   "Brawler's Pants")
-    ,(140,   @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,   9992,   "Brawler's Boots")
-    ,(147,   @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_CLOTH,             @ITEM_QUALITY_POOR,     9975,   "Rugged Trapper's Pants")
-    ,(148,   @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,   9976,   "Rugged Trapper's Shirt")
+    ,(127,   @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,    9996,  "Trapper's Shirt")
+    ,(129,   @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,    9977,  "Rugged Trapper's Boots")
+    ,(139,   @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_CLOTH,             @ITEM_QUALITY_POOR,      9988,  "Brawler's Pants")
+    ,(140,   @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,    9992,  "Brawler's Boots")
+    ,(147,   @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_CLOTH,             @ITEM_QUALITY_POOR,      9975,  "Rugged Trapper's Pants")
+    ,(148,   @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,    9976,  "Rugged Trapper's Shirt")
     ,(153,   @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_LEATHER,           @ITEM_QUALITY_POOR,     10050,  "Primitive Kilt")
     ,(154,   @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,   10058,  "Primitive Mantle")
     ,(159,   @ITEM_CLASS_CONSUMABLE,    @ITEM_SUBCLASS_CONSUMABLE_CONSUMABLE,   @ITEM_QUALITY_COMMON,   18084,  "Refreshing Spring Water")
-    ,(1395,  @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_CLOTH,             @ITEM_QUALITY_POOR,     9924,   "Apprentice's Pants")
-    ,(1396,  @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_CLOTH,             @ITEM_QUALITY_POOR,     3260,   "Acolyte's Pants")
-    ,(2070,  @ITEM_CLASS_CONSUMABLE,    @ITEM_SUBCLASS_CONSUMABLE_CONSUMABLE,   @ITEM_QUALITY_COMMON,   6353,   "Darnassian Bleu")
-    ,(2092,  @ITEM_CLASS_WEAPON,        @ITEM_SUBCLASS_WEAPON_DAGGER,           @ITEM_QUALITY_COMMON,   6442,   "Worn Dagger")
+    ,(1395,  @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_CLOTH,             @ITEM_QUALITY_POOR,      9924,  "Apprentice's Pants")
+    ,(1396,  @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_CLOTH,             @ITEM_QUALITY_POOR,      3260,  "Acolyte's Pants")
+    ,(2070,  @ITEM_CLASS_CONSUMABLE,    @ITEM_SUBCLASS_CONSUMABLE_CONSUMABLE,   @ITEM_QUALITY_COMMON,    6353,  "Darnassian Bleu")
+    ,(2092,  @ITEM_CLASS_WEAPON,        @ITEM_SUBCLASS_WEAPON_DAGGER,           @ITEM_QUALITY_COMMON,    6442,  "Worn Dagger")
     ,(2101,  @ITEM_CLASS_QUIVER,        @ITEM_SUBCLASS_QUIVER_QUIVER,           @ITEM_QUALITY_COMMON,   21328,  "Light Quiver")
-    ,(2102,  @ITEM_CLASS_QUIVER,        @ITEM_SUBCLASS_QUIVER_AMMO_POUCH,       @ITEM_QUALITY_COMMON,   1816,   "Small Ammo Pouch")
+    ,(2102,  @ITEM_CLASS_QUIVER,        @ITEM_SUBCLASS_QUIVER_AMMO_POUCH,       @ITEM_QUALITY_COMMON,    1816,  "Small Ammo Pouch")
     ,(2105,  @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,   10005,  "Thug Shirt")
-    ,(2361,  @ITEM_CLASS_WEAPON,        @ITEM_SUBCLASS_WEAPON_MACE_2H,          @ITEM_QUALITY_COMMON,   8690,   "Battleworn Hammer")
+    ,(2361,  @ITEM_CLASS_WEAPON,        @ITEM_SUBCLASS_WEAPON_MACE_2H,          @ITEM_QUALITY_COMMON,    8690,  "Battleworn Hammer")
     ,(2362,  @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_SHIELD,            @ITEM_QUALITY_POOR,     18730,  "Worn Wooden Shield")
-    ,(2504,  @ITEM_CLASS_WEAPON,        @ITEM_SUBCLASS_WEAPON_BOW,              @ITEM_QUALITY_COMMON,   8106,   "Worn Shortbow")
-    ,(2508,  @ITEM_CLASS_WEAPON,        @ITEM_SUBCLASS_WEAPON_GUN,              @ITEM_QUALITY_COMMON,   6606,   "Old Blunderbuss")
-    ,(2512,  @ITEM_CLASS_PROJECTILE,    @ITEM_SUBCLASS_PROJECTILE_ARROW,        @ITEM_QUALITY_COMMON,   5996,   "Rough Arrow")
-    ,(2516,  @ITEM_CLASS_PROJECTILE,    @ITEM_SUBCLASS_PROJECTILE_BULLET,       @ITEM_QUALITY_COMMON,   5998,   "Light Shot")
+    ,(2504,  @ITEM_CLASS_WEAPON,        @ITEM_SUBCLASS_WEAPON_BOW,              @ITEM_QUALITY_COMMON,    8106,  "Worn Shortbow")
+    ,(2508,  @ITEM_CLASS_WEAPON,        @ITEM_SUBCLASS_WEAPON_GUN,              @ITEM_QUALITY_COMMON,    6606,  "Old Blunderbuss")
+    ,(2512,  @ITEM_CLASS_PROJECTILE,    @ITEM_SUBCLASS_PROJECTILE_ARROW,        @ITEM_QUALITY_COMMON,    5996,  "Rough Arrow")
+    ,(2516,  @ITEM_CLASS_PROJECTILE,    @ITEM_SUBCLASS_PROJECTILE_BULLET,       @ITEM_QUALITY_COMMON,    5998,  "Light Shot")
     ,(2947,  @ITEM_CLASS_WEAPON,        @ITEM_SUBCLASS_WEAPON_THROWN,           @ITEM_QUALITY_COMMON,   16754,  "Small Throwing Knife")
     ,(3111,  @ITEM_CLASS_WEAPON,        @ITEM_SUBCLASS_WEAPON_THROWN,           @ITEM_QUALITY_COMMON,   20777,  "Crude Throwing Axe")
     ,(3661,  @ITEM_CLASS_WEAPON,        @ITEM_SUBCLASS_WEAPON_STAFF,            @ITEM_QUALITY_COMMON,   18530,  "Handcrafted Staff")
-    ,(4536,  @ITEM_CLASS_CONSUMABLE,    @ITEM_SUBCLASS_CONSUMABLE_CONSUMABLE,   @ITEM_QUALITY_COMMON,   6410,   "Shiny Red Apple")
-    ,(4540,  @ITEM_CLASS_CONSUMABLE,    @ITEM_SUBCLASS_CONSUMABLE_CONSUMABLE,   @ITEM_QUALITY_COMMON,   6399,   "Tough Hunk of Bread")
+    ,(4536,  @ITEM_CLASS_CONSUMABLE,    @ITEM_SUBCLASS_CONSUMABLE_CONSUMABLE,   @ITEM_QUALITY_COMMON,    6410,  "Shiny Red Apple")
+    ,(4540,  @ITEM_CLASS_CONSUMABLE,    @ITEM_SUBCLASS_CONSUMABLE_CONSUMABLE,   @ITEM_QUALITY_COMMON,    6399,  "Tough Hunk of Bread")
     ,(4604,  @ITEM_CLASS_CONSUMABLE,    @ITEM_SUBCLASS_CONSUMABLE_CONSUMABLE,   @ITEM_QUALITY_COMMON,   15852,  "Forest Mushroom Cap")
-    ,(6096,  @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,   2163,   "Apprentice's Shirt")
-    ,(6097,  @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,   2470,   "Acolyte's Shirt")
+    ,(6096,  @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,    2163,  "Apprentice's Shirt")
+    ,(6097,  @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,    2470,  "Acolyte's Shirt")
     ,(6098,  @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_CLOTH,             @ITEM_QUALITY_POOR,     12679,  "Neophyte's Robe")
     ,(6116,  @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_CLOTH,             @ITEM_QUALITY_POOR,     12648,  "Apprentice's Robe")
-    ,(6117,  @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,   9972,   "Squire's Shirt")
-    ,(6118,  @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_CLOTH,             @ITEM_QUALITY_POOR,     9974,   "Squire's Pants")
+    ,(6117,  @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,    9972,  "Squire's Shirt")
+    ,(6118,  @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_CLOTH,             @ITEM_QUALITY_POOR,      9974,  "Squire's Pants")
     ,(6119,  @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_CLOTH,             @ITEM_QUALITY_POOR,     12681,  "Neophyte's Robe")
-    ,(6120,  @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,   9983,   "Recruit's Shirt")
-    ,(6121,  @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_CLOTH,             @ITEM_QUALITY_POOR,     9984,   "Recruit's Pants")
-    ,(6122,  @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,   9985,   "Recruit's Boots")
+    ,(6120,  @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,    9983,  "Recruit's Shirt")
+    ,(6121,  @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_CLOTH,             @ITEM_QUALITY_POOR,      9984,  "Recruit's Pants")
+    ,(6122,  @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,    9985,  "Recruit's Boots")
     ,(6123,  @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_CLOTH,             @ITEM_QUALITY_POOR,     12683,  "Novice's Robe")
-    ,(6124,  @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_CLOTH,             @ITEM_QUALITY_POOR,     9987,   "Novice's Pants")
-    ,(6125,  @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,   9995,   "Brawler's Harness")
+    ,(6124,  @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_CLOTH,             @ITEM_QUALITY_POOR,      9987,  "Novice's Pants")
+    ,(6125,  @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,    9995,  "Brawler's Harness")
     ,(6126,  @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_CLOTH,             @ITEM_QUALITY_POOR,     10002,  "Trapper's Pants")
     ,(6127,  @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_MISCELLANEOUS,     @ITEM_QUALITY_COMMON,   10003,  "Trapper's Boots")
     ,(6129,  @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_CLOTH,             @ITEM_QUALITY_POOR,     12646,  "Acolyte's Robe")
@@ -270,7 +270,7 @@ VALUES
     ,(6139,  @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_CLOTH,             @ITEM_QUALITY_POOR,     12684,  "Novice's Robe")
     ,(6140,  @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_CLOTH,             @ITEM_QUALITY_POOR,     12649,  "Apprentice's Robe")
     ,(6144,  @ITEM_CLASS_ARMOR,         @ITEM_SUBCLASS_ARMOR_CLOTH,             @ITEM_QUALITY_POOR,     12680,  "Neophyte's Robe")
-    ,(6948,  @ITEM_CLASS_MISCELLANEOUS, @ITEM_SUBCLASS_MISCELLANEOUS_JUNK,      @ITEM_QUALITY_COMMON,   6418,   "Hearthstone")
+    ,(6948,  @ITEM_CLASS_MISCELLANEOUS, @ITEM_SUBCLASS_MISCELLANEOUS_JUNK,      @ITEM_QUALITY_COMMON,    6418,  "Hearthstone")
     ,(12282, @ITEM_CLASS_WEAPON,        @ITEM_SUBCLASS_WEAPON_AXE_2H,           @ITEM_QUALITY_COMMON,   22291,  "Worn Battleaxe")
 ;
 
@@ -989,7 +989,7 @@ WHERE
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_FEET,
+    `InventoryType` = @INVTYPE_ROBE,
     `Material` = @MATERIAL_CLOTH,
     `BuyPrice` = 4,
     `SellPrice` = 1,
@@ -1002,7 +1002,7 @@ WHERE
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_FEET,
+    `InventoryType` = @INVTYPE_ROBE,
     `Material` = @MATERIAL_CLOTH,
     `BuyPrice` = 4,
     `SellPrice` = 1,
@@ -1037,7 +1037,7 @@ WHERE
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_FEET,
+    `InventoryType` = @INVTYPE_ROBE,
     `Material` = @MATERIAL_CLOTH,
     `BuyPrice` = 4,
     `SellPrice` = 1,
@@ -1083,7 +1083,7 @@ WHERE
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_FEET,
+    `InventoryType` = @INVTYPE_ROBE,
     `Material` = @MATERIAL_CLOTH,
     `BuyPrice` = 4,
     `SellPrice` = 1,
@@ -1142,7 +1142,7 @@ WHERE
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_FEET,
+    `InventoryType` = @INVTYPE_ROBE,
     `Material` = @MATERIAL_CLOTH,
     `BuyPrice` = 5,
     `SellPrice` = 1,
@@ -1211,7 +1211,7 @@ WHERE
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_FEET,
+    `InventoryType` = @INVTYPE_ROBE,
     `Material` = @MATERIAL_CLOTH,
     `BuyPrice` = 4,
     `SellPrice` = 1,
@@ -1224,7 +1224,7 @@ WHERE
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_FEET,
+    `InventoryType` = @INVTYPE_ROBE,
     `Material` = @MATERIAL_CLOTH,
     `BuyPrice` = 4,
     `SellPrice` = 1,
@@ -1237,7 +1237,7 @@ WHERE
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_FEET,
+    `InventoryType` = @INVTYPE_ROBE,
     `Material` = @MATERIAL_CLOTH,
     `BuyPrice` = 5,
     `SellPrice` = 1,
