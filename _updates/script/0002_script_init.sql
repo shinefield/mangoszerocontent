@@ -19,6 +19,12 @@ VALUES
     ,(-1000006,'%s becomes enraged!',0,3,0,0,'EMOTE_BOSS_GENERIC_ENRAGED')
 ;
 
+INSERT INTO `gossip_texts`
+    (`entry`, `content_default`, `comment`)
+VALUES
+     (-3000000, '[PH] SD2 unknown text', 'GOSSIP_ID_UNKNOWN_TEXT')
+ ;
+
 -- Insert script library database version ------------------------------------
 INSERT INTO `sd2_db_version`
 VALUES
