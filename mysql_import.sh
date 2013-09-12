@@ -44,6 +44,27 @@ function import ()
 
 # - Do not edit below! Here be dragon! ---------------------------------------
 
+# # - Check for parameters -----------------------------------------------------
+# if [ $# > 1 ]
+# then
+#     case "$1" in
+#         initial)
+#             echo "Performing initial installation"
+#             exit
+#             ;;
+#         update)
+#             echo "Performing update"
+#             exit
+#             ;;
+#         *)
+#             echo "Choose initial installation or update"
+#             exit
+#             ;;
+#     esac
+#
+# fi
+# ----------------------------------------------------------------------------
+
 # - Import character database structure --------------------------------------
 for x in ./character/*.sql; do
     import $x ${CHARACTER_DATABASE}
