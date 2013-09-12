@@ -191,6 +191,16 @@ SET @ITEM_MOD_INTELLECT                         = 5;
 SET @ITEM_MOD_SPIRIT                            = 6;
 SET @ITEM_MOD_STAMINA                           = 7;
 
+-- -> Sheath type
+SET @SHEATHETYPE_NONE                           = 0;
+SET @SHEATHETYPE_MAINHAND                       = 1;
+SET @SHEATHETYPE_OFFHAND                        = 2;
+SET @SHEATHETYPE_LARGEWEAPONLEFT                = 3;
+SET @SHEATHETYPE_LARGEWEAPONRIGHT               = 4;
+SET @SHEATHETYPE_HIPWEAPONLEFT                  = 5;
+SET @SHEATHETYPE_HIPWEAPONRIGHT                 = 6;
+SET @SHEATHETYPE_SHIELD                         = 7;
+
 -- Insert item templates for start outfits -----------------------------------
 INSERT INTO `item_template`
     (`entry`, `class`, `subclass`, `Quality`, `displayid`, `name`)
@@ -277,1002 +287,705 @@ VALUES
 -- Adjust item properties for start outfits ----------------------------------
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_WEAPONMAINHAND,
-    `Material` = @MATERIAL_METAL,
-    `BuyPrice` = 35,
-    `SellPrice` = 7,
-    `ItemLevel` = 2,
-    `RequiredLevel` = 1,
-    `dmg_min1` = 1,
-    `dmg_max1` = 3,
-    `dmg_type1` = @DMG_PHYSICAL,
-    `delay` = 1900,
-    `sheath` = 3,
-    `MaxDurability` = 20
+    `InventoryType` = @INVTYPE_WEAPONMAINHAND, `Material` = @MATERIAL_METAL,
+    `ItemLevel` = 2, `RequiredLevel` = 1,
+    `MaxDurability` = 20,
+    `BuyPrice` = 35, `SellPrice` = 7,
+    `dmg_min1` = 1, `dmg_max1` = 3, `dmg_type1` = @DMG_PHYSICAL, `delay` = 1900,
+    `sheath` = @SHEATHETYPE_LARGEWEAPONLEFT
 WHERE `entry` = 25;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_2HWEAPON,
-    `Material` = @MATERIAL_WOOD,
-    `BuyPrice` = 47,
-    `SellPrice` = 9,
-    `ItemLevel` = 2,
-    `RequiredLevel` = 1,
-    `dmg_min1` = 3,
-    `dmg_max1` = 5,
-    `dmg_type1` = @DMG_PHYSICAL,
-    `delay` = 2900,
-    `sheath` = 2,
-    `MaxDurability` = 25
-WHERE
-    `entry` = 35;
+    `InventoryType` = @INVTYPE_2HWEAPON, `Material` = @MATERIAL_WOOD,
+    `ItemLevel` = 2, `RequiredLevel` = 1,
+    `MaxDurability` = 25,
+    `BuyPrice` = 47, `SellPrice` = 9,
+    `dmg_min1` = 3, `dmg_max1` = 5, `dmg_type1` = @DMG_PHYSICAL, `delay` = 2900,
+    `sheath` = @SHEATHETYPE_OFFHAND
+WHERE `entry` = 35;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_WEAPONMAINHAND,
-    `Material` = @MATERIAL_WOOD,
-    `BuyPrice` = 38,
-    `SellPrice` = 7,
-    `ItemLevel` = 2,
-    `RequiredLevel` = 1,
-    `dmg_min1` = 1,
-    `dmg_max1` = 3,
-    `dmg_type1` = @DMG_PHYSICAL,
-    `delay` = 1900,
-    `sheath` = 3,
-    `MaxDurability` = 20
-WHERE
-    `entry` = 36;
+    `InventoryType` = @INVTYPE_WEAPONMAINHAND, `Material` = @MATERIAL_WOOD,
+    `ItemLevel` = 2, `RequiredLevel` = 1,
+    `MaxDurability` = 20,
+    `BuyPrice` = 38, `SellPrice` = 7,
+    `dmg_min1` = 1, `dmg_max1` = 3, `dmg_type1` = @DMG_PHYSICAL, `delay` = 1900,
+    `sheath` = @SHEATHETYPE_LARGEWEAPONLEFT
+WHERE `entry` = 36;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_WEAPONMAINHAND,
-    `Material` = @MATERIAL_METAL,
-    `BuyPrice` = 38,
-    `SellPrice` = 7,
-    `ItemLevel` = 2,
-    `RequiredLevel` = 1,
-    `dmg_min1` = 1,
-    `dmg_max1` = 3,
-    `dmg_type1` = @DMG_PHYSICAL,
-    `delay` = 2000,
-    `sheath` = 3,
-    `MaxDurability` = 20
-WHERE
-    `entry` = 37;
+    `InventoryType` = @INVTYPE_WEAPONMAINHAND, `Material` = @MATERIAL_METAL,
+    `ItemLevel` = 2, `RequiredLevel` = 1,
+    `MaxDurability` = 20,
+    `BuyPrice` = 38, `SellPrice` = 7,
+    `dmg_min1` = 1, `dmg_max1` = 3, `dmg_type1` = @DMG_PHYSICAL, `delay` = 2000,
+    `sheath` = @SHEATHETYPE_LARGEWEAPONLEFT
+WHERE `entry` = 37;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_BODY,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 1,
-    `SellPrice` = 1,
-    `ItemLevel` = 1
-WHERE
-    `entry` = 38;
-
-UPDATE `item_template`
-SET
-    `InventoryType` = @INVTYPE_LEGS,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 5,
-    `SellPrice` = 1,
+    `InventoryType` = @INVTYPE_BODY, `Material` = @MATERIAL_CLOTH,
     `ItemLevel` = 1,
-    `RequiredLevel` = 1,
-    `armor` = 2,
-    `MaxDurability` = 25
-WHERE
-    `entry` = 39;
+    `BuyPrice` = 1, `SellPrice` = 1
+WHERE `entry` = 38;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_FEET,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 4,
-    `SellPrice` = 1,
-    `ItemLevel` = 1
-WHERE
-    `entry` = 40;
+    `InventoryType` = @INVTYPE_LEGS, `Material` = @MATERIAL_CLOTH,
+    `ItemLevel` = 1, `RequiredLevel` = 1,
+    `MaxDurability` = 25,
+    `BuyPrice` = 5, `SellPrice` = 1,
+    `armor` = 2
+WHERE `entry` = 39;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_FEET,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 4,
-    `SellPrice` = 1,
-    `ItemLevel` = 1
-WHERE
-    `entry` = 43;
-
-UPDATE `item_template`
-SET
-    `InventoryType` = @INVTYPE_LEGS,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 4,
-    `SellPrice` = 1,
+    `InventoryType` = @INVTYPE_FEET, `Material` = @MATERIAL_CLOTH,
     `ItemLevel` = 1,
-    `RequiredLevel` = 1,
-    `armor` = 2,
-    `MaxDurability` = 25
-WHERE
-    `entry` = 44;
+    `BuyPrice` = 4, `SellPrice` = 1
+WHERE `entry` = 40;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_BODY,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 1,
-    `SellPrice` = 1,
-    `ItemLevel` = 1
-WHERE
-    `entry` = 45;
-
-UPDATE `item_template`
-SET
-    `InventoryType` = @INVTYPE_FEET,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 4,
-    `SellPrice` = 1,
-    `ItemLevel` = 1
-WHERE
-    `entry` = 47;
-
-UPDATE `item_template`
-SET
-    `InventoryType` = @INVTYPE_LEGS,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 4,
-    `SellPrice` = 1,
+    `InventoryType` = @INVTYPE_FEET, `Material` = @MATERIAL_CLOTH,
     `ItemLevel` = 1,
-    `RequiredLevel` = 1,
-    `armor` = 2,
-    `MaxDurability` = 25
-WHERE
-    `entry` = 48;
+    `BuyPrice` = 4, `SellPrice` = 1
+WHERE `entry` = 43;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_BODY,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 1,
-    `SellPrice` = 1,
-    `ItemLevel` = 1
-WHERE
-    `entry` = 49;
+    `InventoryType` = @INVTYPE_LEGS, `Material` = @MATERIAL_CLOTH,
+    `ItemLevel` = 1, `RequiredLevel` = 1,
+    `MaxDurability` = 25,
+    `BuyPrice` = 4, `SellPrice` = 1,
+    `armor` = 2
+WHERE `entry` = 44;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_FEET,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 5,
-    `SellPrice` = 1,
-    `ItemLevel` = 1
-WHERE
-    `entry` = 51;
-
-UPDATE `item_template`
-SET
-    `InventoryType` = @INVTYPE_LEGS,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 5,
-    `SellPrice` = 1,
+    `InventoryType` = @INVTYPE_BODY, `Material` = @MATERIAL_CLOTH,
     `ItemLevel` = 1,
-    `RequiredLevel` = 1,
-    `armor` = 2,
-    `MaxDurability` = 25
-WHERE
-    `entry` = 52;
+    `BuyPrice` = 1, `SellPrice` = 1
+WHERE `entry` = 45;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_BODY,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 1,
-    `SellPrice` = 1,
-    `ItemLevel` = 1
-WHERE
-    `entry` = 53;
-
-UPDATE `item_template`
-SET
-    `InventoryType` = @INVTYPE_FEET,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 5,
-    `SellPrice` = 1,
-    `ItemLevel` = 1
-WHERE
-    `entry` = 55;
-
-UPDATE `item_template`
-SET
-    `InventoryType` = @INVTYPE_FEET,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 5,
-    `SellPrice` = 1,
+    `InventoryType` = @INVTYPE_FEET, `Material` = @MATERIAL_CLOTH,
     `ItemLevel` = 1,
-    `RequiredLevel` = 1,
-    `armor` = 3,
-    `MaxDurability` = 35
-WHERE
-    `entry` = 56;
+    `BuyPrice` = 4, `SellPrice` = 1
+WHERE `entry` = 47;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_FEET,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 5,
-    `SellPrice` = 1,
+    `InventoryType` = @INVTYPE_LEGS, `Material` = @MATERIAL_CLOTH,
+    `ItemLevel` = 1, `RequiredLevel` = 1,
+    `MaxDurability` = 25,
+    `BuyPrice` = 4, `SellPrice` = 1,
+    `armor` = 2
+WHERE `entry` = 48;
+
+UPDATE `item_template`
+SET
+    `InventoryType` = @INVTYPE_BODY, `Material` = @MATERIAL_CLOTH,
     `ItemLevel` = 1,
-    `RequiredLevel` = 1,
-    `armor` = 3,
-    `MaxDurability` = 35
-WHERE
-    `entry` = 57;
+    `BuyPrice` = 1, `SellPrice` = 1
+WHERE `entry` = 49;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_FEET,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 5,
-    `SellPrice` = 1,
-    `ItemLevel` = 1
-WHERE
-    `entry` = 59;
+    `InventoryType` = @INVTYPE_FEET, `Material` = @MATERIAL_CLOTH,
+    `ItemLevel` = 1,
+    `BuyPrice` = 5, `SellPrice` = 1
+WHERE `entry` = 51;
+
+UPDATE `item_template`
+SET
+    `InventoryType` = @INVTYPE_LEGS, `Material` = @MATERIAL_CLOTH,
+    `ItemLevel` = 1, `RequiredLevel` = 1,
+    `MaxDurability` = 25,
+    `BuyPrice` = 5, `SellPrice` = 1,
+    `armor` = 2
+WHERE `entry` = 52;
+
+UPDATE `item_template`
+SET
+    `InventoryType` = @INVTYPE_BODY, `Material` = @MATERIAL_CLOTH,
+    `ItemLevel` = 1,
+    `BuyPrice` = 1, `SellPrice` = 1
+WHERE `entry` = 53;
+
+UPDATE `item_template`
+SET
+    `InventoryType` = @INVTYPE_FEET, `Material` = @MATERIAL_CLOTH,
+    `ItemLevel` = 1,
+    `BuyPrice` = 5, `SellPrice` = 1
+WHERE `entry` = 55;
+
+UPDATE `item_template`
+SET
+    `InventoryType` = @INVTYPE_ROBE, `Material` = @MATERIAL_CLOTH,
+    `ItemLevel` = 1, `RequiredLevel` = 1,
+    `MaxDurability` = 35,
+    `BuyPrice` = 5, `SellPrice` = 1,
+    `armor` = 3
+WHERE `entry` = 56;
+
+UPDATE `item_template`
+SET
+    `InventoryType` = @INVTYPE_ROBE, `Material` = @MATERIAL_CLOTH,
+    `ItemLevel` = 1, `RequiredLevel` = 1,
+    `MaxDurability` = 35,
+    `BuyPrice` = 5, `SellPrice` = 1,
+    `armor` = 3
+WHERE `entry` = 57;
+
+UPDATE `item_template`
+SET
+    `InventoryType` = @INVTYPE_FEET, `Material` = @MATERIAL_CLOTH,
+    `ItemLevel` = 1,
+    `BuyPrice` = 5, `SellPrice` = 1
+WHERE `entry` = 59;
 
 UPDATE `item_template`
 SET
     `InventoryType` = @INVTYPE_NON_EQUIP,
-    `BuyCount` = 5,
-    `BuyPrice` = 25,
-    `SellPrice` = 1,
-    `ItemLevel` = 5,
-    `RequiredLevel` = 1,
-    `stackable` = 20,
+    `ItemLevel` = 5, `RequiredLevel` = 1,
+    `BuyCount` = 5, `BuyPrice` = 25, `SellPrice` = 1, `stackable` = 20,
     `spellid_1` = 433,
+    `spelltrigger_1` = 0,
     `spellcharges_1` = -1,
+    `spellppmRate_1` = 0,
+    `spellcooldown_1` = 0,
     `spellcategory_1` = 11,
     `spellcategorycooldown_1` = 1000,
     `FoodType` = 1
-WHERE
-    `entry` = 117;
+WHERE `entry` = 117;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_LEGS,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 4,
-    `SellPrice` = 1,
+    `InventoryType` = @INVTYPE_LEGS, `Material` = @MATERIAL_CLOTH,
+    `ItemLevel` = 1, `RequiredLevel` = 1,
+    `MaxDurability` = 25,
+    `BuyPrice` = 4, `SellPrice` = 1,
+    `armor` = 2
+WHERE `entry` = 120;
+
+UPDATE `item_template`
+SET
+    `InventoryType` = @INVTYPE_FEET, `Material` = @MATERIAL_CLOTH,
     `ItemLevel` = 1,
-    `RequiredLevel` = 1,
-    `armor` = 2,
-    `MaxDurability` = 25
-WHERE
-    `entry` = 120;
+    `BuyPrice` = 4, `SellPrice` = 1
+WHERE `entry` = 121;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_FEET,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 4,
-    `SellPrice` = 1,
-    `ItemLevel` = 1
-WHERE
-    `entry` = 121;
-
-UPDATE `item_template`
-SET
-    `InventoryType` = @INVTYPE_BODY,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 1,
-    `SellPrice` = 1,
-    `ItemLevel` = 1
-WHERE
-    `entry` = 127;
-
-UPDATE `item_template`
-SET
-    `InventoryType` = @INVTYPE_FEET,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 5,
-    `SellPrice` = 1,
-    `ItemLevel` = 1
-WHERE
-    `entry` = 129;
-
-UPDATE `item_template`
-SET
-    `InventoryType` = @INVTYPE_LEGS,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 4,
-    `SellPrice` = 1,
+    `InventoryType` = @INVTYPE_BODY, `Material` = @MATERIAL_CLOTH,
     `ItemLevel` = 1,
-    `RequiredLevel` = 1,
-    `armor` = 2,
-    `MaxDurability` = 25
-WHERE
-    `entry` = 139;
+    `BuyPrice` = 1, `SellPrice` = 1
+WHERE `entry` = 127;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_FEET,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 4,
-    `SellPrice` = 1,
-    `ItemLevel` = 1
-WHERE
-    `entry` = 140;
-
-UPDATE `item_template`
-SET
-    `InventoryType` = @INVTYPE_LEGS,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 5,
-    `SellPrice` = 1,
+    `InventoryType` = @INVTYPE_FEET, `Material` = @MATERIAL_CLOTH,
     `ItemLevel` = 1,
-    `RequiredLevel` = 1,
-    `armor` = 2,
-    `MaxDurability` = 25
-WHERE
-    `entry` = 147;
+    `BuyPrice` = 5, `SellPrice` = 1
+WHERE `entry` = 129;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_BODY,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 1,
-    `SellPrice` = 1,
-    `ItemLevel` = 1
-WHERE
-    `entry` = 148;
+    `InventoryType` = @INVTYPE_LEGS, `Material` = @MATERIAL_CLOTH,
+    `ItemLevel` = 1, `RequiredLevel` = 1,
+    `MaxDurability` = 25,
+    `BuyPrice` = 4, `SellPrice` = 1,
+    `armor` = 2
+WHERE `entry` = 139;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_LEGS,
-    `Material` = @MATERIAL_LEATHER,
-    `BuyPrice` = 5,
-    `SellPrice` = 1,
+    `InventoryType` = @INVTYPE_FEET, `Material` = @MATERIAL_CLOTH,
     `ItemLevel` = 1,
-    `RequiredLevel` = 1,
-    `armor` = 14,
-    `MaxDurability` = 30
-WHERE
-    `entry` = 153;
+    `BuyPrice` = 4, `SellPrice` = 1
+WHERE `entry` = 140;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_BODY,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 1,
-    `SellPrice` = 1,
-    `ItemLevel` = 1
-WHERE
-    `entry` = 154;
+    `InventoryType` = @INVTYPE_LEGS, `Material` = @MATERIAL_CLOTH,
+    `ItemLevel` = 1, `RequiredLevel` = 1,
+    `MaxDurability` = 25,
+    `BuyPrice` = 5, `SellPrice` = 1,
+    `armor` = 2
+WHERE `entry` = 147;
+
+UPDATE `item_template`
+SET
+    `InventoryType` = @INVTYPE_BODY, `Material` = @MATERIAL_CLOTH,
+    `ItemLevel` = 1,
+    `BuyPrice` = 1, `SellPrice` = 1
+WHERE `entry` = 148;
+
+UPDATE `item_template`
+SET
+    `InventoryType` = @INVTYPE_LEGS, `Material` = 8,
+    `ItemLevel` = 1, `RequiredLevel` = 1,
+    `MaxDurability` = 30,
+    `BuyPrice` = 5, `SellPrice` = 1,
+    `armor` = 14
+WHERE `entry` = 153;
+
+UPDATE `item_template`
+SET
+    `InventoryType` = @INVTYPE_BODY, `Material` = @MATERIAL_CLOTH,
+    `ItemLevel` = 1,
+    `BuyPrice` = 1, `SellPrice` = 1
+WHERE `entry` = 154;
 
 UPDATE `item_template`
 SET
     `InventoryType` = @INVTYPE_NON_EQUIP,
-    `BuyCount` = 5,
-    `BuyPrice` = 25,
-    `SellPrice` = 1,
-    `ItemLevel` = 5,
-    `RequiredLevel` = 1,
-    `stackable` = 20,
+    `ItemLevel` = 5, `RequiredLevel` = 1,
+    `BuyCount` = 5, `BuyPrice` = 25, `SellPrice` = 1, `stackable` = 20,
     `spellid_1` = 430,
+    `spelltrigger_1` = 0,
     `spellcharges_1` = -1,
+    `spellppmRate_1` = 0,
+    `spellcooldown_1` = 0,
     `spellcategory_1` = 59,
     `spellcategorycooldown_1` = 1000
-WHERE
-    `entry` = 159;
+WHERE `entry` = 159;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_LEGS,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 5,
-    `SellPrice` = 1,
-    `ItemLevel` = 1,
-    `RequiredLevel` = 1,
-    `armor` = 2,
-    `MaxDurability` = 25
-WHERE
-    `entry` = 1395;
+    `InventoryType` = @INVTYPE_LEGS, `Material` = @MATERIAL_CLOTH,
+    `ItemLevel` = 1, `RequiredLevel` = 1,
+    `MaxDurability` = 25,
+    `BuyPrice` = 5, `SellPrice` = 1,
+    `armor` = 2
+WHERE `entry` = 1395;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_LEGS,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 4,
-    `SellPrice` = 1,
-    `ItemLevel` = 1,
-    `RequiredLevel` = 1,
-    `armor` = 2,
-    `MaxDurability` = 25
-WHERE
-    `entry` = 1396;
+    `InventoryType` = @INVTYPE_LEGS, `Material` = @MATERIAL_CLOTH,
+    `ItemLevel` = 1, `RequiredLevel` = 1,
+    `MaxDurability` = 25,
+    `BuyPrice` = 4, `SellPrice` = 1,
+    `armor` = 2
+WHERE `entry` = 1396;
 
 UPDATE `item_template`
 SET
     `InventoryType` = @INVTYPE_NON_EQUIP,
-    `BuyCount` = 5,
-    `BuyPrice` = 25,
-    `SellPrice` = 1,
-    `ItemLevel` = 5,
-    `RequiredLevel` = 1,
-    `stackable` = 20,
+    `ItemLevel` = 5, `RequiredLevel` = 1,
+    `BuyCount` = 5, `BuyPrice` = 25, `SellPrice` = 1, `stackable` = 20,
     `spellid_1` = 433,
+    `spelltrigger_1` = 0,
     `spellcharges_1` = -1,
+    `spellppmRate_1` = 0,
+    `spellcooldown_1` = 0,
     `spellcategory_1` = 11,
     `spellcategorycooldown_1` = 1000,
     `FoodType` = 3
-WHERE
-    `entry` = 2070;
+WHERE `entry` = 2070;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_WEAPON,
-    `Material` = @MATERIAL_METAL,
-    `BuyPrice` = 35,
-    `SellPrice` = 7,
-    `ItemLevel` = 2,
-    `RequiredLevel` = 1,
-    `dmg_min1` = 1,
-    `dmg_max1` = 2,
-    `dmg_type1` = @DMG_PHYSICAL,
-    `delay` = 1600,
-    `sheath` = 3,
-    `MaxDurability` = 16
-WHERE
-    `entry` = 2092;
+    `InventoryType` = @INVTYPE_WEAPON, `Material` = @MATERIAL_METAL,
+    `ItemLevel` = 2, `RequiredLevel` = 1,
+    `MaxDurability` = 16,
+    `BuyPrice` = 35, `SellPrice` = 7,
+    `dmg_min1` = 1, `dmg_max1` = 2, `dmg_type1` = @DMG_PHYSICAL, `delay` = 1600,
+    `sheath` = @SHEATHETYPE_LARGEWEAPONLEFT
+WHERE `entry` = 2092;
 
 UPDATE `item_template`
 SET
     `InventoryType` = @INVTYPE_BAG,
-    `BuyPrice` = 4,
-    `SellPrice` = 1,
-    `ItemLevel` = 1,
-    `RequiredLevel` = 1,
-    `ContainerSlots` = 6,
+    `ItemLevel` = 1, `RequiredLevel` = 1,
+    `BuyPrice` = 4, `SellPrice` = 1,
+    `BagFamily` = 0, `ContainerSlots` = 6,
     `spellid_1` = 14824,
-    `spelltrigger_1` = 1
-WHERE
-    `entry` = 2101;
+    `spelltrigger_1` = 1,
+    `spellcharges_1` = 0,
+    `spellppmRate_1` = 0,
+    `spellcooldown_1` = -1,
+    `spellcategory_1` = 0,
+    `spellcategorycooldown_1` = -1
+WHERE `entry` = 2101;
 
 UPDATE `item_template`
 SET
     `InventoryType` = @INVTYPE_BAG,
+    `ItemLevel` = 1, `RequiredLevel` = 1,
     `BuyPrice` = 4,
     `SellPrice` = 1,
-    `ItemLevel` = 1,
-    `RequiredLevel` = 1,
-    `ContainerSlots` = 6,
+    `BagFamily` = 0, `ContainerSlots` = 6,
     `spellid_1` = 14824,
-    `spelltrigger_1` = 1
-WHERE
-    `entry` = 2102;
+    `spelltrigger_1` = 1,
+    `spellcharges_1` = 0,
+    `spellppmRate_1` = 0,
+    `spellcooldown_1` = -1,
+    `spellcategory_1` = 0,
+    `spellcategorycooldown_1` = -1
+WHERE `entry` = 2102;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_BODY,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 5,
-    `SellPrice` = 1,
-    `ItemLevel` = 1
-WHERE
-    `entry` = 2105;
-
-UPDATE `item_template`
-SET
-    `InventoryType` = @INVTYPE_2HWEAPON,
-    `Material` = @MATERIAL_WOOD,
-    `BuyPrice` = 45,
-    `SellPrice` = 9,
-    `ItemLevel` = 2,
-    `RequiredLevel` = 1,
-    `dmg_min1` = 3,
-    `dmg_max1` = 5,
-    `dmg_type1` = @DMG_PHYSICAL,
-    `delay` = 2900,
-    `sheath` = 1,
-    `MaxDurability` = 25
-WHERE
-    `entry` = 2361;
-
-UPDATE `item_template`
-SET
-    `InventoryType` = @INVTYPE_SHIELD,
-    `Material` = @MATERIAL_METAL,
-    `BuyPrice` = 7,
-    `SellPrice` = 1,
+    `InventoryType` = @INVTYPE_BODY, `Material` = @MATERIAL_CLOTH,
     `ItemLevel` = 1,
-    `RequiredLevel` = 1,
+    `BuyPrice` = 5, `SellPrice` = 1
+WHERE `entry` = 2105;
+
+UPDATE `item_template`
+SET
+    `InventoryType` = @INVTYPE_2HWEAPON, `Material` = @MATERIAL_WOOD,
+    `ItemLevel` = 2, `RequiredLevel` = 1,
+    `MaxDurability` = 25,
+    `BuyPrice` = 45, `SellPrice` = 9,
+    `dmg_min1` = 3, `dmg_max1` = 5, `dmg_type1` = @DMG_PHYSICAL, `delay` = 2900,
+    `sheath` = @SHEATHETYPE_MAINHAND
+WHERE `entry` = 2361;
+
+UPDATE `item_template`
+SET
+    `InventoryType` = @INVTYPE_SHIELD, `Material` = @MATERIAL_METAL,
+    `ItemLevel` = 1, `RequiredLevel` = 1,
+    `MaxDurability` = 20,
+    `BuyPrice` = 7, `SellPrice` = 1,
     `armor` = 5,
-    `sheath` = 4,
     `block` = 1,
-    `MaxDurability` = 20
-WHERE
-    `entry` = 2362;
+    `sheath` = @SHEATHETYPE_LARGEWEAPONRIGHT
+WHERE `entry` = 2362;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_RANGED,
-    `Material` = @MATERIAL_WOOD,
-    `BuyPrice` = 29,
-    `SellPrice` = 5,
-    `ItemLevel` = 2,
-    `RequiredLevel` = 1,
-    `dmg_min1` = 2,
-    `dmg_max1` = 5,
-    `dmg_type1` = @DMG_PHYSICAL,
-    `delay` = 2300,
-    `ammo_type` = 2,
-    `RangedModRange` = 100,
-    `MaxDurability` = 20
-WHERE
-    `entry` = 2504;
+    `InventoryType` = @INVTYPE_RANGED, `Material` = @MATERIAL_WOOD,
+    `ItemLevel` = 2, `RequiredLevel` = 1,
+    `MaxDurability` = 20,
+    `BuyPrice` = 29, `SellPrice` = 5,
+    `dmg_min1` = 2, `dmg_max1` = 5, `dmg_type1` = @DMG_PHYSICAL, `delay` = 2300,
+    `ammo_type` = 2, `RangedModRange` = 100
+WHERE `entry` = 2504;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_RANGEDRIGHT,
-    `Material` = @MATERIAL_METAL,
-    `BuyPrice` = 27,
-    `SellPrice` = 5,
-    `ItemLevel` = 2,
-    `RequiredLevel` = 1,
-    `dmg_min1` = 2,
-    `dmg_max1` = 5,
-    `dmg_type1` = @DMG_PHYSICAL,
-    `delay` = 2300,
-    `ammo_type` = 3,
-    `RangedModRange` = 100,
-    `MaxDurability` = 20
-WHERE
-    `entry` = 2508;
+    `InventoryType` = @INVTYPE_RANGEDRIGHT, `Material` = @MATERIAL_METAL,
+    `ItemLevel` = 2, `RequiredLevel` = 1,
+    `MaxDurability` = 20,
+    `BuyPrice` = 27, `SellPrice` = 5,
+    `dmg_min1` = 2, `dmg_max1` = 5, `dmg_type1` = @DMG_PHYSICAL, `delay` = 2300,
+    `ammo_type` = 3, `RangedModRange` = 100
+WHERE `entry` = 2508;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_AMMO,
-    `Material` = @MATERIAL_WOOD,
-    `BuyCount` = 200,
-    `BuyPrice` = 10,
-    `ItemLevel` = 5,
-    `RequiredLevel` = 1,
-    `stackable` = 200,
-    `dmg_min1` = 1,
-    `dmg_max1` = 2,
-    `dmg_type1` = @DMG_PHYSICAL,
-    `delay` = 3000,
-    `BagFamily` = 1
-WHERE
-    `entry` = 2512;
+    `InventoryType` = @INVTYPE_AMMO, `Material` = @MATERIAL_WOOD,
+    `ItemLevel` = 5, `RequiredLevel` = 1,
+    `BuyCount` = 200, `BuyPrice` = 10, `stackable` = 200,
+    `BagFamily` = 1, `ContainerSlots` = 0,
+    `dmg_min1` = 1, `dmg_max1` = 2, `dmg_type1` = @DMG_PHYSICAL, `delay` = 3000
+WHERE `entry` = 2512;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_AMMO,
-    `Material` = @MATERIAL_WOOD,
-    `BuyCount` = 200,
-    `BuyPrice` = 10,
-    `ItemLevel` = 5,
-    `RequiredLevel` = 1,
-    `stackable` = 200,
-    `dmg_min1` = 1,
-    `dmg_max1` = 2,
-    `dmg_type1` = @DMG_PHYSICAL,
-    `delay` = 3000,
-    `BagFamily` = 2
-WHERE
-    `entry` = 2516;
+    `InventoryType` = @INVTYPE_AMMO, `Material` = @MATERIAL_WOOD,
+    `ItemLevel` = 5, `RequiredLevel` = 1,
+    `BuyCount` = 200, `BuyPrice` = 10, `stackable` = 200,
+    `BagFamily` = 2, `ContainerSlots` = 0,
+    `dmg_min1` = 1, `dmg_max1` = 2, `dmg_type1` = @DMG_PHYSICAL, `delay` = 3000
+WHERE `entry` = 2516;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_THROWN,
-    `Material` = @MATERIAL_METAL,
-    `BuyCount` = 200,
-    `BuyPrice` = 15,
-    `ItemLevel` = 3,
-    `RequiredLevel` = 1,
-    `stackable` = 200,
-    `dmg_min1` = 1,
-    `dmg_max1` = 3,
-    `dmg_type1` = @DMG_PHYSICAL,
-    `delay` = 2000,
-    `ammo_type` = 4,
-    `RangedModRange` = 100
-WHERE
-    `entry` = 2947;
+    `InventoryType` = @INVTYPE_THROWN, `Material` = @MATERIAL_METAL,
+    `ItemLevel` = 3, `RequiredLevel` = 1,
+    `BuyCount` = 200, `BuyPrice` = 15, `stackable` = 200,
+    `dmg_min1` = 1, `dmg_max1` = 3, `dmg_type1` = @DMG_PHYSICAL, `delay` = 2000,
+    `ammo_type` = 4, `RangedModRange` = 100
+WHERE `entry` = 2947;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_THROWN,
-    `Material` = @MATERIAL_METAL,
-    `BuyCount` = 200,
-    `BuyPrice` = 15,
-    `ItemLevel` = 3,
-    `RequiredLevel` = 1,
-    `stackable` = 200,
-    `dmg_min1` = 1,
-    `dmg_max1` = 3,
-    `dmg_type1` = @DMG_PHYSICAL,
-    `delay` = 2000,
-    `ammo_type` = 4,
-    `RangedModRange` = 100
-WHERE
-    `entry` = 3111;
+    `InventoryType` = @INVTYPE_THROWN, `Material` = @MATERIAL_METAL,
+    `ItemLevel` = 3, `RequiredLevel` = 1,
+    `BuyCount` = 200, `BuyPrice` = 15, `stackable` = 200,
+    `dmg_min1` = 1, `dmg_max1` = 3, `dmg_type1` = @DMG_PHYSICAL, `delay` = 2000,
+    `ammo_type` = 4, `RangedModRange` = 100
+WHERE `entry` = 3111;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_2HWEAPON,
-    `Material` = @MATERIAL_WOOD,
-    `BuyPrice` = 45,
-    `SellPrice` = 9,
-    `ItemLevel` = 2,
-    `RequiredLevel` = 1,
-    `dmg_min1` = 3,
-    `dmg_max1` = 5,
-    `dmg_type1` = @DMG_PHYSICAL,
-    `delay` = 2900,
-    `sheath` = 2,
-    `MaxDurability` = 25
-WHERE
-    `entry` = 3661;
+    `InventoryType` = @INVTYPE_2HWEAPON, `Material` = @MATERIAL_WOOD,
+    `ItemLevel` = 2, `RequiredLevel` = 1,
+    `MaxDurability` = 25,
+    `BuyPrice` = 45, `SellPrice` = 9,
+    `dmg_min1` = 3, `dmg_max1` = 5, `dmg_type1` = @DMG_PHYSICAL, `delay` = 2900,
+    `sheath` = @SHEATHETYPE_OFFHAND
+WHERE `entry` = 3661;
 
 UPDATE `item_template`
 SET
     `InventoryType` = @INVTYPE_NON_EQUIP,
-    `BuyCount` = 5,
-    `BuyPrice` = 25,
-    `SellPrice` = 1,
-    `ItemLevel` = 5,
-    `RequiredLevel` = 1,
-    `stackable` = 20,
+    `ItemLevel` = 5, `RequiredLevel` = 1,
+    `BuyCount` = 5, `BuyPrice` = 25, `SellPrice` = 1, `stackable` = 20,
     `spellid_1` = 433,
+    `spelltrigger_1` = 0,
     `spellcharges_1` = -1,
+    `spellppmRate_1` = 0,
+    `spellcooldown_1` = 0,
     `spellcategory_1` = 11,
     `spellcategorycooldown_1` = 1000,
     `FoodType` = 6
-WHERE
-    `entry` = 4536;
+WHERE `entry` = 4536;
 
 UPDATE `item_template`
 SET
     `InventoryType` = @INVTYPE_NON_EQUIP,
-    `BuyCount` = 5,
-    `BuyPrice` = 25,
-    `SellPrice` = 1,
-    `ItemLevel` = 5,
-    `RequiredLevel` = 1,
-    `stackable` = 20,
+    `ItemLevel` = 5, `RequiredLevel` = 1,
+    `BuyCount` = 5, `BuyPrice` = 25, `SellPrice` = 1, `stackable` = 20,
     `spellid_1` = 433,
+    `spelltrigger_1` = 0,
     `spellcharges_1` = -1,
+    `spellppmRate_1` = 0,
+    `spellcooldown_1` = 0,
     `spellcategory_1` = 11,
     `spellcategorycooldown_1` = 1000,
     `FoodType` = 4
-WHERE
-    `entry` = 4540;
+WHERE `entry` = 4540;
 
 UPDATE `item_template`
 SET
     `InventoryType` = @INVTYPE_NON_EQUIP,
-    `BuyCount` = 5,
-    `BuyPrice` = 25,
-    `SellPrice` = 1,
-    `ItemLevel` = 5,
-    `RequiredLevel` = 1,
-    `stackable` = 20,
+    `ItemLevel` = 5, `RequiredLevel` = 1,
+    `BuyCount` = 5, `BuyPrice` = 25, `SellPrice` = 1, `stackable` = 20,
     `spellid_1` = 433,
+    `spelltrigger_1` = 0,
     `spellcharges_1` = -1,
+    `spellppmRate_1` = 0,
+    `spellcooldown_1` = 0,
     `spellcategory_1` = 11,
     `spellcategorycooldown_1` = 1000,
     `FoodType` = 5
-WHERE
-    `entry` = 4604;
+WHERE `entry` = 4604;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_BODY,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 1,
-    `SellPrice` = 1,
-    `ItemLevel` = 1
-WHERE
-    `entry` = 6096;
-
-UPDATE `item_template`
-SET
-    `InventoryType` = @INVTYPE_BODY,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 1,
-    `SellPrice` = 1,
-    `ItemLevel` = 1
-WHERE
-    `entry` = 6097;
-
-UPDATE `item_template`
-SET
-    `InventoryType` = @INVTYPE_ROBE,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 4,
-    `SellPrice` = 1,
+    `InventoryType` = @INVTYPE_BODY, `Material` = @MATERIAL_CLOTH,
     `ItemLevel` = 1,
-    `RequiredLevel` = 1,
-    `armor` = 3,
-    `MaxDurability` = 35
-WHERE
-    `entry` = 6098;
+    `BuyPrice` = 1, `SellPrice` = 1
+WHERE `entry` = 6096;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_ROBE,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 4,
-    `SellPrice` = 1,
+    `InventoryType` = @INVTYPE_BODY, `Material` = @MATERIAL_CLOTH,
     `ItemLevel` = 1,
-    `RequiredLevel` = 1,
+    `BuyPrice` = 1, `SellPrice` = 1
+WHERE `entry` = 6097;
+
+UPDATE `item_template`
+SET
+    `InventoryType` = @INVTYPE_ROBE, `Material` = @MATERIAL_CLOTH,
+    `ItemLevel` = 1, `RequiredLevel` = 1,
+    `MaxDurability` = 35,
+    `BuyPrice` = 4, `SellPrice` = 1,
     `armor` = 3
-WHERE
-    `entry` = 6116;
+WHERE `entry` = 6098;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_BODY,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 1,
-    `SellPrice` = 1,
-    `ItemLevel` = 1
-WHERE
-    `entry` = 6117;
+    `InventoryType` = @INVTYPE_ROBE, `Material` = @MATERIAL_CLOTH,
+    `ItemLevel` = 1, `RequiredLevel` = 1,
+    `BuyPrice` = 4, `SellPrice` = 1,
+    `armor` = 3
+WHERE `entry` = 6116;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_LEGS,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 4,
-    `SellPrice` = 1,
+    `InventoryType` = @INVTYPE_BODY, `Material` = @MATERIAL_CLOTH,
     `ItemLevel` = 1,
-    `RequiredLevel` = 1,
-    `armor` = 2,
-    `MaxDurability` = 25
-WHERE
-    `entry` = 6118;
+    `BuyPrice` = 1, `SellPrice` = 1
+WHERE `entry` = 6117;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_ROBE,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 4,
-    `SellPrice` = 1,
+    `InventoryType` = @INVTYPE_LEGS, `Material` = @MATERIAL_CLOTH,
+    `ItemLevel` = 1, `RequiredLevel` = 1,
+    `MaxDurability` = 25,
+    `BuyPrice` = 4, `SellPrice` = 1,
+    `armor` = 2
+WHERE `entry` = 6118;
+
+UPDATE `item_template`
+SET
+    `InventoryType` = @INVTYPE_ROBE, `Material` = @MATERIAL_CLOTH,
+    `ItemLevel` = 1, `RequiredLevel` = 1,
+    `MaxDurability` = 35,
+    `BuyPrice` = 4, `SellPrice` = 1,
+    `armor` = 3
+WHERE `entry` = 6119;
+
+UPDATE `item_template`
+SET
+    `InventoryType` = @INVTYPE_BODY, `Material` = @MATERIAL_CLOTH,
     `ItemLevel` = 1,
-    `RequiredLevel` = 1,
-    `armor` = 3,
-    `MaxDurability` = 35
-WHERE
-    `entry` = 6119;
+    `BuyPrice` = 1, `SellPrice` = 1
+WHERE `entry` = 6120;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_BODY,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 1,
-    `SellPrice` = 1,
-    `ItemLevel` = 1
-WHERE
-    `entry` = 6120;
+    `InventoryType` = @INVTYPE_LEGS, `Material` = @MATERIAL_CLOTH,
+    `ItemLevel` = 1, `RequiredLevel` = 1,
+    `MaxDurability` = 25,
+    `BuyPrice` = 4, `SellPrice` = 1,
+    `armor` = 2
+WHERE `entry` = 6121;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_LEGS,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 4,
-    `SellPrice` = 1,
+    `InventoryType` = @INVTYPE_FEET, `Material` = @MATERIAL_CLOTH,
     `ItemLevel` = 1,
-    `RequiredLevel` = 1,
-    `armor` = 2,
-    `MaxDurability` = 25
-WHERE
-    `entry` = 6121;
+    `BuyPrice` = 4, `SellPrice` = 1
+WHERE `entry` = 6122;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_FEET,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 4,
-    `SellPrice` = 1,
-    `ItemLevel` = 1
-WHERE
-    `entry` = 6122;
+    `InventoryType` = @INVTYPE_ROBE, `Material` = @MATERIAL_CLOTH,
+    `ItemLevel` = 1, `RequiredLevel` = 1,
+    `MaxDurability` = 35,
+    `BuyPrice` = 4, `SellPrice` = 1,
+    `armor` = 3
+WHERE `entry` = 6123;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_ROBE,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 4,
-    `SellPrice` = 1,
+    `InventoryType` = @INVTYPE_LEGS, `Material` = @MATERIAL_CLOTH,
+    `ItemLevel` = 1, `RequiredLevel` = 1,
+    `MaxDurability` = 25,
+    `BuyPrice` = 5, `SellPrice` = 1,
+    `armor` = 2
+WHERE `entry` = 6124;
+
+UPDATE `item_template`
+SET
+    `InventoryType` = @INVTYPE_BODY, `Material` = @MATERIAL_CLOTH,
     `ItemLevel` = 1,
-    `RequiredLevel` = 1,
-    `armor` = 3,
-    `MaxDurability` = 35
-WHERE
-    `entry` = 6123;
+    `BuyPrice` = 1, `SellPrice` = 1
+WHERE `entry` = 6125;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_LEGS,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 5,
-    `SellPrice` = 1,
+    `InventoryType` = @INVTYPE_LEGS, `Material` = @MATERIAL_CLOTH,
+    `ItemLevel` = 1, `RequiredLevel` = 1,
+    `MaxDurability` = 25,
+    `BuyPrice` = 5, `SellPrice` = 1,
+    `armor` = 2
+WHERE `entry` = 6126;
+
+UPDATE `item_template`
+SET
+    `InventoryType` = @INVTYPE_FEET, `Material` = @MATERIAL_CLOTH,
     `ItemLevel` = 1,
-    `RequiredLevel` = 1,
-    `armor` = 2,
-    `MaxDurability` = 25
-WHERE
-    `entry` = 6124;
+    `BuyPrice` = 5, `SellPrice` = 1
+WHERE `entry` = 6127;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_BODY,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 1,
-    `SellPrice` = 1,
-    `ItemLevel` = 1
-WHERE
-    `entry` = 6125;
+    `InventoryType` = @INVTYPE_ROBE, `Material` = @MATERIAL_CLOTH,
+    `ItemLevel` = 1, `RequiredLevel` = 1,
+    `MaxDurability` = 35,
+    `BuyPrice` = 5, `SellPrice` = 1,
+    `armor` = 3
+WHERE `entry` = 6129;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_LEGS,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 5,
-    `SellPrice` = 1,
+    `InventoryType` = @INVTYPE_BODY, `Material` = @MATERIAL_CLOTH,
     `ItemLevel` = 1,
-    `RequiredLevel` = 1,
-    `armor` = 2,
-    `MaxDurability` = 25
-WHERE
-    `entry` = 6126;
+    `BuyPrice` = 1, `SellPrice` = 1
+WHERE `entry` = 6134;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_FEET,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 5,
-    `SellPrice` = 1,
-    `ItemLevel` = 1
-WHERE
-    `entry` = 6127;
+    `InventoryType` = @INVTYPE_LEGS, `Material` = 8,
+    `ItemLevel` = 1, `RequiredLevel` = 1,
+    `MaxDurability` = 30,
+    `BuyPrice` = 5, `SellPrice` = 1,
+    `armor` = 14
+WHERE `entry` = 6135;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_ROBE,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 5,
-    `SellPrice` = 1,
+    `InventoryType` = @INVTYPE_BODY, `Material` = @MATERIAL_CLOTH,
     `ItemLevel` = 1,
-    `RequiredLevel` = 1,
-    `armor` = 3,
-    `MaxDurability` = 35
-WHERE
-    `entry` = 6129;
+    `BuyPrice` = 4, `SellPrice` = 1
+WHERE `entry` = 6136;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_BODY,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 1,
-    `SellPrice` = 1,
-    `ItemLevel` = 1
-WHERE
-    `entry` = 6134;
+    `InventoryType` = @INVTYPE_LEGS, `Material` = @MATERIAL_CLOTH,
+    `ItemLevel` = 1, `RequiredLevel` = 1,
+    `MaxDurability` = 25,
+    `BuyPrice` = 4, `SellPrice` = 1,
+    `armor` = 2
+WHERE `entry` = 6137;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_LEGS,
-    `Material` = @MATERIAL_LEATHER,
-    `BuyPrice` = 5,
-    `SellPrice` = 1,
+    `InventoryType` = @INVTYPE_FEET, `Material` = @MATERIAL_CLOTH,
     `ItemLevel` = 1,
-    `RequiredLevel` = 1,
-    `armor` = 14,
-    `MaxDurability` = 30
-WHERE
-    `entry` = 6135;
+    `BuyPrice` = 4, `SellPrice` = 1
+WHERE `entry` = 6138;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_BODY,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 4,
-    `SellPrice` = 1,
-    `ItemLevel` = 1
-WHERE
-    `entry` = 6136;
+    `InventoryType` = @INVTYPE_ROBE, `Material` = @MATERIAL_CLOTH,
+    `ItemLevel` = 1, `RequiredLevel` = 1,
+    `MaxDurability` = 35,
+    `BuyPrice` = 4, `SellPrice` = 1,
+    `armor` = 3
+WHERE `entry` = 6139;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_LEGS,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 4,
-    `SellPrice` = 1,
-    `ItemLevel` = 1,
-    `RequiredLevel` = 1,
-    `armor` = 2,
-    `MaxDurability` = 25
-WHERE
-    `entry` = 6137;
+    `InventoryType` = @INVTYPE_ROBE, `Material` = @MATERIAL_CLOTH,
+    `ItemLevel` = 1, `RequiredLevel` = 1,
+    `MaxDurability` = 35,
+    `BuyPrice` = 4, `SellPrice` = 1,
+    `armor` = 3
+WHERE `entry` = 6140;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_FEET,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 4,
-    `SellPrice` = 1,
-    `ItemLevel` = 1
-WHERE
-    `entry` = 6138;
-
-UPDATE `item_template`
-SET
-    `InventoryType` = @INVTYPE_ROBE,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 4,
-    `SellPrice` = 1,
-    `ItemLevel` = 1,
-    `RequiredLevel` = 1,
-    `armor` = 3,
-    `MaxDurability` = 35
-WHERE
-    `entry` = 6139;
-
-UPDATE `item_template`
-SET
-    `InventoryType` = @INVTYPE_ROBE,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 4,
-    `SellPrice` = 1,
-    `ItemLevel` = 1,
-    `RequiredLevel` = 1,
-    `armor` = 3,
-    `MaxDurability` = 35
-WHERE
-    `entry` = 6140;
-
-UPDATE `item_template`
-SET
-    `InventoryType` = @INVTYPE_ROBE,
-    `Material` = @MATERIAL_CLOTH,
-    `BuyPrice` = 5,
-    `SellPrice` = 1,
-    `ItemLevel` = 1,
-    `RequiredLevel` = 1,
-    `armor` = 3,
-    `MaxDurability` = 35
-WHERE
-    `entry` = 6144;
+    `InventoryType` = @INVTYPE_ROBE, `Material` = @MATERIAL_CLOTH,
+    `ItemLevel` = 1, `RequiredLevel` = 1,
+    `MaxDurability` = 35,
+    `BuyPrice` = 5, `SellPrice` = 1,
+    `armor` = 3
+WHERE `entry` = 6144;
 
 UPDATE `item_template`
 SET
     `InventoryType` = @INVTYPE_NON_EQUIP,
-    `Flags` = 64,
-    `BuyPrice` = 0,
     `ItemLevel` = 1,
     `maxcount` = 1,
     `spellid_1` = 8690,
-    `bonding` = @BIND_WHEN_PICKED_UP
-WHERE
-    `entry` = 6948;
+    `spelltrigger_1` = 0,
+    `spellcharges_1` = 0,
+    `spellppmRate_1` = 0,
+    `spellcooldown_1` = -1,
+    `spellcategory_1` = 0,
+    `spellcategorycooldown_1` = -1,
+    `bonding` = @BIND_WHEN_PICKED_UP,
+    `Flags` = @ITEM_FLAG_USABLE
+WHERE `entry` = 6948;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_2HWEAPON,
-    `Material` = @MATERIAL_METAL,
-    `BuyPrice` = 43,
-    `SellPrice` = 8,
-    `ItemLevel` = 2,
-    `RequiredLevel` = 1,
-    `dmg_min1` = 3,
-    `dmg_max1` = 5,
-    `dmg_type1` = @DMG_PHYSICAL,
-    `delay` = 2900,
-    `sheath` = 1,
-    `MaxDurability` = 25
-WHERE
-    `entry` = 12282;
+    `InventoryType` = @INVTYPE_2HWEAPON, `Material` = @MATERIAL_METAL,
+    `ItemLevel` = 2, `RequiredLevel` = 1,
+    `MaxDurability` = 25,
+    `BuyPrice` = 43, `SellPrice` = 8,
+    `dmg_min1` = 3, `dmg_max1` = 5, `dmg_type1` = @DMG_PHYSICAL, `delay` = 2900,
+    `sheath` = @SHEATHETYPE_MAINHAND
+WHERE `entry` = 12282;
