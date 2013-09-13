@@ -128,70 +128,79 @@ SET @CREATURE_TYPE_FLAG_ANIMATION_FROZEN        = 1024;
 SET @CREATURE_TYPE_FLAG_WAR_PLAYER              = 4096;
 
 -- Provide variables for creatures flagged as trainer
-SET @CREATURE_TRAINER_TYPE_CLASS            = 0;
-SET @CREATURE_TRAINER_TYPE_MOUNTS           = 1;
-SET @CREATURE_TRAINER_TYPE_TRADESKILLS      = 2;
-SET @CREATURE_TRAINER_TYPE_PETS             = 3;
+SET @CREATURE_TRAINER_TYPE_CLASS                = 0;
+SET @CREATURE_TRAINER_TYPE_MOUNTS               = 1;
+SET @CREATURE_TRAINER_TYPE_TRADESKILLS          = 2;
+SET @CREATURE_TRAINER_TYPE_PETS                 = 3;
 
 -- Provide variables for creature movement types
-SET @CREATURE_MOVEMENT_IDLE                 = 0;
-SET @CREATURE_MOVEMENT_RANDOM               = 1;
-SET @CREATURE_MOVEMENT_WAYPOINT             = 2;
+SET @CREATURE_MOVEMENT_IDLE                     = 0;
+SET @CREATURE_MOVEMENT_RANDOM                   = 1;
+SET @CREATURE_MOVEMENT_WAYPOINT                 = 2;
 
 -- Provide variables for creature inhabit types
-SET @CREATURE_INHABIT_GROUND                = 1;
-SET @CREATURE_INHABIT_WATER                 = 2;
-SET @CREATURE_INHABIT_GROUND_WATER          = @CREATURE_INHABIT_GROUND | @CREATURE_INHABIT_WATER;
-SET @CREATURE_INHABIT_AIR                   = 4;
-SET @CREATURE_INHABIT_ANY                   = @CREATURE_INHABIT_GROUND_WATER | @CREATURE_INHABIT_AIR;
+SET @CREATURE_INHABIT_GROUND                    = 1;
+SET @CREATURE_INHABIT_WATER                     = 2;
+SET @CREATURE_INHABIT_GROUND_WATER              = @CREATURE_INHABIT_GROUND | @CREATURE_INHABIT_WATER;
+SET @CREATURE_INHABIT_AIR                       = 4;
+SET @CREATURE_INHABIT_ANY                       = @CREATURE_INHABIT_GROUND_WATER | @CREATURE_INHABIT_AIR;
 
 -- Provide varbiables for creature immunity masks
-SET @CREATURE_IMMUNITY_NONE                 = 0;
-SET @CREATURE_IMMUNITY_CHARM                = 1;
-SET @CREATURE_IMMUNITY_CONFUSED             = 2;
-SET @CREATURE_IMMUNITY_DISARM               = 4;
-SET @CREATURE_IMMUNITY_DISTRACT             = 8;
-SET @CREATURE_IMMUNITY_FEAR                 = 16;
-SET @CREATURE_IMMUNITY_FUMBLE               = 32;
-SET @CREATURE_IMMUNITY_ROOT                 = 64;
-SET @CREATURE_IMMUNITY_PACIFY               = 128;
-SET @CREATURE_IMMUNITY_SILENCE              = 256;
-SET @CREATURE_IMMUNITY_SLEEP                = 512;
-SET @CREATURE_IMMUNITY_SNARE                = 1024;
-SET @CREATURE_IMMUNITY_STUN                 = 2048;
-SET @CREATURE_IMMUNITY_FREEZE               = 4096;
-SET @CREATURE_IMMUNITY_KNOCKOUT             = 8192;
-SET @CREATURE_IMMUNITY_BLEED                = 16384;
-SET @CREATURE_IMMUNITY_BANDAGE              = 32768;
-SET @CREATURE_IMMUNITY_POLYMORPH            = 65536;
-SET @CREATURE_IMMUNITY_BANISH               = 131072;
-SET @CREATURE_IMMUNITY_SHIELD               = 262144;
-SET @CREATURE_IMMUNITY_SHACKLE              = 524288;
-SET @CREATURE_IMMUNITY_MOUNT                = 1048576;
-SET @CREATURE_IMMUNITY_PERSUADE             = 2097152;
-SET @CREATURE_IMMUNITY_TURN                 = 4194304;
-SET @CREATURE_IMMUNITY_HORROR               = 8388608;
-SET @CREATURE_IMMUNITY_INVULNERABILITY      = 16777216;
-SET @CREATURE_IMMUNITY_INTERRUPT            = 33554432;
-SET @CREATURE_IMMUNITY_DAZE                 = 67108864;
-SET @CREATURE_IMMUNITY_DISCOVERY            = 134217728;
-SET @CREATURE_IMMUNITY_IMMUNE_SHIELD        = 268435456;
-SET @CREATURE_IMMUNITY_SAPPED               = 536870912;
+SET @CREATURE_IMMUNITY_NONE                     = 0;
+SET @CREATURE_IMMUNITY_CHARM                    = 1;
+SET @CREATURE_IMMUNITY_CONFUSED                 = 2;
+SET @CREATURE_IMMUNITY_DISARM                   = 4;
+SET @CREATURE_IMMUNITY_DISTRACT                 = 8;
+SET @CREATURE_IMMUNITY_FEAR                     = 16;
+SET @CREATURE_IMMUNITY_FUMBLE                   = 32;
+SET @CREATURE_IMMUNITY_ROOT                     = 64;
+SET @CREATURE_IMMUNITY_PACIFY                   = 128;
+SET @CREATURE_IMMUNITY_SILENCE                  = 256;
+SET @CREATURE_IMMUNITY_SLEEP                    = 512;
+SET @CREATURE_IMMUNITY_SNARE                    = 1024;
+SET @CREATURE_IMMUNITY_STUN                     = 2048;
+SET @CREATURE_IMMUNITY_FREEZE                   = 4096;
+SET @CREATURE_IMMUNITY_KNOCKOUT                 = 8192;
+SET @CREATURE_IMMUNITY_BLEED                    = 16384;
+SET @CREATURE_IMMUNITY_BANDAGE                  = 32768;
+SET @CREATURE_IMMUNITY_POLYMORPH                = 65536;
+SET @CREATURE_IMMUNITY_BANISH                   = 131072;
+SET @CREATURE_IMMUNITY_SHIELD                   = 262144;
+SET @CREATURE_IMMUNITY_SHACKLE                  = 524288;
+SET @CREATURE_IMMUNITY_MOUNT                    = 1048576;
+SET @CREATURE_IMMUNITY_PERSUADE                 = 2097152;
+SET @CREATURE_IMMUNITY_TURN                     = 4194304;
+SET @CREATURE_IMMUNITY_HORROR                   = 8388608;
+SET @CREATURE_IMMUNITY_INVULNERABILITY          = 16777216;
+SET @CREATURE_IMMUNITY_INTERRUPT                = 33554432;
+SET @CREATURE_IMMUNITY_DAZE                     = 67108864;
+SET @CREATURE_IMMUNITY_DISCOVERY                = 134217728;
+SET @CREATURE_IMMUNITY_IMMUNE_SHIELD            = 268435456;
+SET @CREATURE_IMMUNITY_SAPPED                   = 536870912;
 
 -- Provide variables for creature extra flags
-SET @CREATURE_FLAG_EXTRA_NONE               = 0;
-SET @CREATURE_FLAG_EXTRA_INSTANCE_BIND      = 1;
-SET @CREATURE_FLAG_EXTRA_CIVILIAN           = 2;
-SET @CREATURE_FLAG_EXTRA_NO_PARRY           = 4;
-SET @CREATURE_FLAG_EXTRA_NO_PARRY_HASTEN    = 8;
-SET @CREATURE_FLAG_EXTRA_NO_BLOCK           = 16;
-SET @CREATURE_FLAG_EXTRA_NO_CRUSH           = 32;
-SET @CREATURE_FLAG_EXTRA_NO_XP_AT_KILL      = 64;
-SET @CREATURE_FLAG_EXTRA_INVISIBLE          = 128;
-SET @CREATURE_FLAG_EXTRA_NOT_TAUNTABLE      = 256;
-SET @CREATURE_FLAG_EXTRA_AGGRO_ZONE         = 512;
-SET @CREATURE_FLAG_EXTRA_GUARD              = 1024;
-SET @CREATURE_FLAG_EXTRA_NO_TALKTO_CREDIT   = 2048;
+SET @CREATURE_FLAG_EXTRA_NONE                   = 0;
+SET @CREATURE_FLAG_EXTRA_INSTANCE_BIND          = 1;
+SET @CREATURE_FLAG_EXTRA_CIVILIAN               = 2;
+SET @CREATURE_FLAG_EXTRA_NO_PARRY               = 4;
+SET @CREATURE_FLAG_EXTRA_NO_PARRY_HASTEN        = 8;
+SET @CREATURE_FLAG_EXTRA_NO_BLOCK               = 16;
+SET @CREATURE_FLAG_EXTRA_NO_CRUSH               = 32;
+SET @CREATURE_FLAG_EXTRA_NO_XP_AT_KILL          = 64;
+SET @CREATURE_FLAG_EXTRA_INVISIBLE              = 128;
+SET @CREATURE_FLAG_EXTRA_NOT_TAUNTABLE          = 256;
+SET @CREATURE_FLAG_EXTRA_AGGRO_ZONE             = 512;
+SET @CREATURE_FLAG_EXTRA_GUARD                  = 1024;
+SET @CREATURE_FLAG_EXTRA_NO_TALKTO_CREDIT       = 2048;
+
+-- Damage schools
+SET @DMG_PHYSICAL                               = 0;
+SET @DMG_HOLY                                   = 1;
+SET @DMG_FIRE                                   = 2;
+SET @DMG_NATURE                                 = 3;
+SET @DMG_FROST                                  = 4;
+SET @DMG_SHADOW                                 = 5;
+SET @DMG_ARCANE                                 = 6;
 
 -- Provide variables for gender
 SET @MODEL_GENDER_MALE                          = 0;
@@ -199,19 +208,24 @@ SET @MODEL_GENDER_FEMALE                        = 1;
 SET @MODEL_GENDER_NONE                          = 2;
 
 -- Insert model information for creatures
-INSERT INTO `creature_model_info` VALUES
-    (262,   1,      1,   @MODEL_GENDER_NONE, 0, 0),
-    (5233,  0.5,    1.5, @MODEL_GENDER_NONE, 0, 0),
-    (7029,  1.806,  4,   @MODEL_GENDER_NONE, 0, 0),
-    (10045, 1,      1.5, @MODEL_GENDER_NONE, 0, 0);
+INSERT INTO `creature_model_info`
+    (`modelid`, `bounding_radius`, `combat_reach`, `gender`,           `modelid_other_gender`, `modelid_other_team`)
+VALUES
+     (262,       1,                 1,              @MODEL_GENDER_NONE, 0,                      0)
+    ,(5233,      0.5,               1.5,            @MODEL_GENDER_NONE, 0,                      0)
+    ,(7029,      1.806,             4,              @MODEL_GENDER_NONE, 0,                      0)
+    ,(10045,     1,                 1.5,            @MODEL_GENDER_NONE, 0,                      0)
+;
 
 -- Insert basic creatures
 INSERT INTO `creature_template`
-    (`entry`,   `modelid_1`,    `name`,                 `subname`,   `faction_A`, `faction_H`, `rank`, `minlevel`, `maxlevel`, `minhealth`, `maxhealth`, `minmana`, `maxmana`, `dmgschool`, `attackpower`, `baseattacktime`, `mindmg`, `maxdmg`, `minrangedmg`, `maxrangedmg`, `rangeattacktime`, `rangedattackpower`, `speed_walk`, `speed_run`, `MovementType`, `InhabitType`, `AIName`, `ScriptName`) VALUES
-    (1,         10045,          'Waypoint',             'GM Visual', 35,          35,          3,      63,         63,         9999,        9999,        0,         0,         0,           3,              2000,            7,        7,        1.76,          2.42,           2200,             100,                  0.91,        1.14286,     0,              7,             NULL,      NULL),
-    (2,         262,            'Spawnpoint',           'GM Visual', 35,          35,          3,      63,         63,         9999,        9999,        0,         0,         0,           3,              2000,            7,        7,        1.76,          2.42,           2200,             100,                  0.91,        1.14286,     0,              7,             NULL,      NULL),
-    (5764,      7029,           'Guardian of Blizzard', NULL,        44,          44,          3,      63,         63,         8832,        8832,        0,         0,         0,           265,            1020,            520,      628,      88.8624,       122.186,        1122,             100,                  1.3,         1.14286,     1,              1,             NULL,      'npc_guardian'),
-    (6491,      5233,           'Spirit Healer',        NULL,        35,          35,          0,      60,         60,         7680,        7680,        0,         0,         0,           87,             2000,            164,      212,      74.448,        102.366,        0,                100,                  1,           1,           0,              1,             NULL,      NULL);
+    (`entry`,   `modelid_1`,    `name`,                 `subname`,   `faction_A`, `faction_H`, `rank`, `minlevel`, `maxlevel`, `minhealth`, `maxhealth`, `minmana`, `maxmana`, `dmgschool`, `attackpower`, `baseattacktime`, `mindmg`, `maxdmg`, `minrangedmg`, `maxrangedmg`, `rangeattacktime`, `rangedattackpower`, `speed_walk`, `speed_run`, `MovementType`, `InhabitType`, `AIName`, `ScriptName`)
+VALUES
+     (1,         10045,          'Waypoint',             'GM Visual', 35,          35,          3,      63,         63,         9999,        9999,        0,         0,         0,           3,              2000,            7,        7,        1.76,          2.42,           2200,             100,                  0.91,        1.14286,     0,              7,             NULL,      NULL)
+    ,(2,         262,            'Spawnpoint',           'GM Visual', 35,          35,          3,      63,         63,         9999,        9999,        0,         0,         0,           3,              2000,            7,        7,        1.76,          2.42,           2200,             100,                  0.91,        1.14286,     0,              7,             NULL,      NULL)
+    ,(5764,      7029,           'Guardian of Blizzard', NULL,        90,          90,          3,      63,         63,         8832,        8832,        0,         0,         0,           265,            1020,            520,      628,      88.8624,       122.186,        1122,             100,                  1.3,         1.14286,     1,              3,             NULL,      NULL)
+    ,(6491,      5233,           'Spirit Healer',        NULL,        35,          35,          0,      60,         60,         7680,        7680,        0,         0,         0,           87,             2000,            164,      212,      74.448,        102.366,        0,                100,                  1,           1,           0,              1,             NULL,      NULL)
+;
 
 -- Modify creature templates with matching flags
 -- Modify creature #1
@@ -251,7 +265,7 @@ UPDATE `creature_template`
 SET
     `npcflag`               = @CREATURE_FLAG_NPC_NONE,
     `dynamicflags`          = @CREATURE_FLAG_DYN_NONE,
-    `unit_class`            = @CREATURE_CLASS_NONE,
+    `unit_class`            = @CREATURE_CLASS_WARRIOR,
     `unit_flags`            = 0,
     `flags_extra`           = @CREATURE_FLAG_EXTRA_NONE,
     `type`                  = @CREATURE_TYPE_DEMON,
@@ -277,6 +291,13 @@ SET
     `family`                = @CREATURE_BEAST_FAMILY_NONE
 WHERE
     `entry`                 = 6491;
+
+-- Insert template spells for creature #5764
+INSERT INTO `creature_template_spells`
+    (`entry`, `spell1`)
+VALUES
+     (5764, 5)
+;
 
 -- Insert template addon for creature #6491 (Spirit Healer)
 INSERT INTO `creature_template_addon` VALUES
