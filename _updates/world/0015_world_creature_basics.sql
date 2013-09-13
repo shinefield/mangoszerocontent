@@ -207,7 +207,7 @@ SET @MODEL_GENDER_MALE                          = 0;
 SET @MODEL_GENDER_FEMALE                        = 1;
 SET @MODEL_GENDER_NONE                          = 2;
 
--- Insert model information for creatures
+-- Insert model information for creatures ------------------------------------
 INSERT INTO `creature_model_info`
     (`modelid`, `bounding_radius`, `combat_reach`, `gender`,           `modelid_other_gender`, `modelid_other_team`)
 VALUES
@@ -217,17 +217,17 @@ VALUES
     ,(10045,     1,                 1.5,            @MODEL_GENDER_NONE, 0,                      0)
 ;
 
--- Insert basic creatures
+-- Insert basic creatures ----------------------------------------------------
 INSERT INTO `creature_template`
     (`entry`,   `modelid_1`,    `name`,                 `subname`,   `faction_A`, `faction_H`, `rank`, `minlevel`, `maxlevel`, `minhealth`, `maxhealth`, `minmana`, `maxmana`, `dmgschool`, `attackpower`, `baseattacktime`, `mindmg`, `maxdmg`, `minrangedmg`, `maxrangedmg`, `rangeattacktime`, `rangedattackpower`, `speed_walk`, `speed_run`, `MovementType`, `InhabitType`, `AIName`, `ScriptName`)
 VALUES
      (1,         10045,          'Waypoint',             'GM Visual', 35,          35,          3,      63,         63,         9999,        9999,        0,         0,         0,           3,              2000,            7,        7,        1.76,          2.42,           2200,             100,                  0.91,        1.14286,     0,              7,             NULL,      NULL)
     ,(2,         262,            'Spawnpoint',           'GM Visual', 35,          35,          3,      63,         63,         9999,        9999,        0,         0,         0,           3,              2000,            7,        7,        1.76,          2.42,           2200,             100,                  0.91,        1.14286,     0,              7,             NULL,      NULL)
-    ,(5764,      7029,           'Guardian of Blizzard', NULL,        90,          90,          3,      63,         63,         8832,        8832,        0,         0,         0,           265,            1020,            520,      628,      88.8624,       122.186,        1122,             100,                  1.3,         1.14286,     1,              3,             NULL,      NULL)
+    ,(5764,      7029,           'Guardian of Blizzard', NULL,        90,          90,          3,      63,         63,         8832,        8832,        0,         0,         0,           265,            1020,            520,      628,      88.8624,       122.186,        1122,             100,                  1.3,         1.14286,     1,              3,             'EventAI', NULL)
     ,(6491,      5233,           'Spirit Healer',        NULL,        35,          35,          0,      60,         60,         7680,        7680,        0,         0,         0,           87,             2000,            164,      212,      74.448,        102.366,        0,                100,                  1,           1,           0,              1,             NULL,      NULL)
 ;
 
--- Modify creature templates with matching flags
+-- Modify creature templates with matching flags -----------------------------
 -- Modify creature #1
 UPDATE `creature_template`
 SET
@@ -263,6 +263,7 @@ WHERE
 -- Modify creature #5764
 UPDATE `creature_template`
 SET
+    `scale`                 = 2.25,
     `npcflag`               = @CREATURE_FLAG_NPC_NONE,
     `dynamicflags`          = @CREATURE_FLAG_DYN_NONE,
     `unit_class`            = @CREATURE_CLASS_WARRIOR,
@@ -297,6 +298,21 @@ INSERT INTO `creature_template_spells`
     (`entry`, `spell1`)
 VALUES
      (5764, 5)
+;
+
+-- Insert AI text strings for creature #5764
+INSERT INTO `creature_ai_texts`
+    (`entry`, `content_default`, `type`, `comment`)
+VALUES
+     (-5764, '$N! THIS AREA IS OFF LIMITS!', 1, 'Guardian of Blizzard - Yell at player')
+;
+
+-- Insert AI scripts for creature #5764
+INSERT INTO `creature_ai_scripts`
+    (`id`, `creature_id`, `event_type`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action1_type`, `action1_param1`, `comment`)
+VALUES
+     (576401, 5764, 4, 100, 2,    0,     0,     0,     0,  1, -5764, 'Guardian of Blizzard - Yell at character')
+    ,(576402, 5764, 0,  50, 1, 4000, 14100, 38000, 42000, 11,     5, 'Guardian of Blizzard - Cast Death Touch on character')
 ;
 
 -- Insert template addon for creature #6491 (Spirit Healer)
