@@ -1,16 +1,16 @@
 -- Host: localhost    Database: world
--- ------------------------------------------------------
+-- ---------------------------------------------------------------------------
 -- Add initial data to world database
 --
 -- We will add model information used to display player characters.
 --
 
--- Provide variables for gender
+-- Provide variables for gender ----------------------------------------------
 SET @MODEL_GENDER_MALE                          = 0;
 SET @MODEL_GENDER_FEMALE                        = 1;
 SET @MODEL_GENDER_NONE                          = 2;
 
--- Insert creature model information for player characters
+-- Insert creature model information for player characters -------------------
 INSERT INTO `creature_model_info`
     (`modelid`, `bounding_radius`, `combat_reach`, `gender`, `modelid_other_gender`, `modelid_other_team`)
 VALUES

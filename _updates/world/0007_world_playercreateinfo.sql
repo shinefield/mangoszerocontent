@@ -1,11 +1,11 @@
 -- Host: localhost    Database: world
--- ------------------------------------------------------
+-- ---------------------------------------------------------------------------
 -- Add initial data to world database
 --
 -- We will add player creation information.
 --
 
--- Provide variables for races, and classes
+-- Provide variables for races, and classes ----------------------------------
 SET @RACE_HUMAN                                 = 1;
 SET @RACE_ORC                                   = 2;
 SET @RACE_DWARF                                 = 3;
@@ -26,7 +26,7 @@ SET @CLASS_MAGE                                 = 8;
 SET @CLASS_WARLOCK                              = 9;
 SET @CLASS_DRUID                                = 11;
 
--- Insert creation information for player characters
+-- Insert creation information for player characters -------------------------
 INSERT INTO `playercreateinfo`
     (`race`, `class`, `map`, `zone`, `position_x`, `position_y`, `position_z`, `orientation`)
 VALUES

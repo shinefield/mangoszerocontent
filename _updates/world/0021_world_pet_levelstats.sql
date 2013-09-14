@@ -1,14 +1,16 @@
 -- Host: localhost    Database: world
--- ------------------------------------------------------
+-- ---------------------------------------------------------------------------
 -- Add character and game system data to world database
 --
 -- We will add pet level stats used by character usable
 -- summons.
 --
 
--- Insert pet level stats: these are creatures summoned by Warlocks
+-- Insert pet level stats: these are creatures summoned by Warlocks ----------
 -- Stats for creature #416: Imp
-INSERT INTO `pet_levelstats` VALUES
+INSERT INTO `pet_levelstats`
+    (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`)
+VALUES
     (416, 1, 140, 48, 20, 20, 5, 20, 24, 23),
     (416, 2, 149, 59, 20, 21, 5, 2, 25, 24),
     (416, 3, 158, 70, 20, 15, 5, 4, 26, 25),
@@ -71,7 +73,9 @@ INSERT INTO `pet_levelstats` VALUES
     (416, 60, 920, 1898, 1163, 122, 27, 128, 264, 197);
 
 -- Stats for creature #417: Felhunter
-INSERT INTO `pet_levelstats` VALUES
+INSERT INTO `pet_levelstats`
+    (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`)
+VALUES
     (417, 1, 60, 48, 144, 11, 17, 12, 11, 22),
     (417, 2, 73, 59, 168, 12, 18, 14, 13, 23),
     (417, 3, 87, 70, 191, 14, 19, 17, 15, 24),
@@ -134,7 +138,9 @@ INSERT INTO `pet_levelstats` VALUES
     (417, 60, 2529, 1874, 2938, 130, 87, 235, 106, 101);
 
 -- Stats for creature #1860: Voidwalker
-INSERT INTO `pet_levelstats` VALUES
+INSERT INTO `pet_levelstats`
+    (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`)
+VALUES
     (1860, 1, 40, 48, 20, 12, 14, 1, 1, 0),
     (1860, 2, 49, 59, 40, 14, 15, 2, 1, 0),
     (1860, 3, 58, 70, 60, 15, 16, 4, 1, 0),
@@ -197,7 +203,9 @@ INSERT INTO `pet_levelstats` VALUES
     (1860, 60, 3419, 1874, 4745, 129, 85, 249, 70, 150);
 
 -- Stats for creature #1863: Succubus
-INSERT INTO `pet_levelstats` VALUES
+INSERT INTO `pet_levelstats`
+    (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`)
+VALUES
     (1863, 1, 40, 48, 20, 12, 14, 1, 1, 25),
     (1863, 2, 49, 59, 40, 14, 15, 2, 1, 26),
     (1863, 3, 58, 70, 60, 15, 16, 4, 1, 27),

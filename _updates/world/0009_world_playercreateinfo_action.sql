@@ -1,11 +1,11 @@
 -- Host: localhost    Database: world
--- ------------------------------------------------------
+-- ---------------------------------------------------------------------------
 -- Add initial data to world database
 --
 -- We will add player information for default action buttons.
 --
 
--- Provide variables for races, and classes
+-- Provide variables for races, and classes ----------------------------------
 SET @RACE_HUMAN                                 = 1;
 SET @RACE_ORC                                   = 2;
 SET @RACE_DWARF                                 = 3;
@@ -14,7 +14,6 @@ SET @RACE_UNDEAD                                = 5;
 SET @RACE_TAUREN                                = 6;
 SET @RACE_GNOME                                 = 7;
 SET @RACE_TROLL                                 = 8;
-SET @RACE_GOBLIN                                = 9;
 
 SET @CLASS_WARRIOR                              = 1;
 SET @CLASS_PALADIN                              = 2;
@@ -26,12 +25,12 @@ SET @CLASS_MAGE                                 = 8;
 SET @CLASS_WARLOCK                              = 9;
 SET @CLASS_DRUID                                = 11;
 
--- Provide variables for actions, and buttons
+-- Provide variables for actions, and buttons --------------------------------
 SET @ACTION_TYPE_SPELL                          = 0;
 SET @ACTION_TYPE_MACRO                          = 64;
 SET @ACTION_TYPE_ITEM                           = 128;
 
--- Provide variables for items
+-- Provide variables for items -----------------------------------------------
 SET @ITEM_TOUGH_JERKY                           = 117;
 SET @ITEM_REFRESHING_SPRING_WATER               = 159;
 SET @ITEM_DARNASSIAN_BLEU                       = 2070;
@@ -39,7 +38,7 @@ SET @ITEM_SHINY_RED_APPLE                       = 4536;
 SET @ITEM_TOUGH_HUNK_OF_BREAD                   = 4540;
 SET @ITEM_FOREST_MUSHROOM_CAP                   = 4604;
 
--- Provide variables for spells
+-- Provide variables for spells ----------------------------------------------
 SET @SPELL_AUTO_SHOT                            = 75;
 SET @SPELL_HEROIC_STRIKE                        = 78;
 SET @SPELL_FIREBALL                             = 133;
@@ -60,18 +59,18 @@ SET @SPELL_HEALING_TOUCH                        = 5185;
 SET @SPELL_ATTACK                               = 6603;
 SET @SPELL_SEAL_OF_RIGHTEOUSNESS                = 21084;
 
--- Provide variables for active racial spells
-SET @SPELL_FIND_TREASURE                        = 2481;  -- Dwarf racial
-SET @SPELL_STONEFORM                            = 20594; -- Dwarf racial
-SET @SPELL_WAR_STOMP                            = 20549; -- Tauren racial
-SET @SPELL_BLOOD_FURY                           = 20572; -- Orc racial
-SET @SPELL_CANNIBALIZE                          = 20577; -- Undead racial
-SET @SPELL_SHADOWMELD                           = 20580; -- Night Elf racial
-SET @SPELL_BERSERKING_MANA                      = 20554; -- Troll racial
-SET @SPELL_BERSERKING_RAGE                      = 26296; -- Troll racial
-SET @SPELL_BERSERKING_ENERGY                    = 26297; -- Troll racial
+-- Provide variables for active racial spells --------------------------------
+SET @SPELL_FIND_TREASURE                        = 2481;  -- Racial: Dwarf
+SET @SPELL_STONEFORM                            = 20594; -- Racial: Dwarf
+SET @SPELL_WAR_STOMP                            = 20549; -- Racial: Tauren
+SET @SPELL_BLOOD_FURY                           = 20572; -- Racial: Orc
+SET @SPELL_CANNIBALIZE                          = 20577; -- Racial: Undead
+SET @SPELL_SHADOWMELD                           = 20580; -- Racial: Night Elf
+SET @SPELL_BERSERKING_MANA                      = 20554; -- Racial: Troll
+SET @SPELL_BERSERKING_RAGE                      = 26296; -- Racial: Troll
+SET @SPELL_BERSERKING_ENERGY                    = 26297; -- Racial: Troll
 
--- Insert information for player characters and their default action buttons
+-- Insert default action buttons for characters ------------------------------
 INSERT INTO `playercreateinfo_action`
     (`race`, `class`, `button`, `action`, `type`)
 VALUES

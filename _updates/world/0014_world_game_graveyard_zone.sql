@@ -1,17 +1,17 @@
 -- Host: localhost    Database: world
--- ------------------------------------------------------
+-- ---------------------------------------------------------------------------
 -- Add initial data to world database
 --
 -- We will add graveyard data for determining where dead players should
 -- be transported upon death.
 --
 
--- Provide variables for graveyard faction
+-- Provide variables for graveyard faction -----------------------------------
 SET @FACTION_ANY                                = 0;
 SET @FACTION_ALLIANCE                           = 469;
 SET @FACTION_HORDE                              = 67;
 
--- Provide variables for zones
+-- Provide variables for zones -----------------------------------------------
 SET @ZONE_DUN_MOROGH                            = 1;
 SET @ZONE_BADLANDS                              = 3;
 SET @ZONE_BLASTED_LANDS                         = 4;
@@ -93,7 +93,7 @@ SET @ZONE_AHNQIRAJ                              = 3428;
 SET @ZONE_NAXXRAMAS                             = 3456;
 SET @ZONE_GATES_OF_AHNQIRAJ                     = 3478;
 
--- Insert graveyard data for each zone
+-- Insert graveyard data for each zone ---------------------------------------
 INSERT INTO `game_graveyard_zone`
     (`id`, `ghost_zone`, `faction`)
 VALUES

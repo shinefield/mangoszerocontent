@@ -1,14 +1,11 @@
 -- Host: localhost    Database: world
--- ------------------------------------------------------
+-- ---------------------------------------------------------------------------
 -- Add initial data to world database
 --
 -- We will add player information for stat increases upon leveling.
 --
 
--- Select world database
-USE `zp_world`;
-
--- Provide variables for classes
+-- Provide variables for classes ---------------------------------------------
 SET @CLASS_WARRIOR                              = 1;
 SET @CLASS_PALADIN                              = 2;
 SET @CLASS_HUNTER                               = 3;
@@ -19,7 +16,7 @@ SET @CLASS_MAGE                                 = 8;
 SET @CLASS_WARLOCK                              = 9;
 SET @CLASS_DRUID                                = 11;
 
--- Insert creation information for player character stat increases upon leveling
+-- Insert class based leveling stat changes ----------------------------------
 INSERT INTO `player_classlevelstats`
     (`class`,`level`,`basehp`,`basemana`)
 VALUES

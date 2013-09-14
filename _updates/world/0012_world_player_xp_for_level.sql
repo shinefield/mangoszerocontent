@@ -1,11 +1,11 @@
 -- Host: localhost    Database: world
--- ------------------------------------------------------
+-- ---------------------------------------------------------------------------
 -- Add initial data to world database
 --
 -- We will add player information for experience gains
 --
 
--- Insert information for player character experience gain
+-- Insert information for player character experience gain -------------------
 INSERT INTO `player_xp_for_level`
     (`lvl`, `xp_for_next_level`)
 VALUES
