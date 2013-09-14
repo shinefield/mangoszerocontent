@@ -307,31 +307,27 @@ VALUES
 UPDATE `item_template`
 SET
     `InventoryType` = @INVTYPE_NON_EQUIP,
-    `BuyCount` = 1, `BuyPrice` = 10, `SellPrice` = 2, `stackable` = 10
+    `BuyPrice` = 10, `SellPrice` = 2, `stackable` = 10
 WHERE `entry` = 8164;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_NON_EQUIP, `PageMaterial` = @PAGEMAT_PARCHMENT,
-    `BuyCount` = 1, `BuyPrice` = 0, `SellPrice` = 0, `stackable` = 1
+    `InventoryType` = @INVTYPE_NON_EQUIP, `PageMaterial` = @PAGEMAT_PARCHMENT
 WHERE `entry` = 9311;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_NON_EQUIP,
-    `BuyCount` = 1, `BuyPrice` = 0, `SellPrice` = 0, `stackable` = 1
+    `InventoryType` = @INVTYPE_NON_EQUIP
 WHERE `entry` = 18154;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_NON_EQUIP,
-    `BuyCount` = 1, `BuyPrice` = 0, `SellPrice` = 0, `stackable` = 1
+    `InventoryType` = @INVTYPE_NON_EQUIP
 WHERE `entry` = 21140;
 
 UPDATE `item_template`
 SET
-    `InventoryType` = @INVTYPE_NON_EQUIP, `PageMaterial` = @PAGEMAT_VALENTINE,
-    `BuyCount` = 1, `BuyPrice` = 0, `SellPrice` = 0, `stackable` = 1
+    `InventoryType` = @INVTYPE_NON_EQUIP, `PageMaterial` = @PAGEMAT_VALENTINE
 WHERE `entry` = 22058;
 
 -- Adjust item properties for start outfits ----------------------------------
