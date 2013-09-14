@@ -159,6 +159,14 @@ SET @MATERIAL_PLATE                             = 6;
 SET @MATERIAL_CLOTH                             = 7;
 SET @MATERIAL_LEATHER                           = 8;
 
+-- -> Page materials ---------------------------------------------------------
+SET @PAGEMAT_PARCHMENT                          = 1;
+SET @PAGEMAT_STONE                              = 2;
+SET @PAGEMAT_MARBLE                             = 3;
+SET @PAGEMAT_SILVER                             = 4;
+SET @PAGEMAT_BRONZE                             = 5;
+SET @PAGEMAT_VALENTINE                          = 6;
+
 -- -> Damage schools ---------------------------------------------------------
 SET @DMG_PHYSICAL                               = 0;
 SET @DMG_HOLY                                   = 1;
@@ -283,6 +291,48 @@ VALUES
     ,(6948,  @ITEM_CLASS_MISCELLANEOUS, @ITEM_SUBCLASS_MISCELLANEOUS_JUNK,      @ITEM_QUALITY_COMMON,    6418,  "Hearthstone")
     ,(12282, @ITEM_CLASS_WEAPON,        @ITEM_SUBCLASS_WEAPON_AXE_2H,           @ITEM_QUALITY_COMMON,   22291,  "Worn Battleaxe")
 ;
+
+-- Insert item templates for mailbox stationeries ----------------------------
+INSERT INTO `item_template`
+    (`entry`, `class`, `subclass`, `Quality`, `displayid`, `name`)
+VALUES
+     (8164,  @ITEM_CLASS_CONSUMABLE,    @ITEM_SUBCLASS_CONSUMABLE_CONSUMABLE,   @ITEM_QUALITY_COMMON,    1069,  "Test Stationery")
+    ,(9311,  @ITEM_CLASS_CONSUMABLE,    @ITEM_SUBCLASS_CONSUMABLE_CONSUMABLE,   @ITEM_QUALITY_COMMON,    7798,  "Default Stationery")
+    ,(18154, @ITEM_CLASS_CONSUMABLE,    @ITEM_SUBCLASS_CONSUMABLE_CONSUMABLE,   @ITEM_QUALITY_COMMON,   30658,  "Blizzard Stationery")
+    ,(21140, @ITEM_CLASS_CONSUMABLE,    @ITEM_SUBCLASS_CONSUMABLE_CONSUMABLE,   @ITEM_QUALITY_COMMON,    1102,  "Auction Stationery")
+    ,(22058, @ITEM_CLASS_CONSUMABLE,    @ITEM_SUBCLASS_CONSUMABLE_CONSUMABLE,   @ITEM_QUALITY_COMMON,   34508,  "Valentine's Day Stationery")
+;
+
+-- Adjust item properties for mailbox stationeries ---------------------------
+UPDATE `item_template`
+SET
+    `InventoryType` = @INVTYPE_NON_EQUIP,
+    `BuyCount` = 1, `BuyPrice` = 10, `SellPrice` = 2, `stackable` = 10
+WHERE `entry` = 8164;
+
+UPDATE `item_template`
+SET
+    `InventoryType` = @INVTYPE_NON_EQUIP, `PageMaterial` = @PAGEMAT_PARCHMENT,
+    `BuyCount` = 1, `BuyPrice` = 0, `SellPrice` = 0, `stackable` = 1
+WHERE `entry` = 9311;
+
+UPDATE `item_template`
+SET
+    `InventoryType` = @INVTYPE_NON_EQUIP,
+    `BuyCount` = 1, `BuyPrice` = 0, `SellPrice` = 0, `stackable` = 1
+WHERE `entry` = 18154;
+
+UPDATE `item_template`
+SET
+    `InventoryType` = @INVTYPE_NON_EQUIP,
+    `BuyCount` = 1, `BuyPrice` = 0, `SellPrice` = 0, `stackable` = 1
+WHERE `entry` = 21140;
+
+UPDATE `item_template`
+SET
+    `InventoryType` = @INVTYPE_NON_EQUIP, `PageMaterial` = @PAGEMAT_VALENTINE,
+    `BuyCount` = 1, `BuyPrice` = 0, `SellPrice` = 0, `stackable` = 1
+WHERE `entry` = 22058;
 
 -- Adjust item properties for start outfits ----------------------------------
 UPDATE `item_template`
