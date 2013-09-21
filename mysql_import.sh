@@ -6,18 +6,19 @@
 # After importing the structure, it will gradually load databases contents to
 # populate your databases with the latest available releases.
 
+# - Prepare required variables -----------------------------------------------
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+TMP_FOLDER=${TMPDIR-/tmp}
+
 # - Include settings ---------------------------------------------------------
 if [[ ! -r "mysql_info.sh" ]]; then
     echo "Could not open database configuration." >&2
     echo "Copy mysql_info.sh.template to mysql_info.sh and adapt it to your needs." >&2
     exit 2
 else
-    . "mysql_info.sh"
+    . "${DIR}/mysql_info.sh"
 fi
 
-# - Prepare required variables -----------------------------------------------
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-TMP_FOLDER=${TMPDIR-/tmp}
 # ----------------------------------------------------------------------------
 
 function import ()

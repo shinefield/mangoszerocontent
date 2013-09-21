@@ -215,81 +215,584 @@ VALUES
     ,(5233,      0.5,               1.5,            @MODEL_GENDER_NONE, 0,                      0)
     ,(7029,      1.806,             4,              @MODEL_GENDER_NONE, 0,                      0)
     ,(10045,     1,                 1.5,            @MODEL_GENDER_NONE, 0,                      0)
+    -- Insert model information: these are creatures used by game systems --------
+    ,(1566,      0,                 0,              @MODEL_GENDER_NONE, 0,                      0)
+    ,(1825,      2,                 2.56,           @MODEL_GENDER_NONE, 0,                      0)
+    ,(1936,      0,                 0,              @MODEL_GENDER_NONE, 0,                      0)
+    ,(6851,      0,                 0,              @MODEL_GENDER_NONE, 0,                      0)
+    ,(6852,      0,                 0,              @MODEL_GENDER_NONE, 0,                      0)
+    -- Insert model information: these are creatures summoned by Warlocks --------
+    ,(169,       0.903,             2,              @MODEL_GENDER_NONE, 0,                      0)
+    ,(850,       0.2429,            1.05,           @MODEL_GENDER_NONE, 0,                      0)
+    ,(1132,      0.8,               2,              @MODEL_GENDER_NONE, 0,                      0)
+    ,(1912,      0.9168,            1.8,            @MODEL_GENDER_NONE, 0,                      0)
+    ,(2421,      1,                 1,              @MODEL_GENDER_NONE, 0,                      0)
+    ,(4162,      0.403,             1.5,            @MODEL_GENDER_NONE, 0,                      0)
+    ,(4449,      0.5,               0.75,           @MODEL_GENDER_NONE, 0,                      0)
+    -- Insert model information: these are forms assumed by Druids ---------------
+    ,(892,       0.315,             1.35,           @MODEL_GENDER_NONE, 0,                      0)
+    ,(918,       0,                 0,              @MODEL_GENDER_NONE, 0,                      0)
+    ,(1058,      0.91425,           1.725,          @MODEL_GENDER_NONE, 0,                      0)
+    ,(2281,      0.35,              1,              @MODEL_GENDER_NONE, 0,                      0)
+    ,(2289,      0.408,             1.2,            @MODEL_GENDER_NONE, 0,                      0)
+    ,(2428,      0,                 0,              @MODEL_GENDER_NONE, 0,                      0)
+    ,(15374,     2,                 1,              @MODEL_GENDER_NONE, 0,                      0)
+    ,(15375,     0,                 0,              @MODEL_GENDER_NONE, 0,                      0)
 ;
 
--- Insert basic creatures ----------------------------------------------------
 INSERT INTO `creature_template`
-    (`entry`,   `modelid_1`,    `name`,                 `subname`,   `faction_A`, `faction_H`, `rank`, `minlevel`, `maxlevel`, `minhealth`, `maxhealth`, `minmana`, `maxmana`, `dmgschool`, `attackpower`, `baseattacktime`, `mindmg`, `maxdmg`, `minrangedmg`, `maxrangedmg`, `rangeattacktime`, `rangedattackpower`, `speed_walk`, `speed_run`, `MovementType`, `InhabitType`, `AIName`, `ScriptName`)
+    (`entry`, `modelid_1`, `name`,                          `subname`)
 VALUES
-     (1,         10045,          'Waypoint',             'GM Visual', 35,          35,          3,      63,         63,         9999,        9999,        0,         0,         0,           3,              2000,            7,        7,        1.76,          2.42,           2200,             100,                  0.91,        1.14286,     0,              7,             NULL,      NULL)
-    ,(2,         262,            'Spawnpoint',           'GM Visual', 35,          35,          3,      63,         63,         9999,        9999,        0,         0,         0,           3,              2000,            7,        7,        1.76,          2.42,           2200,             100,                  0.91,        1.14286,     0,              7,             NULL,      NULL)
-    ,(5764,      7029,           'Guardian of Blizzard', NULL,        90,          90,          3,      63,         63,         8832,        8832,        0,         0,         0,           265,            1020,            520,      628,      88.8624,       122.186,        1122,             100,                  1.3,         1.14286,     1,              3,             'EventAI', NULL)
-    ,(6491,      5233,           'Spirit Healer',        NULL,        35,          35,          0,      60,         60,         7680,        7680,        0,         0,         0,           87,             2000,            164,      212,      74.448,        102.366,        0,                100,                  1,           1,           0,              1,             NULL,      NULL)
+     (1,       10045,      'Waypoint',                      'GM Visual')
+    ,(2,       262,        'Spawnpoint',                    'GM Visual')
+    ,(89,      169,        'Infernal',                      NULL)
+    ,(416,     4449,       'Imp',                           NULL)
+    ,(417,     850,        'Felhunter',                     NULL)
+    ,(541,     6852,       'Riding Gryphon',                NULL)
+    ,(1860,    1132,       'Voidwalker',                    NULL)
+    ,(1863,    4162,       'Succubus',                      NULL)
+    ,(2224,    6851,       'Wind Rider',                    NULL)
+    ,(3574,    1566,       'Riding Bat',                    NULL)
+    ,(3837,    1936,       'Riding Hippogryph',             NULL)
+    ,(4253,    2281,       'Bear Form',                     'Night Elf Druid')
+    ,(4261,    2289,       'Bear Form',                     'Tauren Druid')
+    ,(4277,    2421,       'Eye of Kilrogg',                NULL)
+    ,(4408,    2428,       'Aquatic Form',                  'Night Elf Druid')
+    ,(4410,    2428,       'Aquatic Form',                  'Tauren Druid')
+    ,(5764,    7029,       'Guardian of Blizzard',          NULL)
+    ,(6491,    5233,       'Spirit Healer',                 NULL)
+    ,(6571,    892,        'Cat Form',                      'Night Elf Druid')
+    ,(6572,    1058,       'Cat Form',                      'Tauren Druid')
+    ,(6573,    918,        'Travel Form',                   'Druid')
+    ,(12861,   1825,       'Wisp',                          'Ghost Visual')
+    ,(15313,   15374,      'Moonkin',                       'Night Elf Druid')
+    ,(15314,   15375,      'Moonkin',                       'Tauren Druid')
 ;
 
 -- Modify creature templates with matching flags -----------------------------
 UPDATE `creature_template`
 SET
-    `npcflag`               = @CREATURE_FLAG_NPC_NONE,
-    `dynamicflags`          = @CREATURE_FLAG_DYN_NONE,
-    `unit_class`            = @CREATURE_CLASS_NONE,
-    `unit_flags`            = 4096,
-    `flags_extra`           = @CREATURE_FLAG_EXTRA_CIVILIAN | @CREATURE_FLAG_EXTRA_INVISIBLE,
-    `type`                  = @CREATURE_TYPE_CRITTER,
-    `type_flags`            = 5242886,
-    `mechanic_immune_mask`  = @CREATURE_IMMUNITY_NONE,
-    `RegenHealth`           = 1,
-    `family`                = @CREATURE_BEAST_FAMILY_NONE
-WHERE `entry`                 = 1;
+    `faction_A`            = 35,
+    `faction_H`            = 35,
+    `rank`                 = 3,
+    `minlevel`             = 63,
+    `maxlevel`             = 63,
+    `minhealth`            = 9999,
+    `maxhealth`            = 9999,
+    `attackpower`          = 3,
+    `baseattacktime`       = 2000,
+    `mindmg`               = 7,
+    `maxdmg`               = 7,
+    `minrangedmg`          = 1.76,
+    `maxrangedmg`          = 2.42,
+    `rangeattacktime`      = 2200,
+    `rangedattackpower`    = 100,
+    `speed_walk`           = 0.91,
+    `InhabitType`          = 7,
+    `unit_flags`           = 4096,
+    `flags_extra`          = 130,
+    `type`                 = 8,
+    `type_flags`           = 5242886,
+    `family`               = 8
+WHERE `entry` = 1;
 
 UPDATE `creature_template`
 SET
-    `npcflag`               = @CREATURE_FLAG_NPC_NONE,
-    `dynamicflags`          = @CREATURE_FLAG_DYN_NONE,
-    `unit_class`            = @CREATURE_CLASS_NONE,
-    `unit_flags`            = 4096,
-    `flags_extra`           = @CREATURE_FLAG_EXTRA_CIVILIAN | @CREATURE_FLAG_EXTRA_INVISIBLE,
-    `type`                  = @CREATURE_TYPE_CRITTER,
-    `type_flags`            = 5242886,
-    `mechanic_immune_mask`  = @CREATURE_IMMUNITY_NONE,
-    `RegenHealth`           = 1,
-    `family`                = @CREATURE_BEAST_FAMILY_NONE
-WHERE `entry`                 = 2;
+    `faction_A`            = 35,
+    `faction_H`            = 35,
+    `rank`                 = 3,
+    `minlevel`             = 63,
+    `maxlevel`             = 63,
+    `minhealth`            = 9999,
+    `maxhealth`            = 9999,
+    `attackpower`          = 5,
+    `baseattacktime`       = 1800,
+    `mindmg`               = 11,
+    `maxdmg`               = 11,
+    `minrangedmg`          = 387.6,
+    `maxrangedmg`          = 532.95,
+    `rangeattacktime`      = 1900,
+    `rangedattackpower`    = 100,
+    `speed_walk`           = 0,
+    `type`                 = 1
+WHERE `entry` = 2;
 
 UPDATE `creature_template`
 SET
-    `scale`                 = 2.25,
-    `npcflag`               = @CREATURE_FLAG_NPC_NONE,
-    `dynamicflags`          = @CREATURE_FLAG_DYN_NONE,
-    `unit_class`            = @CREATURE_CLASS_WARRIOR,
-    `unit_flags`            = 0,
-    `flags_extra`           = @CREATURE_FLAG_EXTRA_NONE,
-    `type`                  = @CREATURE_TYPE_DEMON,
-    `type_flags`            = @CREATURE_TYPE_FLAG_NONE,
-    `mechanic_immune_mask`  = @CREATURE_IMMUNITY_NONE,
-    `RegenHealth`           = 1,
-    `family`                = @CREATURE_BEAST_FAMILY_NONE
-WHERE `entry`                 = 5764;
+    `faction_A`            = 954,
+    `faction_H`            = 954,
+    `minlevel`             = 50,
+    `maxlevel`             = 50,
+    `minhealth`            = 3517,
+    `maxhealth`            = 3517,
+    `minmana`              = 3460,
+    `maxmana`              = 3460,
+    `attackpower`          = 93,
+    `baseattacktime`       = 1510,
+    `mindmg`               = 183,
+    `maxdmg`               = 220,
+    `minrangedmg`          = 66.44,
+    `maxrangedmg`          = 91.355,
+    `rangeattacktime`      = 1661,
+    `rangedattackpower`    = 100,
+    `speed_walk`           = 1.4,
+    `type`                 = 3
+WHERE `entry` = 89;
 
 UPDATE `creature_template`
 SET
-    `npcflag`               = @CREATURE_FLAG_NPC_GOSSIP | @CREATURE_FLAG_NPC_SPIRITHEALER,
-    `dynamicflags`          = @CREATURE_FLAG_DYN_NONE,
-    `unit_class`            = @CREATURE_CLASS_WARRIOR,
-    `unit_flags`            = 768,
-    `flags_extra`           = @CREATURE_FLAG_EXTRA_CIVILIAN,
-    `type`                  = @CREATURE_TYPE_HUMANOID,
-    `type_flags`            = @CREATURE_TYPE_FLAG_NOT_ATTACKABLE,
-    `mechanic_immune_mask`  = @CREATURE_IMMUNITY_NONE,
-    `RegenHealth`           = 1,
-    `family`                = @CREATURE_BEAST_FAMILY_NONE
-WHERE `entry`                 = 6491;
+    `faction_A`            = 14,
+    `faction_H`            = 14,
+    `minlevel`             = 5,
+    `maxlevel`             = 5,
+    `minhealth`            = 166,
+    `maxhealth`            = 166,
+    `minmana`              = 85,
+    `maxmana`              = 85,
+    `attackpower`          = 3,
+    `baseattacktime`       = 2000,
+    `mindmg`               = 6,
+    `maxdmg`               = 8,
+    `minrangedmg`          = 8.624,
+    `maxrangedmg`          = 11.858,
+    `rangedattackpower`    = 100,
+    `type`                 = 3,
+    `family`               = 23
+WHERE `entry` = 416;
+
+UPDATE `creature_template`
+SET
+    `faction_A`            = 115,
+    `faction_H`            = 115,
+    `minlevel`             = 60,
+    `maxlevel`             = 60,
+    `minhealth`            = 3857,
+    `maxhealth`            = 3857,
+    `minmana`              = 1666,
+    `maxmana`              = 3195,
+    `attackpower`          = 58,
+    `baseattacktime`       = 2000,
+    `mindmg`               = 110,
+    `maxdmg`               = 142,
+    `minrangedmg`          = 74.448,
+    `maxrangedmg`          = 102.366,
+    `rangedattackpower`    = 100,
+    `InhabitType`          = 1,
+    `type`                 = 3,
+    `family`               = 15
+WHERE `entry` = 417;
+
+UPDATE `creature_template`
+SET
+    `faction_A`            = 35,
+    `faction_H`            = 35,
+    `minlevel`             = 29,
+    `maxlevel`             = 29,
+    `minhealth`            = 1528,
+    `maxhealth`            = 1528,
+    `minmana`              = 1126,
+    `maxmana`              = 1126,
+    `attackpower`          = 4,
+    `baseattacktime`       = 1720,
+    `mindmg`               = 9,
+    `maxdmg`               = 10,
+    `minrangedmg`          = 43.8944,
+    `maxrangedmg`          = 60.3548,
+    `rangeattacktime`      = 1892,
+    `rangedattackpower`    = 100,
+    `flags_extra`          = 2,
+    `type`                 = 1
+WHERE `entry` = 541;
+
+UPDATE `creature_template`
+SET
+    `faction_A`            = 14,
+    `faction_H`            = 14,
+    `minlevel`             = 17,
+    `maxlevel`             = 17,
+    `minhealth`            = 548,
+    `maxhealth`            = 548,
+    `minmana`              = 300,
+    `maxmana`              = 300,
+    `attackpower`          = 8,
+    `baseattacktime`       = 2000,
+    `mindmg`               = 15,
+    `maxdmg`               = 19,
+    `minrangedmg`          = 23.0384,
+    `maxrangedmg`          = 31.6778,
+    `rangedattackpower`    = 100,
+    `speed_walk`           = 1.1,
+    `InhabitType`          = 1,
+    `type`                 = 3,
+    `family`               = 16
+WHERE `entry` = 1860;
+
+UPDATE `creature_template`
+SET
+    `faction_A`            = 14,
+    `faction_H`            = 14,
+    `minlevel`             = 20,
+    `maxlevel`             = 20,
+    `minhealth`            = 919,
+    `maxhealth`            = 919,
+    `minmana`              = 436,
+    `maxmana`              = 436,
+    `attackpower`          = 13,
+    `baseattacktime`       = 2000,
+    `mindmg`               = 24,
+    `maxdmg`               = 31,
+    `minrangedmg`          = 31.856,
+    `maxrangedmg`          = 43.802,
+    `rangedattackpower`    = 100,
+    `speed_walk`           = 1.1,
+    `InhabitType`          = 1,
+    `type`                 = 3,
+    `family`               = 17
+WHERE `entry` = 1863;
+
+UPDATE `creature_template`
+SET
+    `faction_A`            = 35,
+    `faction_H`            = 35,
+    `minlevel`             = 29,
+    `maxlevel`             = 29,
+    `minhealth`            = 1528,
+    `maxhealth`            = 1528,
+    `minmana`              = 1126,
+    `maxmana`              = 1126,
+    `attackpower`          = 4,
+    `baseattacktime`       = 1720,
+    `mindmg`               = 9,
+    `maxdmg`               = 10,
+    `minrangedmg`          = 43.8944,
+    `maxrangedmg`          = 60.3548,
+    `rangeattacktime`      = 1892,
+    `rangedattackpower`    = 100,
+    `flags_extra`          = 2,
+    `type`                 = 1
+WHERE `entry` = 2224;
+
+UPDATE `creature_template`
+SET
+    `faction_A`            = 35,
+    `faction_H`            = 35,
+    `minlevel`             = 29,
+    `maxlevel`             = 29,
+    `minhealth`            = 1528,
+    `maxhealth`            = 1528,
+    `minmana`              = 1126,
+    `maxmana`              = 1126,
+    `attackpower`          = 4,
+    `baseattacktime`       = 1720,
+    `mindmg`               = 9,
+    `maxdmg`               = 10,
+    `minrangedmg`          = 43.8944,
+    `maxrangedmg`          = 60.3548,
+    `rangeattacktime`      = 1892,
+    `rangedattackpower`    = 100,
+    `flags_extra`          = 2,
+    `type`                 = 1
+WHERE `entry` = 3574;
+
+UPDATE `creature_template`
+SET
+    `faction_A`            = 35,
+    `faction_H`            = 35,
+    `minlevel`             = 29,
+    `maxlevel`             = 29,
+    `minhealth`            = 1528,
+    `maxhealth`            = 1528,
+    `minmana`              = 1126,
+    `maxmana`              = 1126,
+    `attackpower`          = 4,
+    `baseattacktime`       = 1720,
+    `mindmg`               = 9,
+    `maxdmg`               = 10,
+    `minrangedmg`          = 43.8944,
+    `maxrangedmg`          = 60.3548,
+    `rangeattacktime`      = 1892,
+    `rangedattackpower`    = 100,
+    `flags_extra`          = 2,
+    `type`                 = 1
+WHERE `entry` = 3837;
+
+UPDATE `creature_template`
+SET
+    `faction_A`            = 35,
+    `faction_H`            = 35,
+    `minlevel`             = 1,
+    `maxlevel`             = 1,
+    `minhealth`            = 5000,
+    `maxhealth`            = 5000,
+    `attackpower`          = 24,
+    `baseattacktime`       = 2000,
+    `mindmg`               = 2,
+    `maxdmg`               = 2,
+    `minrangedmg`          = 1,
+    `maxrangedmg`          = 1,
+    `speed_walk`           = 1.2,
+    `unit_class`           = 1,
+    `flags_extra`          = 2,
+    `type`                 = 1
+WHERE `entry` = 4253;
+
+UPDATE `creature_template`
+SET
+    `faction_A`            = 35,
+    `faction_H`            = 35,
+    `minlevel`             = 1,
+    `maxlevel`             = 1,
+    `minhealth`            = 5000,
+    `maxhealth`            = 5000,
+    `attackpower`          = 24,
+    `baseattacktime`       = 2000,
+    `mindmg`               = 2,
+    `maxdmg`               = 2,
+    `minrangedmg`          = 1,
+    `maxrangedmg`          = 1,
+    `speed_walk`           = 1.2,
+    `unit_class`           = 1,
+    `flags_extra`          = 2,
+    `type`                 = 1
+WHERE `entry` = 4261;
+
+UPDATE `creature_template`
+SET
+    `faction_A`            = 35,
+    `faction_H`            = 35,
+    `minlevel`             = 22,
+    `maxlevel`             = 22,
+    `minhealth`            = 1042,
+    `maxhealth`            = 1042,
+    `attackpower`          = 22,
+    `baseattacktime`       = 1790,
+    `mindmg`               = 44,
+    `maxdmg`               = 52,
+    `minrangedmg`          = 34.6544,
+    `maxrangedmg`          = 47.6498,
+    `rangeattacktime`      = 1969,
+    `rangedattackpower`    = 100,
+    `speed_walk`           = 1.03,
+    `InhabitType`          = 1,
+    `flags_extra`          = 2,
+    `type`                 = 3,
+    `family`               = 3
+WHERE `entry` = 4277;
+
+UPDATE `creature_template`
+SET
+    `faction_A`            = 35,
+    `faction_H`            = 35,
+    `minlevel`             = 1,
+    `maxlevel`             = 1,
+    `minhealth`            = 5000,
+    `maxhealth`            = 5000,
+    `attackpower`          = 24,
+    `baseattacktime`       = 2000,
+    `mindmg`               = 2,
+    `maxdmg`               = 2,
+    `minrangedmg`          = 1,
+    `maxrangedmg`          = 1,
+    `speed_walk`           = 1.2,
+    `unit_class`           = 1,
+    `type`                 = 1
+WHERE `entry` = 4408;
+
+UPDATE `creature_template`
+SET
+    `faction_A`            = 35,
+    `faction_H`            = 35,
+    `minlevel`             = 1,
+    `maxlevel`             = 1,
+    `minhealth`            = 5000,
+    `maxhealth`            = 5000,
+    `attackpower`          = 24,
+    `baseattacktime`       = 2000,
+    `mindmg`               = 2,
+    `maxdmg`               = 2,
+    `minrangedmg`          = 1,
+    `maxrangedmg`          = 1,
+    `speed_walk`           = 1.2,
+    `unit_class`           = 1,
+    `type`                 = 1
+WHERE `entry` = 4410;
+
+UPDATE `creature_template`
+SET
+    `faction_A`            = 90,
+    `faction_H`            = 90,
+    `rank`                 = 3,
+    `minlevel`             = 63,
+    `maxlevel`             = 63,
+    `minhealth`            = 8832,
+    `maxhealth`            = 8832,
+    `attackpower`          = 265,
+    `baseattacktime`       = 1020,
+    `mindmg`               = 520,
+    `maxdmg`               = 628,
+    `minrangedmg`          = 88.8624,
+    `maxrangedmg`          = 122.186,
+    `rangeattacktime`      = 1122,
+    `rangedattackpower`    = 100,
+    `scale`                = 2.25,
+    `speed_walk`           = 1.3,
+    `unit_class`           = 1,
+    `MovementType`         = 1,
+    `InhabitType`          = 3,
+    `AIName`               = 'EventAI',
+    `type`                 = 3
+WHERE `entry` = 5764;
+
+UPDATE `creature_template`
+SET
+    `faction_A`            = 35,
+    `faction_H`            = 35,
+    `minlevel`             = 60,
+    `maxlevel`             = 60,
+    `minhealth`            = 7680,
+    `maxhealth`            = 7680,
+    `attackpower`          = 87,
+    `baseattacktime`       = 2000,
+    `mindmg`               = 164,
+    `maxdmg`               = 212,
+    `minrangedmg`          = 74.448,
+    `maxrangedmg`          = 102.366,
+    `rangedattackpower`    = 100,
+    `speed_run`            = 1,
+    `InhabitType`          = 1,
+    `npcflag`              = 33,
+    `unit_class`           = 1,
+    `unit_flags`           = 768,
+    `flags_extra`          = 2,
+    `type`                 = 7,
+    `type_flags`           = 2
+WHERE `entry` = 6491;
+
+UPDATE `creature_template`
+SET
+    `faction_A`            = 35,
+    `faction_H`            = 35,
+    `minlevel`             = 1,
+    `maxlevel`             = 1,
+    `minhealth`            = 5000,
+    `maxhealth`            = 5000,
+    `attackpower`          = 24,
+    `baseattacktime`       = 2000,
+    `mindmg`               = 2,
+    `maxdmg`               = 2,
+    `minrangedmg`          = 1,
+    `maxrangedmg`          = 1,
+    `speed_walk`           = 1.2,
+    `unit_class`           = 1,
+    `flags_extra`          = 2,
+    `type`                 = 1,
+    `family`               = 4
+WHERE `entry` = 6571;
+
+UPDATE `creature_template`
+SET
+    `faction_A`            = 35,
+    `faction_H`            = 35,
+    `minlevel`             = 1,
+    `maxlevel`             = 1,
+    `minhealth`            = 5000,
+    `maxhealth`            = 5000,
+    `attackpower`          = 24,
+    `baseattacktime`       = 2000,
+    `mindmg`               = 2,
+    `maxdmg`               = 2,
+    `minrangedmg`          = 1,
+    `maxrangedmg`          = 1,
+    `speed_walk`           = 1.2,
+    `unit_class`           = 1,
+    `flags_extra`          = 2,
+    `type`                 = 1,
+    `family`               = 4
+WHERE `entry` = 6572;
+
+UPDATE `creature_template`
+SET
+    `faction_A`            = 35,
+    `faction_H`            = 35,
+    `minlevel`             = 1,
+    `maxlevel`             = 1,
+    `minhealth`            = 5000,
+    `maxhealth`            = 5000,
+    `attackpower`          = 24,
+    `baseattacktime`       = 2000,
+    `mindmg`               = 2,
+    `maxdmg`               = 2,
+    `minrangedmg`          = 1,
+    `maxrangedmg`          = 1,
+    `speed_walk`           = 1.2,
+    `unit_class`           = 1,
+    `flags_extra`          = 2,
+    `type`                 = 1,
+    `family`               = 4
+WHERE `entry` = 6573;
+
+UPDATE `creature_template`
+SET
+    `faction_A`            = 35,
+    `faction_H`            = 35,
+    `minlevel`             = 1,
+    `maxlevel`             = 1,
+    `minhealth`            = 8,
+    `maxhealth`            = 8,
+    `attackpower`          = 1,
+    `baseattacktime`       = 0,
+    `mindmg`               = 2,
+    `maxdmg`               = 2,
+    `minrangedmg`          = 0,
+    `maxrangedmg`          = 0,
+    `flags_extra`          = 2,
+    `type`                 = 8
+WHERE `entry` = 12861;
+
+UPDATE `creature_template`
+SET
+    `faction_A`            = 35,
+    `faction_H`            = 35,
+    `minlevel`             = 1,
+    `maxlevel`             = 1,
+    `minhealth`            = 5000,
+    `maxhealth`            = 5000,
+    `attackpower`          = 24,
+    `baseattacktime`       = 2000,
+    `mindmg`               = 2,
+    `maxdmg`               = 2,
+    `minrangedmg`          = 1,
+    `maxrangedmg`          = 1,
+    `speed_walk`           = 1.2,
+    `unit_class`           = 1,
+    `type`                 = 7
+WHERE `entry` = 15313;
+
+UPDATE `creature_template`
+SET
+    `faction_A`            = 35,
+    `faction_H`            = 35,
+    `minlevel`             = 1,
+    `maxlevel`             = 1,
+    `minhealth`            = 5000,
+    `maxhealth`            = 5000,
+    `attackpower`          = 24,
+    `baseattacktime`       = 2000,
+    `mindmg`               = 2,
+    `maxdmg`               = 2,
+    `minrangedmg`          = 1,
+    `maxrangedmg`          = 1,
+    `speed_walk`           = 1.2,
+    `unit_class`           = 1,
+    `type`                 = 7
+WHERE `entry` = 15314;
 
 -- Insert template spells for creatures --------------------------------------
 INSERT INTO `creature_template_spells`
-    (`entry`, `spell1`)
+    (`entry`, `spell1`, `spell2`, `spell3`, `spell4`)
 VALUES
-     (5764, 5)
+     (  416,  3110,         0,          0,      0)
+    ,( 5764,     5,         0,          0,      0)
 ;
 
 -- Insert AI text strings for creatures --------------------------------------
@@ -311,7 +814,10 @@ VALUES
 INSERT INTO `creature_template_addon`
     (`entry`, `mount`, `bytes1`, `b2_0_sheath`, `b2_1_flags`, `emote`, `moveflags`, `auras`)
 VALUES
-    (6491,     0,       16777216, 1,            16,             0,      0,          NULL);
+     (89,       0,              0, 0,             0,             0,      0,          '19483')
+    ,(4277,     0,              0, 1,            40,             0,      0,          NULL)
+    ,(6491,     0,       16777216, 1,            16,             0,      0,          NULL)
+;
 
 -- Insert spawns for creatures -----------------------------------------------
 INSERT INTO `creature`

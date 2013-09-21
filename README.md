@@ -1,4 +1,4 @@
-mangos-zero-database ![Project status](https://bitbucket.org/danielsreichenbach/mangos-zero-database/wiki/img/repository-status-maintained.png)
+mangos-zero database ![Project status](https://bitbucket.org/danielsreichenbach/mangos-zero-database/wiki/img/repository-status-maintained.png)
 ====================
 A content database for [mangos-zero][10], and *World of Warcraft Client Patch
 1.12* - [_Drums of War_][50]. It is compatible with client 1.12.1 (build 5875),
@@ -6,7 +6,7 @@ and 1.12.2 (build 6005).
 
 License
 -------
-**mangos-zero-database** is released for free under the terms of the
+**mangos-zero database** is released for free under the terms of the
 Creative Commons Attribution-NonCommercial-ShareAlike license. The file
 `LICENSE.md` **must** be a part of any redistributable packages made from
 this software.  No licenses should be removed from this software if you are
@@ -14,15 +14,6 @@ making redistributable copies.
 
 Getting started
 ---------------
-The basic principle behind this customized database repository is to keep the
-databases stored as individual tables, and all content rows stored as single
-lines to make changes more trackable for the user (that would be you).
-
-The repository is developed and maintained using the excellent [git-flow][110]
-extension for git, to provide a clear, and visible [workflow][111] to the user.
-
-How this works
---------------
 The repository has been split into folders for each of the [mangos-zero][1]
 databases. Each folder contains dumps for the structure of the database,
 without any content.
@@ -84,6 +75,13 @@ sure that you configured the same IP address in your mangos configuration!
 
 Development
 -----------
+The basic principle behind this customized database repository is to keep the
+databases stored as individual tables, and all content rows stored as single
+lines to make changes more trackable for the user (that would be you).
+
+The repository is developed and maintained using the excellent [git-flow][110]
+extension for git, to provide a clear, and visible [workflow][111] to the user.
+
 The **develop** branch is where the development of *mangos-zero database* is
 done. Any of the commits submitted here may or may not become part of the next
 release.
