@@ -43,6 +43,57 @@ function import ()
     echo " done"
 }
 
+function import_structure ()
+{
+    # - Import character database structure --------------------------------------
+    for x in ./character/*.sql; do
+        import $x ${CHARACTER_DATABASE}
+    done
+
+    # - Import realm list database structure -------------------------------------
+    for x in ./realm/*.sql; do
+        import $x ${REALM_DATABASE}
+    done
+
+    # - Import script database structure -----------------------------------------
+    for x in ./script/*.sql; do
+        import $x ${SCRIPT_DATABASE}
+    done
+
+    # - Import world database structure ------------------------------------------
+    for x in ./world/*.sql; do
+        import $x ${WORLD_DATABASE}
+    done
+}
+
+function import_data ()
+{
+    # - Import content updates: character ----------------------------------------
+    for x in ./_updates/character/*.sql; do
+         import $x ${CHARACTER_DATABASE}
+    done
+
+    # - Import content updates: realm --------------------------------------------
+    for x in ./_updates/realm/*.sql; do
+         import $x ${REALM_DATABASE}
+    done
+
+    # - Import content updates: scripts ------------------------------------------
+    for x in ./_updates/script/*.sql; do
+         import $x ${SCRIPT_DATABASE}
+    done
+
+    # - Import content updates: world --------------------------------------------
+    for x in ./_updates/world/*.sql; do
+         import $x ${WORLD_DATABASE}
+    done
+
+    # - Optimize imported data: world --------------------------------------------
+    for x in ./_extras/world/*.sql; do
+         import $x ${WORLD_DATABASE}
+    done
+}
+
 # - Do not edit below! Here be dragon! ---------------------------------------
 
 # # - Check for parameters -----------------------------------------------------
@@ -66,47 +117,5 @@ function import ()
 # fi
 # ----------------------------------------------------------------------------
 
-# - Import character database structure --------------------------------------
-for x in ./character/*.sql; do
-    import $x ${CHARACTER_DATABASE}
-done
-
-# - Import realm list database structure -------------------------------------
-for x in ./realm/*.sql; do
-    import $x ${REALM_DATABASE}
-done
-
-# - Import script database structure -----------------------------------------
-for x in ./script/*.sql; do
-    import $x ${SCRIPT_DATABASE}
-done
-
-# - Import world database structure ------------------------------------------
-for x in ./world/*.sql; do
-    import $x ${WORLD_DATABASE}
-done
-
-# - Import content updates: character ----------------------------------------
-for x in ./_updates/character/*.sql; do
-     import $x ${CHARACTER_DATABASE}
-done
-
-# - Import content updates: realm --------------------------------------------
-for x in ./_updates/realm/*.sql; do
-     import $x ${REALM_DATABASE}
-done
-
-# - Import content updates: scripts ------------------------------------------
-for x in ./_updates/script/*.sql; do
-     import $x ${SCRIPT_DATABASE}
-done
-
-# - Import content updates: world --------------------------------------------
-for x in ./_updates/world/*.sql; do
-     import $x ${WORLD_DATABASE}
-done
-
-# - Optimize imported data: world --------------------------------------------
-for x in ./_extras/world/*.sql; do
-     import $x ${WORLD_DATABASE}
-done
+import_structure
+import_data
