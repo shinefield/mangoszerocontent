@@ -9172,8 +9172,6 @@ VALUES
     ,(3, 8, 15, 20, 60, 890, 3.40156, 889, 0.263892)
 ;
 
--- Insert battleground events ------------------------------------------------
-
 -- Insert transport game objects ---------------------------------------------
 INSERT INTO `gameobject_template`
     (`entry`, `type`,                `displayId`, `name`)
