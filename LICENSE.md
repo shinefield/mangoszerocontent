@@ -51,7 +51,7 @@ release your remixes, you may ask us for a commercial license.
 [11]: https://github.com/mangoszero/scripts "script bindings"
 [12]: https://github.com/mangoszero/database "content database"
 
-[50]: http://eu.blizzard.com/en-gb/games/wow/ "World of Warcraft"
+[50]: http://blizzard.com/games/wow/ "World of Warcraft"
 [51]: http://www.wowpedia.org/Patch_1.12.0 "WoW 1.12.0 - Drums of War"
 
 [101]: http://github.com/ "github - social coding"
