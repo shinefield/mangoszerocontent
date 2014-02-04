@@ -1,0 +1,28 @@
+#!/bin/bash
+#
+# This file contains login/password information for accessing the MySQL
+# database and is used by all the mysql_* scripts.
+#
+# Please modify the user information and the database names to match
+# your local mangos installation.
+
+# - Socket connection configuration, optional --------------------------------
+#SOCK=/var/lib/mysql/mysql.sock
+
+# - MySQL authentication: customize for your local setup ---------------------
+USER=zp
+PASS=zpdb
+HOST=localhost
+
+# - Database settings: customize for your local setup ------------------------
+CHARACTER_DATABASE=zp_characters
+REALM_DATABASE=zp_realm
+SCRIPT_DATABASE=zp_scripts
+WORLD_DATABASE=zp_world
+
+# - Do not edit below! Here be dragon! ---------------------------------------
+OPTS=
+[ ! -z "${USER}" ] && OPTS="${OPTS} -u${USER}"
+[ ! -z "${PASS}" ] && OPTS="${OPTS} -p${PASS}"
+[ ! -z "${HOST}" ] && OPTS="${OPTS} -h${HOST}"
+[ ! -z "${SOCK}" ] && OPTS="${OPTS} -S${SOCK}"
