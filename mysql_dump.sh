@@ -141,6 +141,7 @@ dump_data  ${WORLD_DATABASE}     world      creature_onkill_reputation
 dump_data  ${WORLD_DATABASE}     world      creature_questrelation
 dump_data  ${WORLD_DATABASE}     world      creature_template
 dump_data  ${WORLD_DATABASE}     world      creature_template_addon
+dump_data  ${WORLD_DATABASE}     world      creature_template_classlevelstats
 dump_data  ${WORLD_DATABASE}     world      creature_template_spells
 dump_data  ${WORLD_DATABASE}     world      dbscripts_on_creature_death
 dump_data  ${WORLD_DATABASE}     world      dbscripts_on_creature_movement
@@ -221,7 +222,6 @@ dump_data  ${WORLD_DATABASE}     world      spell_chain
 dump_data  ${WORLD_DATABASE}     world      spell_elixir
 dump_data  ${WORLD_DATABASE}     world      spell_facing
 dump_data  ${WORLD_DATABASE}     world      spell_learn_spell
-dump_data  ${WORLD_DATABASE}     world      spell_linked
 dump_data  ${WORLD_DATABASE}     world      spell_pet_auras
 dump_data  ${WORLD_DATABASE}     world      spell_proc_event
 dump_data  ${WORLD_DATABASE}     world      spell_proc_item_enchant
