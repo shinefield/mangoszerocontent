@@ -1,6 +1,6 @@
 Changelog
 =========
-This document tracks changes in the [mangos-zero database][115] and highlights
+This document tracks changes in the [mangos-zero database][113] and highlights
 what has been done to bring the database to you.
 
 0.1.0 (2013-09-23)
@@ -12,7 +12,7 @@ The initial release focusses on deliver an empty, usable world. This means:
 
 * you can create characters of any race/class,
 * you can travel the world by foot, and any available transportation such as
-  ships or zeppelins,
+  ships or Zeppelins,
 * you can die (and resurrect if needed)
 * you can enter all instances.
 
@@ -26,11 +26,8 @@ the update process, and to show best practices for crafting database updates.
 [3]: http://wowpedia.org/Beta#World_of_Warcraft "World of Warcraft - Classic Beta"
 
 [100]: http://getmangos.com/ "mangos foundation · project site"
-[101]: http://community.getmangos.co.uk/ "mangos foundation · discussion forums"
 
-[110]: http://github.com/mangoszero "mangos zero · github organization"
-[111]: http://github.com/mangoszero/server "mangos zero · server repository"
-[112]: http://github.com/mangoszero/scripts "mangos zero · script extensions repository"
-[113]: http://github.com/mangoszero/database "mangos zero · content database repository"
-[114]: https://travis-ci.org/mangoszero/server/ "mangos zero · build status"
-[115]: https://bitbucket.org/danielsreichenbach/mangos-zero-database "mangos-zero clean database"
+[110]: http://bitbucket.org/mangoszero "mangos zero · bitbucket organization"
+[111]: http://bitbucket.org/mangoszero/server "mangos zero · server"
+[112]: http://bitbucket.org/mangoszero/scripts "mangos zero · script extensions"
+[113]: http://bitbucket.org/mangoszero/content "mangos-zero · clean database"

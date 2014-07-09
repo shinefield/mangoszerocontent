@@ -1,4 +1,4 @@
-mangos-zero database ![Project status](https://bitbucket.org/danielsreichenbach/mangos-zero-database/wiki/img/repository-status-maintained.png)
+mangos-zero database ![Project status](https://bytebucket.org/mangoszero/content/wiki/img/repository-status-maintained.png)
 ====================
 A content database for [mangos-zero][10], and *World of Warcraft Client Patch
 1.12* - [_Drums of War_][50]. It is compatible with client 1.12.1 (build 5875),
@@ -31,7 +31,7 @@ Further documentation of this project can be found on the [project wiki][3].
 It covers both definitions of how we build and maintain this project, and
 also covers the format and meaning of each database table.
 
-For those who have not yet encountered the [mangos-zero database][12], we
+For those who have not yet encountered the [mangos-zero database][2], we
 have added tutorials for common activities you might be interested in.
 
 If anything is missing, submit an issue, and we will add it.
@@ -90,19 +90,19 @@ It is recommended to use the **master** branch for stable systems, and only use
 the **develop** branch if you intend to test commits and submit issues and/or
 reports.
 
+**Note**: you can also make use of tagged release versions, which in general
+are considered stable.
 
-[1]: https://github.com/mangoszero "mangos-zero"
-[2]: https://bitbucket.org/danielsreichenbach/mangos-zero-database/ "clean mangos-zero database"
-[3]: https://bitbucket.org/danielsreichenbach/mangos-zero-database/wiki "documentation wiki"
 
-[10]: https://github.com/mangoszero/server "mangos zero"
-[11]: https://github.com/mangoszero/scripts "script bindings"
-[12]: https://github.com/mangoszero/database "content database"
+[1]: http://bitbucket.org/mangoszero "mangos-zero"
+[2]: http://bitbucket.org/mangoszero/content/ "clean mangos-zero database"
+[3]: http://bitbucket.org/mangoszero/content/wiki "documentation wiki"
+
+[10]: http://bitbucket.org/mangoszero/server "mangos-zero · server"
+[11]: http://bitbucket.org/mangoszero/scripts "mangos-zero · script extensions"
 
 [50]: http://blizzard.com/games/wow/ "World of Warcraft"
 [51]: http://www.wowpedia.org/Patch_1.12.0 "WoW 1.12.0 - Drums of War"
-
-[101]: http://github.com/ "github - social coding"
 
 [110]: http://nvie.com/posts/a-successful-git-branching-model/ "git flow extension"
 [111]: http://yakiloo.com/getting-started-git-flow/ "git flow workflow"

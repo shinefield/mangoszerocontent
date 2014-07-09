@@ -43,18 +43,16 @@ from that. Again, if you desire to do something with our work and not
 release your remixes, you may ask us for a commercial license.
 
 
-[1]: https://github.com/mangoszero "mangos-zero"
-[2]: https://bitbucket.org/danielsreichenbach/mangos-zero-database/ "clean mangos-zero database"
-[3]: https://bitbucket.org/danielsreichenbach/mangos-zero-database/wiki "documentation wiki"
+[1]: http://bitbucket.org/mangoszero "mangos-zero"
+[2]: http://bitbucket.org/mangoszero/content/ "mangos-zero · clean database"
+[3]: http://bitbucket.org/mangoszero/content/wiki "documentation wiki"
 
-[10]: https://github.com/mangoszero/server "mangos zero"
-[11]: https://github.com/mangoszero/scripts "script bindings"
-[12]: https://github.com/mangoszero/database "content database"
+[10]: http://bitbucket.org/mangoszero/server "mangos-zero · server"
+[11]: http://bitbucket.org/mangoszero/scripts "mangos-zero · script extensions"
+[12]: http://bitbucket.org/mangoszero/content "mangos-zero · clean database"
 
 [50]: http://blizzard.com/games/wow/ "World of Warcraft"
 [51]: http://www.wowpedia.org/Patch_1.12.0 "WoW 1.12.0 - Drums of War"
-
-[101]: http://github.com/ "github - social coding"
 
 [110]: http://nvie.com/posts/a-successful-git-branching-model/ "git flow extension"
 [111]: http://yakiloo.com/getting-started-git-flow/ "git flow workflow"
