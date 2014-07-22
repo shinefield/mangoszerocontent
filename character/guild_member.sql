@@ -29,7 +29,6 @@ CREATE TABLE `guild_member` (
   `pnote` varchar(255) NOT NULL DEFAULT '',
   `offnote` varchar(255) NOT NULL DEFAULT '',
   UNIQUE KEY `guid_key` (`guid`),
-  KEY `guildid_key` (`guildid`),
   KEY `guildid_rank_key` (`guildid`,`rank`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Guild System';
 /*!40101 SET character_set_client = @saved_cs_client */;

@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.29, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.38, for debian-linux-gnu (x86_64)
 --
--- Host: localhost    Database: world
+-- Host: localhost    Database: zp_world
 -- ------------------------------------------------------
--- Server version   5.5.29-0ubuntu0.12.10.1
+-- Server version	5.5.38-0ubuntu0.14.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,29 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `spell_linked`
+-- Table structure for table `creature_template_classlevelstats`
 --
 
-DROP TABLE IF EXISTS `spell_linked`;
+DROP TABLE IF EXISTS `creature_template_classlevelstats`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `spell_linked` (
-  `entry` int(10) unsigned NOT NULL COMMENT 'Spell entry',
-  `linked_entry` int(10) unsigned NOT NULL COMMENT 'Linked spell entry',
-  `type` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Type of link',
-  `effect_mask`int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'mask of effect (NY)',
-  `comment` varchar(255) NOT NULL DEFAULT '',
-  PRIMARY KEY (`entry`,`linked_entry`,`type`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Item System';
+CREATE TABLE `creature_template_classlevelstats` (
+  `Level` tinyint(4) NOT NULL,
+  `Class` tinyint(4) NOT NULL,
+  `BaseHealthExp0` mediumint(8) unsigned NOT NULL DEFAULT '1',
+  `BaseMana` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `BaseDamageExp0` float NOT NULL DEFAULT '0',
+  `BaseMeleeAttackPower` float NOT NULL DEFAULT '0',
+  `BaseRangedAttackPower` float NOT NULL DEFAULT '0',
+  `BaseArmor` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`Level`,`Class`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `spell_linked`
+-- Dumping data for table `creature_template_classlevelstats`
 --
 
-LOCK TABLES `spell_linked` WRITE;
-/*!40000 ALTER TABLE `spell_linked` DISABLE KEYS */;
-/*!40000 ALTER TABLE `spell_linked` ENABLE KEYS */;
+LOCK TABLES `creature_template_classlevelstats` WRITE;
+/*!40000 ALTER TABLE `creature_template_classlevelstats` DISABLE KEYS */;
+/*!40000 ALTER TABLE `creature_template_classlevelstats` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

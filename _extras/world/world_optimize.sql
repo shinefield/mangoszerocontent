@@ -127,7 +127,6 @@ ALTER TABLE `spell_chain`                       ORDER BY `spell_id` ASC;
 ALTER TABLE `spell_elixir`                      ORDER BY `entry` ASC;
 ALTER TABLE `spell_facing`                      ORDER BY `entry` ASC;
 ALTER TABLE `spell_learn_spell`                 ORDER BY `entry` ASC;
-ALTER TABLE `spell_linked`                      ORDER BY `entry` ASC;
 ALTER TABLE `spell_pet_auras`                   ORDER BY `spell` ASC;
 ALTER TABLE `spell_proc_event`                  ORDER BY `entry` ASC;
 ALTER TABLE `spell_proc_item_enchant`           ORDER BY `entry` ASC;

@@ -125,7 +125,6 @@ TRUNCATE `spell_chain`;
 TRUNCATE `spell_elixir`;
 TRUNCATE `spell_facing`;
 TRUNCATE `spell_learn_spell`;
-TRUNCATE `spell_linked`;
 TRUNCATE `spell_pet_auras`;
 TRUNCATE `spell_proc_event`;
 TRUNCATE `spell_proc_item_enchant`;
