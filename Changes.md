@@ -3,6 +3,14 @@ Changelog
 This document tracks changes in the [mangos-zero database][113] and highlights
 what has been done to bring the database to you.
 
+0.1.1 (2014-07-22)
+------------------
+A bug fix release to address various issues.
+
+* database structure has been synchronized with the current mangos-zero version,
+* a few issues with scripting and content have been resolved,
+* documentation has been updated for our new home on BitBucket.
+
 0.1.0 (2013-09-23)
 ------------------
 This marks the initial release of our database. A fresh database was crafted
