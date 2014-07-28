@@ -51,11 +51,11 @@ By default **mangos-zero** uses four databases:
 * `script`: and the ScriptDev2 database.
 
 In order to use this database repository, you will have to edit `mysql_info`,
-and edit in the desired username, hostname, and password.
+and edit in the desired user name, host name, and password.
 
 Once you have the desired database user and rights configured in MySQL, you may
 use the `mysql_import` script to load the individual data tables into your
-databases.  Should your database user have wildcard rights, the script creates
+databases.  Should your database user have wild-card rights, the script creates
 the database - if not existent - and then populates them.
 
 Configuring you realm list
