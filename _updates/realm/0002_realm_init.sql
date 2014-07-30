@@ -7,18 +7,29 @@
 --
 
 -- Provide variables
-SET @REALM_ICON_NORMAL                          = 0;
 SET @REALM_ICON_PVP                             = 1;
 SET @REALM_ICON_NORMAL                          = 4;
 SET @REALM_ICON_RP                              = 6;
 SET @REALM_ICON_RP_PVP                          = 8;
 
+SET @REALM_TZ_DEVELOPMENT                       = 1;
+SET @REALM_TZ_UNITED_STATES                     = 2;
+SET @REALM_TZ_OCEANIC                           = 3;
+SET @REALM_TZ_LATIN_AMERICA                     = 4;
+SET @REALM_TZ_TOURNAMENT                        = 5;
+SET @REALM_TZ_KOREA                             = 6;
+SET @REALM_TZ_TOURNAMENT                        = 7;
+SET @REALM_TZ_EUROPE_ENGLISH                    = 8;
+SET @REALM_TZ_EUROPE_GERMAN                     = 9;
+SET @REALM_TZ_EUROPE_FRENCH                     = 10;
+SET @REALM_TZ_EUROPE_SPANISH                    = 11;
+
 -- Create a default realm, set to PvE, and allowing access to
 -- client builds 5875 (1.12.1), and 6005 (1.12.2).
 INSERT INTO `realmlist`
-    (`id`, `name`, `address`, `port`, `icon`, `realmflags`, `timezone`, `allowedSecurityLevel`, `population`, `realmbuilds`)
+    (`id`,  `name`,             `address`,      `port`, `icon`,             `realmflags`,   `timezone`,                 `allowedSecurityLevel`, `population`,   `realmbuilds`)
 VALUES
-    (1, 'mangos-zero', '127.0.0.1', 8085, 0, 2, 0, 0, 0, '5875 6005')
+    (1,     'Bronzebeard',      '127.0.0.1',    8085,   @REALM_ICON_NORMAL, 2,              @REALM_TZ_EUROPE_ENGLISH,   0,                      0,              '5875 6005')
 ;
 
 -- Insert default accounts ---------------------------------------------------
