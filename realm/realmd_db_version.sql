@@ -1,8 +1,3 @@
--- MySQL dump 10.13  Distrib 5.5.29, for debian-linux-gnu (x86_64)
---
--- Host: localhost    Database: realm
--- ------------------------------------------------------
--- Server version	5.5.29-0ubuntu0.12.10.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -14,11 +9,6 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
---
--- Table structure for table `realmd_db_version`
---
-
 DROP TABLE IF EXISTS `realmd_db_version`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -26,17 +16,6 @@ CREATE TABLE `realmd_db_version` (
   `required_10008_01_realmd_realmd_db_version` bit(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Last applied update';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `realmd_db_version`
---
-
-LOCK TABLES `realmd_db_version` WRITE;
-/*!40000 ALTER TABLE `realmd_db_version` DISABLE KEYS */;
-INSERT INTO `realmd_db_version` VALUES
-(NULL);
-/*!40000 ALTER TABLE `realmd_db_version` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -47,4 +26,3 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed

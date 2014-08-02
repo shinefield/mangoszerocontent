@@ -1,5 +1,5 @@
-mangos-zero database ![Project status](https://bytebucket.org/mangoszero/content/wiki/img/repository-status-maintained.png)
-====================
+mangos-zero game content database
+=================================
 A content database for [mangos-zero][10], and *World of Warcraft Client Patch
 1.12* - [_Drums of War_][50]. It is compatible with client 1.12.1 (build 5875),
 and 1.12.2 (build 6005).
@@ -27,7 +27,7 @@ gradually research, verify, and add the game's content to our database.
 Once the import script is done, it will execute a optimization query, which
 tries to order every database table in a readable fashion.
 
-Further documentation of this project can be found on the [project wiki][3].
+Further documentation of this project can be found on the [documentation][3].
 It covers both definitions of how we build and maintain this project, and
 also covers the format and meaning of each database table.
 
@@ -51,11 +51,11 @@ By default **mangos-zero** uses four databases:
 * `script`: and the ScriptDev2 database.
 
 In order to use this database repository, you will have to edit `mysql_info`,
-and edit in the desired username, hostname, and password.
+and edit in the desired user name, host name, and password.
 
 Once you have the desired database user and rights configured in MySQL, you may
 use the `mysql_import` script to load the individual data tables into your
-databases.  Should your database user have wildcard rights, the script creates
+databases.  Should your database user have wild-card rights, the script creates
 the database - if not existent - and then populates them.
 
 Configuring you realm list
@@ -95,8 +95,8 @@ are considered stable.
 
 
 [1]: http://bitbucket.org/mangoszero "mangos-zero"
-[2]: http://bitbucket.org/mangoszero/content/ "clean mangos-zero database"
-[3]: http://bitbucket.org/mangoszero/content/wiki "documentation wiki"
+[2]: http://bitbucket.org/mangoszero/content/ "mangos-zero game content database"
+[3]: http://docs.getmangos.com/ "mangos-zero documentation"
 
 [10]: http://bitbucket.org/mangoszero/server "mangos-zero · server"
 [11]: http://bitbucket.org/mangoszero/scripts "mangos-zero · script extensions"

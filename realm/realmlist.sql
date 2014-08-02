@@ -1,8 +1,3 @@
--- MySQL dump 10.13  Distrib 5.5.29, for debian-linux-gnu (x86_64)
---
--- Host: localhost    Database: realm
--- ------------------------------------------------------
--- Server version	5.5.29-0ubuntu0.12.10.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -37,15 +32,6 @@ CREATE TABLE `realmlist` (
   UNIQUE KEY `idx_name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Realm System';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `realmlist`
---
-
-LOCK TABLES `realmlist` WRITE;
-/*!40000 ALTER TABLE `realmlist` DISABLE KEYS */;
-/*!40000 ALTER TABLE `realmlist` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -56,4 +42,3 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed

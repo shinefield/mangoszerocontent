@@ -9,16 +9,31 @@
 -- Provide variables
 SET @REALM_ICON_NORMAL                          = 0;
 SET @REALM_ICON_PVP                             = 1;
-SET @REALM_ICON_NORMAL                          = 4;
 SET @REALM_ICON_RP                              = 6;
 SET @REALM_ICON_RP_PVP                          = 8;
+
+SET @REALM_TZ_DEVELOPMENT                       = 0;
+SET @REALM_TZ_ENGLISH                           = 1;
+SET @REALM_TZ_GERMAN                            = 2;
+SET @REALM_TZ_FRENCH                            = 3;
+SET @REALM_TZ_SPANISH                           = 4;
+
+SET @REALM_FLAG_NONE                            = 0;
+SET @REALM_FLAG_INVALID                         = 1;
+SET @REALM_FLAG_OFFLINE                         = 2;
+SET @REALM_FLAG_SPECIFYBUILD                    = 4;
+SET @REALM_FLAG_UNK1                            = 8;
+SET @REALM_FLAG_UNK2                            = 16;
+SET @REALM_FLAG_NEW_PLAYERS                     = 32;
+SET @REALM_FLAG_RECOMMENDED                     = 64;
+SET @REALM_FLAG_FULL                            = 128;
 
 -- Create a default realm, set to PvE, and allowing access to
 -- client builds 5875 (1.12.1), and 6005 (1.12.2).
 INSERT INTO `realmlist`
-    (`id`, `name`, `address`, `port`, `icon`, `realmflags`, `timezone`, `allowedSecurityLevel`, `population`, `realmbuilds`)
+    (`id`,  `name`,             `address`,      `port`, `icon`,             `realmflags`,           `timezone`,                 `allowedSecurityLevel`, `population`,   `realmbuilds`)
 VALUES
-    (1, 'mangos-zero', '127.0.0.1', 8085, 0, 2, 0, 0, 0, '5875 6005')
+    (1,     'Bronzebeard',      '127.0.0.1',    8085,   @REALM_ICON_NORMAL, @REALM_FLAG_OFFLINE,    @REALM_TZ_DEVELOPMENT,       0,                      0,              '5875 6005 6141')
 ;
 
 -- Insert default accounts ---------------------------------------------------
