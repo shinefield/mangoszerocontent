@@ -3,22 +3,9 @@ Changelog
 This document tracks changes in the [mangos-zero database][113] and highlights
 what has been done to bring the database to you.
 
-0.2.0 (2014-08-31)
+0.1.2 (2014-08-02)
 ------------------
-This is the first content release of the clean **mangos-zero** database, and it
-features level 1 to 10 content for the following zones:
-
-* Dun Morogh: starting zone for the Dwarf and Gnome races,
-* Elwynn Forest: starting zones for the Human race,
-* Teldrassil: starting zone for the Night Elf race,
-* Durotar: starting zone for the Orc and Troll races,
-* Mulgore: starting zone for the Tauren race,
-* Tirisfal Glades: starting zone for the Undead race,
-
-Please note that this content does not cover the faction home cities such as
-*Darnassus*, *Ironforge*, *Stormwind*, *Orgrimmar*, *Thunderbluff* and the
-*Undercity* other than the initial NPCs which are required to complete the
-initial class specific quests, or the faction specific introductions.
+A bug fix release to adress minor issues.
 
 0.1.1 (2014-07-22)
 ------------------
