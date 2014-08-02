@@ -591,8 +591,8 @@ SET @GO_FLAG_TRIGGERED                          = 64;
 -- Insert world database version ---------------------------------------------
 INSERT INTO `db_version`
 VALUES
-    ('mangos-zero - version 0.1.1 (development)',
-     'mangos-zero Artificial Creature Intelligence - version 0.1.1 (development)',
+    ('mangos-zero - version 0.1.2 (development)',
+     'mangos-zero Artificial Creature Intelligence - version 0.1.2 (development)',
      NULL)
 ;
 
