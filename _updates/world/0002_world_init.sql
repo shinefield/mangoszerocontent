@@ -8290,6 +8290,7 @@ SET
     `RangedAttackPower`  = 100,     `RangedBaseAttackTime`  = 2200,
     `SpeedWalk`          = 0.91,
     `InhabitType`        = @CREATURE_INHABIT_ANY,
+    `UnitClass`          = @CREATURE_CLASS_WARRIOR,
     `UnitFlags`          = 4096,
     `ExtraFlags`         = @CREATURE_FLAG_EXTRA_CIVILIAN | @CREATURE_FLAG_EXTRA_INVISIBLE,
     `CreatureType`       = @CREATURE_TYPE_CRITTER
@@ -8305,326 +8306,338 @@ SET
     `MinRangedDmg`       = 387.6,   `MaxRangedDmg`          = 532.95,
     `RangedAttackPower`  = 100,     `RangedBaseAttackTime`  = 1900,
     `SpeedWalk`          = 0,
+    `UnitClass`          = @CREATURE_CLASS_WARRIOR,
     `ExtraFlags`         = @CREATURE_FLAG_EXTRA_CIVILIAN | @CREATURE_FLAG_EXTRA_INVISIBLE,
     `CreatureType`       = @CREATURE_TYPE_CRITTER
 WHERE `Entry` = 2;
 
 UPDATE `creature_template`
 SET
-    `FactionAlliance`   = 90,       `FactionHorde`          = 90,
-    `MinLevel`          = 50,       `MaxLevel`              = 50,
-    `MinLevelHealth`    = 3517,     `MaxLevelHealth`        = 3517,
-    `MinLevelMana`      = 3460,     `MaxLevelMana`          = 3460,
-    `MeleeAttackPower`  = 93,       `MeleeBaseAttackTime`   = 1510,
-    `MinMeleeDmg`       = 183,      `MaxMeleeDmg`           = 220,
-    `MinRangedDmg`      = 66.44,    `MaxRangedDmg`          = 91.355,
-    `RangedAttackPower` = 100,      `RangedBaseAttackTime`  = 1661,
-    `SpeedWalk`         = 1.4,
-    `CreatureType`      = @CREATURE_TYPE_DEMON
+    `FactionAlliance`    = 90,       `FactionHorde`          = 90,
+    `MinLevel`           = 50,       `MaxLevel`              = 50,
+    `MinLevelHealth`     = 3517,     `MaxLevelHealth`        = 3517,
+    `MinLevelMana`       = 3460,     `MaxLevelMana`          = 3460,
+    `MeleeAttackPower`   = 93,       `MeleeBaseAttackTime`   = 1510,
+    `MinMeleeDmg`        = 183,      `MaxMeleeDmg`           = 220,
+    `MinRangedDmg`       = 66.44,    `MaxRangedDmg`          = 91.355,
+    `RangedAttackPower`  = 100,      `RangedBaseAttackTime`  = 1661,
+    `SpeedWalk`          = 1.4,
+    `UnitClass`          = @CREATURE_CLASS_WARRIOR,
+    `CreatureType`       = @CREATURE_TYPE_DEMON
 WHERE `Entry` = 89;
 
 UPDATE `creature_template`
 SET
-    `FactionAlliance`   = 90,       `FactionHorde`          = 90,
-    `MinLevel`          = 5,        `MaxLevel`              = 5,
-    `MinLevelHealth`    = 166,      `MaxLevelHealth`        = 166,
-    `MinLevelMana`      = 85,       `MaxLevelMana`          = 85,
-    `MeleeAttackPower`  = 3,        `MeleeBaseAttackTime`   = 2000,
-    `MinMeleeDmg`       = 6,        `MaxMeleeDmg`           = 8,
-    `MinRangedDmg`      = 8.624,    `MaxRangedDmg`          = 11.858,
-    `RangedAttackPower` = 100,
-    `CreatureType`      = @CREATURE_TYPE_DEMON
+    `FactionAlliance`    = 90,       `FactionHorde`          = 90,
+    `MinLevel`           = 5,        `MaxLevel`              = 5,
+    `MinLevelHealth`     = 166,      `MaxLevelHealth`        = 166,
+    `MinLevelMana`       = 85,       `MaxLevelMana`          = 85,
+    `MeleeAttackPower`   = 3,        `MeleeBaseAttackTime`   = 2000,
+    `MinMeleeDmg`        = 6,        `MaxMeleeDmg`           = 8,
+    `MinRangedDmg`       = 8.624,    `MaxRangedDmg`          = 11.858,
+    `RangedAttackPower`  = 100,
+    `UnitClass`          = @CREATURE_CLASS_MAGE,
+    `CreatureType`       = @CREATURE_TYPE_DEMON
 WHERE `Entry` = 416;
 
 UPDATE `creature_template`
 SET
-    `FactionAlliance`   = 90,       `FactionHorde`          = 90,
-    `MinLevel`          = 60,       `MaxLevel`              = 60,
-    `MinLevelHealth`    = 3857,     `MaxLevelHealth`        = 3857,
-    `MinLevelMana`      = 1666,     `MaxLevelMana`          = 3195,
-    `MeleeAttackPower`  = 58,       `MeleeBaseAttackTime`   = 2000,
-    `MinMeleeDmg`       = 110,      `MaxMeleeDmg`           = 142,
-    `MinRangedDmg`      = 74.448,   `MaxRangedDmg`          = 102.366,
-    `RangedAttackPower` = 100,
-    `InhabitType`       = @CREATURE_INHABIT_GROUND,
-    `CreatureType`      = @CREATURE_TYPE_DEMON,
-    `Family`            = @CREATURE_BEAST_FAMILY_FELHUNTER
+    `FactionAlliance`    = 90,       `FactionHorde`          = 90,
+    `MinLevel`           = 60,       `MaxLevel`              = 60,
+    `MinLevelHealth`     = 3857,     `MaxLevelHealth`        = 3857,
+    `MinLevelMana`       = 1666,     `MaxLevelMana`          = 3195,
+    `MeleeAttackPower`   = 58,       `MeleeBaseAttackTime`   = 2000,
+    `MinMeleeDmg`        = 110,      `MaxMeleeDmg`           = 142,
+    `MinRangedDmg`       = 74.448,   `MaxRangedDmg`          = 102.366,
+    `RangedAttackPower`  = 100,
+    `InhabitType`        = @CREATURE_INHABIT_GROUND,
+    `UnitClass`          = @CREATURE_CLASS_PALADIN,
+    `CreatureType`       = @CREATURE_TYPE_DEMON,
+    `Family`             = @CREATURE_BEAST_FAMILY_FELHUNTER
 WHERE `Entry` = 417;
 
 UPDATE `creature_template`
 SET
-    `FactionAlliance`   = 35,       `FactionHorde`          = 35,
-    `MinLevel`          = 29,       `MaxLevel`              = 29,
-    `MinLevelHealth`    = 1528,     `MaxLevelHealth`        = 1528,
-    `MinLevelMana`      = 1126,     `MaxLevelMana`          = 1126,
-    `MeleeAttackPower`  = 4,        `MeleeBaseAttackTime`   = 1720,
-    `MinMeleeDmg`       = 9,        `MaxMeleeDmg`           = 10,
-    `MinRangedDmg`      = 43.8944,  `MaxRangedDmg`          = 60.3548,
-    `RangedAttackPower` = 100,      `RangedBaseAttackTime`  = 1892,
-    `ExtraFlags`        = @CREATURE_FLAG_EXTRA_CIVILIAN,
-    `CreatureType`      = @CREATURE_TYPE_BEAST
+    `FactionAlliance`    = 35,       `FactionHorde`          = 35,
+    `MinLevel`           = 29,       `MaxLevel`              = 29,
+    `MinLevelHealth`     = 1528,     `MaxLevelHealth`        = 1528,
+    `MinLevelMana`       = 1126,     `MaxLevelMana`          = 1126,
+    `MeleeAttackPower`   = 4,        `MeleeBaseAttackTime`   = 1720,
+    `MinMeleeDmg`        = 9,        `MaxMeleeDmg`           = 10,
+    `MinRangedDmg`       = 43.8944,  `MaxRangedDmg`          = 60.3548,
+    `RangedAttackPower`  = 100,      `RangedBaseAttackTime`  = 1892,
+    `UnitClass`          = @CREATURE_CLASS_WARRIOR,
+    `ExtraFlags`         = @CREATURE_FLAG_EXTRA_CIVILIAN,
+    `CreatureType`       = @CREATURE_TYPE_BEAST
 WHERE `Entry` = 541;
 
 UPDATE `creature_template`
 SET
-    `FactionAlliance`   = 90,       `FactionHorde`          = 90,
-    `MinLevel`          = 17,       `MaxLevel`              = 17,
-    `MinLevelHealth`    = 548,      `MaxLevelHealth`        = 548,
-    `MinLevelMana`      = 300,      `MaxLevelMana`          = 300,
-    `MeleeAttackPower`  = 8,        `MeleeBaseAttackTime`   = 2000,
-    `MinMeleeDmg`       = 15,       `MaxMeleeDmg`           = 19,
-    `MinRangedDmg`      = 23.0384,  `MaxRangedDmg`          = 31.6778,
-    `RangedAttackPower` = 100,
-    `SpeedWalk`         = 1.1,
-    `InhabitType`       = @CREATURE_INHABIT_GROUND,
-    `CreatureType`      = @CREATURE_TYPE_DEMON
+    `FactionAlliance`    = 90,       `FactionHorde`          = 90,
+    `MinLevel`           = 17,       `MaxLevel`              = 17,
+    `MinLevelHealth`     = 548,      `MaxLevelHealth`        = 548,
+    `MinLevelMana`       = 300,      `MaxLevelMana`          = 300,
+    `MeleeAttackPower`   = 8,        `MeleeBaseAttackTime`   = 2000,
+    `MinMeleeDmg`        = 15,       `MaxMeleeDmg`           = 19,
+    `MinRangedDmg`       = 23.0384,  `MaxRangedDmg`          = 31.6778,
+    `RangedAttackPower`  = 100,
+    `SpeedWalk`          = 1.1,
+    `InhabitType`        = @CREATURE_INHABIT_GROUND,
+    `UnitClass`          = @CREATURE_CLASS_PALADIN,
+    `CreatureType`       = @CREATURE_TYPE_DEMON
 WHERE `Entry` = 1860;
 
 UPDATE `creature_template`
 SET
-    `FactionAlliance`   = 90,       `FactionHorde`          = 90,
-    `MinLevel`          = 20,       `MaxLevel`              = 20,
-    `MinLevelHealth`    = 919,      `MaxLevelHealth`        = 919,
-    `MinLevelMana`      = 436,      `MaxLevelMana`          = 436,
-    `MeleeAttackPower`  = 13,       `MeleeBaseAttackTime`   = 2000,
-    `MinMeleeDmg`       = 24,       `MaxMeleeDmg`           = 31,
-    `MinRangedDmg`      = 31.856,   `MaxRangedDmg`          = 43.802,
-    `RangedAttackPower` = 100,
-    `SpeedWalk`         = 1.1,
-    `InhabitType`       = @CREATURE_INHABIT_GROUND,
-    `CreatureType`      = @CREATURE_TYPE_DEMON
+    `FactionAlliance`    = 90,       `FactionHorde`          = 90,
+    `MinLevel`           = 20,       `MaxLevel`              = 20,
+    `MinLevelHealth`     = 919,      `MaxLevelHealth`        = 919,
+    `MinLevelMana`       = 436,      `MaxLevelMana`          = 436,
+    `MeleeAttackPower`   = 13,       `MeleeBaseAttackTime`   = 2000,
+    `MinMeleeDmg`        = 24,       `MaxMeleeDmg`           = 31,
+    `MinRangedDmg`       = 31.856,   `MaxRangedDmg`          = 43.802,
+    `RangedAttackPower`  = 100,
+    `SpeedWalk`          = 1.1,
+    `InhabitType`        = @CREATURE_INHABIT_GROUND,
+    `UnitClass`          = @CREATURE_CLASS_MAGE,
+    `CreatureType`       = @CREATURE_TYPE_DEMON
 WHERE `Entry` = 1863;
 
 UPDATE `creature_template`
 SET
-    `FactionAlliance`   = 35,       `FactionHorde`          = 35,
-    `MinLevel`          = 29,       `MaxLevel`              = 29,
-    `MinLevelHealth`    = 1528,     `MaxLevelHealth`        = 1528,
-    `MinLevelMana`      = 1126,     `MaxLevelMana`          = 1126,
-    `MeleeAttackPower`  = 4,        `MeleeBaseAttackTime`   = 1720,
-    `MinMeleeDmg`       = 9,        `MaxMeleeDmg`           = 10,
-    `MinRangedDmg`      = 43.8944,  `MaxRangedDmg`          = 60.3548,
-    `RangedAttackPower` = 100,      `RangedBaseAttackTime`  = 1892,
-    `ExtraFlags`        = @CREATURE_FLAG_EXTRA_CIVILIAN,
-    `CreatureType`      = @CREATURE_TYPE_BEAST
+    `FactionAlliance`    = 35,       `FactionHorde`          = 35,
+    `MinLevel`           = 29,       `MaxLevel`              = 29,
+    `MinLevelHealth`     = 1528,     `MaxLevelHealth`        = 1528,
+    `MinLevelMana`       = 1126,     `MaxLevelMana`          = 1126,
+    `MeleeAttackPower`   = 4,        `MeleeBaseAttackTime`   = 1720,
+    `MinMeleeDmg`        = 9,        `MaxMeleeDmg`           = 10,
+    `MinRangedDmg`       = 43.8944,  `MaxRangedDmg`          = 60.3548,
+    `RangedAttackPower`  = 100,      `RangedBaseAttackTime`  = 1892,
+    `UnitClass`          = @CREATURE_CLASS_WARRIOR,
+    `ExtraFlags`         = @CREATURE_FLAG_EXTRA_CIVILIAN,
+    `CreatureType`       = @CREATURE_TYPE_BEAST
 WHERE `Entry` = 2224;
 
 UPDATE `creature_template`
 SET
-    `FactionAlliance`   = 35,       `FactionHorde`          = 35,
-    `MinLevel`          = 29,       `MaxLevel`              = 29,
-    `MinLevelHealth`    = 1528,     `MaxLevelHealth`        = 1528,
-    `MinLevelMana`      = 1126,     `MaxLevelMana`          = 1126,
-    `MeleeAttackPower`  = 4,        `MeleeBaseAttackTime`   = 1720,
-    `MinMeleeDmg`       = 9,        `MaxMeleeDmg`           = 10,
-    `MinRangedDmg`      = 43.8944,  `MaxRangedDmg`          = 60.3548,
-    `RangedAttackPower` = 100,      `RangedBaseAttackTime`  = 1892,
-    `ExtraFlags`        = @CREATURE_FLAG_EXTRA_CIVILIAN,
-    `CreatureType`      = @CREATURE_TYPE_BEAST
+    `FactionAlliance`    = 35,       `FactionHorde`          = 35,
+    `MinLevel`           = 29,       `MaxLevel`              = 29,
+    `MinLevelHealth`     = 1528,     `MaxLevelHealth`        = 1528,
+    `MinLevelMana`       = 1126,     `MaxLevelMana`          = 1126,
+    `MeleeAttackPower`   = 4,        `MeleeBaseAttackTime`   = 1720,
+    `MinMeleeDmg`        = 9,        `MaxMeleeDmg`           = 10,
+    `MinRangedDmg`       = 43.8944,  `MaxRangedDmg`          = 60.3548,
+    `RangedAttackPower`  = 100,      `RangedBaseAttackTime`  = 1892,
+    `UnitClass`          = @CREATURE_CLASS_WARRIOR,
+    `ExtraFlags`         = @CREATURE_FLAG_EXTRA_CIVILIAN,
+    `CreatureType`       = @CREATURE_TYPE_BEAST
 WHERE `Entry` = 3574;
 
 UPDATE `creature_template`
 SET
-    `FactionAlliance`   = 35,       `FactionHorde`          = 35,
-    `MinLevel`          = 29,       `MaxLevel`              = 29,
-    `MinLevelHealth`    = 1528,     `MaxLevelHealth`        = 1528,
-    `MinLevelMana`      = 1126,     `MaxLevelMana`          = 1126,
-    `MeleeAttackPower`  = 4,        `MeleeBaseAttackTime`   = 1720,
-    `MinMeleeDmg`       = 9,        `MaxMeleeDmg`           = 10,
-    `MinRangedDmg`      = 43.8944,  `MaxRangedDmg`          = 60.3548,
-    `RangedAttackPower` = 100,      `RangedBaseAttackTime`  = 1892,
-    `ExtraFlags`        = @CREATURE_FLAG_EXTRA_CIVILIAN,
-    `CreatureType`      = @CREATURE_TYPE_BEAST
+    `FactionAlliance`    = 35,       `FactionHorde`          = 35,
+    `MinLevel`           = 29,       `MaxLevel`              = 29,
+    `MinLevelHealth`     = 1528,     `MaxLevelHealth`        = 1528,
+    `MinLevelMana`       = 1126,     `MaxLevelMana`          = 1126,
+    `MeleeAttackPower`   = 4,        `MeleeBaseAttackTime`   = 1720,
+    `MinMeleeDmg`        = 9,        `MaxMeleeDmg`           = 10,
+    `MinRangedDmg`       = 43.8944,  `MaxRangedDmg`          = 60.3548,
+    `RangedAttackPower`  = 100,      `RangedBaseAttackTime`  = 1892,
+    `UnitClass`          = @CREATURE_CLASS_WARRIOR,
+    `ExtraFlags`         = @CREATURE_FLAG_EXTRA_CIVILIAN,
+    `CreatureType`       = @CREATURE_TYPE_BEAST
 WHERE `Entry` = 3837;
 
 UPDATE `creature_template`
 SET
-    `FactionAlliance`   = 35,       `FactionHorde`          = 35,
-    `MinLevel`          = 1,        `MaxLevel`              = 1,
-    `MinLevelHealth`    = 5000,     `MaxLevelHealth`        = 5000,
-    `MeleeAttackPower`  = 24,       `MeleeBaseAttackTime`   = 2000,
-    `MinMeleeDmg`       = 2,        `MaxMeleeDmg`           = 2,
-    `MinRangedDmg`      = 1,        `MaxRangedDmg`          = 1,
-    `SpeedWalk`         = 1.2,
-    `UnitClass`         = @CREATURE_CLASS_WARRIOR,
-    `ExtraFlags`        = @CREATURE_FLAG_EXTRA_CIVILIAN,
-    `CreatureType`      = @CREATURE_TYPE_BEAST
+    `FactionAlliance`    = 35,       `FactionHorde`          = 35,
+    `MinLevel`           = 1,        `MaxLevel`              = 1,
+    `MinLevelHealth`     = 5000,     `MaxLevelHealth`        = 5000,
+    `MeleeAttackPower`   = 24,       `MeleeBaseAttackTime`   = 2000,
+    `MinMeleeDmg`        = 2,        `MaxMeleeDmg`           = 2,
+    `MinRangedDmg`       = 1,        `MaxRangedDmg`          = 1,
+    `SpeedWalk`          = 1.2,
+    `UnitClass`          = @CREATURE_CLASS_WARRIOR,
+    `ExtraFlags`         = @CREATURE_FLAG_EXTRA_CIVILIAN,
+    `CreatureType`       = @CREATURE_TYPE_BEAST
 WHERE `Entry` = 4253;
 
 UPDATE `creature_template`
 SET
-    `FactionAlliance`   = 35,       `FactionHorde`          = 35,
-    `MinLevel`          = 1,        `MaxLevel`              = 1,
-    `MinLevelHealth`    = 5000,     `MaxLevelHealth`        = 5000,
-    `MeleeAttackPower`  = 24,       `MeleeBaseAttackTime`   = 2000,
-    `MinMeleeDmg`       = 2,        `MaxMeleeDmg`           = 2,
-    `MinRangedDmg`      = 1,        `MaxRangedDmg`          = 1,
-    `SpeedWalk`         = 1.2,
-    `UnitClass`         = @CREATURE_CLASS_WARRIOR,
-    `ExtraFlags`        = @CREATURE_FLAG_EXTRA_CIVILIAN,
-    `CreatureType`      = @CREATURE_TYPE_BEAST
+    `FactionAlliance`    = 35,       `FactionHorde`          = 35,
+    `MinLevel`           = 1,        `MaxLevel`              = 1,
+    `MinLevelHealth`     = 5000,     `MaxLevelHealth`        = 5000,
+    `MeleeAttackPower`   = 24,       `MeleeBaseAttackTime`   = 2000,
+    `MinMeleeDmg`        = 2,        `MaxMeleeDmg`           = 2,
+    `MinRangedDmg`       = 1,        `MaxRangedDmg`          = 1,
+    `SpeedWalk`          = 1.2,
+    `UnitClass`          = @CREATURE_CLASS_WARRIOR,
+    `ExtraFlags`         = @CREATURE_FLAG_EXTRA_CIVILIAN,
+    `CreatureType`       = @CREATURE_TYPE_BEAST
 WHERE `Entry` = 4261;
 
 UPDATE `creature_template`
 SET
-    `FactionAlliance`   = 90,       `FactionHorde`          = 90,
-    `MinLevel`          = 22,       `MaxLevel`              = 22,
-    `MinLevelHealth`    = 1042,     `MaxLevelHealth`        = 1042,
-    `MeleeAttackPower`  = 22,       `MeleeBaseAttackTime`   = 1790,
-    `MinMeleeDmg`       = 44,       `MaxMeleeDmg`           = 52,
-    `MinRangedDmg`      = 34.6544,  `MaxRangedDmg`          = 47.6498,
-    `RangedAttackPower` = 100,      `RangedBaseAttackTime`  = 1969,
-    `SpeedWalk`         = 1.03,
-    `InhabitType`       = @CREATURE_INHABIT_GROUND,
-    `ExtraFlags`        = @CREATURE_FLAG_EXTRA_CIVILIAN,
-    `CreatureType`      = @CREATURE_TYPE_DEMON
+    `FactionAlliance`    = 90,       `FactionHorde`          = 90,
+    `MinLevel`           = 22,       `MaxLevel`              = 22,
+    `MinLevelHealth`     = 1042,     `MaxLevelHealth`        = 1042,
+    `MeleeAttackPower`   = 22,       `MeleeBaseAttackTime`   = 1790,
+    `MinMeleeDmg`        = 44,       `MaxMeleeDmg`           = 52,
+    `MinRangedDmg`       = 34.6544,  `MaxRangedDmg`          = 47.6498,
+    `RangedAttackPower`  = 100,      `RangedBaseAttackTime`  = 1969,
+    `SpeedWalk`          = 1.03,
+    `InhabitType`        = @CREATURE_INHABIT_GROUND,
+    `UnitClass`          = @CREATURE_CLASS_WARRIOR,
+    `ExtraFlags`         = @CREATURE_FLAG_EXTRA_CIVILIAN,
+    `CreatureType`       = @CREATURE_TYPE_DEMON
 WHERE `Entry` = 4277;
 
 UPDATE `creature_template`
 SET
-    `FactionAlliance`   = 35,       `FactionHorde`          = 35,
-    `MinLevel`          = 1,        `MaxLevel`              = 1,
-    `MinLevelHealth`    = 5000,     `MaxLevelHealth`        = 5000,
-    `MeleeAttackPower`  = 24,       `MeleeBaseAttackTime`   = 2000,
-    `MinMeleeDmg`       = 2,        `MaxMeleeDmg`           = 2,
-    `MinRangedDmg`      = 1,        `MaxRangedDmg`          = 1,
-    `SpeedWalk`         = 1.2,
-    `UnitClass`         = @CREATURE_CLASS_WARRIOR,
-    `CreatureType`      = @CREATURE_TYPE_BEAST
+    `FactionAlliance`    = 35,       `FactionHorde`          = 35,
+    `MinLevel`           = 1,        `MaxLevel`              = 1,
+    `MinLevelHealth`     = 5000,     `MaxLevelHealth`        = 5000,
+    `MeleeAttackPower`   = 24,       `MeleeBaseAttackTime`   = 2000,
+    `MinMeleeDmg`        = 2,        `MaxMeleeDmg`           = 2,
+    `MinRangedDmg`       = 1,        `MaxRangedDmg`          = 1,
+    `SpeedWalk`          = 1.2,
+    `UnitClass`          = @CREATURE_CLASS_WARRIOR,
+    `CreatureType`       = @CREATURE_TYPE_BEAST
 WHERE `Entry` = 4408;
 
 UPDATE `creature_template`
 SET
-    `FactionAlliance`   = 35,       `FactionHorde`          = 35,
-    `MinLevel`          = 1,        `MaxLevel`              = 1,
-    `MinLevelHealth`    = 5000,     `MaxLevelHealth`        = 5000,
-    `MeleeAttackPower`  = 24,       `MeleeBaseAttackTime`   = 2000,
-    `MinMeleeDmg`       = 2,        `MaxMeleeDmg`           = 2,
-    `MinRangedDmg`      = 1,        `MaxRangedDmg`          = 1,
-    `SpeedWalk`         = 1.2,
-    `UnitClass`         = @CREATURE_CLASS_WARRIOR,
-    `CreatureType`      = @CREATURE_TYPE_BEAST
+    `FactionAlliance`    = 35,       `FactionHorde`          = 35,
+    `MinLevel`           = 1,        `MaxLevel`              = 1,
+    `MinLevelHealth`     = 5000,     `MaxLevelHealth`        = 5000,
+    `MeleeAttackPower`   = 24,       `MeleeBaseAttackTime`   = 2000,
+    `MinMeleeDmg`        = 2,        `MaxMeleeDmg`           = 2,
+    `MinRangedDmg`       = 1,        `MaxRangedDmg`          = 1,
+    `SpeedWalk`          = 1.2,
+    `UnitClass`          = @CREATURE_CLASS_WARRIOR,
+    `CreatureType`       = @CREATURE_TYPE_BEAST
 WHERE `Entry` = 4410;
 
 UPDATE `creature_template`
 SET
-    `FactionAlliance`   = 90,       `FactionHorde`          = 90,
-    `rank`              = @CREATURE_RANK_WORLD_BOSS,
-    `MinLevel`          = 63,       `MaxLevel`              = 63,
-    `MinLevelHealth`    = 8832,     `MaxLevelHealth`        = 8832,
-    `MeleeAttackPower`  = 265,      `MeleeBaseAttackTime`   = 1020,
-    `MinMeleeDmg`       = 520,      `MaxMeleeDmg`           = 628,
-    `MinRangedDmg`      = 88.8624,  `MaxRangedDmg`          = 122.186,
-    `RangedAttackPower` = 100,      `RangedBaseAttackTime`  = 1122,
-    `Scale`             = 2.25,
-    `SpeedWalk`         = 1.3,
-    `UnitClass`         = @CREATURE_CLASS_WARRIOR,
-    `MovementType`      = @CREATURE_MOVEMENT_RANDOM,
-    `InhabitType`       = @CREATURE_INHABIT_GROUND_WATER,
-    `AIName`            = 'EventAI',
-    `CreatureType`      = @CREATURE_TYPE_DEMON
+    `FactionAlliance`    = 90,       `FactionHorde`          = 90,
+    `rank`               = @CREATURE_RANK_WORLD_BOSS,
+    `MinLevel`           = 63,       `MaxLevel`              = 63,
+    `MinLevelHealth`     = 8832,     `MaxLevelHealth`        = 8832,
+    `MeleeAttackPower`   = 265,      `MeleeBaseAttackTime`   = 1020,
+    `MinMeleeDmg`        = 520,      `MaxMeleeDmg`           = 628,
+    `MinRangedDmg`       = 88.8624,  `MaxRangedDmg`          = 122.186,
+    `RangedAttackPower`  = 100,      `RangedBaseAttackTime`  = 1122,
+    `Scale`              = 2.25,
+    `SpeedWalk`          = 1.3,
+    `UnitClass`          = @CREATURE_CLASS_WARRIOR,
+    `MovementType`       = @CREATURE_MOVEMENT_RANDOM,
+    `InhabitType`        = @CREATURE_INHABIT_GROUND_WATER,
+    `AIName`             = 'EventAI',
+    `CreatureType`       = @CREATURE_TYPE_DEMON
 WHERE `Entry` = 5764;
 
 UPDATE `creature_template`
 SET
-    `FactionAlliance`   = 35,       `FactionHorde`          = 35,
-    `MinLevel`          = 60,       `MaxLevel`              = 60,
-    `MinLevelHealth`    = 7680,     `MaxLevelHealth`        = 7680,
-    `MeleeAttackPower`  = 87,       `MeleeBaseAttackTime`   = 2000,
-    `MinMeleeDmg`       = 164,      `MaxMeleeDmg`           = 212,
-    `MinRangedDmg`      = 74.448,   `MaxRangedDmg`          = 102.366,
-    `RangedAttackPower` = 100,
-    `SpeedRun`          = 1,
-    `InhabitType`       = @CREATURE_INHABIT_GROUND,
-    `NpcFlags`          = @CREATURE_FLAG_NPC_GOSSIP | @CREATURE_FLAG_NPC_SPIRITHEALER,
-    `UnitClass`         = @CREATURE_CLASS_WARRIOR,
-    `UnitFlags`         = 768,
-    `ExtraFlags`        = @CREATURE_FLAG_EXTRA_CIVILIAN,
-    `CreatureType`      = @CREATURE_TYPE_HUMANOID,
-    `CreatureTypeFlags` = @CREATURE_TYPE_FLAG_NOT_ATTACKABLE
+    `FactionAlliance`    = 35,       `FactionHorde`          = 35,
+    `MinLevel`           = 60,       `MaxLevel`              = 60,
+    `MinLevelHealth`     = 7680,     `MaxLevelHealth`        = 7680,
+    `MeleeAttackPower`   = 87,       `MeleeBaseAttackTime`   = 2000,
+    `MinMeleeDmg`        = 164,      `MaxMeleeDmg`           = 212,
+    `MinRangedDmg`       = 74.448,   `MaxRangedDmg`          = 102.366,
+    `RangedAttackPower`  = 100,
+    `SpeedRun`           = 1,
+    `InhabitType`        = @CREATURE_INHABIT_GROUND,
+    `NpcFlags`           = @CREATURE_FLAG_NPC_GOSSIP | @CREATURE_FLAG_NPC_SPIRITHEALER,
+    `UnitClass`          = @CREATURE_CLASS_WARRIOR,
+    `UnitFlags`          = 768,
+    `ExtraFlags`         = @CREATURE_FLAG_EXTRA_CIVILIAN,
+    `CreatureType`       = @CREATURE_TYPE_HUMANOID,
+    `CreatureTypeFlags`  = @CREATURE_TYPE_FLAG_NOT_ATTACKABLE
 WHERE `Entry` = 6491;
 
 UPDATE `creature_template`
 SET
-    `FactionAlliance`   = 35,       `FactionHorde`          = 35,
-    `MinLevel`          = 1,        `MaxLevel`              = 1,
-    `MinLevelHealth`    = 5000,     `MaxLevelHealth`        = 5000,
-    `MeleeAttackPower`  = 24,       `MeleeBaseAttackTime`   = 2000,
-    `MinMeleeDmg`       = 2,        `MaxMeleeDmg`           = 2,
-    `MinRangedDmg`      = 1,        `MaxRangedDmg`          = 1,
-    `SpeedWalk`         = 1.2,
-    `UnitClass`         = @CREATURE_CLASS_WARRIOR,
-    `ExtraFlags`        = @CREATURE_FLAG_EXTRA_CIVILIAN,
-    `CreatureType`      = @CREATURE_TYPE_BEAST,
-    `Family`            = @CREATURE_BEAST_FAMILY_BEAR
+    `FactionAlliance`    = 35,       `FactionHorde`          = 35,
+    `MinLevel`           = 1,        `MaxLevel`              = 1,
+    `MinLevelHealth`     = 5000,     `MaxLevelHealth`        = 5000,
+    `MeleeAttackPower`   = 24,       `MeleeBaseAttackTime`   = 2000,
+    `MinMeleeDmg`        = 2,        `MaxMeleeDmg`           = 2,
+    `MinRangedDmg`       = 1,        `MaxRangedDmg`          = 1,
+    `SpeedWalk`          = 1.2,
+    `UnitClass`          = @CREATURE_CLASS_WARRIOR,
+    `ExtraFlags`         = @CREATURE_FLAG_EXTRA_CIVILIAN,
+    `CreatureType`       = @CREATURE_TYPE_BEAST,
+    `Family`             = @CREATURE_BEAST_FAMILY_BEAR
 WHERE `Entry` = 6571;
 
 UPDATE `creature_template`
 SET
-    `FactionAlliance`   = 35,       `FactionHorde`          = 35,
-    `MinLevel`          = 1,        `MaxLevel`              = 1,
-    `MinLevelHealth`    = 5000,     `MaxLevelHealth`        = 5000,
-    `MeleeAttackPower`  = 24,       `MeleeBaseAttackTime`   = 2000,
-    `MinMeleeDmg`       = 2,        `MaxMeleeDmg`           = 2,
-    `MinRangedDmg`      = 1,        `MaxRangedDmg`          = 1,
-    `SpeedWalk`         = 1.2,
-    `UnitClass`         = @CREATURE_CLASS_WARRIOR,
-    `ExtraFlags`        = @CREATURE_FLAG_EXTRA_CIVILIAN,
-    `CreatureType`      = @CREATURE_TYPE_BEAST,
-    `Family`            = @CREATURE_BEAST_FAMILY_BEAR
+    `FactionAlliance`    = 35,       `FactionHorde`          = 35,
+    `MinLevel`           = 1,        `MaxLevel`              = 1,
+    `MinLevelHealth`     = 5000,     `MaxLevelHealth`        = 5000,
+    `MeleeAttackPower`   = 24,       `MeleeBaseAttackTime`   = 2000,
+    `MinMeleeDmg`        = 2,        `MaxMeleeDmg`           = 2,
+    `MinRangedDmg`       = 1,        `MaxRangedDmg`          = 1,
+    `SpeedWalk`          = 1.2,
+    `UnitClass`          = @CREATURE_CLASS_WARRIOR,
+    `ExtraFlags`         = @CREATURE_FLAG_EXTRA_CIVILIAN,
+    `CreatureType`       = @CREATURE_TYPE_BEAST,
+    `Family`             = @CREATURE_BEAST_FAMILY_BEAR
 WHERE `Entry` = 6572;
 
 UPDATE `creature_template`
 SET
-    `FactionAlliance`   = 35,       `FactionHorde`          = 35,
-    `MinLevel`          = 1,        `MaxLevel`              = 1,
-    `MinLevelHealth`    = 5000,     `MaxLevelHealth`        = 5000,
-    `MeleeAttackPower`  = 24,       `MeleeBaseAttackTime`   = 2000,
-    `MinMeleeDmg`       = 2,        `MaxMeleeDmg`           = 2,
-    `MinRangedDmg`      = 1,        `MaxRangedDmg`          = 1,
-    `SpeedWalk`         = 1.2,
-    `UnitClass`         = @CREATURE_CLASS_WARRIOR,
-    `ExtraFlags`        = @CREATURE_FLAG_EXTRA_CIVILIAN,
-    `CreatureType`      = @CREATURE_TYPE_BEAST,
-    `Family`            = @CREATURE_BEAST_FAMILY_BEAR
+    `FactionAlliance`    = 35,       `FactionHorde`          = 35,
+    `MinLevel`           = 1,        `MaxLevel`              = 1,
+    `MinLevelHealth`     = 5000,     `MaxLevelHealth`        = 5000,
+    `MeleeAttackPower`   = 24,       `MeleeBaseAttackTime`   = 2000,
+    `MinMeleeDmg`        = 2,        `MaxMeleeDmg`           = 2,
+    `MinRangedDmg`       = 1,        `MaxRangedDmg`          = 1,
+    `SpeedWalk`          = 1.2,
+    `UnitClass`          = @CREATURE_CLASS_WARRIOR,
+    `ExtraFlags`         = @CREATURE_FLAG_EXTRA_CIVILIAN,
+    `CreatureType`       = @CREATURE_TYPE_BEAST,
+    `Family`             = @CREATURE_BEAST_FAMILY_BEAR
 WHERE `Entry` = 6573;
 
 UPDATE `creature_template`
 SET
-    `FactionAlliance`   = 35,       `FactionHorde`          = 35,
-    `MinLevel`          = 1,        `MaxLevel`              = 1,
-    `MinLevelHealth`    = 8,        `MaxLevelHealth`        = 8,
-    `MeleeAttackPower`  = 1,        `MeleeBaseAttackTime`   = 0,
-    `MinMeleeDmg`       = 2,        `MaxMeleeDmg`           = 2,
-    `MinRangedDmg`      = 0,        `MaxRangedDmg`          = 0,
-    `ExtraFlags`        = @CREATURE_FLAG_EXTRA_CIVILIAN,
-    `CreatureType`      = @CREATURE_TYPE_CRITTER
+    `FactionAlliance`    = 35,       `FactionHorde`          = 35,
+    `MinLevel`           = 1,        `MaxLevel`              = 1,
+    `MinLevelHealth`     = 8,        `MaxLevelHealth`        = 8,
+    `MeleeAttackPower`   = 1,        `MeleeBaseAttackTime`   = 0,
+    `MinMeleeDmg`        = 2,        `MaxMeleeDmg`           = 2,
+    `MinRangedDmg`       = 0,        `MaxRangedDmg`          = 0,
+    `UnitClass`          = @CREATURE_CLASS_WARRIOR,
+    `ExtraFlags`         = @CREATURE_FLAG_EXTRA_CIVILIAN,
+    `CreatureType`       = @CREATURE_TYPE_CRITTER
 WHERE `Entry` = 12861;
 
 UPDATE `creature_template`
 SET
-    `FactionAlliance`   = 35,       `FactionHorde`          = 35,
-    `MinLevel`          = 1,        `MaxLevel`              = 1,
-    `MinLevelHealth`    = 5000,     `MaxLevelHealth`        = 5000,
-    `MeleeAttackPower`  = 24,       `MeleeBaseAttackTime`   = 2000,
-    `MinMeleeDmg`       = 2,        `MaxMeleeDmg`           = 2,
-    `MinRangedDmg`      = 1,        `MaxRangedDmg`          = 1,
-    `SpeedWalk`         = 1.2,
-    `UnitClass`         = @CREATURE_CLASS_WARRIOR,
-    `CreatureType`      = @CREATURE_TYPE_HUMANOID
+    `FactionAlliance`    = 35,       `FactionHorde`          = 35,
+    `MinLevel`           = 1,        `MaxLevel`              = 1,
+    `MinLevelHealth`     = 5000,     `MaxLevelHealth`        = 5000,
+    `MeleeAttackPower`   = 24,       `MeleeBaseAttackTime`   = 2000,
+    `MinMeleeDmg`        = 2,        `MaxMeleeDmg`           = 2,
+    `MinRangedDmg`       = 1,        `MaxRangedDmg`          = 1,
+    `SpeedWalk`          = 1.2,
+    `UnitClass`          = @CREATURE_CLASS_WARRIOR,
+    `CreatureType`       = @CREATURE_TYPE_HUMANOID
 WHERE `Entry` = 15313;
 
 UPDATE `creature_template`
 SET
-    `FactionAlliance`   = 35,       `FactionHorde`          = 35,
-    `MinLevel`          = 1,        `MaxLevel`              = 1,
-    `MinLevelHealth`    = 5000,     `MaxLevelHealth`        = 5000,
-    `MeleeAttackPower`  = 24,       `MeleeBaseAttackTime`   = 2000,
-    `MinMeleeDmg`       = 2,        `MaxMeleeDmg`           = 2,
-    `MinRangedDmg`      = 1,        `MaxRangedDmg`          = 1,
-    `SpeedWalk`         = 1.2,
-    `UnitClass`         = @CREATURE_CLASS_WARRIOR,
-    `CreatureType`      = @CREATURE_TYPE_HUMANOID
+    `FactionAlliance`    = 35,       `FactionHorde`          = 35,
+    `MinLevel`           = 1,        `MaxLevel`              = 1,
+    `MinLevelHealth`     = 5000,     `MaxLevelHealth`        = 5000,
+    `MeleeAttackPower`   = 24,       `MeleeBaseAttackTime`   = 2000,
+    `MinMeleeDmg`        = 2,        `MaxMeleeDmg`           = 2,
+    `MinRangedDmg`       = 1,        `MaxRangedDmg`          = 1,
+    `SpeedWalk`          = 1.2,
+    `UnitClass`          = @CREATURE_CLASS_WARRIOR,
+    `CreatureType`       = @CREATURE_TYPE_HUMANOID
 WHERE `Entry` = 15314;
 
 -- Insert template spells for creatures --------------------------------------
