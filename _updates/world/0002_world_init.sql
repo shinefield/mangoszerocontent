@@ -395,7 +395,6 @@ SET @SPELL_SCHOOL_SHADOW                        = 5;
 SET @SPELL_SCHOOL_ARCANE                        = 6;
 
 -- Provide variables for NPC classes -----------------------------------------
-SET @CREATURE_CLASS_NONE                        = 0;
 SET @CREATURE_CLASS_WARRIOR                     = 1;
 SET @CREATURE_CLASS_PALADIN                     = 2;
 SET @CREATURE_CLASS_ROGUE                       = 4;
@@ -498,7 +497,7 @@ SET @CREATURE_INHABIT_GROUND_WATER              = @CREATURE_INHABIT_GROUND | @CR
 SET @CREATURE_INHABIT_AIR                       = 4;
 SET @CREATURE_INHABIT_ANY                       = @CREATURE_INHABIT_GROUND_WATER | @CREATURE_INHABIT_AIR;
 
--- Provide varbiables for creature immunity masks ----------------------------
+-- Provide variables for creature immunity masks ----------------------------
 SET @CREATURE_IMMUNITY_NONE                     = 0;
 SET @CREATURE_IMMUNITY_CHARM                    = 1;
 SET @CREATURE_IMMUNITY_CONFUSED                 = 2;
