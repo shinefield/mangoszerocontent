@@ -11210,3 +11210,13 @@ VALUES
     ,(25286,175,1,0) -- Heroic Strike (Rank 9)
     ,(25288,355,1,0) -- Revenge (Rank 6)
 ;
+
+-- Insert weapon enchant spell procs -----------------------------------------
+INSERT INTO `spell_proc_item_enchant`
+    (`entry`,`ppmRate`)
+VALUES
+     (8034,9)    -- Frostbrand Attack (Rank 1)
+    ,(13897,6)   -- Fiery Weapon
+    ,(20004,6)   -- Life Steal
+    ,(20005,1.6) -- Chilled
+;
