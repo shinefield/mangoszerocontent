@@ -8033,6 +8033,73 @@ VALUES
     ,(59, 209800)
 ;
 
+-- Insert base experience awarded for exploration ----------------------------
+INSERT INTO `exploration_basexp`
+    (`level`,   `basexp`)
+VALUES
+     (0,        0)
+    ,(1,        5)
+    ,(2,        15)
+    ,(3,        25)
+    ,(4,        35)
+    ,(5,        45)
+    ,(6,        55)
+    ,(7,        65)
+    ,(8,        70)
+    ,(9,        80)
+    ,(10,       85)
+    ,(11,       90)
+    ,(12,       90)
+    ,(13,       90)
+    ,(14,       100)
+    ,(15,       105)
+    ,(16,       115)
+    ,(17,       125)
+    ,(18,       135)
+    ,(19,       145)
+    ,(20,       155)
+    ,(21,       165)
+    ,(22,       175)
+    ,(23,       185)
+    ,(24,       195)
+    ,(25,       200)
+    ,(26,       210)
+    ,(27,       220)
+    ,(28,       230)
+    ,(29,       240)
+    ,(30,       245)
+    ,(31,       250)
+    ,(32,       255)
+    ,(33,       265)
+    ,(34,       270)
+    ,(35,       275)
+    ,(36,       280)
+    ,(37,       285)
+    ,(38,       285)
+    ,(39,       300)
+    ,(40,       315)
+    ,(41,       330)
+    ,(42,       345)
+    ,(43,       360)
+    ,(44,       375)
+    ,(45,       390)
+    ,(46,       405)
+    ,(47,       420)
+    ,(48,       440)
+    ,(49,       455)
+    ,(50,       470)
+    ,(51,       490)
+    ,(52,       510)
+    ,(53,       530)
+    ,(54,       540)
+    ,(55,       560)
+    ,(56,       580)
+    ,(57,       600)
+    ,(58,       620)
+    ,(59,       640)
+    ,(60,       660)
+;
+
 -- Insert weather data for each zone -----------------------------------------
 INSERT INTO `game_weather`
     (`zone`, `spring_rain_chance`, `spring_snow_chance`, `spring_storm_chance`, `summer_rain_chance`, `summer_snow_chance`, `summer_storm_chance`, `fall_rain_chance`, `fall_snow_chance`, `fall_storm_chance`, `winter_rain_chance`, `winter_snow_chance`, `winter_storm_chance`)
@@ -9045,144 +9112,156 @@ VALUES
     ,(1863, 60, 1709, 1874, 2261, 130, 87, 232, 106, 98)
 ;
 
--- Insert instance templates -------------------------------------------------
+-- Insert instance / raid templates ------------------------------------------
 INSERT INTO `instance_template`
-    (`map`, `levelMin`, `levelMax`, `maxPlayers`, `reset_delay`, `ghostEntranceMap`, `ghostEntranceX`, `ghostEntranceY`)
+    (`map`, `parent`,   `levelMin`, `levelMax`, `maxPlayers`,   `reset_delay`,  `ghostEntranceMap`, `ghostEntranceX`,   `ghostEntranceY`)
 VALUES
-     (33,   20,         26,         10,           0,              0,                 -230.989,  1571.57)    -- Shadowfang Keep
-    ,(34,   22,         34,         10,           0,              0,                 -8762.38,   848.01)    -- Stormwind Stockade
-    ,(36,   17,         26,         10,           0,              0,                 -11207.8,  1681.15)    -- Deadmines
-    ,(43,   17,         24,         10,           0,              1,                 -751.131, -2209.24)    -- Wailing Caverns
-    ,(47,   24,         40,         10,           0,              1,                 -4459.45, -1660.21)    -- Razorfen Kraul
-    ,(48,   20,         34,         10,           0,              1,                  4249.12,  748.387)    -- Blackfathom Deeps
-    ,(70,   41,         51,         10,           0,              0,                 -6060.18,    -2955)    -- Uldaman
-    ,(90,   24,         40,         10,           0,              0,                 -5162.66,  931.599)    -- Gnomeregan
-    ,(109,  50,         0,          10,           0,              0,                 -10170.1, -3995.97)    -- Sunken Temple
-    ,(129,  33,         47,         10,           0,              1,                 -4662.88, -2535.87)    -- Razorfen Downs
-    ,(189,  29,         48,         10,           0,              0,                  2892.24, -811.264)    -- Scarlet Monastery
-    ,(209,  43,         54,         10,           0,              1,                 -6790.58, -2891.28)    -- Zul'Farrak
-    ,(229,  55,         0,          10,           3,              0,                 -7522.53, -1233.04)    -- Blackrock Spire
-    ,(230,  48,         60,         5,            0,              0,                  -7178.1, -928.639)    -- Blackrock Depths
-    ,(249,  60,         60,         40,           5,              1,                 -4753.31, -3752.42)    -- Onyxia's Lair
-    ,(289,  58,         0,          5,            0,              0,                  1274.78, -2552.56)    -- Scholomance
-    ,(309,  60,         60,         20,           3,              0,                 -11916.1, -1224.58)    -- Zul'Gurub
-    ,(329,  58,         0,          5,            0,              0,                  3392.32, -3378.48)    -- Stratholme
-    ,(349,  40,         58,         10,           0,              1,                  -1432.7,  2924.98)    -- Maraudon
-    ,(389,  13,         22,         10,           0,              1,                  1816.76, -4423.37)    -- Ragefire Chasm
-    ,(409,  60,         60,         40,           7,              0,                 -7510.56,  -1036.7)    -- Molten Core
-    ,(429,  55,         0,          5,            0,              1,                 -3908.03,     1130)    -- Dire Maul
-    ,(469,  60,         60,         40,           7,              0,                 -7663.41, -1218.67)    -- Blackwing Lair
-    ,(509,  60,         60,         20,           3,              1,                 -8114.46,  1526.37)    -- Ruins of Ahn'Qiraj
-    ,(531,  60,         60,         40,           7,              1,                 -8111.72,  1526.79)    -- Ahn'Qiraj Temple
-    ,(533,  60,         60,         40,           7,              0,                        0,        0)    -- Naxxramas
+     (33,   0,          20,         26,         10,             0,              0,                  -230.989,           1571.57)    -- instance_shadowfang_keep
+    ,(34,   0,          22,         34,         10,             0,              0,                  -8762.38,           848.01)     -- instance_stormwind_stockade
+    ,(36,   0,          17,         26,         10,             0,              0,                  -11207.8,           1681.15)    -- instance_deadmines
+    ,(43,   0,          17,         24,         10,             0,              1,                  -751.131,           -2209.24)   -- instance_wailing_caverns
+    ,(47,   0,          24,         40,         10,             0,              1,                  -4459.45,           -1660.21)   -- instance_razorfen_kraul
+    ,(48,   0,          20,         34,         10,             0,              1,                  4249.12,            748.387)    -- instance_blackfathom_deeps
+    ,(70,   0,          41,         51,         10,             0,              0,                  -6060.18,           -2955)      -- instance_uldaman
+    ,(90,   0,          24,         40,         10,             0,              0,                  -5162.66,           931.599)    -- instance_gnomeregan
+    ,(109,  0,          50,         0,          10,             0,              0,                  -10170.1,           -3995.97)   -- instance_sunken_temple
+    ,(129,  0,          33,         47,         10,             0,              1,                  -4662.88,           -2535.87)   -- instance_razorfen_downs
+    ,(189,  0,          29,         48,         10,             0,              0,                  2892.24,            -811.264)   -- instance_scarlet_monastery
+    ,(209,  0,          43,         54,         10,             0,              1,                  -6790.58,           -2891.28)   -- instance_zulfarrak
+    ,(229,  0,          55,         0,          10,             3,              0,                  -7522.53,           -1233.04)   -- instance_blackrock_spire
+    ,(230,  0,          48,         60,         5,              0,              0,                  -7178.1,            -928.639)   -- instance_blackrock_depths
+    ,(249,  0,          60,         60,         40,             5,              1,                  -4753.31,           -3752.42)   -- instance_onyxias_lair
+    ,(289,  0,          58,         0,          5,              0,              0,                  1274.78,            -2552.56)   -- instance_scholomance
+    ,(309,  0,          60,         60,         20,             3,              0,                  -11916.1,           -1224.58)   -- instance_zulgurub
+    ,(329,  0,          58,         0,          5,              0,              0,                  3392.32,            -3378.48)   -- instance_stratholme
+    ,(349,  0,          40,         58,         10,             0,              1,                  -1432.7,            2924.98)    -- instance_maraudon
+    ,(389,  0,          13,         22,         10,             0,              1,                  1816.76,            -4423.37)   -- instance_ragefire_chasm
+    ,(409,  0,          60,         60,         40,             7,              0,                  -7510.56,           -1036.7)    -- instance_molten_core
+    ,(429,  0,          55,         0,          5,              0,              1,                  -3908.03,           1130)       -- instance_dire_maul
+    ,(469,  0,          60,         60,         40,             7,              0,                  -7663.41,           -1218.67)   -- instance_blackwing_lair
+    ,(509,  0,          60,         60,         20,             3,              1,                  -8114.46,           1526.37)    -- instance_ruins_of_ahnqiraj
+    ,(531,  0,          60,         60,         40,             7,              1,                  -8111.72,           1526.79)    -- instance_ahnqiraj_temple
+    ,(533,  0,          60,         60,         40,             7,              0,                  0,                  0)          -- instance_naxxramas
 ;
 
--- Insert area triggers for instanced zones ----------------------------------
+-- Insert area triggers for instances / raids --------------------------------
 INSERT INTO `areatrigger_teleport`
     (`target_position_x`, `target_position_y`, `target_position_z`, `target_map`, `target_orientation`, `id`, `name`)
 VALUES
-     (-11208.3,           1672.52,              24.66,              0,            4.55217,              119,    'The Deadmines - Entrance - Outside')
-    ,(-11339.4,           1571.16,              100.56,             0,            0,                    121,    'The Deadmines - Exit - Soutside')
-    ,(-232.796,           1568.28,              76.8909,            0,            4.398,                194,    'Shadowfang keep - Entrance - Outside')
-    ,(-6066.73,           -2955.63,             209.776,            0,            3.20443,              288,    'Uldaman - Dig One - Entrance - Outside')
-    ,(-5163.33,           927.623,              257.188,            0,            0,                    322,    'Gnomeregan - Entrance - Outside')
-    ,(-10175.1,           -3995.15,             -112.9,             0,            2.95938,              448,    "The Temple of Atal'Hakkar - Entrance - Outside")
-    ,(-8764.83,           846.075,              87.4842,            0,            3.77934,              503,    'Stormwind Stockades - Entrance - Outside')
-    ,(-4858.27,           756.435,              244.923,            0,            0,                    525,    'Gnomeregan - Train Depot - Entrance - Outside')
-    ,(2913.92,            -802.404,             160.333,            0,            3.50405,              602,    'Scarlet Monastery - Graveyard - Entrance - Outside')
-    ,(2906.14,            -813.772,             160.333,            0,            1.95739,              604,    'Scarlet Monastery - Cathedral - Entrance - Outside')
-    ,(2884.45,            -822.01,              160.333,            0,            1.95268,              606,    'Scarlet Monastery - Armory - Entrance - Outside')
-    ,(2870.9,             -820.164,             160.333,            0,            0.387856,             608,    'Scarlet Monastery - Library - Entrance - Outside')
-    ,(-9015.97,           875.318,              148.617,            0,            0,                    702,    'Stormwind - Wizard Sanctum - Entrance - Outside')
-    ,(-9019.16,           887.596,              29.6206,            0,            0,                    704,    'Stormwind - Wizard Sanctum - Exit - Inside')
-    ,(-6620.48,           -3765.19,             266.226,            0,            3.13531,              882,    'Dustwind Gulch - Uldaman - Entrance - Outside')
-    ,(-7524.19,           -1230.13,             285.743,            0,            2.09544,              1470,   'Blackrock Spire - Entrance - Outside')
-    ,(-7179.63,           -923.667,             166.416,            0,            1.84097,              1472,   'Blackrock Depths - Entrance - Outside')
-    ,(-7524.19,           -1230.13,             285.743,            0,            2.09544,              2068,   'Blackrock Spire - Fall out')
-    ,(3235.46,            -4050.6,              108.45,             0,            1.93522,              2221,   'Stratholme - Eastwall Gate - Entrance - Outside')
-    ,(-8762.45,           403.062,              103.902,            0,            5.34463,              2534,   'Stormwind City - Champions Hall - Entrance - Outside')
-    ,(1275.05,            -2552.03,             90.3994,            0,            3.6631,               2568,   'Scholomance - Entrance - Outside')
-    ,(534.868,            -1087.68,             106.119,            0,            3.35758,              2606,   'Alterac Valley - Horde - Entrance - Outside')
-    ,(98.432,             -182.274,             127.52,             0,            5.02654,              2608,   'Alterac Valley - Alliance - Entrance - Outside')
-    ,(-7524.19,           -1230.13,             285.743,            0,            2.09544,              3728,   'Blackrock Spire - Entrance - Outside')
-    ,(-11916.3,           -1208.37,             92.2868,            0,            1.61792,              3930,   "Zul'Gurub - Entrance - Outside")
-    ,(-1198,              -2533,                22,                 0,            0,                    3948,   'Arathi Basin - Refuge Point - Entrance - Outside')
-    ,(-817,               -3509,                73,                 0,            0,                    3949,   'Arathi Basin - Hammerfall - Entrance - Outside')
-    ,(-740.059,           -2214.23,             16.1374,            1,            5.68,                 226,    'The Wailing Caverns - Caverns of Mist - Entrance - Outside')
-    ,(-4464.92,           -1666.24,             90,                 1,            0,                    242,    'Razorfen Kraul - Entrance - Outside')
-    ,(4247.74,            745.879,              -24.5299,           1,            4.5828,               259,    'Blackfathom Deeps - Entrance - Outside')
-    ,(-4658.12,           -2526.35,             81.492,             1,            1.25978,              444,    'Razorfen Downs - Entrance - Outside')
-    ,(8786.36,            967.445,              30.197,             1,            3.39632,              527,    "Teldrassil - Rut'theran Village")
-    ,(9945.13,            2616.89,              1316.46,            1,            4.61446,              542,    'Teldrassil - Darnassus')
-    ,(-6796.49,           -2890.77,             8.88063,            1,            3.30496,              922,    "Zul'Farrak - Entrance - Outside")
-    ,(-5187.47,           -2804.32,             -8.375,             1,            5.76,                 943,    'Leap of Faith - End of fall')
-    ,(-4747.17,           -3753.27,             49.8122,            1,            0.713271,             1064,   "Onyxia's Lair - Entrance - Outside")
-    ,(1813.49,            -4418.58,             -18.57,             1,            1.78,                 2226,   'Ragefire Chasm - Entrance - Outside')
-    ,(1637.32,            -4242.7,              56.1827,            1,            4.1927,               2530,   'Orgrimmar - Hall of Legends - Entrance - Outside')
-    ,(-1186.98,           2875.95,              85.7258,            1,            1.78443,              3126,   'Maraudon - Purple - Entrance - Outside')
-    ,(-1471.07,           2618.57,              76.1944,            1,            0,                    3131,   'Maraudon - Orange - Entrance - Outside')
-    ,(-3831.79,           1250.23,              160.223,            1,            0,                    3190,   'Dire Maul - West - Left - Entrance - Outside')
-    ,(-3747.96,           1249.18,              160.217,            1,            3.15827,              3191,   'Dire Maul - West - Right - Entrance - Outside')
-    ,(-3520.65,           1077.72,              161.138,            1,            1.5009,               3193,   'Dire Maul - North - Entrance - Outside')
-    ,(-3737.48,           934.975,              160.973,            1,            3.13864,              3194,   'Dire Maul - East - Entrance - Outside')
-    ,(-3980.58,           776.193,              161.006,            1,            0,                    3195,   'Dire Maul - East - Side Entrance - Outside')
-    ,(-4030.21,           127.966,              26.8109,            1,            0,                    3196,   'Dire Maul - East - Lariss Pavilion - Entrance - Outside')
-    ,(-3577.67,           841.859,              134.594,            1,            0,                    3197,   'Dire Maul - East - Alzzin - Exit - Outside')
-    ,(-8418.5,            1505.94,              31.8232,            1,            0,                    4006,   "Ruins Of Ahn'Qiraj - Entrance - Outside")
-    ,(-8242.67,           1992.06,              129.072,            1,            0,                    4012,   "Ahn'Qiraj Temple - Entrance - Outside")
+     (-232.796,           1568.28,              76.8909,            0,            4.398,                194,    'Shadowfang Keep - Entrance - Outside')
     ,(-229.135,           2109.18,              76.8898,            33,           1.267,                145,    'Shadowfang Keep - Entrance - Inside')
-    ,(54.23,              0.28,                 -18.34,             34,           6.26,                 101,    'Stormwind Stockades - Entrance - Inside')
-    ,(-16.4,              -383.07,              61.78,              36,           1.86,                 78,     'The Deadmines - Entrance - Inside')
-    ,(-163.49,            132.9,                -73.66,             43,           5.83,                 228,    'The Wailing Caverns - Entrance - Inside')
+    ,(-8764.83,           846.075,              87.4842,            0,            3.77934,              503,    'Stormwind Stockade - Entrance - Outside')
+    ,(54.23,              0.28,                 -18.34,             34,           6.26,                 101,    'Stormwind Stockade - Entrance - Inside')
+    ,(-11208.3,           1672.52,              24.66,              0,            4.55217,              119,    'Deadmines - Entrance - Outside')
+    ,(-16.4,              -383.07,              61.78,              36,           1.86,                 78,     'Deadmines - Entrance - Inside')
+    ,(-11339.4,           1571.16,              100.56,             0,            0,                    121,    'Deadmines - Exit - South side')
+    ,(-163.49,            132.9,                -73.66,             43,           5.83,                 228,    'Wailing Caverns - Entrance - Inside')
+    ,(-740.059,           -2214.23,             16.1374,            1,            5.68,                 226,    'Wailing Caverns - Caverns of Mist - Entrance - Outside')
+    ,(-4464.92,           -1666.24,             90,                 1,            0,                    242,    'Razorfen Kraul - Entrance - Outside')
     ,(1943,               1544.63,              82,                 47,           1.38,                 244,    'Razorfen Kraul - Entrance - Inside')
+    ,(4247.74,            745.879,              -24.5299,           1,            4.5828,               259,    'Blackfathom Deeps - Entrance - Outside')
     ,(-151.89,            106.96,               -39.87,             48,           4.53,                 257,    'Blackfathom Deeps - Entrance - Inside')
-    ,(-226.8,             49.09,                -46.03,             70,           1.39,                 286,    'Uldaman - Hall of the Keepers - Entrance - Entrance - Inside')
+    ,(-6066.73,           -2955.63,             209.776,            0,            3.20443,              288,    'Uldaman - Dig One - Entrance - Outside')
     ,(-214.02,            383.607,              -38.7687,           70,           0.5,                  902,    'Uldaman - Echomok Caverns - Side Entrance - Inside')
+    ,(-6620.48,           -3765.19,             266.226,            0,            3.13531,              882,    'Dustwind Gulch - Uldaman - Entrance - Outside')
+    ,(-226.8,             49.09,                -46.03,             70,           1.39,                 286,    'Uldaman - Hall of the Keepers - Entrance - Entrance - Inside')
+    ,(-5163.33,           927.623,              257.188,            0,            0,                    322,    'Gnomeregan - Entrance - Outside')
     ,(-332.22,            -2.28,                -150.86,            90,           2.77,                 324,    'Gnomeregan - The Clockwerk Run - Entrance - Inside')
+    ,(-4858.27,           756.435,              244.923,            0,            0,                    525,    'Gnomeregan - Train Depot - Entrance - Outside')
     ,(-736.51,            2.71,                 -249.99,            90,           3.14,                 523,    'Gnomeregan - Train Depot - Entrance - Inside')
-    ,(-319.24,            99.9,                 -131.85,            109,          3.19,                 446,    "The Temple of Atal'Hakkar - Entrance - Inside")
+    ,(-10175.1,           -3995.15,             -112.9,             0,            2.95938,              448,    'Sunken Temple - Entrance - Outside')
+    ,(-319.24,            99.9,                 -131.85,            109,          3.19,                 446,    'Sunken Temple - Entrance - Inside')
+    ,(-4658.12,           -2526.35,             81.492,             1,            1.25978,              444,    'Razorfen Downs - Entrance - Outside')
     ,(2592.55,            1107.5,               51.29,              129,          4.74,                 442,    'Razorfen Downs - Entrance - Inside')
+    ,(2913.92,            -802.404,             160.333,            0,            3.50405,              602,    'Scarlet Monastery - Graveyard - Entrance - Outside')
     ,(1688.99,            1053.48,              18.6775,            189,          0.00117,              45,     'Scarlet Monastery - Graveyard - Entrance - Inside')
-    ,(855.683,            1321.5,               18.6709,            189,          0.001747,             610,    'Scarlet Monastery - Cathedral - Entrance - Inside')
-    ,(1610.83,            -323.433,             18.6738,            189,          6.28022,              612,    'Scarlet Monastery - Armory - Entrance - Inside')
+    ,(2870.9,             -820.164,             160.333,            0,            0.387856,             608,    'Scarlet Monastery - Library - Entrance - Outside')
     ,(255.346,            -209.09,              18.6773,            189,          6.26656,              614,    'Scarlet Monastery - Library - Entrance - Inside')
-    ,(1213.52,            841.59,               8.93,               209,          6.09,                 924,    "Zul'Farrak - Entrance - ")
+    ,(2884.45,            -822.01,              160.333,            0,            1.95268,              606,    'Scarlet Monastery - Armory - Entrance - Outside')
+    ,(1610.83,            -323.433,             18.6738,            189,          6.28022,              612,    'Scarlet Monastery - Armory - Entrance - Inside')
+    ,(2906.14,            -813.772,             160.333,            0,            1.95739,              604,    'Scarlet Monastery - Cathedral - Entrance - Outside')
+    ,(855.683,            1321.5,               18.6709,            189,          0.001747,             610,    'Scarlet Monastery - Cathedral - Entrance - Inside')
+    ,(-6796.49,           -2890.77,             8.88063,            1,            3.30496,              922,    "Zul'Farrak - Entrance - Outside")
+    ,(1213.52,            841.59,               8.93,               209,          6.09,                 924,    "Zul'Farrak - Entrance - Inside")
+    ,(-7524.19,           -1230.13,             285.743,            0,            2.09544,              1470,   'Blackrock Spire - Entrance - Outside')
     ,(78.5083,            -225.044,             49.839,             229,          5.1,                  1468,   'Blackrock Spire - Entrance - Inside')
+    ,(-7524.19,           -1230.13,             285.743,            0,            2.09544,              2068,   'Blackrock Spire - Fall out')
+    ,(-7179.63,           -923.667,             166.416,            0,            1.84097,              1472,   'Blackrock Depths - Entrance - Outside')
     ,(458.32,             26.52,                -70.67,             230,          4.95,                 1466,   'Blackrock Depths - Entrance - Inside')
     ,(1115.35,            -457.35,              -102.7,             230,          0.5,                  2890,   'Blackrock Depths - Molten Core - Entrance - Outside')
-    ,(29.1607,            -71.3372,             -8.18032,           249,          4.58,                 2848,   "Onyxias Lair - Entrance - Inside")
+    ,(-4747.17,           -3753.27,             49.8122,            1,            0.713271,             1064,   "Onyxia's Lair - Entrance - Outside")
+    ,(29.1607,            -71.3372,             -8.18032,           249,          4.58,                 2848,   "Onyxia's Lair - Entrance - Inside")
+    ,(1275.05,            -2552.03,             90.3994,            0,            3.6631,               2568,   'Scholomance - Entrance - Outside')
     ,(196.37,             127.05,               134.91,             289,          6.09,                 2567,   'Scholomance - Entrance - Inside')
+    ,(-11916.3,           -1208.37,             92.2868,            0,            1.61792,              3930,   "Zul'Gurub - Entrance - Outside")
     ,(-11916.1,           -1230.53,             92.5334,            309,          4.71867,              3928,   "Zul'Gurub - Entrance - Inside")
+    ,(3235.46,            -4050.6,              108.45,             0,            1.93522,              2221,   'Stratholme - Eastwall Gate - Entrance - Outside')
     ,(3593.15,            -3646.56,             138.5,              329,          5.33,                 2214,   'Stratholme - Eastwall Gate - Entrance - Inside')
-    ,(3395.09,            -3380.25,             142.702,            329,          0.1,                  2216,   'Stratholme - Main Entrance - Right - Entrance - Inside')
     ,(3395.09,            -3380.25,             142.702,            329,          0.1,                  2217,   'Stratholme - Main Entrance - Left - Entrance - Inside')
-    ,(1019.69,            -458.31,              -43.43,             349,          0.31,                 3133,   'Maraudon - Entrance - Orange')
-    ,(752.91,             -616.53,              -33.11,             349,          1.37,                 3134,   'Maraudon - Entrance - Purple')
+    ,(3395.09,            -3380.25,             142.702,            329,          0.1,                  2216,   'Stratholme - Main Entrance - Right - Entrance - Inside')
+    ,(-1186.98,           2875.95,              85.7258,            1,            1.78443,              3126,   'Maraudon - Purple - Entrance - Outside')
+    ,(752.91,             -616.53,              -33.11,             349,          1.37,                 3134,   'Maraudon - Purple - Entrance - Inside')
+    ,(1019.69,            -458.31,              -43.43,             349,          0.31,                 3133,   'Maraudon - Orange - Entrance - Inside')
+    ,(-1471.07,           2618.57,              76.1944,            1,            0,                    3131,   'Maraudon - Orange - Entrance - Outside')
+    ,(1813.49,            -4418.58,             -18.57,             1,            1.78,                 2226,   'Ragefire Chasm - Entrance - Outside')
     ,(3.81,               -14.82,               -17.84,             389,          4.39,                 2230,   'Ragefire Chasm - Entrance - Inside')
-    ,(1096,               -467,                 -104.6,             409,          3.64,                 2886,   'The Molten Core - The Molten Bridge - Entrance - Inside')
-    ,(1096,               -467,                 -104.6,             409,          3.64,                 3528,   'The Molten Core - Window - Entrance - Inside')
-    ,(1096,               -467,                 -104.6,             409,          3.64,                 3529,   'The Molten Core - Window(Lava) - Entrance - Inside')
+    ,(1096,               -467,                 -104.6,             409,          3.64,                 2886,   'Molten Core - The Molten Bridge - Entrance - Inside')
+    ,(1096,               -467,                 -104.6,             409,          3.64,                 3528,   'Molten Core - Window - Entrance - Inside')
+    ,(1096,               -467,                 -104.6,             409,          3.64,                 3529,   'Molten Core - Window(Lava) - Entrance - Inside')
+    ,(-3737.48,           934.975,              160.973,            1,            3.13864,              3194,   'Dire Maul - East - Entrance - Outside')
     ,(44.4499,            -154.822,             -2.71201,           429,          0,                    3183,   'Dire Maul - East - Entrance - Inside')
+    ,(-3980.58,           776.193,              161.006,            1,            0,                    3195,   'Dire Maul - East - Side Entrance - Outside')
     ,(-201.11,            -328.66,              -2.72,              429,          5.22,                 3184,   'Dire Maul - East - Side Entrance - Entrance - Inside')
+    ,(-4030.21,           127.966,              26.8109,            1,            0,                    3196,   'Dire Maul - East - Lariss Pavilion - Entrance - Outside')
     ,(9.31119,            -837.085,             -32.5305,           429,          0,                    3185,   'Dire Maul - East - Lariss Pavilion - Entrance - Inside')
-    ,(-62.9658,           159.867,              -3.46206,           429,          3.14788,              3186,   'Dire Maul - West - Right - Entrance - Inside')
+    ,(-3577.67,           841.859,              134.594,            1,            0,                    3197,   'Dire Maul - East - Alzzin - Exit - Outside')
+    ,(-3831.79,           1250.23,              160.223,            1,            0,                    3190,   'Dire Maul - West - Left - Entrance - Outside')
     ,(31.5609,            159.45,               -3.4777,            429,          0.01,                 3187,   'Dire Maul - West - Left - Entrance - Inside')
+    ,(-3747.96,           1249.18,              160.217,            1,            3.15827,              3191,   'Dire Maul - West - Right - Entrance - Outside')
+    ,(-62.9658,           159.867,              -3.46206,           429,          3.14788,              3186,   'Dire Maul - West - Right - Entrance - Inside')
+    ,(-3520.65,           1077.72,              161.138,            1,            1.5009,               3193,   'Dire Maul - North - Entrance - Outside')
     ,(255.249,            -16.0561,             -2.58737,           429,          4.7,                  3189,   'Dire Maul - North - Entrance - Inside')
-    ,(-0.299116,          4.39156,              -0.255884,          449,          1.54805,              2532,   'Stormwind City - Champions Hall - Entrance - Inside')
-    ,(221.322,            74.4933,              25.7195,            450,          0.484836,             2527,   'Orgrimmar - Hall of Legends - Entrance - Inside')
     ,(-7666.23,           -1102.79,             399.68,             469,          0.601256,             3726,   'Blackwing Lair - Entrance - Inside')
+    ,(-8418.5,            1505.94,              31.8232,            1,            0,                    4006,   "Ruins Of Ahn'Qiraj - Entrance - Outside")
     ,(-8429.74,           1512.14,              31.9074,            509,          2.58,                 4008,   "Ruins Of Ahn'Qiraj - Entrance - Inside")
+    ,(-8242.67,           1992.06,              129.072,            1,            0,                    4012,   "Ahn'Qiraj Temple - Entrance - Outside")
     ,(-8231.33,           2010.6,               129.861,            531,          0,                    4010,   "Ahn'Qiraj Temple - Entrance - Inside")
     ,(3005.87,            -3435.01,             293.882,            533,          0,                    4055,   'Naxxramas - Entrance - Inside')
     ,(3498.28,            -5349.9,              144.968,            533,          1.31324,              4156,   "Naxxramas - Sapphiron's Lair - Entrance - Inside")
 ;
+
+-- Insert area triggers for battlegrounds ------------------------------------
+INSERT INTO `areatrigger_teleport`
+    (`target_position_x`, `target_position_y`, `target_position_z`, `target_map`, `target_orientation`, `id`, `name`)
+VALUES
+     (534.868,            -1087.68,             106.119,            0,            3.35758,              2606,   'Alterac Valley - Horde - Entrance - Outside')
+    ,(98.432,             -182.274,             127.52,             0,            5.02654,              2608,   'Alterac Valley - Alliance - Entrance - Outside')
+    ,(-1198,              -2533,                22,                 0,            0,                    3948,   'Arathi Basin - Refuge Point - Entrance - Outside')
+    ,(-817,               -3509,                73,                 0,            0,                    3949,   'Arathi Basin - Hammerfall - Entrance - Outside')
+;
+
+-- Insert area triggers for world locations ----------------------------------
+INSERT INTO `areatrigger_teleport`
+    (`target_position_x`, `target_position_y`, `target_position_z`, `target_map`, `target_orientation`, `id`, `name`)
+VALUES
+     (-9015.97,           875.318,              148.617,            0,            0,                    702,    'Stormwind - Wizard Sanctum - Entrance - Outside')
+    ,(-9019.16,           887.596,              29.6206,            0,            0,                    704,    'Stormwind - Wizard Sanctum - Exit - Inside')
+    ,(-8762.45,           403.062,              103.902,            0,            5.34463,              2534,   'Stormwind City - Champions Hall - Entrance - Outside')
+    ,(-0.299116,          4.39156,              -0.255884,          449,          1.54805,              2532,   'Stormwind City - Champions Hall - Entrance - Inside')
+    ,(221.322,            74.4933,              25.7195,            450,          0.484836,             2527,   'Orgrimmar - Hall of Legends - Entrance - Inside')
+    ,(1637.32,            -4242.7,              56.1827,            1,            4.1927,               2530,   'Orgrimmar - Hall of Legends - Entrance - Outside')
+    ,(8786.36,            967.445,              30.197,             1,            3.39632,              527,    "Teldrassil - Rut'theran Village")
+    ,(9945.13,            2616.89,              1316.46,            1,            4.61446,              542,    'Teldrassil - Darnassus')
+    ,(-5187.47,           -2804.32,             -8.375,             1,            5.76,                 943,    'Leap of Faith - End of fall')
+;
+
 -- Insert battleground templates ---------------------------------------------
 INSERT INTO `battleground_template`
     (`id`, `MinPlayersPerTeam`, `MaxPlayersPerTeam`, `MinLvl`, `MaxLvl`, `AllianceStartLoc`, `AllianceStartO`, `HordeStartLoc`, `HordeStartO`)
 VALUES
-     (1, 20, 40, 51, 60, 611, 2.72532, 610, 2.27452)
-    ,(2, 5, 10, 10, 60, 769, 3.14159, 770, 3.14159)
-    ,(3, 8, 15, 20, 60, 890, 3.40156, 889, 0.263892)
+     (1,   20,                  40,                  51,       60,       611,                2.72532,          610,             2.27452)
+    ,(2,   5,                   10,                  10,       60,       769,                3.14159,          770,             3.14159)
+    ,(3,   8,                   15,                  20,       60,       890,                3.40156,          889,             0.263892)
 ;
 
 -- Insert transport game objects ---------------------------------------------
