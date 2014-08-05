@@ -10943,3 +10943,69 @@ VALUES
     ,(31016,1)   -- Eviscerate
     ,(31018,1)   -- Ferocious Bite
 ;
+
+-- Insert spells considered elixirs ------------------------------------------
+INSERT INTO `spell_elixir`
+    (`entry`, `mask`)
+VALUES
+     (673,0)     -- Lesser Armor
+    ,(2367,0)    -- Lesser Strength
+    ,(2374,0)    -- Lesser Agility
+    ,(2378,0)    -- Health
+    ,(2380,0)    -- Resistance
+    ,(3160,0)    -- Agility
+    ,(3164,0)    -- Strength
+    ,(3166,0)    -- Lesser Intellect
+    ,(3219,0)    -- Regeneration
+    ,(3220,0)    -- Armor
+    ,(3222,0)    -- Regeneration
+    ,(3223,0)    -- Regeneration
+    ,(3593,0)    -- Health II
+    ,(7844,0)    -- Fire Power
+    ,(8212,0)    -- Enlarge
+    ,(10667,0)   -- Rage of Ages
+    ,(10668,0)   -- Spirit of Boar
+    ,(10669,0)   -- Strike of the Scorpok
+    ,(10692,0)   -- Infallible Mind
+    ,(10693,0)   -- Spiritual Domination
+    ,(11319,0)   -- Water Walking
+    ,(11328,0)   -- Agility
+    ,(11334,0)   -- Greater Agility
+    ,(11348,0)   -- Greater Armor
+    ,(11349,0)   -- Armor
+    ,(11364,0)   -- Resistance
+    ,(11371,0)   -- Gift of Arthas
+    ,(11390,0)   -- Arcane Elixir
+    ,(11396,0)   -- Greater Intellect
+    ,(11405,0)   -- Elixir of the Giants
+    ,(11406,0)   -- Elixir of Demonslaying
+    ,(11474,0)   -- Shadow Power
+    ,(15231,0)   -- Crystal Force
+    ,(15233,0)   -- Crystal Ward
+    ,(16321,0)   -- Juju Escape
+    ,(16322,0)   -- Juju Flurry
+    ,(16323,0)   -- Juju Power
+    ,(16325,0)   -- Juju Chill
+    ,(16326,0)   -- Juju Ember
+    ,(16327,0)   -- Juju Guile
+    ,(16329,0)   -- Juju Might
+    ,(17038,0)   -- Winterfall Firewater
+    ,(17535,0)   -- Elixir of the Sages
+    ,(17537,0)   -- Elixir of Brute Force
+    ,(17538,0)   -- Elixir of the Mongoose
+    ,(17539,0)   -- Greater Arcane Elixir
+    ,(17624,0)   -- Petrification
+    ,(17626,0)   -- Flask of the Titans
+    ,(17627,0)   -- Distilled Wisdom
+    ,(17628,0)   -- Supreme Power
+    ,(17629,0)   -- Chromatic Resistance
+    ,(21920,0)   -- Frost Power
+    ,(24361,0)   -- Regeneration
+    ,(24363,0)   -- Mana Regeneration
+    ,(24382,0)   -- Spirit of Zanza
+    ,(24383,0)   -- Swiftness of Zanza
+    ,(24417,0)   -- Sheen of Zanza
+    ,(26276,0)   -- Greater Firepower
+    ,(27652,0)   -- Elixir of Resistance
+    ,(27653,0)   -- Elixir of Dodging
+;
