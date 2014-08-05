@@ -11501,3 +11501,18 @@ VALUES
     ,(29318,533,3493.45,-5375.38,138.168,0)             -- Frost Breath
     ,(30211,533,2794.61,-3707.68,276.552,2.32)          -- Teleport Self
 ;
+
+-- Insert spells that teach other spells -------------------------------------
+INSERT INTO `spell_learn_spell`
+    (`entry`,`SpellID`,`Active`)
+VALUES
+     (2842,8681,1)   -- 'Poisons' teaches 'Instant Poison (Rank 1)'
+    ,(5149,1853,1)   -- 'Beast Training' teaches 'Growl (Rank 1)'
+    ,(5149,14922,1)  -- 'Beast Training' teaches 'Growl (Rank 2)'
+    ,(5784,33388,1)  -- 'Summon Felsteed (Summon)' teaches 'Riding (Apprentice)'
+    ,(13819,33388,1) -- 'Summon Warhorse (Summon)' teaches 'Riding (Apprentice)'
+    ,(17002,24867,0) -- 'Feline Swiftness' teaches 'Feline Swiftness Passive 1a'
+    ,(23161,33391,1) -- 'Summon Dreadsteed (Summon)' teaches 'Riding (Journeyman)'
+    ,(23214,33391,1) -- 'Summon Charger (Summon)' teaches 'Riding (Journeyman)'
+    ,(24866,24864,0) -- 'Feline Swiftness' teaches 'Feline Swiftness Passive 2a'
+;
