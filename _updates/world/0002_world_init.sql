@@ -9377,15 +9377,6 @@ VALUES
     ,(1863, 60, 1709, 1874, 2261, 130, 87, 232, 106, 98)
 ;
 
--- Insert battleground templates ---------------------------------------------
-INSERT INTO `battleground_template`
-    (`id`, `MinPlayersPerTeam`, `MaxPlayersPerTeam`, `MinLvl`, `MaxLvl`, `AllianceStartLoc`, `AllianceStartO`, `HordeStartLoc`, `HordeStartO`)
-VALUES
-     (1,   20,                  40,                  51,       60,       611,                2.72532,          610,             2.27452)
-    ,(2,   5,                   10,                  10,       60,       769,                3.14159,          770,             3.14159)
-    ,(3,   8,                   15,                  20,       60,       890,                3.40156,          889,             0.263892)
-;
-
 -- Insert instance / raid templates ------------------------------------------
 INSERT INTO `instance_template`
     (`map`, `parent`,   `levelMin`, `levelMax`, `maxPlayers`,   `reset_delay`,  `ghostEntranceMap`, `ghostEntranceX`,   `ghostEntranceY`)
@@ -9502,16 +9493,6 @@ VALUES
     ,(-8231.33,           2010.6,               129.861,            531,          0,                    4010,   "Ahn'Qiraj Temple - Entrance - Inside")
     ,(3005.87,            -3435.01,             293.882,            533,          0,                    4055,   'Naxxramas - Entrance - Inside')
     ,(3498.28,            -5349.9,              144.968,            533,          1.31324,              4156,   "Naxxramas - Sapphiron's Lair - Entrance - Inside")
-;
-
--- Insert area triggers for battlegrounds ------------------------------------
-INSERT INTO `areatrigger_teleport`
-    (`target_position_x`, `target_position_y`, `target_position_z`, `target_map`, `target_orientation`, `id`, `name`)
-VALUES
-     (534.868,            -1087.68,             106.119,            0,            3.35758,              2606,   'Alterac Valley - Horde - Entrance - Outside')
-    ,(98.432,             -182.274,             127.52,             0,            5.02654,              2608,   'Alterac Valley - Alliance - Entrance - Outside')
-    ,(-1198,              -2533,                22,                 0,            0,                    3948,   'Arathi Basin - Refuge Point - Entrance - Outside')
-    ,(-817,               -3509,                73,                 0,            0,                    3949,   'Arathi Basin - Hammerfall - Entrance - Outside')
 ;
 
 -- Insert area triggers for world locations ----------------------------------
@@ -12729,4 +12710,23 @@ VALUES
     ,(30809,0,0,0,0,0,0,2,0,0,0)    -- 'Unleashed Rage (Rank 3)'
     ,(30810,0,0,0,0,0,0,2,0,0,0)    -- 'Unleashed Rage (Rank 4)'
     ,(30811,0,0,0,0,0,0,2,0,0,0)    -- 'Unleashed Rage (Rank 5)'
+;
+
+-- Insert battleground templates ---------------------------------------------
+INSERT INTO `battleground_template`
+    (`id`, `MinPlayersPerTeam`, `MaxPlayersPerTeam`, `MinLvl`, `MaxLvl`, `AllianceStartLoc`, `AllianceStartO`, `HordeStartLoc`, `HordeStartO`)
+VALUES
+     (1,   20,                  40,                  51,       60,       611,                2.72532,          610,             2.27452)
+    ,(2,   5,                   10,                  10,       60,       769,                3.14159,          770,             3.14159)
+    ,(3,   8,                   15,                  20,       60,       890,                3.40156,          889,             0.263892)
+;
+
+-- Insert area triggers for battlegrounds ------------------------------------
+INSERT INTO `areatrigger_teleport`
+    (`target_position_x`, `target_position_y`, `target_position_z`, `target_map`, `target_orientation`, `id`, `name`)
+VALUES
+     (534.868,            -1087.68,             106.119,            0,            3.35758,              2606,   'Alterac Valley - Horde - Entrance - Outside')
+    ,(98.432,             -182.274,             127.52,             0,            5.02654,              2608,   'Alterac Valley - Alliance - Entrance - Outside')
+    ,(-1198,              -2533,                22,                 0,            0,                    3948,   'Arathi Basin - Refuge Point - Entrance - Outside')
+    ,(-817,               -3509,                73,                 0,            0,                    3949,   'Arathi Basin - Hammerfall - Entrance - Outside')
 ;
