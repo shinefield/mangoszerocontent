@@ -9981,3 +9981,965 @@ VALUES
     ,(30892,0,134217728)
     ,(30893,0,134217728)
 ;
+
+-- Insert spells which require facing the target -----------------------------
+INSERT INTO `spell_facing`
+    (`entry`, `facingcasterflag`)
+VALUES
+     (53,1)      -- Backstab
+    ,(72,1)      -- Shield Bash
+    ,(75,1)      -- Auto Shot
+    ,(78,1)      -- Heroic Strike
+    ,(100,1)     -- Charge
+    ,(116,1)     -- Frostbolt
+    ,(133,1)     -- Fireball
+    ,(143,1)     -- Fireball
+    ,(145,1)     -- Fireball
+    ,(205,1)     -- Frostbolt
+    ,(284,1)     -- Heroic Strike
+    ,(285,1)     -- Heroic Strike
+    ,(348,1)     -- Immolate
+    ,(403,1)     -- Lightning Bolt
+    ,(408,1)     -- Kidney Shot
+    ,(421,1)     -- Chain Lightning
+    ,(529,1)     -- Lightning Bolt
+    ,(548,1)     -- Lightning Bolt
+    ,(585,1)     -- Smite
+    ,(591,1)     -- Smite
+    ,(598,1)     -- Smite
+    ,(676,1)     -- Disarm
+    ,(686,1)     -- Shadow Bolt
+    ,(689,1)     -- Drain Life
+    ,(694,1)     -- Mocking Blow
+    ,(695,1)     -- Shadow Bolt
+    ,(699,1)     -- Drain Life
+    ,(703,1)     -- Garrote
+    ,(705,1)     -- Shadow Bolt
+    ,(707,1)     -- Immolate
+    ,(709,1)     -- Drain Life
+    ,(769,1)     -- Swipe
+    ,(772,1)     -- Rend
+    ,(779,1)     -- Swipe
+    ,(780,1)     -- Swipe
+    ,(837,1)     -- Frostbolt
+    ,(845,1)     -- Cleave
+    ,(879,1)     -- Exorcism
+    ,(915,1)     -- Lightning Bolt
+    ,(930,1)     -- Chain Lightning
+    ,(943,1)     -- Lightning Bolt
+    ,(984,1)     -- Smite
+    ,(1004,1)    -- Smite
+    ,(1079,1)    -- Rip
+    ,(1082,1)    -- Claw
+    ,(1088,1)    -- Shadow Bolt
+    ,(1094,1)    -- Immolate
+    ,(1106,1)    -- Shadow Bolt
+    ,(1120,1)    -- Drain Soul
+    ,(1329,1)    -- Bloodlust II
+    ,(1464,1)    -- Slam
+    ,(1495,1)    -- Mongoose Bite
+    ,(1608,1)    -- Heroic Strike
+    ,(1671,1)    -- Shield Bash
+    ,(1672,1)    -- Shield Bash
+    ,(1715,1)    -- Hamstring
+    ,(1742,1)    -- Cower
+    ,(1752,1)    -- Sinister Strike
+    ,(1753,1)    -- Cower
+    ,(1754,1)    -- Cower
+    ,(1755,1)    -- Cower
+    ,(1756,1)    -- Cower
+    ,(1757,1)    -- Sinister Strike
+    ,(1758,1)    -- Sinister Strike
+    ,(1759,1)    -- Sinister Strike
+    ,(1760,1)    -- Sinister Strike
+    ,(1766,1)    -- Kick
+    ,(1767,1)    -- Kick
+    ,(1768,1)    -- Kick
+    ,(1769,1)    -- Kick
+    ,(1776,1)    -- Gouge
+    ,(1777,1)    -- Gouge
+    ,(1822,1)    -- Rake
+    ,(1823,1)    -- Rake
+    ,(1824,1)    -- Rake
+    ,(1833,1)    -- Cheap Shot
+    ,(1943,1)    -- Rupture
+    ,(1966,1)    -- Feint
+    ,(1978,1)    -- Serpent Sting
+    ,(2070,1)    -- Sap
+    ,(2098,1)    -- Eviscerate
+    ,(2136,1)    -- Fire Blast
+    ,(2137,1)    -- Fire Blast
+    ,(2138,1)    -- Fire Blast
+    ,(2589,1)    -- Backstab
+    ,(2590,1)    -- Backstab
+    ,(2591,1)    -- Backstab
+    ,(2643,1)    -- Multi-Shot
+    ,(2764,1)    -- Throw
+    ,(2860,1)    -- Chain Lightning
+    ,(2912,1)    -- Starfire
+    ,(2941,1)    -- Immolate
+    ,(2948,1)    -- Scorch
+    ,(2973,1)    -- Raptor Strike
+    ,(2974,1)    -- Wing Clip
+    ,(3009,1)    -- Claw
+    ,(3010,1)    -- Claw
+    ,(3029,1)    -- Claw
+    ,(3034,1)    -- Viper Sting
+    ,(3043,1)    -- Scorpid Sting
+    ,(3044,1)    -- Arcane Shot
+    ,(3140,1)    -- Fireball
+    ,(3674,1)    -- Black Arrow
+    ,(4164,1)    -- Throw Rock
+    ,(4165,1)    -- Throw Rock II
+    ,(5019,1)    -- Shoot
+    ,(5116,1)    -- Concussive Shot
+    ,(5133,1)    -- Interrupt (PT)
+    ,(5138,1)    -- Drain Mana
+    ,(5143,1)    -- Arcane Missiles
+    ,(5144,1)    -- Arcane Missiles
+    ,(5145,1)    -- Arcane Missiles
+    ,(5176,1)    -- Wrath
+    ,(5177,1)    -- Wrath
+    ,(5178,1)    -- Wrath
+    ,(5179,1)    -- Wrath
+    ,(5180,1)    -- Wrath
+    ,(5201,1)    -- Claw
+    ,(5211,1)    -- Bash
+    ,(5221,1)    -- Shred
+    ,(5308,1)    -- Execute
+    ,(5401,1)    -- Lizard Bolt
+    ,(5614,1)    -- Exorcism
+    ,(5615,1)    -- Exorcism
+    ,(5676,1)    -- Searing Pain
+    ,(6041,1)    -- Lightning Bolt
+    ,(6060,1)    -- Smite
+    ,(6178,1)    -- Charge
+    ,(6252,1)    -- Southsea Cannon Fire
+    ,(6254,1)    -- Chained Bolt
+    ,(6255,1)    -- Lizard Bolt
+    ,(6353,1)    -- Soul Fire
+    ,(6546,1)    -- Rend
+    ,(6547,1)    -- Rend
+    ,(6548,1)    -- Rend
+    ,(6552,1)    -- Pummel
+    ,(6554,1)    -- Pummel
+    ,(6572,1)    -- Revenge
+    ,(6574,1)    -- Revenge
+    ,(6660,1)    -- Shoot
+    ,(6726,1)    -- Silence
+    ,(6760,1)    -- Eviscerate
+    ,(6761,1)    -- Eviscerate
+    ,(6762,1)    -- Eviscerate
+    ,(6768,1)    -- Feint
+    ,(6770,1)    -- Sap
+    ,(6780,1)    -- Wrath
+    ,(6785,1)    -- Ravage
+    ,(6787,1)    -- Ravage
+    ,(6789,1)    -- Death Coil
+    ,(6798,1)    -- Bash
+    ,(6800,1)    -- Shred
+    ,(6807,1)    -- Maul
+    ,(6808,1)    -- Maul
+    ,(6809,1)    -- Maul
+    ,(6949,1)    -- Weak Frostbolt
+    ,(7105,1)    -- Fake Shot
+    ,(7145,1)    -- Diving Sweep
+    ,(7268,1)    -- Arcane Missile
+    ,(7269,1)    -- Arcane Missiles
+    ,(7270,1)    -- Arcane Missiles
+    ,(7290,1)    -- Soul Siphon
+    ,(7295,1)    -- Soul Drain
+    ,(7322,1)    -- Frostbolt
+    ,(7369,1)    -- Cleave
+    ,(7372,1)    -- Hamstring
+    ,(7373,1)    -- Hamstring
+    ,(7379,1)    -- Revenge
+    ,(7384,1)    -- Overpower
+    ,(7386,1)    -- Sunder Armor
+    ,(7400,1)    -- Mocking Blow
+    ,(7402,1)    -- Mocking Blow
+    ,(7405,1)    -- Sunder Armor
+    ,(7641,1)    -- Shadow Bolt
+    ,(7651,1)    -- Drain Life
+    ,(7712,1)    -- Fire Strike
+    ,(7714,1)    -- Fire Strike
+    ,(7715,1)    -- Fire Strike
+    ,(7716,1)    -- Fire Strike
+    ,(7717,1)    -- Fire Strike
+    ,(7718,1)    -- Fire Strike
+    ,(7719,1)    -- Fire Strike
+    ,(7887,1)    -- Overpower
+    ,(8042,1)    -- Earth Shock
+    ,(8044,1)    -- Earth Shock
+    ,(8045,1)    -- Earth Shock
+    ,(8046,1)    -- Earth Shock
+    ,(8050,1)    -- Flame Shock
+    ,(8052,1)    -- Flame Shock
+    ,(8053,1)    -- Flame Shock
+    ,(8056,1)    -- Frost Shock
+    ,(8058,1)    -- Frost Shock
+    ,(8092,1)    -- Mind Blast
+    ,(8102,1)    -- Mind Blast
+    ,(8103,1)    -- Mind Blast
+    ,(8104,1)    -- Mind Blast
+    ,(8105,1)    -- Mind Blast
+    ,(8106,1)    -- Mind Blast
+    ,(8129,1)    -- Mana Burn
+    ,(8246,1)    -- Lightning Bolt
+    ,(8255,1)    -- Strong Cleave
+    ,(8288,1)    -- Drain Soul
+    ,(8289,1)    -- Drain Soul
+    ,(8380,1)    -- Sunder Armor
+    ,(8398,1)    -- Frostbolt Volley
+    ,(8400,1)    -- Fireball
+    ,(8401,1)    -- Fireball
+    ,(8402,1)    -- Fireball
+    ,(8406,1)    -- Frostbolt
+    ,(8407,1)    -- Frostbolt
+    ,(8408,1)    -- Frostbolt
+    ,(8412,1)    -- Fire Blast
+    ,(8413,1)    -- Fire Blast
+    ,(8416,1)    -- Arcane Missiles
+    ,(8417,1)    -- Arcane Missiles
+    ,(8418,1)    -- Arcane Missiles
+    ,(8419,1)    -- Arcane Missiles
+    ,(8444,1)    -- Scorch
+    ,(8445,1)    -- Scorch
+    ,(8446,1)    -- Scorch
+    ,(8598,1)    -- Lightning Blast
+    ,(8621,1)    -- Sinister Strike
+    ,(8623,1)    -- Eviscerate
+    ,(8624,1)    -- Eviscerate
+    ,(8629,1)    -- Gouge
+    ,(8631,1)    -- Garrote
+    ,(8632,1)    -- Garrote
+    ,(8633,1)    -- Garrote
+    ,(8637,1)    -- Feint
+    ,(8639,1)    -- Rupture
+    ,(8640,1)    -- Rupture
+    ,(8643,1)    -- Kidney Shot
+    ,(8647,1)    -- Expose Armor
+    ,(8649,1)    -- Expose Armor
+    ,(8650,1)    -- Expose Armor
+    ,(8676,1)    -- Ambush
+    ,(8682,1)    -- Fake Shot
+    ,(8721,1)    -- Backstab
+    ,(8724,1)    -- Ambush
+    ,(8725,1)    -- Ambush
+    ,(8820,1)    -- Slam
+    ,(8905,1)    -- Wrath
+    ,(8921,1)    -- Moonfire
+    ,(8924,1)    -- Moonfire
+    ,(8925,1)    -- Moonfire
+    ,(8926,1)    -- Moonfire
+    ,(8927,1)    -- Moonfire
+    ,(8928,1)    -- Moonfire
+    ,(8929,1)    -- Moonfire
+    ,(8949,1)    -- Starfire
+    ,(8950,1)    -- Starfire
+    ,(8951,1)    -- Starfire
+    ,(8972,1)    -- Maul
+    ,(8983,1)    -- Bash
+    ,(8992,1)    -- Shred
+    ,(8998,1)    -- Cower
+    ,(9000,1)    -- Cower
+    ,(9005,1)    -- Pounce
+    ,(9053,1)    -- Fireball
+    ,(9057,1)    -- Firebolt
+    ,(9081,1)    -- Shadow Bolt Volley
+    ,(9373,1)    -- Soul Siphon
+    ,(9481,1)    -- Holy Smite
+    ,(9483,1)    -- Boulder
+    ,(9487,1)    -- Fireball
+    ,(9488,1)    -- Fireball
+    ,(9492,1)    -- Rip
+    ,(9493,1)    -- Rip
+    ,(9532,1)    -- Lightning Bolt
+    ,(9591,1)    -- Acid Spit
+    ,(9613,1)    -- Shadow Bolt
+    ,(9654,1)    -- Jumping Lightning
+    ,(9672,1)    -- Frostbolt
+    ,(9734,1)    -- Holy Smite
+    ,(9739,1)    -- Wrath
+    ,(9745,1)    -- Maul
+    ,(9752,1)    -- Rip
+    ,(9754,1)    -- Swipe
+    ,(9771,1)    -- Radiation Bolt
+    ,(9823,1)    -- Pounce
+    ,(9827,1)    -- Pounce
+    ,(9829,1)    -- Shred
+    ,(9830,1)    -- Shred
+    ,(9833,1)    -- Moonfire
+    ,(9834,1)    -- Moonfire
+    ,(9835,1)    -- Moonfire
+    ,(9849,1)    -- Claw
+    ,(9850,1)    -- Claw
+    ,(9866,1)    -- Ravage
+    ,(9867,1)    -- Ravage
+    ,(9875,1)    -- Starfire
+    ,(9876,1)    -- Starfire
+    ,(9880,1)    -- Maul
+    ,(9881,1)    -- Maul
+    ,(9892,1)    -- Cower
+    ,(9894,1)    -- Rip
+    ,(9896,1)    -- Rip
+    ,(9904,1)    -- Rake
+    ,(9908,1)    -- Swipe
+    ,(9912,1)    -- Wrath
+    ,(10148,1)   -- Fireball
+    ,(10149,1)   -- Fireball
+    ,(10150,1)   -- Fireball
+    ,(10151,1)   -- Fireball
+    ,(10179,1)   -- Frostbolt
+    ,(10180,1)   -- Frostbolt
+    ,(10181,1)   -- Frostbolt
+    ,(10197,1)   -- Fire Blast
+    ,(10199,1)   -- Fire Blast
+    ,(10205,1)   -- Scorch
+    ,(10206,1)   -- Scorch
+    ,(10207,1)   -- Scorch
+    ,(10211,1)   -- Arcane Missiles
+    ,(10212,1)   -- Arcane Missiles
+    ,(10273,1)   -- Arcane Missiles
+    ,(10274,1)   -- Arcane Missiles
+    ,(10277,1)   -- Throw
+    ,(10312,1)   -- Exorcism
+    ,(10313,1)   -- Exorcism
+    ,(10314,1)   -- Exorcism
+    ,(10346,1)   -- Machine Gun
+    ,(10391,1)   -- Lightning Bolt
+    ,(10392,1)   -- Lightning Bolt
+    ,(10412,1)   -- Earth Shock
+    ,(10413,1)   -- Earth Shock
+    ,(10414,1)   -- Earth Shock
+    ,(10447,1)   -- Flame Shock
+    ,(10448,1)   -- Flame Shock
+    ,(10472,1)   -- Frost Shock
+    ,(10473,1)   -- Frost Shock
+    ,(10578,1)   -- Fireball
+    ,(10605,1)   -- Chain Lightning
+    ,(10933,1)   -- Smite
+    ,(10934,1)   -- Smite
+    ,(10945,1)   -- Mind Blast
+    ,(10946,1)   -- Mind Blast
+    ,(10947,1)   -- Mind Blast
+    ,(11021,1)   -- Flamespit
+    ,(11131,1)   -- Icicle
+    ,(11197,1)   -- Expose Armor
+    ,(11198,1)   -- Expose Armor
+    ,(11267,1)   -- Ambush
+    ,(11268,1)   -- Ambush
+    ,(11269,1)   -- Ambush
+    ,(11273,1)   -- Rupture
+    ,(11274,1)   -- Rupture
+    ,(11275,1)   -- Rupture
+    ,(11279,1)   -- Backstab
+    ,(11280,1)   -- Backstab
+    ,(11281,1)   -- Backstab
+    ,(11285,1)   -- Gouge
+    ,(11286,1)   -- Gouge
+    ,(11289,1)   -- Garrote
+    ,(11290,1)   -- Garrote
+    ,(11293,1)   -- Sinister Strike
+    ,(11294,1)   -- Sinister Strike
+    ,(11297,1)   -- Sap
+    ,(11299,1)   -- Eviscerate
+    ,(11300,1)   -- Eviscerate
+    ,(11303,1)   -- Feint
+    ,(11366,1)   -- Pyroblast
+    ,(11538,1)   -- Frostbolt
+    ,(11564,1)   -- Heroic Strike
+    ,(11565,1)   -- Heroic Strike
+    ,(11566,1)   -- Heroic Strike
+    ,(11567,1)   -- Heroic Strike
+    ,(11572,1)   -- Rend
+    ,(11573,1)   -- Rend
+    ,(11574,1)   -- Rend
+    ,(11578,1)   -- Charge
+    ,(11584,1)   -- Overpower
+    ,(11585,1)   -- Overpower
+    ,(11596,1)   -- Sunder Armor
+    ,(11597,1)   -- Sunder Armor
+    ,(11600,1)   -- Revenge
+    ,(11601,1)   -- Revenge
+    ,(11604,1)   -- Slam
+    ,(11605,1)   -- Slam
+    ,(11608,1)   -- Cleave
+    ,(11609,1)   -- Cleave
+    ,(11659,1)   -- Shadow Bolt
+    ,(11660,1)   -- Shadow Bolt
+    ,(11661,1)   -- Shadow Bolt
+    ,(11665,1)   -- Immolate
+    ,(11667,1)   -- Immolate
+    ,(11668,1)   -- Immolate
+    ,(11675,1)   -- Drain Soul
+    ,(11699,1)   -- Drain Life
+    ,(11700,1)   -- Drain Life
+    ,(11839,1)   -- Fireball
+    ,(11921,1)   -- Fireball
+    ,(11985,1)   -- Fireball
+    ,(11988,1)   -- Fireball Volley
+    ,(11989,1)   -- Fireball Volley
+    ,(12058,1)   -- Chain Lightning
+    ,(12167,1)   -- Lightning Bolt
+    ,(12280,1)   -- Acid of Hakkar
+    ,(12294,1)   -- Mortal Strike
+    ,(12466,1)   -- Fireball
+    ,(12471,1)   -- Shadow Bolt
+    ,(12505,1)   -- Pyroblast
+    ,(12522,1)   -- Pyroblast
+    ,(12523,1)   -- Pyroblast
+    ,(12524,1)   -- Pyroblast
+    ,(12525,1)   -- Pyroblast
+    ,(12526,1)   -- Pyroblast
+    ,(12555,1)   -- Pummel
+    ,(12557,1)   -- Cone of Cold
+    ,(12611,1)   -- Cone of Cold
+    ,(12675,1)   -- Frostbolt
+    ,(12693,1)   -- Drain Life
+    ,(12737,1)   -- Frostbolt
+    ,(12739,1)   -- Shadow Bolt
+    ,(12809,1)   -- Concussion Blow
+    ,(13140,1)   -- Fireball
+    ,(13322,1)   -- Frostbolt
+    ,(13339,1)   -- Fire Blast
+    ,(13340,1)   -- Fire Blast
+    ,(13341,1)   -- Fire Blast
+    ,(13342,1)   -- Fire Blast
+    ,(13374,1)   -- Fire Blast
+    ,(13375,1)   -- Fireball
+    ,(13398,1)   -- Throw Wrench
+    ,(13438,1)   -- Fireball
+    ,(13439,1)   -- Frostbolt
+    ,(13440,1)   -- Shadow Bolt
+    ,(13441,1)   -- Firebolt
+    ,(13480,1)   -- Shadow Bolt
+    ,(13482,1)   -- Lightning Bolt
+    ,(13491,1)   -- Pummel
+    ,(13519,1)   -- Holy Smite
+    ,(13527,1)   -- Lightning Bolt
+    ,(13549,1)   -- Serpent Sting
+    ,(13550,1)   -- Serpent Sting
+    ,(13551,1)   -- Serpent Sting
+    ,(13552,1)   -- Serpent Sting
+    ,(13553,1)   -- Serpent Sting
+    ,(13554,1)   -- Serpent Sting
+    ,(13555,1)   -- Serpent Sting
+    ,(13748,1)   -- Arcane Bolt
+    ,(13900,1)   -- Fiery Burst
+    ,(13901,1)   -- Arcane Bolt
+    ,(13953,1)   -- Holy Strike
+    ,(14034,1)   -- Fireball
+    ,(14105,1)   -- Frost Blast
+    ,(14106,1)   -- Shadow Bolt
+    ,(14109,1)   -- Lightning Bolt
+    ,(14112,1)   -- Flaying Vine
+    ,(14119,1)   -- Lightning Bolt
+    ,(14122,1)   -- Shadow Bolt
+    ,(14145,1)   -- Fire Blast
+    ,(14200,1)   -- Chained Bolt
+    ,(14251,1)   -- Riposte
+    ,(14260,1)   -- Raptor Strike
+    ,(14261,1)   -- Raptor Strike
+    ,(14262,1)   -- Raptor Strike
+    ,(14263,1)   -- Raptor Strike
+    ,(14264,1)   -- Raptor Strike
+    ,(14265,1)   -- Raptor Strike
+    ,(14266,1)   -- Raptor Strike
+    ,(14269,1)   -- Mongoose Bite
+    ,(14270,1)   -- Mongoose Bite
+    ,(14271,1)   -- Mongoose Bite
+    ,(14278,1)   -- Ghostly Strike
+    ,(14281,1)   -- Arcane Shot
+    ,(14282,1)   -- Arcane Shot
+    ,(14283,1)   -- Arcane Shot
+    ,(14284,1)   -- Arcane Shot
+    ,(14285,1)   -- Arcane Shot
+    ,(14286,1)   -- Arcane Shot
+    ,(14287,1)   -- Arcane Shot
+    ,(14288,1)   -- Multi-Shot
+    ,(14289,1)   -- Multi-Shot
+    ,(14290,1)   -- Multi-Shot
+    ,(14443,1)   -- Multi-Shot
+    ,(14517,1)   -- Crusader Strike
+    ,(14518,1)   -- Crusader Strike
+    ,(14873,1)   -- Sinister Strike
+    ,(14874,1)   -- Rupture
+    ,(14895,1)   -- Overpower
+    ,(14902,1)   -- Cheap Shot
+    ,(14903,1)   -- Rupture
+    ,(14914,1)   -- Holy Fire
+    ,(15040,1)   -- Molten Blast
+    ,(15043,1)   -- Frostbolt
+    ,(15095,1)   -- Molten Blast
+    ,(15117,1)   -- Chain Lightning
+    ,(15124,1)   -- Arcane Bolt
+    ,(15207,1)   -- Lightning Bolt
+    ,(15208,1)   -- Lightning Bolt
+    ,(15228,1)   -- Fireball
+    ,(15230,1)   -- Arcane Bolt
+    ,(15232,1)   -- Shadow Bolt
+    ,(15234,1)   -- Lightning Bolt
+    ,(15238,1)   -- Holy Smite
+    ,(15242,1)   -- Fireball
+    ,(15243,1)   -- Fireball Volley
+    ,(15244,1)   -- Cone of Cold
+    ,(15249,1)   -- Machine Gun
+    ,(15254,1)   -- Arcane Bolt
+    ,(15261,1)   -- Holy Fire
+    ,(15262,1)   -- Holy Fire
+    ,(15263,1)   -- Holy Fire
+    ,(15264,1)   -- Holy Fire
+    ,(15265,1)   -- Holy Fire
+    ,(15266,1)   -- Holy Fire
+    ,(15267,1)   -- Holy Fire
+    ,(15284,1)   -- Cleave
+    ,(15285,1)   -- Fireball Volley
+    ,(15305,1)   -- Chain Lightning
+    ,(15407,1)   -- Mind Flay
+    ,(15451,1)   -- Arcane Bolt
+    ,(15472,1)   -- Shadow Bolt
+    ,(15496,1)   -- Cleave
+    ,(15497,1)   -- Frostbolt
+    ,(15498,1)   -- Holy Smite
+    ,(15530,1)   -- Frostbolt
+    ,(15536,1)   -- Fireball
+    ,(15537,1)   -- Shadow Bolt
+    ,(15547,1)   -- Shoot
+    ,(15549,1)   -- Chained Bolt
+    ,(15574,1)   -- Fire Blast
+    ,(15575,1)   -- Flame Cannon
+    ,(15581,1)   -- Sinister Strike
+    ,(15583,1)   -- Rupture
+    ,(15598,1)   -- Firebolt
+    ,(15607,1)   -- Throw
+    ,(15611,1)   -- Lizard Bolt
+    ,(15612,1)   -- Lizard Bolt
+    ,(15615,1)   -- Pummel
+    ,(15619,1)   -- Throw Wrench
+    ,(15620,1)   -- Shoot
+    ,(15653,1)   -- Acid Spit
+    ,(15659,1)   -- Chain Lightning
+    ,(15662,1)   -- Fireball
+    ,(15665,1)   -- Fireball
+    ,(15667,1)   -- Sinister Strike
+    ,(15668,1)   -- Fiery Burst
+    ,(15691,1)   -- Eviscerate
+    ,(15692,1)   -- Eviscerate
+    ,(15735,1)   -- Arcane Missiles
+    ,(15736,1)   -- Arcane Missiles
+    ,(15790,1)   -- Arcane Missiles
+    ,(15791,1)   -- Arcane Missiles
+    ,(15795,1)   -- Throw
+    ,(15797,1)   -- Lightning Breath
+    ,(15801,1)   -- Lightning Bolt
+    ,(15860,1)   -- Impale
+    ,(15968,1)   -- Lash of Pain
+    ,(16000,1)   -- Throw
+    ,(16001,1)   -- Impale
+    ,(16006,1)   -- Chain Lightning
+    ,(16033,1)   -- Chain Lightning
+    ,(16044,1)   -- Cleave
+    ,(16067,1)   -- Arcane Blast
+    ,(16100,1)   -- Shoot
+    ,(16101,1)   -- Fireball
+    ,(16144,1)   -- Fire Blast
+    ,(16243,1)   -- Ribbon of Souls
+    ,(16249,1)   -- Frostbolt
+    ,(16250,1)   -- Fireball Volley
+    ,(16375,1)   -- Drain Life
+    ,(16407,1)   -- Frost Blast
+    ,(16408,1)   -- Shadow Bolt
+    ,(16409,1)   -- Shadow Bolt
+    ,(16410,1)   -- Shadow Bolt
+    ,(16412,1)   -- Fireball
+    ,(16413,1)   -- Fireball
+    ,(16414,1)   -- Drain Life
+    ,(16415,1)   -- Fireball
+    ,(16430,1)   -- Soul Tap
+    ,(16454,1)   -- Searing Blast
+    ,(16496,1)   -- Shoot
+    ,(16511,1)   -- Hemorrhage
+    ,(16564,1)   -- Gargoyle Strike
+    ,(16565,1)   -- Banshee Wail
+    ,(16570,1)   -- Charged Arcane Bolt
+    ,(16603,1)   -- Demonfork
+    ,(16614,1)   -- Lightning Strike
+    ,(16697,1)   -- Cower
+    ,(16784,1)   -- Shadow Bolt
+    ,(16788,1)   -- Fireball
+    ,(16790,1)   -- Knockdown
+    ,(16799,1)   -- Frostbolt
+    ,(16827,1)   -- Claw
+    ,(16828,1)   -- Claw
+    ,(16829,1)   -- Claw
+    ,(16830,1)   -- Claw
+    ,(16831,1)   -- Claw
+    ,(16832,1)   -- Claw
+    ,(16868,1)   -- Banshee Wail
+    ,(16908,1)   -- Dispel Magic
+    ,(16979,1)   -- Feral Charge
+    ,(16997,1)   -- Gargoyle Strike
+    ,(17008,1)   -- Drain Mana
+    ,(17140,1)   -- Holy Fire
+    ,(17141,1)   -- Holy Fire
+    ,(17142,1)   -- Holy Fire
+    ,(17143,1)   -- Holy Strike
+    ,(17144,1)   -- Wrath
+    ,(17147,1)   -- Exorcism
+    ,(17149,1)   -- Exorcism
+    ,(17157,1)   -- Lightning Breath
+    ,(17171,1)   -- Shadow Shot
+    ,(17173,1)   -- Drain Life
+    ,(17174,1)   -- Concussive Shot
+    ,(17198,1)   -- Overpower
+    ,(17203,1)   -- Fireball Volley
+    ,(17238,1)   -- Drain Life
+    ,(17243,1)   -- Drain Mana
+    ,(17253,1)   -- Bite
+    ,(17255,1)   -- Bite
+    ,(17256,1)   -- Bite
+    ,(17257,1)   -- Bite
+    ,(17258,1)   -- Bite
+    ,(17259,1)   -- Bite
+    ,(17260,1)   -- Bite
+    ,(17261,1)   -- Bite
+    ,(17273,1)   -- Pyroblast
+    ,(17274,1)   -- Pyroblast
+    ,(17276,1)   -- Scald
+    ,(17281,1)   -- Crusader Strike
+    ,(17284,1)   -- Holy Strike
+    ,(17290,1)   -- Fireball
+    ,(17311,1)   -- Mind Flay
+    ,(17312,1)   -- Mind Flay
+    ,(17313,1)   -- Mind Flay
+    ,(17314,1)   -- Mind Flay
+    ,(17333,1)   -- Spider's Kiss
+    ,(17347,1)   -- Hemorrhage
+    ,(17348,1)   -- Hemorrhage
+    ,(17353,1)   -- Shoot
+    ,(17364,1)   -- Stormstrike
+    ,(17393,1)   -- Shadow Bolt
+    ,(17434,1)   -- Shadow Bolt
+    ,(17435,1)   -- Shadow Bolt
+    ,(17483,1)   -- Shadow Bolt
+    ,(17501,1)   -- Cannon Fire
+    ,(17503,1)   -- Frostbolt
+    ,(17509,1)   -- Shadow Bolt
+    ,(17620,1)   -- Drain Life
+    ,(17682,1)   -- Drain Mana
+    ,(17745,1)   -- Diseased Spit
+    ,(17877,1)   -- Shadowburn
+    ,(17919,1)   -- Searing Pain
+    ,(17920,1)   -- Searing Pain
+    ,(17921,1)   -- Searing Pain
+    ,(17922,1)   -- Searing Pain
+    ,(17923,1)   -- Searing Pain
+    ,(17924,1)   -- Soul Fire
+    ,(17925,1)   -- Death Coil
+    ,(17926,1)   -- Death Coil
+    ,(17962,1)   -- Conflagrate
+    ,(17963,1)   -- Sundering Cleave
+    ,(18081,1)   -- Lightning Bolt
+    ,(18082,1)   -- Fireball
+    ,(18083,1)   -- Firebolt
+    ,(18084,1)   -- Drain Life
+    ,(18085,1)   -- Frost Blast
+    ,(18089,1)   -- Lightning Bolt
+    ,(18091,1)   -- Arcane Blast
+    ,(18092,1)   -- Frost Blast
+    ,(18104,1)   -- Wrath
+    ,(18105,1)   -- Fireball
+    ,(18108,1)   -- Fireball
+    ,(18111,1)   -- Shadow Bolt
+    ,(18138,1)   -- Shadow Bolt
+    ,(18164,1)   -- Shadow Bolt
+    ,(18165,1)   -- Holy Fire
+    ,(18187,1)   -- Firebolt
+    ,(18199,1)   -- Fireball
+    ,(18204,1)   -- Frost Blast
+    ,(18205,1)   -- Shadow Bolt
+    ,(18211,1)   -- Shadow Bolt
+    ,(18214,1)   -- Shadow Bolt
+    ,(18217,1)   -- Shadow Bolt
+    ,(18276,1)   -- Frost Blast
+    ,(18278,1)   -- Silence
+    ,(18392,1)   -- Fireball
+    ,(18398,1)   -- Frost Blast
+    ,(18545,1)   -- Scorpid Sting
+    ,(18557,1)   -- Drain Life
+    ,(18561,1)   -- Shoot
+    ,(18649,1)   -- Shadow Shot
+    ,(18651,1)   -- Multi-Shot
+    ,(18796,1)   -- Fireball
+    ,(18807,1)   -- Mind Flay
+    ,(18809,1)   -- Pyroblast
+    ,(18817,1)   -- Drain Life
+    ,(18819,1)   -- Holy Cleave
+    ,(18833,1)   -- Firebolt
+    ,(18867,1)   -- Shadowburn
+    ,(18868,1)   -- Shadowburn
+    ,(18869,1)   -- Shadowburn
+    ,(18870,1)   -- Shadowburn
+    ,(18871,1)   -- Shadowburn
+    ,(18980,1)   -- Lightning
+    ,(18984,1)   -- Heal on Kill
+    ,(19128,1)   -- Knockdown
+    ,(19260,1)   -- Frost Blast
+    ,(19306,1)   -- Counterattack
+    ,(19319,1)   -- Vicious Bite
+    ,(19386,1)   -- Wyvern Sting
+    ,(19391,1)   -- Fireball
+    ,(19434,1)   -- Aimed Shot
+    ,(19463,1)   -- Corrosive Acid Spit
+    ,(19472,1)   -- Sinister Strike
+    ,(19503,1)   -- Scatter Shot
+    ,(19632,1)   -- Cleave
+    ,(19639,1)   -- Pummel
+    ,(19642,1)   -- Cleave
+    ,(19701,1)   -- Boulder
+    ,(19715,1)   -- Counterspell
+    ,(19725,1)   -- Turn Undead
+    ,(19728,1)   -- Shadow Bolt
+    ,(19729,1)   -- Shadow Bolt
+    ,(19767,1)   -- Aynasha's Bow
+    ,(19777,1)   -- Dark Strike
+    ,(19781,1)   -- Flame Spear
+    ,(19785,1)   -- Throw
+    ,(19801,1)   -- Tranquilizing Shot
+    ,(19816,1)   -- Fireball
+    ,(19874,1)   -- Lightning Bolt
+    ,(19983,1)   -- Cleave
+    ,(20228,1)   -- Pyroblast
+    ,(20240,1)   -- Retaliation
+    ,(20243,1)   -- Devastate
+    ,(20252,1)   -- Intercept
+    ,(20276,1)   -- Knockdown
+    ,(20295,1)   -- Lightning Bolt
+    ,(20297,1)   -- Frostbolt
+    ,(20298,1)   -- Shadow Bolt
+    ,(20420,1)   -- Fireball
+    ,(20463,1)   -- Shoot
+    ,(20535,1)   -- Lightning Breath
+    ,(20536,1)   -- Lightning Breath
+    ,(20543,1)   -- Lightning Breath
+    ,(20559,1)   -- Mocking Blow
+    ,(20560,1)   -- Mocking Blow
+    ,(20569,1)   -- Cleave
+    ,(20605,1)   -- Cleave
+    ,(20616,1)   -- Intercept
+    ,(20617,1)   -- Intercept
+    ,(20627,1)   -- Lightning Breath
+    ,(20630,1)   -- Lightning Breath
+    ,(20657,1)   -- Acid Spit
+    ,(20658,1)   -- Execute
+    ,(20660,1)   -- Execute
+    ,(20661,1)   -- Execute
+    ,(20662,1)   -- Execute
+    ,(20666,1)   -- Cleave
+    ,(20678,1)   -- Fireball
+    ,(20684,1)   -- Cleave
+    ,(20691,1)   -- Cleave
+    ,(20692,1)   -- Fireball
+    ,(20695,1)   -- Holy Smite
+    ,(20696,1)   -- Holy Smite
+    ,(20698,1)   -- Wrath
+    ,(20714,1)   -- Fireball
+    ,(20720,1)   -- Arcane Bolt
+    ,(20735,1)   -- Multi-Shot
+    ,(20736,1)   -- Distracting Shot
+    ,(20743,1)   -- Drain Life
+    ,(20791,1)   -- Shadow Bolt
+    ,(20792,1)   -- Frostbolt
+    ,(20793,1)   -- Fireball
+    ,(20795,1)   -- Fire Blast
+    ,(20797,1)   -- Fireball
+    ,(20802,1)   -- Lightning Bolt
+    ,(20805,1)   -- Lightning Bolt
+    ,(20806,1)   -- Frostbolt
+    ,(20807,1)   -- Shadow Bolt
+    ,(20808,1)   -- Fireball
+    ,(20811,1)   -- Fireball
+    ,(20815,1)   -- Fireball
+    ,(20816,1)   -- Shadow Bolt
+    ,(20819,1)   -- Frostbolt
+    ,(20820,1)   -- Holy Smite
+    ,(20821,1)   -- Acid Spit
+    ,(20822,1)   -- Frostbolt
+    ,(20823,1)   -- Fireball
+    ,(20824,1)   -- Lightning Bolt
+    ,(20825,1)   -- Shadow Bolt
+    ,(20828,1)   -- Cone of Cold
+    ,(20829,1)   -- Arcane Bolt
+    ,(20831,1)   -- Chain Lightning
+    ,(20832,1)   -- Fire Blast
+    ,(20869,1)   -- Frost Blast
+    ,(20883,1)   -- Arcane Blast
+    ,(20900,1)   -- Aimed Shot
+    ,(20901,1)   -- Aimed Shot
+    ,(20902,1)   -- Aimed Shot
+    ,(20903,1)   -- Aimed Shot
+    ,(20904,1)   -- Aimed Shot
+    ,(20909,1)   -- Counterattack
+    ,(20910,1)   -- Counterattack
+    ,(21008,1)   -- Mocking Blow
+    ,(21027,1)   -- Spark
+    ,(21047,1)   -- Corrosive Acid Spit
+    ,(21059,1)   -- Acid Spit
+    ,(21071,1)   -- Boulder
+    ,(21072,1)   -- Fireball
+    ,(21077,1)   -- Shadow Bolt
+    ,(21141,1)   -- Shadow Bolt
+    ,(21151,1)   -- Gutgore Ripper
+    ,(21159,1)   -- Fireball
+    ,(21162,1)   -- Fireball
+    ,(21167,1)   -- Snowball
+    ,(21170,1)   -- Drain Life
+    ,(21343,1)   -- Snowball
+    ,(21354,1)   -- Snowball Resistant
+    ,(21369,1)   -- Frostbolt
+    ,(21390,1)   -- Multi-Shot
+    ,(21402,1)   -- Fireball
+    ,(21549,1)   -- Fireball
+    ,(21551,1)   -- Mortal Strike
+    ,(21552,1)   -- Mortal Strike
+    ,(21553,1)   -- Mortal Strike
+    ,(21667,1)   -- Wrath
+    ,(21668,1)   -- Starfire
+    ,(21807,1)   -- Wrath
+    ,(21832,1)   -- Boulder
+    ,(21978,1)   -- Engulfing Shadows
+    ,(22088,1)   -- Fireball
+    ,(22121,1)   -- Shoot
+    ,(22272,1)   -- Arcane Missiles
+    ,(22273,1)   -- Arcane Missiles
+    ,(22336,1)   -- Shadow Bolt
+    ,(22355,1)   -- Chain Lightning
+    ,(22357,1)   -- Icebolt
+    ,(22411,1)   -- Shoot
+    ,(22414,1)   -- Lightning Bolt
+    ,(22425,1)   -- Fireball Volley
+    ,(22427,1)   -- Concussion Blow
+    ,(22568,1)   -- Ferocious Bite
+    ,(22570,1)   -- Mangle
+    ,(22574,1)   -- Dark Strike
+    ,(22643,1)   -- Frostbolt Volley
+    ,(22666,1)   -- Silence
+    ,(22677,1)   -- Shadow Bolt
+    ,(22746,1)   -- Cone of Cold
+    ,(22827,1)   -- Ferocious Bite
+    ,(22828,1)   -- Ferocious Bite
+    ,(22829,1)   -- Ferocious Bite
+    ,(22859,1)   -- Mortal Cleave
+    ,(22878,1)   -- Shadow Bolt Volley
+    ,(22887,1)   -- Throw
+    ,(22907,1)   -- Shoot
+    ,(22908,1)   -- Volley
+    ,(23073,1)   -- Shoot
+    ,(23102,1)   -- Frostbolt
+    ,(23106,1)   -- Chain Lightning
+    ,(23206,1)   -- Chain Lightning
+    ,(23267,1)   -- Firebolt
+    ,(23391,1)   -- Boulder
+    ,(23392,1)   -- Boulder
+    ,(23512,1)   -- Fireball Volley
+    ,(23592,1)   -- Lightning Bolt
+    ,(23601,1)   -- Scatter Shot
+    ,(23860,1)   -- Holy Fire
+    ,(23881,1)   -- Bloodthirst
+    ,(23892,1)   -- Bloodthirst
+    ,(23893,1)   -- Bloodthirst
+    ,(23894,1)   -- Bloodthirst
+    ,(23922,1)   -- Shield Slam
+    ,(23923,1)   -- Shield Slam
+    ,(23924,1)   -- Shield Slam
+    ,(23925,1)   -- Shield Slam
+    ,(24049,1)   -- Impale
+    ,(24132,1)   -- Wyvern Sting
+    ,(24133,1)   -- Wyvern Sting
+    ,(24238,1)   -- Test Rip
+    ,(24239,1)   -- Hammer of Wrath
+    ,(24248,1)   -- Copy of Ferocious Bite
+    ,(24274,1)   -- Hammer of Wrath
+    ,(24275,1)   -- Hammer of Wrath
+    ,(24300,1)   -- Drain Life
+    ,(24331,1)   -- Rake
+    ,(24332,1)   -- Rake
+    ,(24334,1)   -- Acid Spit
+    ,(24335,1)   -- Wyvern Sting
+    ,(24374,1)   -- Fireball
+    ,(24407,1)   -- Overpower
+    ,(24583,1)   -- Scorpid Poison
+    ,(24585,1)   -- Drain Life
+    ,(24586,1)   -- Scorpid Poison
+    ,(24587,1)   -- Scorpid Poison
+    ,(24619,1)   -- Soul Tap
+    ,(24640,1)   -- Scorpid Poison
+    ,(24668,1)   -- Shadow Bolt
+    ,(24680,1)   -- Chain Lightning
+    ,(24844,1)   -- Lightning Breath
+    ,(24942,1)   -- Frostbolt
+    ,(25008,1)   -- Lightning Breath
+    ,(25009,1)   -- Lightning Breath
+    ,(25010,1)   -- Lightning Breath
+    ,(25011,1)   -- Lightning Breath
+    ,(25012,1)   -- Lightning Breath
+    ,(25021,1)   -- Chain Lightning
+    ,(25052,1)   -- Acid Spit
+    ,(25054,1)   -- Holy Smite
+    ,(25055,1)   -- Arcane Bolt
+    ,(25174,1)   -- Sundering Cleave
+    ,(25286,1)   -- Heroic Strike
+    ,(25288,1)   -- Revenge
+    ,(25294,1)   -- Multi-Shot
+    ,(25295,1)   -- Serpent Sting
+    ,(25298,1)   -- Starfire
+    ,(25300,1)   -- Backstab
+    ,(25302,1)   -- Feint
+    ,(25304,1)   -- Frostbolt
+    ,(25306,1)   -- Fireball
+    ,(25307,1)   -- Shadow Bolt
+    ,(25309,1)   -- Immolate
+    ,(25345,1)   -- Arcane Missiles
+    ,(25346,1)   -- Arcane Missiles
+    ,(25677,1)   -- Snowball
+    ,(25686,1)   -- Super Snowball
+    ,(25710,1)   -- Heroic Strike
+    ,(25712,1)   -- Heroic Strike
+    ,(25783,15)  -- Place Arcanite Buoy
+    ,(25902,1)   -- Holy Shock
+    ,(25911,1)   -- Holy Shock
+    ,(25912,1)   -- Holy Shock
+    ,(25995,1)   -- Snowball Visual Test
+    ,(26006,1)   -- Shadow Bolt
+    ,(26098,1)   -- Lightning Bolt
+    ,(26282,1)   -- Shoot Tauren Rifleman
+    ,(26350,1)   -- Cleave
+    ,(26616,1)   -- Boulder
+    ,(26693,1)   -- Drain Life
+    ,(27360,1)   -- Instill Lord Valthalak's Spirit DND
+    ,(27552,1)   -- Cupid's Arrow
+    ,(27554,1)   -- Swipe
+    ,(27559,1)   -- Silence
+    ,(27567,1)   -- Chain Lightning
+    ,(27572,1)   -- Smitten
+    ,(27580,1)   -- Mortal Strike
+    ,(27581,1)   -- Disarm
+    ,(27584,1)   -- Hamstring
+    ,(27611,1)   -- Eviscerate
+    ,(27615,1)   -- Kidney Shot
+    ,(27632,1)   -- Aimed Shot
+    ,(27633,1)   -- Wing Clip
+    ,(27794,1)   -- Cleave
+    ,(27860,1)   -- Engulfing Shadows
+    ,(28318,1)   -- Slime Shot
+    ,(28412,1)   -- Death Coil
+    ,(28478,1)   -- Frostbolt
+    ,(28599,1)   -- Shadow Bolt Volley
+    ,(29155,1)   -- Drain Life
+    ,(29228,1)   -- Flame Shock
+    ,(29317,1)   -- Shadow Bolt
+    ,(30095,1)   -- Cone of Cold
+    ,(31016,1)   -- Eviscerate
+    ,(31018,1)   -- Ferocious Bite
+;
