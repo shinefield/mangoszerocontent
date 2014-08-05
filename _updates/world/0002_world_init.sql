@@ -11105,3 +11105,29 @@ VALUES
     ,(27804,0.3035,0,0,0,'Priest - Holy Nova (Rank 5)')
     ,(27805,0.3035,0,0,0,'Priest - Holy Nova (Rank 6)')
 ;
+
+-- Insert warlock pet auras --------------------------------------------------
+INSERT INTO `spell_pet_auras`
+    (`spell`, `pet`, `aura`)
+VALUES
+     (23785, @PLAYER_PET_IMP,        23759) -- Master Demonologist
+    ,(23823, @PLAYER_PET_IMP,        23827) -- Master Demonologist
+    ,(23825, @PLAYER_PET_IMP,        23829) -- Master Demonologist
+    ,(23822, @PLAYER_PET_IMP,        23826) -- Master Demonologist
+    ,(23824, @PLAYER_PET_IMP,        23828) -- Master Demonologist
+    ,(23825, @PLAYER_PET_FELHUNTER,  23840) -- Master Demonologist
+    ,(23822, @PLAYER_PET_FELHUNTER,  23837) -- Master Demonologist
+    ,(23785, @PLAYER_PET_FELHUNTER,  23762) -- Master Demonologist
+    ,(23823, @PLAYER_PET_FELHUNTER,  23838) -- Master Demonologist
+    ,(23824, @PLAYER_PET_FELHUNTER,  23839) -- Master Demonologist
+    ,(23825, @PLAYER_PET_VOIDWALKER, 23844) -- Master Demonologist
+    ,(23824, @PLAYER_PET_VOIDWALKER, 23843) -- Master Demonologist
+    ,(23823, @PLAYER_PET_VOIDWALKER, 23842) -- Master Demonologist
+    ,(23822, @PLAYER_PET_VOIDWALKER, 23841) -- Master Demonologist
+    ,(23785, @PLAYER_PET_VOIDWALKER, 23760) -- Master Demonologist
+    ,(23823, @PLAYER_PET_SUCCUBUS,   23834) -- Master Demonologist
+    ,(23822, @PLAYER_PET_SUCCUBUS,   23833) -- Master Demonologist
+    ,(23824, @PLAYER_PET_SUCCUBUS,   23835) -- Master Demonologist
+    ,(23785, @PLAYER_PET_SUCCUBUS,   23761) -- Master Demonologist
+    ,(23825, @PLAYER_PET_SUCCUBUS,   23836) -- Master Demonologist
+;
