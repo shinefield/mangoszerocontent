@@ -9377,6 +9377,15 @@ VALUES
     ,(1863, 60, 1709, 1874, 2261, 130, 87, 232, 106, 98)
 ;
 
+-- Insert battleground templates ---------------------------------------------
+INSERT INTO `battleground_template`
+    (`id`, `MinPlayersPerTeam`, `MaxPlayersPerTeam`, `MinLvl`, `MaxLvl`, `AllianceStartLoc`, `AllianceStartO`, `HordeStartLoc`, `HordeStartO`)
+VALUES
+     (1,   20,                  40,                  51,       60,       611,                2.72532,          610,             2.27452)
+    ,(2,   5,                   10,                  10,       60,       769,                3.14159,          770,             3.14159)
+    ,(3,   8,                   15,                  20,       60,       890,                3.40156,          889,             0.263892)
+;
+
 -- Insert instance / raid templates ------------------------------------------
 INSERT INTO `instance_template`
     (`map`, `parent`,   `levelMin`, `levelMax`, `maxPlayers`,   `reset_delay`,  `ghostEntranceMap`, `ghostEntranceX`,   `ghostEntranceY`)
@@ -9518,15 +9527,6 @@ VALUES
     ,(8786.36,            967.445,              30.197,             1,            3.39632,              527,    "Teldrassil - Rut'theran Village")
     ,(9945.13,            2616.89,              1316.46,            1,            4.61446,              542,    'Teldrassil - Darnassus')
     ,(-5187.47,           -2804.32,             -8.375,             1,            5.76,                 943,    'Leap of Faith - End of fall')
-;
-
--- Insert battleground templates ---------------------------------------------
-INSERT INTO `battleground_template`
-    (`id`, `MinPlayersPerTeam`, `MaxPlayersPerTeam`, `MinLvl`, `MaxLvl`, `AllianceStartLoc`, `AllianceStartO`, `HordeStartLoc`, `HordeStartO`)
-VALUES
-     (1,   20,                  40,                  51,       60,       611,                2.72532,          610,             2.27452)
-    ,(2,   5,                   10,                  10,       60,       769,                3.14159,          770,             3.14159)
-    ,(3,   8,                   15,                  20,       60,       890,                3.40156,          889,             0.263892)
 ;
 
 -- Insert transport game objects ---------------------------------------------
