@@ -232,139 +232,6 @@ SET @CLASS_MAGE                                 = 8;
 SET @CLASS_WARLOCK                              = 9;
 SET @CLASS_DRUID                                = 11;
 
--- Provide variables for actions, and buttons --------------------------------
-SET @ACTION_TYPE_SPELL                          = 0;
-SET @ACTION_TYPE_MACRO                          = 64;
-SET @ACTION_TYPE_ITEM                           = 128;
-
--- Provide variables for warlock pets ----------------------------------------
-SET @PLAYER_PET_IMP                             = 416;
-SET @PLAYER_PET_FELHUNTER                       = 417;
-SET @PLAYER_PET_VOIDWALKER                      = 1860;
-SET @PLAYER_PET_SUCCUBUS                        = 1863;
-
--- Provide variables for items -----------------------------------------------
-SET @ITEM_TOUGH_JERKY                           = 117;
-SET @ITEM_REFRESHING_SPRING_WATER               = 159;
-SET @ITEM_DARNASSIAN_BLEU                       = 2070;
-SET @ITEM_SHINY_RED_APPLE                       = 4536;
-SET @ITEM_TOUGH_HUNK_OF_BREAD                   = 4540;
-SET @ITEM_FOREST_MUSHROOM_CAP                   = 4604;
-
--- Provide variables for spells ----------------------------------------------
-SET @SPELL_AUTO_SHOT                            = 75;
-SET @SPELL_HEROIC_STRIKE                        = 78;
-SET @SPELL_FIREBALL                             = 133;
-SET @SPELL_FROST_ARMOR                          = 168;
-SET @SPELL_HEALING_WAVE                         = 331;
-SET @SPELL_LIGHTNING_BOLT                       = 403;
-SET @SPELL_SMITE                                = 585;
-SET @SPELL_HOLY_LIGHT                           = 635;
-SET @SPELL_SHADOW_BOLT                          = 686;
-SET @SPELL_DEMON_SKIN                           = 687;
-SET @SPELL_SINISTER_STRIKE                      = 1752;
-SET @SPELL_LESSER_HEAL                          = 2050;
-SET @SPELL_EVISCERATE                           = 2098;
-SET @SPELL_THROW                                = 2764;
-SET @SPELL_RAPTOR_STRIKE                        = 2973;
-SET @SPELL_WRATH                                = 5176;
-SET @SPELL_HEALING_TOUCH                        = 5185;
-SET @SPELL_ATTACK                               = 6603;
-SET @SPELL_SEAL_OF_RIGHTEOUSNESS                = 21084;
-
--- Provide variables for active racial spells --------------------------------
-SET @SPELL_FIND_TREASURE                        = 2481;  -- Racial: Dwarf
-SET @SPELL_STONEFORM                            = 20594; -- Racial: Dwarf
-SET @SPELL_WAR_STOMP                            = 20549; -- Racial: Tauren
-SET @SPELL_BLOOD_FURY                           = 20572; -- Racial: Orc
-SET @SPELL_CANNIBALIZE                          = 20577; -- Racial: Undead
-SET @SPELL_SHADOWMELD                           = 20580; -- Racial: Night Elf
-SET @SPELL_BERSERKING_MANA                      = 20554; -- Racial: Troll
-SET @SPELL_BERSERKING_RAGE                      = 26296; -- Racial: Troll
-SET @SPELL_BERSERKING_ENERGY                    = 26297; -- Racial: Troll
-
--- Provide variables for zones -----------------------------------------------
-SET @ZONE_DUN_MOROGH                            = 1;
-SET @ZONE_BADLANDS                              = 3;
-SET @ZONE_BLASTED_LANDS                         = 4;
-SET @ZONE_SWAMP_OF_SORROWS                      = 8;
-SET @ZONE_DUSKWOOD                              = 10;
-SET @ZONE_WETLANDS                              = 11;
-SET @ZONE_ELWYNN_FOREST                         = 12;
-SET @ZONE_DUROTAR                               = 14;
-SET @ZONE_DUSTWALLOW_MARSH                      = 15;
-SET @ZONE_AZSHARA                               = 16;
-SET @ZONE_THE_BARRENS                           = 17;
-SET @ZONE_PROGRAMMER_ISLE                       = 22;
-SET @ZONE_BLACKROCK_MOUNTAIN                    = 25;
-SET @ZONE_WESTERN_PLAGUELANDS                   = 28;
-SET @ZONE_STRANGLETHORN_VALE                    = 33;
-SET @ZONE_ALTERAC_MOUNTAINS                     = 36;
-SET @ZONE_LOCH_MODAN                            = 38;
-SET @ZONE_WESTFALL                              = 40;
-SET @ZONE_DEADWIND_PASS                         = 41;
-SET @ZONE_REDRIDGE_MOUNTAINS                    = 44;
-SET @ZONE_ARATHI_HIGHLANDS                      = 45;
-SET @ZONE_BURNING_STEPPES                       = 46;
-SET @ZONE_THE_HINTERLANDS                       = 47;
-SET @ZONE_SEARING_GORGE                         = 51;
-SET @ZONE_TIRISFAL_GLADES                       = 85;
-SET @ZONE_SILVERPINE_FOREST                     = 130;
-SET @ZONE_EASTERN_PLAGUELANDS                   = 139;
-SET @ZONE_TELDRASSIL                            = 141;
-SET @ZONE_DARKSHORE                             = 148;
-SET @ZONE_SHADOWFANG_KEEP                       = 209;
-SET @ZONE_MULGORE                               = 215;
-SET @ZONE_HILLSBRAD_FOOTHILLS                   = 267;
-SET @ZONE_ASHENVALE                             = 331;
-SET @ZONE_FERALAS                               = 357;
-SET @ZONE_FELWOOD                               = 361;
-SET @ZONE_THOUSAND_NEEDLES                      = 400;
-SET @ZONE_DESOLACE                              = 405;
-SET @ZONE_STONETALON_MOUNTAINS                  = 406;
-SET @ZONE_TANARIS                               = 440;
-SET @ZONE_UNGORO_CRATER                         = 490;
-SET @ZONE_RAZORFEN_KRAUL                        = 491;
-SET @ZONE_MOONGLADE                             = 493;
-SET @ZONE_WINTERSPRING                          = 618;
-SET @ZONE_THE_STOCKADE                          = 717;
-SET @ZONE_WAILING_CAVERNS                       = 718;
-SET @ZONE_BLACKFATHOM_DEEPS                     = 719;
-SET @ZONE_GNOMEREGAN                            = 721;
-SET @ZONE_RAZORFEN_DOWNS                        = 722;
-SET @ZONE_SCARLET_MONASTERY                     = 796;
-SET @ZONE_ZULFARRAK                             = 1176;
-SET @ZONE_ULDAMAN                               = 1337;
-SET @ZONE_SILITHUS                              = 1377;
-SET @ZONE_SUNKEN_TEMPLE                         = 1417;
-SET @ZONE_THE_TEMPLE_OF_ATALHAKKAR              = 1477;
-SET @ZONE_STORMWIND_CITY                        = 1519;
-SET @ZONE_THE_DEADMINES                         = 1581;
-SET @ZONE_BLACKROCK_SPIRE                       = 1583;
-SET @ZONE_BLACKROCK_DEPTHS                      = 1584;
-SET @ZONE_ORGRIMMAR                             = 1637;
-SET @ZONE_THUNDER_BLUFF                         = 1638;
-SET @ZONE_DARNASSUS                             = 1657;
-SET @ZONE_CAVERNS_OF_TIME                       = 1941;
-SET @ZONE_ZULGURUB                              = 1977;
-SET @ZONE_STRATHOLME                            = 2017;
-SET @ZONE_SCHOLOMANCE                           = 2057;
-SET @ZONE_MARAUDON                              = 2100;
-SET @ZONE_ONYXIAS_LAIR                          = 2159;
-SET @ZONE_DEEPRUN_TRAM                          = 2257;
-SET @ZONE_RAGEFIRE_CHASM                        = 2437;
-SET @ZONE_DIRE_MAUL                             = 2557;
-SET @ZONE_ALTERAC_VALLEY                        = 2597;
-SET @ZONE_BLACKWING_LAIR                        = 2677;
-SET @ZONE_MOLTEN_CORE                           = 2717;
-SET @ZONE_HALL_OF_LEGENDS                       = 2917;
-SET @ZONE_CHAMPIONS_HALL                        = 2918;
-SET @ZONE_WARSONG_GULCH                         = 3277;
-SET @ZONE_ARATHI_BASIN                          = 3358;
-SET @ZONE_AHNQIRAJ                              = 3428;
-SET @ZONE_NAXXRAMAS                             = 3456;
-SET @ZONE_GATES_OF_AHNQIRAJ                     = 3478;
-
 -- Provide variables for NPC flags -------------------------------------------
 SET @CREATURE_FLAG_NPC_NONE                     = 0;
 SET @CREATURE_FLAG_NPC_GOSSIP                   = 1;
@@ -390,15 +257,6 @@ SET @CREATURE_RANK_ELITE                        = 1; -- Higher damage, more heal
 SET @CREATURE_RANK_RARE_ELITE                   = 2; -- Rare mob but with elite damage and health
 SET @CREATURE_RANK_WORLD_BOSS                   = 3; -- Highest rank, best loot, longest respawn time
 SET @CREATURE_RANK_RARE                         = 4; -- Somewhat better loot, longer respawn time
-
--- Provide variables for spell schools ---------------------------------------
-SET @SPELL_SCHOOL_NORMAL                        = 0;
-SET @SPELL_SCHOOL_HOLY                          = 1;
-SET @SPELL_SCHOOL_FIRE                          = 2;
-SET @SPELL_SCHOOL_NATURE                        = 3;
-SET @SPELL_SCHOOL_FROST                         = 4;
-SET @SPELL_SCHOOL_SHADOW                        = 5;
-SET @SPELL_SCHOOL_ARCANE                        = 6;
 
 -- Provide variables for NPC classes -----------------------------------------
 SET @CREATURE_CLASS_WARRIOR                     = 1;
@@ -592,6 +450,148 @@ SET @GO_FLAG_TRANSPORT                          = 8;
 SET @GO_FLAG_NO_INTERACT                        = 16;
 SET @GO_FLAG_NODESPAWN                          = 32;
 SET @GO_FLAG_TRIGGERED                          = 64;
+
+-- Provide variables for warlock pets ----------------------------------------
+SET @PLAYER_PET_IMP                             = 416;
+SET @PLAYER_PET_FELHUNTER                       = 417;
+SET @PLAYER_PET_VOIDWALKER                      = 1860;
+SET @PLAYER_PET_SUCCUBUS                        = 1863;
+
+-- Provide variables for spell schools ---------------------------------------
+SET @SPELL_SCHOOL_NORMAL                        = 0;
+SET @SPELL_SCHOOL_HOLY                          = 1;
+SET @SPELL_SCHOOL_FIRE                          = 2;
+SET @SPELL_SCHOOL_NATURE                        = 3;
+SET @SPELL_SCHOOL_FROST                         = 4;
+SET @SPELL_SCHOOL_SHADOW                        = 5;
+SET @SPELL_SCHOOL_ARCANE                        = 6;
+
+-- Provide variables for actions, and buttons --------------------------------
+SET @ACTION_TYPE_SPELL                          = 0;
+SET @ACTION_TYPE_MACRO                          = 64;
+SET @ACTION_TYPE_ITEM                           = 128;
+
+-- Provide variables for items -----------------------------------------------
+SET @ITEM_TOUGH_JERKY                           = 117;
+SET @ITEM_REFRESHING_SPRING_WATER               = 159;
+SET @ITEM_DARNASSIAN_BLEU                       = 2070;
+SET @ITEM_SHINY_RED_APPLE                       = 4536;
+SET @ITEM_TOUGH_HUNK_OF_BREAD                   = 4540;
+SET @ITEM_FOREST_MUSHROOM_CAP                   = 4604;
+
+-- Provide variables for spells ----------------------------------------------
+SET @SPELL_AUTO_SHOT                            = 75;
+SET @SPELL_HEROIC_STRIKE                        = 78;
+SET @SPELL_FIREBALL                             = 133;
+SET @SPELL_FROST_ARMOR                          = 168;
+SET @SPELL_HEALING_WAVE                         = 331;
+SET @SPELL_LIGHTNING_BOLT                       = 403;
+SET @SPELL_SMITE                                = 585;
+SET @SPELL_HOLY_LIGHT                           = 635;
+SET @SPELL_SHADOW_BOLT                          = 686;
+SET @SPELL_DEMON_SKIN                           = 687;
+SET @SPELL_SINISTER_STRIKE                      = 1752;
+SET @SPELL_LESSER_HEAL                          = 2050;
+SET @SPELL_EVISCERATE                           = 2098;
+SET @SPELL_THROW                                = 2764;
+SET @SPELL_RAPTOR_STRIKE                        = 2973;
+SET @SPELL_WRATH                                = 5176;
+SET @SPELL_HEALING_TOUCH                        = 5185;
+SET @SPELL_ATTACK                               = 6603;
+SET @SPELL_SEAL_OF_RIGHTEOUSNESS                = 21084;
+
+-- Provide variables for active racial spells --------------------------------
+SET @SPELL_FIND_TREASURE                        = 2481;  -- Racial: Dwarf
+SET @SPELL_STONEFORM                            = 20594; -- Racial: Dwarf
+SET @SPELL_WAR_STOMP                            = 20549; -- Racial: Tauren
+SET @SPELL_BLOOD_FURY                           = 20572; -- Racial: Orc
+SET @SPELL_CANNIBALIZE                          = 20577; -- Racial: Undead
+SET @SPELL_SHADOWMELD                           = 20580; -- Racial: Night Elf
+SET @SPELL_BERSERKING_MANA                      = 20554; -- Racial: Troll
+SET @SPELL_BERSERKING_RAGE                      = 26296; -- Racial: Troll
+SET @SPELL_BERSERKING_ENERGY                    = 26297; -- Racial: Troll
+
+-- Provide variables for zones -----------------------------------------------
+SET @ZONE_DUN_MOROGH                            = 1;
+SET @ZONE_BADLANDS                              = 3;
+SET @ZONE_BLASTED_LANDS                         = 4;
+SET @ZONE_SWAMP_OF_SORROWS                      = 8;
+SET @ZONE_DUSKWOOD                              = 10;
+SET @ZONE_WETLANDS                              = 11;
+SET @ZONE_ELWYNN_FOREST                         = 12;
+SET @ZONE_DUROTAR                               = 14;
+SET @ZONE_DUSTWALLOW_MARSH                      = 15;
+SET @ZONE_AZSHARA                               = 16;
+SET @ZONE_THE_BARRENS                           = 17;
+SET @ZONE_PROGRAMMER_ISLE                       = 22;
+SET @ZONE_BLACKROCK_MOUNTAIN                    = 25;
+SET @ZONE_WESTERN_PLAGUELANDS                   = 28;
+SET @ZONE_STRANGLETHORN_VALE                    = 33;
+SET @ZONE_ALTERAC_MOUNTAINS                     = 36;
+SET @ZONE_LOCH_MODAN                            = 38;
+SET @ZONE_WESTFALL                              = 40;
+SET @ZONE_DEADWIND_PASS                         = 41;
+SET @ZONE_REDRIDGE_MOUNTAINS                    = 44;
+SET @ZONE_ARATHI_HIGHLANDS                      = 45;
+SET @ZONE_BURNING_STEPPES                       = 46;
+SET @ZONE_THE_HINTERLANDS                       = 47;
+SET @ZONE_SEARING_GORGE                         = 51;
+SET @ZONE_TIRISFAL_GLADES                       = 85;
+SET @ZONE_SILVERPINE_FOREST                     = 130;
+SET @ZONE_EASTERN_PLAGUELANDS                   = 139;
+SET @ZONE_TELDRASSIL                            = 141;
+SET @ZONE_DARKSHORE                             = 148;
+SET @ZONE_SHADOWFANG_KEEP                       = 209;
+SET @ZONE_MULGORE                               = 215;
+SET @ZONE_HILLSBRAD_FOOTHILLS                   = 267;
+SET @ZONE_ASHENVALE                             = 331;
+SET @ZONE_FERALAS                               = 357;
+SET @ZONE_FELWOOD                               = 361;
+SET @ZONE_THOUSAND_NEEDLES                      = 400;
+SET @ZONE_DESOLACE                              = 405;
+SET @ZONE_STONETALON_MOUNTAINS                  = 406;
+SET @ZONE_TANARIS                               = 440;
+SET @ZONE_UNGORO_CRATER                         = 490;
+SET @ZONE_RAZORFEN_KRAUL                        = 491;
+SET @ZONE_MOONGLADE                             = 493;
+SET @ZONE_WINTERSPRING                          = 618;
+SET @ZONE_THE_STOCKADE                          = 717;
+SET @ZONE_WAILING_CAVERNS                       = 718;
+SET @ZONE_BLACKFATHOM_DEEPS                     = 719;
+SET @ZONE_GNOMEREGAN                            = 721;
+SET @ZONE_RAZORFEN_DOWNS                        = 722;
+SET @ZONE_SCARLET_MONASTERY                     = 796;
+SET @ZONE_ZULFARRAK                             = 1176;
+SET @ZONE_ULDAMAN                               = 1337;
+SET @ZONE_SILITHUS                              = 1377;
+SET @ZONE_SUNKEN_TEMPLE                         = 1417;
+SET @ZONE_THE_TEMPLE_OF_ATALHAKKAR              = 1477;
+SET @ZONE_STORMWIND_CITY                        = 1519;
+SET @ZONE_THE_DEADMINES                         = 1581;
+SET @ZONE_BLACKROCK_SPIRE                       = 1583;
+SET @ZONE_BLACKROCK_DEPTHS                      = 1584;
+SET @ZONE_ORGRIMMAR                             = 1637;
+SET @ZONE_THUNDER_BLUFF                         = 1638;
+SET @ZONE_DARNASSUS                             = 1657;
+SET @ZONE_CAVERNS_OF_TIME                       = 1941;
+SET @ZONE_ZULGURUB                              = 1977;
+SET @ZONE_STRATHOLME                            = 2017;
+SET @ZONE_SCHOLOMANCE                           = 2057;
+SET @ZONE_MARAUDON                              = 2100;
+SET @ZONE_ONYXIAS_LAIR                          = 2159;
+SET @ZONE_DEEPRUN_TRAM                          = 2257;
+SET @ZONE_RAGEFIRE_CHASM                        = 2437;
+SET @ZONE_DIRE_MAUL                             = 2557;
+SET @ZONE_ALTERAC_VALLEY                        = 2597;
+SET @ZONE_BLACKWING_LAIR                        = 2677;
+SET @ZONE_MOLTEN_CORE                           = 2717;
+SET @ZONE_HALL_OF_LEGENDS                       = 2917;
+SET @ZONE_CHAMPIONS_HALL                        = 2918;
+SET @ZONE_WARSONG_GULCH                         = 3277;
+SET @ZONE_ARATHI_BASIN                          = 3358;
+SET @ZONE_AHNQIRAJ                              = 3428;
+SET @ZONE_NAXXRAMAS                             = 3456;
+SET @ZONE_GATES_OF_AHNQIRAJ                     = 3478;
 
 -- Insert world database version ---------------------------------------------
 INSERT INTO `db_version`
