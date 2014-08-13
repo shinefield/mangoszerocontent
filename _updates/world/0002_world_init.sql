@@ -8727,7 +8727,7 @@ SET
     `RangedAttackPower`  = 100,
     `SpeedWalk`          = 1.1,
     `InhabitType`        = @CREATURE_INHABIT_GROUND,
-    `UnitClass`          = @CREATURE_CLASS_MAGE,
+    `UnitClass`          = @CREATURE_CLASS_PALADIN,
     `CreatureType`       = @CREATURE_TYPE_DEMON
 WHERE `Entry` = 1863;
 
