@@ -9518,6 +9518,9 @@ VALUES
     ,(176495, @GO_TYPE_MO_TRANSPORT, 3031,        "Grom'Gol Base Camp - Undercity"  ) -- Grom'Gol <-> Undercity
     ,(177233, @GO_TYPE_MO_TRANSPORT, 3015,        "Feathermoon Ferry"               ) -- Feathermoon <-> Forgotten Coast
     ,(181056, @GO_TYPE_MO_TRANSPORT, 6637,        "Naxxramas"                       ) -- Naxxramas Citadel roaming over the Eastern Plaguelands
+
+    -- Duel flag -------------------------------------------------------------
+    ,(21680, @GO_TYPE_DUEL_ARBITER,   787,        "Duel Flag"                       ) -- No duels without the flag!
 ;
 
 -- Configure fixed location transport game objects ---------------------------
@@ -9600,6 +9603,13 @@ SET
     `flags` = @GO_FLAG_TRANSPORT | @GO_FLAG_NODESPAWN,
     `data0` = 436
 WHERE `entry` = 181056;
+
+-- Configure duel arbiter game object ----------------------------------------
+UPDATE `gameobject_template`
+SET
+    `faction` = 5,
+    `size` = 1
+WHERE `entry` = 21680;
 
 -- Insert stationery transports ----------------------------------------------
 INSERT INTO `gameobject`
