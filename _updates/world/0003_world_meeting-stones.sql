@@ -63,28 +63,28 @@ INSERT INTO `gameobject_template`
     (`entry`, `type`,                `displayId`, `name`)
 VALUES
      (178824, @GO_TYPE_MEETING_STONE, 5491,       "Meeting Stone"                   ) -- Razorfen Downs
-    ,(179555, @GO_TYPE_MEETING_STONE, 5491,       "Meeting Stone"                   ) -- Gnomeregan
-    ,(178884, @GO_TYPE_MEETING_STONE, 5491,       "Meeting Stone"                   ) -- Wailing Caverns
-    ,(185433, @GO_TYPE_MEETING_STONE, 5491,       "Meeting Stone"                   ) -- Zul'Gurub
-    ,(178833, @GO_TYPE_MEETING_STONE, 5491,       "Meeting Stone"                   ) -- Uldaman
-    ,(178829, @GO_TYPE_MEETING_STONE, 5491,       "Meeting Stone"                   ) -- Zul'Farrak
     ,(178825, @GO_TYPE_MEETING_STONE, 5491,       "Meeting Stone"                   ) -- Razorfen Kraul
-    ,(178827, @GO_TYPE_MEETING_STONE, 5491,       "Meeting Stone"                   ) -- Maraudon
-    ,(178844, @GO_TYPE_MEETING_STONE, 5492,       "Meeting Stone"                   ) -- Scarlet Monastery
     ,(178826, @GO_TYPE_MEETING_STONE, 5492,       "Meeting Stone"                   ) -- Dire Maul
+    ,(178827, @GO_TYPE_MEETING_STONE, 5491,       "Meeting Stone"                   ) -- Maraudon
     ,(178828, @GO_TYPE_MEETING_STONE, 5494,       "Meeting Stone"                   ) -- Blackfathom Deeps
-    ,(178834, @GO_TYPE_MEETING_STONE, 5494,       "Meeting Stone"                   ) -- The Deadmines
-    ,(178832, @GO_TYPE_MEETING_STONE, 5494,       "Meeting Stone"                   ) -- Scholomance
-    ,(179595, @GO_TYPE_MEETING_STONE, 5494,       "Meeting Stone"                   ) -- The Stockade
-    ,(185321, @GO_TYPE_MEETING_STONE, 5495,       "Meeting Stone"                   ) -- Onyxia's Lair
-    ,(179587, @GO_TYPE_MEETING_STONE, 5495,       "Meeting Stone"                   ) -- Blackrock Spire
-    ,(179586, @GO_TYPE_MEETING_STONE, 5495,       "Meeting Stone"                   ) -- Blackrock Depths
-    ,(179585, @GO_TYPE_MEETING_STONE, 5495,       "Meeting Stone"                   ) -- Blackrock Spire
-    ,(179584, @GO_TYPE_MEETING_STONE, 5495,       "Meeting Stone"                   ) -- Blackrock Depths
+    ,(178829, @GO_TYPE_MEETING_STONE, 5491,       "Meeting Stone"                   ) -- Zul'Farrak
     ,(178831, @GO_TYPE_MEETING_STONE, 5495,       "Meeting Stone"                   ) -- Stratholme
-    ,(179596, @GO_TYPE_MEETING_STONE, 5498,       "Meeting Stone"                   ) -- Ragefire Chasm
-    ,(179554, @GO_TYPE_MEETING_STONE, 5498,       "Meeting Stone"                   ) -- The Temple of Atal'Hakkar
+    ,(178832, @GO_TYPE_MEETING_STONE, 5494,       "Meeting Stone"                   ) -- Scholomance
+    ,(178833, @GO_TYPE_MEETING_STONE, 5491,       "Meeting Stone"                   ) -- Uldaman
+    ,(178834, @GO_TYPE_MEETING_STONE, 5494,       "Meeting Stone"                   ) -- The Deadmines
+    ,(178844, @GO_TYPE_MEETING_STONE, 5492,       "Meeting Stone"                   ) -- Scarlet Monastery
     ,(178845, @GO_TYPE_MEETING_STONE, 5498,       "Meeting Stone"                   ) -- Shadowfang Keep
+    ,(178884, @GO_TYPE_MEETING_STONE, 5491,       "Meeting Stone"                   ) -- Wailing Caverns
+    ,(179554, @GO_TYPE_MEETING_STONE, 5498,       "Meeting Stone"                   ) -- The Temple of Atal'Hakkar
+    ,(179555, @GO_TYPE_MEETING_STONE, 5491,       "Meeting Stone"                   ) -- Gnomeregan
+    ,(179584, @GO_TYPE_MEETING_STONE, 5495,       "Meeting Stone"                   ) -- Blackrock Depths
+    ,(179585, @GO_TYPE_MEETING_STONE, 5495,       "Meeting Stone"                   ) -- Blackrock Spire
+    ,(179586, @GO_TYPE_MEETING_STONE, 5495,       "Meeting Stone"                   ) -- Blackrock Depths
+    ,(179587, @GO_TYPE_MEETING_STONE, 5495,       "Meeting Stone"                   ) -- Blackrock Spire
+    ,(179595, @GO_TYPE_MEETING_STONE, 5494,       "Meeting Stone"                   ) -- The Stockade
+    ,(179596, @GO_TYPE_MEETING_STONE, 5498,       "Meeting Stone"                   ) -- Ragefire Chasm
+    ,(185321, @GO_TYPE_MEETING_STONE, 5495,       "Meeting Stone"                   ) -- Onyxia's Lair
+    ,(185433, @GO_TYPE_MEETING_STONE, 5491,       "Meeting Stone"                   ) -- Zul'Gurub
 ;
 
 -- Configure meeting stones --------------------------------------------------
@@ -109,31 +109,31 @@ WHERE
 -- Configure levels and attached zones ---------------------------------------
 UPDATE `gameobject_template`
 SET
-    `data0`     = 37,
-    `data1`     = 46,
+    `data0`     = 33,
+    `data1`     = 47,
     `data2`     = 722
 WHERE
     `entry`     = 178824;
 
 UPDATE `gameobject_template`
 SET
-    `data0`     = 29,
-    `data1`     = 38,
+    `data0`     = 24,
+    `data1`     = 40,
     `data2`     = 133
 WHERE
     `entry`     = 179555;
 
 UPDATE `gameobject_template`
 SET
-    `data0`     = 17,
-    `data1`     = 24,
+    `data0`     = 15,
+    `data1`     = 28,
     `data2`     = 718
 WHERE
     `entry`     = 178884;
 
 UPDATE `gameobject_template`
 SET
-    `data0`     = 60,
+    `data0`     = 56,
     `data1`     = 60,
     `data2`     = 1977
 WHERE
@@ -141,15 +141,15 @@ WHERE
 
 UPDATE `gameobject_template`
 SET
-    `data0`     = 41,
-    `data1`     = 51,
+    `data0`     = 38,
+    `data1`     = 53,
     `data2`     = 1517
 WHERE
     `entry`     = 178833;
 
 UPDATE `gameobject_template`
 SET
-    `data0`     = 44,
+    `data0`     = 43,
     `data1`     = 54,
     `data2`     = 978
 WHERE
@@ -157,8 +157,8 @@ WHERE
 
 UPDATE `gameobject_template`
 SET
-    `data0`     = 29,
-    `data1`     = 38,
+    `data0`     = 24,
+    `data1`     = 40,
     `data2`     = 491
 WHERE
     `entry`     = 178825;
@@ -166,22 +166,22 @@ WHERE
 UPDATE `gameobject_template`
 SET
     `data0`     = 40,
-    `data1`     = 52,
+    `data1`     = 58,
     `data2`     = 2100
 WHERE
     `entry`     = 178827;
 
 UPDATE `gameobject_template`
 SET
-    `data0`     = 34,
-    `data1`     = 45,
+    `data0`     = 29,
+    `data1`     = 48,
     `data2`     = 796
 WHERE
     `entry`     = 178844;
 
 UPDATE `gameobject_template`
 SET
-    `data0`     = 56,
+    `data0`     = 54,
     `data1`     = 60,
     `data2`     = 2557
 WHERE
@@ -189,16 +189,16 @@ WHERE
 
 UPDATE `gameobject_template`
 SET
-    `data0`     = 24,
-    `data1`     = 32,
+    `data0`     = 20,
+    `data1`     = 34,
     `data2`     = 719
 WHERE
     `entry`     = 178828;
 
 UPDATE `gameobject_template`
 SET
-    `data0`     = 17,
-    `data1`     = 26,
+    `data0`     = 15,
+    `data1`     = 28,
     `data2`     = 1581
 WHERE
     `entry`     = 178834;
@@ -213,8 +213,8 @@ WHERE
 
 UPDATE `gameobject_template`
 SET
-    `data0`     = 24,
-    `data1`     = 32,
+    `data0`     = 22,
+    `data1`     = 34,
     `data2`     = 717
 WHERE
     `entry`     = 179595;
@@ -253,7 +253,7 @@ WHERE
 
 UPDATE `gameobject_template`
 SET
-    `data0`     = 52,
+    `data0`     = 48,
     `data1`     = 60,
     `data2`     = 1584
 WHERE
@@ -261,7 +261,7 @@ WHERE
 
 UPDATE `gameobject_template`
 SET
-    `data0`     = 58,
+    `data0`     = 56,
     `data1`     = 60,
     `data2`     = 2017
 WHERE
@@ -270,14 +270,14 @@ WHERE
 UPDATE `gameobject_template`
 SET
     `data0`     = 13,
-    `data1`     = 20,
+    `data1`     = 22,
     `data2`     = 2437
 WHERE
     `entry`     = 179596;
 
 UPDATE `gameobject_template`
 SET
-    `data0`     = 50,
+    `data0`     = 44,
     `data1`     = 60,
     `data2`     = 1477
 WHERE
@@ -285,15 +285,37 @@ WHERE
 
 UPDATE `gameobject_template`
 SET
-    `data0`     = 22,
-    `data1`     = 30,
+    `data0`     = 18,
+    `data1`     = 32,
     `data2`     = 209
 WHERE
     `entry`     = 178845;
 
 -- Spawn meeting stones ------------------------------------------------------
--- INSERT INTO `gameobject`
---     (`guid`,    `id`,   `map`,  `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`)
--- VALUES
---      (36,          4170,   1,    -1286.24,      189.72,       130.08,    -1.07338,        0,           0,           -0.511294,    0.859406,    900,             100,           1)
--- ;
+INSERT INTO `gameobject`
+    (`guid`,    `id`,   `map`,  `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`)
+VALUES
+     (36,        178824,   1,    -4374.19,    -1953.61,      89.6649,     2.71399,        0,           0,                   0,           0,    900,             100,           1)
+    ,(37,        178825,   1,    -4465.69,    -1807.09,      86.6898,    -3.00197,        0,           0,                   0,           0,    900,             100,           1)
+    ,(38,        178826,   1,     -4427.5,     1412.92,      132.459,    -2.60054,        0,           0,                   0,           0,    900,             100,           1)
+    ,(39,        178827,   1,    -1417.55,     2817.21,      112.341,     2.93215,        0,           0,                   0,           0,    900,             100,           1)
+    ,(40,        178828,   1,     4075.15,     814.207,        2.121,      1.5708,        0,           0,                   0,           0,    900,             100,           1)
+    ,(41,        178829,   1,    -6829.23,    -2874.29,      9.19099,    -1.18682,        0,           0,                   0,           0,    900,             100,           1)
+    ,(42,        178831,   0,     3372.45,    -3379.63,      144.855,     3.03687,        0,           0,                   0,           0,    900,             100,           1)
+    ,(43,        178832,   0,     1232.23,    -2571.76,      90.4589,    -1.71042,        0,           0,                   0,           0,   1200,             100,           1)
+    ,(44,        178833,   0,    -6116.46,    -3299.53,      257.655,     2.87107,        0,           0,                   0,           0,    900,             100,           1)
+    ,(45,        178834,   0,    -11089.3,     1561.09,      49.4401,     2.31256,        0,           0,                   0,           0,   3600,             100,           1)
+    ,(46,        178844,   0,     2655.95,    -678.247,      111.193,    0.427606,        0,           0,                   0,           0,    900,             100,           1)
+    ,(47,        178845,   0,    -247.137,     1509.01,      75.8482,    -2.68781,        0,           0,                   0,           0,   7200,             100,           1)
+    ,(48,        178884,   1,    -793.299,    -2135.61,      92.3452,     2.98451,        0,           0,                   0,           0,    900,             100,           1)
+    ,(49,        179554,   0,    -10457.8,    -3807.79,      18.0667,     1.98095,        0,           0,                   0,           0,    600,             100,           1)
+    ,(50,        179555,   0,     -5203.7,       606.7,      411.465,      1.9984,        0,           0,                   0,           0,    900,             100,           1)
+    ,(51,        179584,   0,    -7590.69,    -1139.77,      260.681,    -2.76635,        0,           0,                   0,           0,   7200,             100,           1)
+    ,(52,        179585,   0,    -7625.35,    -1226.51,      231.776,    -2.77262,        0,           0,                   0,           0,   7200,             100,           1)
+    -- ,(53,        179586,   0,           0,           0,            0,           0,        0,           0,                   0,           0,    900,             100,           1)
+    -- ,(54,        179587,   0,           0,           0,            0,           0,        0,           0,                   0,           0,    900,             100,           1)
+    ,(55,        179595,   0,     -8810.5,     798.038,      98.1829,     -3.0456,        0,           0,                   0,           0,    900,             100,           1)
+    ,(56,        179596,   1,      1818.3,    -4402.07,     -17.8275,     2.68781,        0,           0,                   0,           0,    900,             100,           1)
+    ,(57,        185321,   1,    -4753.15,    -3652.78,      46.3757,     -2.3911,        0,           0,                   0,           0,    900,             100,           1)
+    ,(58,        185433,   0,    -11888.1,    -873.104,      35.8599,     2.05076,        0,           0,                   0,           0,    900,             100,           1)
+;
