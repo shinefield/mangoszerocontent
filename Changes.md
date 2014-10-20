@@ -9,6 +9,7 @@ A feature release to address various issues.
 
 * database structure has been synchronized with the current mangos-zero version,
 * meeting stones have been imported to enable feature testing,
+* the fishing game object has been added to allow for testing,
 
 0.1.2 (2014-08-02)
 ------------------
