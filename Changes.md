@@ -3,6 +3,13 @@ Changelog
 This document tracks changes in the [mangos-zero database][113] and highlights
 what has been done to bring the database to you.
 
+0.1.3 (2014-10-XX)
+------------------
+A feature release to address various issues.
+
+* database structure has been synchronized with the current mangos-zero version,
+* meeting stones have been imported to enable feature testing,
+
 0.1.2 (2014-08-02)
 ------------------
 A bug fix release to adress minor issues.
