@@ -11,6 +11,8 @@ A feature release to address various issues.
 * meeting stones have been imported to enable feature testing,
 * the fishing game object has been added along with a fishing pole, to allow for
   testing,
+* mailboxes have arrived all over the world. Azeroth Postal Service is at your
+  disposal from now on.
 
 0.1.2 (2014-08-02)
 ------------------
