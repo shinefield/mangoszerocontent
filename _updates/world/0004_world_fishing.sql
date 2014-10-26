@@ -1,9 +1,9 @@
 -- Host: localhost    Database: world
 -- ---------------------------------------------------------------------------
--- Add initial data to world database
+-- Add fishing data to world database
 --
--- This update will populate the world database with initial data required to
--- run the server.
+-- This update will populate the world database with data required to test
+-- fishing.
 --
 
 -- Provide variables for game objects ----------------------------------------
@@ -63,7 +63,7 @@ VALUES
      (35591,  @GO_TYPE_FISHING_NODE,   668,       "Fishing Bobber"                  )
 ;
 
--- Configure meeting stones --------------------------------------------------
+-- Configure the fishing bobber ----------------------------------------------
 UPDATE `gameobject_template`
 SET
     `faction`   = 35, -- friendly
@@ -79,6 +79,7 @@ VALUES
      (6256,  @ITEM_CLASS_WEAPON,        @ITEM_SUBCLASS_WEAPON_FISHING_POLE,         @ITEM_QUALITY_COMMON,    20730,  "Fishing Pole")
 ;
 
+-- Configure fishing pole template -------------------------------------------
 UPDATE `item_template`
 SET
     `BuyCount`          = 1,
