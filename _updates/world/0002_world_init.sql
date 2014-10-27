@@ -8,6 +8,7 @@
 -- Global Unique Identifier ranges used:
 --
 -- - Spirit Healers, Azeroth: 1-500
+-- - Elevators, Azeroth:      1-100
 
 -- Provide variables for various item stats ----------------------------------
 -- -> classes and subclasses -------------------------------------------------
