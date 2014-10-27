@@ -19,102 +19,202 @@ WHERE
 ;
 
 -- Insert mailbox templates --------------------------------------------------
--- INSERT INTO `gameobject_template`
---     (`entry`, `type`,                `displayId`, `name`)
--- VALUES
---      (35591,  @GO_TYPE_FISHING_NODE,   668,       "Fishing Bobber"                  )
--- ;
+INSERT INTO `gameobject_template`
+    (`entry`, `type`,                `displayId`, `name`)
+VALUES
+     (140908, @GO_TYPE_MAILBOX,     1727,         "Mailbox"                  )
+    ,(142075, @GO_TYPE_MAILBOX,     1907,         "Mailbox"                  )
+    ,(142089, @GO_TYPE_MAILBOX,     1907,         "Mailbox"                  )
+    ,(142093, @GO_TYPE_MAILBOX,     1907,         "Mailbox"                  )
+    ,(142094, @GO_TYPE_MAILBOX,     1907,         "Mailbox"                  )
+    ,(142095, @GO_TYPE_MAILBOX,     1907,         "Mailbox"                  )
+    ,(142102, @GO_TYPE_MAILBOX,     1947,         "Mailbox"                  )
+    ,(142103, @GO_TYPE_MAILBOX,     1947,         "Mailbox"                  )
+    ,(142109, @GO_TYPE_MAILBOX,     1948,         "Mailbox"                  )
+    ,(142110, @GO_TYPE_MAILBOX,     1948,         "Mailbox"                  )
+    ,(142111, @GO_TYPE_MAILBOX,     1948,         "Mailbox"                  )
+    ,(142117, @GO_TYPE_MAILBOX,     1948,         "Mailbox"                  )
+    ,(142119, @GO_TYPE_MAILBOX,     1948,         "Mailbox"                  )
+    ,(143981, @GO_TYPE_MAILBOX,     2128,         "Mailbox"                  )
+    ,(143982, @GO_TYPE_MAILBOX,     2128,         "Mailbox"                  )
+    ,(143983, @GO_TYPE_MAILBOX,     2690,         "Mailbox"                  )
+    ,(143984, @GO_TYPE_MAILBOX,     2128,         "Mailbox"                  )
+    ,(143985, @GO_TYPE_MAILBOX,     2128,         "Mailbox"                  )
+    ,(143986, @GO_TYPE_MAILBOX,     2128,         "Mailbox"                  )
+    ,(143987, @GO_TYPE_MAILBOX,     1907,         "Mailbox"                  )
+    ,(143988, @GO_TYPE_MAILBOX,     2128,         "Mailbox"                  )
+    ,(143989, @GO_TYPE_MAILBOX,     2128,         "Mailbox"                  )
+    ,(143990, @GO_TYPE_MAILBOX,     2128,         "Mailbox"                  )
+    ,(144011, @GO_TYPE_MAILBOX,     1947,         "Mailbox"                  )
+    ,(144112, @GO_TYPE_MAILBOX,     2190,         "Mailbox"                  )
+    ,(144125, @GO_TYPE_MAILBOX,     2190,         "Mailbox"                  )
+    ,(144126, @GO_TYPE_MAILBOX,     2128,         "Mailbox"                  )
+    ,(144127, @GO_TYPE_MAILBOX,     2128,         "Mailbox"                  )
+    ,(144128, @GO_TYPE_MAILBOX,     1907,         "Mailbox"                  )
+    ,(144129, @GO_TYPE_MAILBOX,     1907,         "Mailbox"                  )
+    ,(144130, @GO_TYPE_MAILBOX,     1907,         "Mailbox"                  )
+    ,(144131, @GO_TYPE_MAILBOX,     1907,         "Mailbox"                  )
+    ,(144179, @GO_TYPE_MAILBOX,     2190,         "Mailbox"                  )
+    ,(144570, @GO_TYPE_MAILBOX,     1907,         "Mailbox"                  )
+    ,(153578, @GO_TYPE_MAILBOX,     2690,         "Mailbox"                  )
+    ,(153716, @GO_TYPE_MAILBOX,     1907,         "Mailbox"                  )
+    ,(157637, @GO_TYPE_MAILBOX,     2128,         "Mailbox"                  )
+    ,(163313, @GO_TYPE_MAILBOX,     2128,         "Mailbox"                  )
+    ,(163645, @GO_TYPE_MAILBOX,     2128,         "Mailbox"                  )
+    ,(164618, @GO_TYPE_MAILBOX,     1907,         "Mailbox"                  )
+    ,(164840, @GO_TYPE_MAILBOX,     2128,         "Mailbox"                  )
+    ,(171556, @GO_TYPE_MAILBOX,     1947,         "Mailbox"                  )
+    ,(171699, @GO_TYPE_MAILBOX,     1947,         "Mailbox"                  )
+    ,(171752, @GO_TYPE_MAILBOX,     2190,         "Mailbox"                  )
+    ,(173047, @GO_TYPE_MAILBOX,     2128,         "Mailbox"                  )
+    ,(173221, @GO_TYPE_MAILBOX,     2128,         "Mailbox"                  )
+    ,(175668, @GO_TYPE_MAILBOX,     2190,         "Postbox"                  )
+    ,(175864, @GO_TYPE_MAILBOX,     2128,         "Mailbox"                  )
+    ,(176319, @GO_TYPE_MAILBOX,     1948,         "Mailbox"                  )
+    ,(176324, @GO_TYPE_MAILBOX,     2690,         "Mailbox"                  )
+    ,(176404, @GO_TYPE_MAILBOX,     2190,         "Mailbox"                  )
+    ,(177044, @GO_TYPE_MAILBOX,     4591,         "Mailbox"                  )
+    ,(178864, @GO_TYPE_MAILBOX,     2128,         "Mailbox"                  )
+    ,(179895, @GO_TYPE_MAILBOX,     5971,         "Mailbox"                  )
+    ,(179896, @GO_TYPE_MAILBOX,     5971,         "Mailbox"                  )
+    ,(180451, @GO_TYPE_MAILBOX,     1948,         "Mailbox"                  )
+    ,(181236, @GO_TYPE_MAILBOX,     1907,         "Mailbox"                  )
+    ,(181380, @GO_TYPE_MAILBOX,     1907,         "Mailbox"                  )
+    ,(181381, @GO_TYPE_MAILBOX,     2128,         "Mailbox"                  )
+    ,(181639, @GO_TYPE_MAILBOX,     1948,         "Mailbox"                  )
+    ,(182567, @GO_TYPE_MAILBOX,     5971,         "Mailbox"                  )
+    ,(182939, @GO_TYPE_MAILBOX,     1907,         "Mailbox"                  )
+    ,(182946, @GO_TYPE_MAILBOX,     2128,         "Mailbox"                  )
+    ,(183039, @GO_TYPE_MAILBOX,     1948,         "Mailbox"                  )
+    ,(183167, @GO_TYPE_MAILBOX,     2128,         "Mailbox"                  )
+    ,(184085, @GO_TYPE_MAILBOX,     2190,         "Mailbox"                  )
+    ,(184147, @GO_TYPE_MAILBOX,     1948,         "Mailbox"                  )
+    ,(184148, @GO_TYPE_MAILBOX,     2128,         "Mailbox"                  )
+    ,(184652, @GO_TYPE_MAILBOX,     1947,         "Mailbox"                  )
+    ,(184944, @GO_TYPE_MAILBOX,     2190,         "Mailbox"                  )
+    ,(185477, @GO_TYPE_MAILBOX,     1948,         "Mailbox"                  )
+    ,(186230, @GO_TYPE_MAILBOX,     2190,         "Mailbox"                  )
+    ,(186629, @GO_TYPE_MAILBOX,     2128,         "Mailbox"                  )
+    ,(187260, @GO_TYPE_MAILBOX,     2690,         "Mailbox"                  )
+    ,(188123, @GO_TYPE_MAILBOX,     1948,         "Mailbox"                  )
+    ,(188132, @GO_TYPE_MAILBOX,     2128,         "Mailbox"                  )
+;
 
 -- Configure mailbox templates -----------------------------------------------
--- UPDATE `gameobject_template`
--- SET
---     `faction`   = 35, -- friendly
---     `size`      = 1
--- WHERE
---     `entry` IN (35591)
--- ;
+UPDATE `gameobject_template`
+SET
+    `faction`   = 12, -- "Stormwind"
+    `size`      = 1
+WHERE
+    `entry` IN (142075, 142089, 142093, 142094, 142095, 143987, 144128, 144129, 144130, 144131, 153716, 164618, 181380)
+;
 
+UPDATE `gameobject_template`
+SET
+    `faction`   = 55, -- "Ironforge"
+    `size`      = 1
+WHERE
+    `entry` IN (142102, 142103, 144011, 144179, 171556, 171699, 171752)
+;
+
+UPDATE `gameobject_template`
+SET
+    `faction`   = 80, -- "Darnassus"
+    `size`      = 1
+WHERE
+    `entry` IN (142109, 142110, 142111, 142117, 142119, 176319, 181639, 188123)
+;
+
+UPDATE `gameobject_template`
+SET
+    `faction`   = 29, -- "Orgrimmar"
+    `size`      = 1
+WHERE
+    `entry` IN (143981, 143982, 143983, 157637, 163313, 163645, 164840, 173047, 173221, 178864, 179895, 179896, 181381)
+;
+
+UPDATE `gameobject_template`
+SET
+    `faction`   = 104, -- "Thunder Bluff"
+    `size`      = 1
+WHERE
+    `entry` IN (143984, 143985, 143986, 153578, 176324)
+;
+
+UPDATE `gameobject_template`
+SET
+    `faction`   = 68, -- "Undercity"
+    `size`      = 1
+WHERE
+    `entry` IN (143988, 143989, 143990, 177044)
+;
+
+UPDATE `gameobject_template`
+SET
+    `faction`   = 120, -- "Booty Bay"
+    `size`      = 1
+WHERE
+    `entry` IN (144126, 144127)
+;
+
+UPDATE `gameobject_template`
+SET
+    `faction`   = 855, -- "Everlook"
+    `size`      = 1
+WHERE
+    `entry` IN (176404)
+;
+
+UPDATE `gameobject_template`
+SET
+    `faction`   = 474, -- "Gadgetzan"
+    `size`      = 1
+WHERE
+    `entry` IN (184085, 186230)
+;
+
+UPDATE `gameobject_template`
+SET
+    `faction`   = 35, -- "Friendly"
+    `size`      = 1
+WHERE
+    `entry` IN (144112, 144125, 187260)
+;
+
+UPDATE `gameobject_template`
+SET
+    `faction`   = 994, -- "Cenarion Circle"
+    `size`      = 1
+WHERE
+    `entry` IN (180451)
+;
+
+UPDATE `gameobject_template`
+SET
+    `faction`   = 84, -- "Alliance Generic"
+    `size`      = 1
+WHERE
+    `entry` IN (184944)
+;
 -- entry,type,displayId,name,factionTemplate,size,faction,name
--- 32349,19,1947,"Mailbox",55,1,47,"Ironforge"
 -- 140908,19,1727,"Mailbox",0,1,NULL,NULL
--- 142075,19,1907,"Mailbox",12,1,72,"Stormwind"
--- 142089,19,1907,"Mailbox",12,1,72,"Stormwind"
--- 142093,19,1907,"Mailbox",12,1,72,"Stormwind"
--- 142094,19,1907,"Mailbox",12,1,72,"Stormwind"
--- 142095,19,1907,"Mailbox",12,1,72,"Stormwind"
--- 142102,19,1947,"Mailbox",55,1,47,"Ironforge"
--- 142103,19,1947,"Mailbox",55,1,47,"Ironforge"
--- 142109,19,1948,"Mailbox",80,1,69,"Darnassus"
--- 142110,19,1948,"Mailbox",80,1,69,"Darnassus"
--- 142111,19,1948,"Mailbox",80,1,69,"Darnassus"
--- 142117,19,1948,"Mailbox",80,1,69,"Darnassus"
--- 142119,19,1948,"Mailbox",80,1,69,"Darnassus"
--- 143981,19,2128,"Mailbox",29,1,76,"Orgrimmar"
--- 143982,19,2128,"Mailbox",29,1,76,"Orgrimmar"
--- 143983,19,2690,"Mailbox",29,1,76,"Orgrimmar"
--- 143984,19,2128,"Mailbox",104,1,81,"Thunder Bluff"
--- 143985,19,2128,"Mailbox",104,1,81,"Thunder Bluff"
--- 143986,19,2128,"Mailbox",104,1,81,"Thunder Bluff"
--- 143987,19,1907,"Mailbox",12,1,72,"Stormwind"
--- 143988,19,2128,"Mailbox",68,1,68,"Undercity"
--- 143989,19,2128,"Mailbox",68,1,68,"Undercity"
--- 143990,19,2128,"Mailbox",68,1,68,"Undercity"
--- 144011,19,1947,"Mailbox",55,1,47,"Ironforge"
--- 144112,19,2190,"Mailbox",35,1,31,"Friendly"
--- 144125,19,2190,"Mailbox",35,1,31,"Friendly"
--- 144126,19,2128,"Mailbox",120,1,21,"Booty Bay"
--- 144127,19,2128,"Mailbox",120,1,21,"Booty Bay"
--- 144128,19,1907,"Mailbox",12,1,72,"Stormwind"
--- 144129,19,1907,"Mailbox",12,1,72,"Stormwind"
--- 144130,19,1907,"Mailbox",12,1,72,"Stormwind"
--- 144131,19,1907,"Mailbox",12,1,72,"Stormwind"
--- 144179,19,2190,"Mailbox",55,1,47,"Ironforge"
 -- 144570,19,1907,"Mailbox",0,1,NULL,NULL
--- 153578,19,2690,"Mailbox",104,1,81,"Thunder Bluff"
--- 153716,19,1907,"Mailbox",12,1,72,"Stormwind"
--- 157637,19,2128,"Mailbox",29,1,76,"Orgrimmar"
--- 163313,19,2128,"Mailbox",29,1,76,"Orgrimmar"
--- 163645,19,2128,"Mailbox",29,1,76,"Orgrimmar"
--- 164618,19,1907,"Mailbox",12,1,72,"Stormwind"
--- 164840,19,2128,"Mailbox",29,1,76,"Orgrimmar"
--- 171556,19,1947,"Mailbox",55,1,47,"Ironforge"
--- 171699,19,1947,"Mailbox",55,1,47,"Ironforge"
--- 171752,19,2190,"Mailbox",55,1,47,"Ironforge"
--- 173047,19,2128,"Mailbox",29,1,76,"Orgrimmar"
--- 173221,19,2128,"Mailbox",29,1,76,"Orgrimmar"
 -- 175668,19,2190,"Postbox",0,1,NULL,NULL
 -- 175864,19,2128,"Mailbox",0,1,NULL,NULL
--- 176319,19,1948,"Mailbox",80,1,69,"Darnassus"
--- 176324,19,2690,"Mailbox",104,1,81,"Thunder Bluff"
--- 176404,19,2190,"Mailbox",855,1,577,"Everlook"
--- 177044,19,4591,"Mailbox",68,1,68,"Undercity"
--- 178864,19,2128,"Mailbox",29,1,76,"Orgrimmar"
--- 179895,19,5971,"Mailbox",29,1,76,"Orgrimmar"
--- 179896,19,5971,"Mailbox",29,1,76,"Orgrimmar"
--- 180451,19,1948,"Mailbox",994,1,609,"Cenarion Circle"
 -- 181236,19,1907,"Mailbox",0,1,NULL,NULL
--- 181380,19,1907,"Mailbox",12,1,72,"Stormwind"
--- 181381,19,2128,"Mailbox",29,1,76,"Orgrimmar"
--- 181639,19,1948,"Mailbox",80,1,69,"Darnassus"
 -- 182567,19,5971,"Mailbox",1735,0.842228,NULL,NULL
 -- 182939,19,1907,"Mailbox",1733,1,NULL,NULL
 -- 182946,19,2128,"Mailbox",1735,1.44,NULL,NULL
 -- 183039,19,1948,"Mailbox",0,1,NULL,NULL
 -- 183167,19,2128,"Mailbox",1735,1,NULL,NULL
--- 184085,19,2190,"Mailbox",474,1,369,Gadgetzan
 -- 184147,19,1948,"Mailbox",1732,1,NULL,NULL
 -- 184148,19,2128,"Mailbox",1735,1,NULL,NULL
 -- 184652,19,1947,"Mailbox",1732,1,NULL,NULL
--- 184944,19,2190,"Mailbox",84,1,189,"Alliance Generic"
 -- 185477,19,1948,"Mailbox",1660,1,NULL,NULL
--- 186230,19,2190,"Mailbox",474,1,369,Gadgetzan
 -- 186629,19,2128,"Mailbox",1735,1,NULL,NULL
--- 187260,19,2690,"Mailbox",35,0.92,31,"Friendly"
--- 188123,19,1948,"Mailbox",80,1,69,"Darnassus"
 -- 188132,19,2128,"Mailbox",0,1,NULL,NULL
 
 -- guid,id,map,position_x,position_y,position_z,orientation,rotation2,rotation3,spawntimesecs,animprogress,state
--- 1564,32349,0,-4845.78,-879.3,501.614,1.64934,0.734322,0.678801,900,100,1
 -- 2978,142075,0,-9455.99,45.8229,56.4395,1.40499,0.646124,0.763232,900,100,1
 -- 26784,142075,0,-9455.99,45.8229,56.4395,1.40499,0.646124,0.763232,900,100,1
 -- 42900,142075,0,-8797,1083.48,90.208,-1,-0.410719,0.911762,120,0,0
