@@ -5,6 +5,9 @@
 -- This update will populate the world database with data required to test the
 -- Azeroth Postal Service.
 --
+-- Global Unique Identifier ranges used:
+--
+-- - Mailboxes, Azeroth: 201-500
 
 -- Provide variables for game objects ----------------------------------------
 SET @GO_TYPE_MAILBOX                            = 19;
