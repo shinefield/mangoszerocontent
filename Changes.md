@@ -13,6 +13,8 @@ A feature release to address various issues.
   testing,
 * mailboxes have arrived all over the world. Azeroth Postal Service is at your
   disposal from now on.
+* GUID namespaces have been added to update files, to show which range different
+  types of data use.
 
 0.1.2 (2014-08-02)
 ------------------
