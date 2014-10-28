@@ -102,24 +102,6 @@ VALUES
     ,(188132, @GO_TYPE_MAILBOX,     2128,         "Mailbox"                  )
 ;
 
--- entry,type,displayId,name,factionTemplate,size,faction,name
--- 140908,19,1727,"Mailbox",0,1,NULL,NULL
--- 144570,19,1907,"Mailbox",0,1,NULL,NULL
--- 175668,19,2190,"Postbox",0,1,NULL,NULL
--- 175864,19,2128,"Mailbox",0,1,NULL,NULL
--- 181236,19,1907,"Mailbox",0,1,NULL,NULL
--- 182567,19,5971,"Mailbox",1735,0.842228,NULL,NULL
--- 182939,19,1907,"Mailbox",1733,1,NULL,NULL
--- 182946,19,2128,"Mailbox",1735,1.44,NULL,NULL
--- 183039,19,1948,"Mailbox",0,1,NULL,NULL
--- 183167,19,2128,"Mailbox",1735,1,NULL,NULL
--- 184147,19,1948,"Mailbox",1732,1,NULL,NULL
--- 184148,19,2128,"Mailbox",1735,1,NULL,NULL
--- 184652,19,1947,"Mailbox",1732,1,NULL,NULL
--- 185477,19,1948,"Mailbox",1660,1,NULL,NULL
--- 186629,19,2128,"Mailbox",1735,1,NULL,NULL
--- 188132,19,2128,"Mailbox",0,1,NULL,NULL
-
 -- Configure mailbox templates -----------------------------------------------
 UPDATE `gameobject_template`
 SET
@@ -188,7 +170,7 @@ UPDATE `gameobject_template`
 SET
     `faction`   = 35 -- "Friendly"
 WHERE
-    `entry` IN (144112, 144125, 187260)
+    `entry` IN (144112, 144125, 187260, 181236)
 ;
 
 UPDATE `gameobject_template`
@@ -265,9 +247,22 @@ VALUES
     ,(254,181639,1,2681.93,1487.06,233.917,-1.47994,-0.674265,0.73849,900,100,1)
     ,(255,187260,1,5103.54,-360.519,357.04,-2.79253,0.984808,-0.173648,180,100,1)
     ,(256,188123,1,10122.1,2227.4,1328.19,-2.49582,0.948324,-0.317305,900,100,1)
+    ,(257,181236,0,2289.56,-5318.35,88.64,2.35787,0.924199,0.381912,900,100,1)
 ;
 
--- guid,id,map,position_x,position_y,position_z,orientation,rotation2,rotation3,spawntimesecs,animprogress,state
--- ,(257,175668,369,112.364,5.079,-4,0.851,0.412707,0.910864,120,0,1)
--- ,(258,181236,0,2289.56,-5318.35,88.64,2.35787,0.924199,0.381912,900,100,1)
--- ,(259,186629,1,-3158.55,-2894.12,33.6747,2.82743,0.987688,0.156434,900,100,1)
+-- entry,type,displayId,name,factionTemplate,size,faction,name
+-- 140908,19,1727,"Mailbox",0,1,NULL,NULL
+-- 144570,19,1907,"Mailbox",0,1,NULL,NULL
+-- 175668,19,2190,"Postbox",0,1,NULL,NULL
+-- 175864,19,2128,"Mailbox",0,1,NULL,NULL
+-- 182567,19,5971,"Mailbox",1735,0.842228,NULL,NULL
+-- 182939,19,1907,"Mailbox",1733,1,NULL,NULL
+-- 182946,19,2128,"Mailbox",1735,1.44,NULL,NULL
+-- 183039,19,1948,"Mailbox",0,1,NULL,NULL
+-- 183167,19,2128,"Mailbox",1735,1,NULL,NULL
+-- 184147,19,1948,"Mailbox",1732,1,NULL,NULL
+-- 184148,19,2128,"Mailbox",1735,1,NULL,NULL
+-- 184652,19,1947,"Mailbox",1732,1,NULL,NULL
+-- 185477,19,1948,"Mailbox",1660,1,NULL,NULL
+-- 188132,19,2128,"Mailbox",0,1,NULL,NULL
+
