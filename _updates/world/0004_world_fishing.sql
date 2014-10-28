@@ -36,8 +36,7 @@ VALUES
 -- Configure the fishing bobber ----------------------------------------------
 UPDATE `gameobject_template`
 SET
-    `faction`   = 35, -- friendly
-    `size`      = 1
+    `faction`   = 35 -- friendly
 WHERE
     `entry` IN (35591)
 ;

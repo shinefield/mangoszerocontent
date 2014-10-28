@@ -123,96 +123,84 @@ VALUES
 -- Configure mailbox templates -----------------------------------------------
 UPDATE `gameobject_template`
 SET
-    `faction`   = 12, -- "Stormwind"
-    `size`      = 1
+    `faction`   = 12 -- "Stormwind"
 WHERE
     `entry` IN (142075, 142089, 142093, 142094, 142095, 143987, 144128, 144129, 144130, 144131, 153716, 164618, 181380)
 ;
 
 UPDATE `gameobject_template`
 SET
-    `faction`   = 55, -- "Ironforge"
-    `size`      = 1
+    `faction`   = 55 -- "Ironforge"
 WHERE
     `entry` IN (142102, 142103, 144011, 144179, 171556, 171699, 171752)
 ;
 
 UPDATE `gameobject_template`
 SET
-    `faction`   = 80, -- "Darnassus"
-    `size`      = 1
+    `faction`   = 80 -- "Darnassus"
 WHERE
     `entry` IN (142109, 142110, 142111, 142117, 142119, 176319, 181639, 188123)
 ;
 
 UPDATE `gameobject_template`
 SET
-    `faction`   = 29, -- "Orgrimmar"
-    `size`      = 1
+    `faction`   = 29 -- "Orgrimmar"
 WHERE
     `entry` IN (143981, 143982, 143983, 157637, 163313, 163645, 164840, 173047, 173221, 178864, 179895, 179896, 181381)
 ;
 
 UPDATE `gameobject_template`
 SET
-    `faction`   = 104, -- "Thunder Bluff"
-    `size`      = 1
+    `faction`   = 104 -- "Thunder Bluff"
 WHERE
     `entry` IN (143984, 143985, 143986, 153578, 176324)
 ;
 
 UPDATE `gameobject_template`
 SET
-    `faction`   = 68, -- "Undercity"
-    `size`      = 1
+    `faction`   = 68 -- "Undercity"
 WHERE
     `entry` IN (143988, 143989, 143990, 177044)
 ;
 
 UPDATE `gameobject_template`
 SET
-    `faction`   = 120, -- "Booty Bay"
-    `size`      = 1
+    `faction`   = 120 -- "Booty Bay"
 WHERE
     `entry` IN (144126, 144127)
 ;
 
 UPDATE `gameobject_template`
 SET
-    `faction`   = 855, -- "Everlook"
-    `size`      = 1
+    `faction`   = 855 -- "Everlook"
 WHERE
     `entry` IN (176404)
 ;
 
 UPDATE `gameobject_template`
 SET
-    `faction`   = 474, -- "Gadgetzan"
-    `size`      = 1
+    `faction`   = 474 -- "Gadgetzan"
 WHERE
     `entry` IN (184085)
 ;
 
 UPDATE `gameobject_template`
 SET
-    `faction`   = 35, -- "Friendly"
-    `size`      = 1
+    `faction`   = 35 -- "Friendly"
 WHERE
     `entry` IN (144112, 144125, 187260)
 ;
 
 UPDATE `gameobject_template`
 SET
-    `faction`   = 994, -- "Cenarion Circle"
-    `size`      = 1
+    `faction`   = 994 -- "Cenarion Circle"
 WHERE
     `entry` IN (180451)
 ;
 
 UPDATE `gameobject_template`
 SET
-    `faction`   = 84, -- "Alliance Generic"
-    `size`      = 1
+    `faction`   = 84 -- "Alliance Generic"
 WHERE
     `entry` IN (184944)
 ;

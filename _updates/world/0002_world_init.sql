@@ -9653,8 +9653,7 @@ WHERE `entry` = 181056;
 -- Configure duel arbiter game object ----------------------------------------
 UPDATE `gameobject_template`
 SET
-    `faction` = 5,
-    `size` = 1
+    `faction` = 5
 WHERE `entry` = 21680;
 
 -- Insert stationery transports ----------------------------------------------

@@ -54,8 +54,7 @@ VALUES
 -- Configure meeting stones --------------------------------------------------
 UPDATE `gameobject_template`
 SET
-    `faction`   = 35, -- friendly
-    `size`      = 1
+    `faction`   = 35 -- friendly
 WHERE
     `entry` IN (178824, 179555, 178884, 185433, 178833, 178829, 178825,
                 178827, 178844, 178826, 178828, 178834, 178832, 179595,
