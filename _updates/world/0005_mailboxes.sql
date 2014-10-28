@@ -12,15 +12,6 @@
 -- Provide variables for game objects ----------------------------------------
 SET @GO_TYPE_MAILBOX                            = 19;
 
--- Update world database version ---------------------------------------------
-UPDATE `db_version`
-SET
-    `version`             = 'mangos-zero - version 0.1.5 (development)',
-    `creature_ai_version` = 'mangos-zero Artificial Creature Intelligence - version 0.1.5 (development)'
-WHERE
-    `version`             = 'mangos-zero - version 0.1.4 (development)'
-;
-
 -- Insert mailbox templates --------------------------------------------------
 INSERT INTO `gameobject_template`
     (`entry`, `type`,                `displayId`, `name`)

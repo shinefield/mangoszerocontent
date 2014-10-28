@@ -17,15 +17,6 @@ SET @INVTYPE_2HWEAPON                           = 17;
 SET @MATERIAL_WOOD                              = 2;
 SET @SHEATHETYPE_MAINHAND                       = 1;
 
--- Update world database version ---------------------------------------------
-UPDATE `db_version`
-SET
-    `version`             = 'mangos-zero - version 0.1.4 (development)',
-    `creature_ai_version` = 'mangos-zero Artificial Creature Intelligence - version 0.1.4 (development)'
-WHERE
-    `version`             = 'mangos-zero - version 0.1.3 (development)'
-;
-
 -- Insert fishing bobber templates -------------------------------------------
 INSERT INTO `gameobject_template`
     (`entry`, `type`,                `displayId`, `name`)
