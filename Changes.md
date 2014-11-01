@@ -3,7 +3,7 @@ Changelog
 This document tracks changes in the [mangos-zero database][113] and highlights
 what has been done to bring the database to you.
 
-0.1.3 (2014-10-XX)
+0.1.3 (2014-11-XX)
 ------------------
 A feature release to address various issues.
 
@@ -16,6 +16,8 @@ A feature release to address various issues.
 * GUID namespaces have been added to update files, to show which range different
   types of data use.
 * basic class/level based stat values for creature templates have been added.
+* signs have been added through the world, showing the directions to all known
+  and unknown places.
 
 0.1.2 (2014-08-02)
 ------------------
