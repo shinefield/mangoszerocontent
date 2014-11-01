@@ -15,6 +15,7 @@ A feature release to address various issues.
   disposal from now on.
 * GUID namespaces have been added to update files, to show which range different
   types of data use.
+* basic class/level based stat values for creature templates have been added.
 
 0.1.2 (2014-08-02)
 ------------------
