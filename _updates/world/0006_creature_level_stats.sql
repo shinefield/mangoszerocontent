@@ -1,6 +1,6 @@
 -- Host: localhost    Database: world
 -- ---------------------------------------------------------------------------
--- Add mailboxes to the world database
+-- Add creature stats to the world database
 --
 -- This update will populate the world database with generic level/class stats
 

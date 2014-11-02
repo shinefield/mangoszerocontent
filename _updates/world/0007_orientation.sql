@@ -1,9 +1,9 @@
 -- Host: localhost    Database: world
 -- ---------------------------------------------------------------------------
--- Add mailboxes to the world database
+-- Add signs to the world database
 --
--- This update will populate the world database with data required to test the
--- Azeroth Postal Service.
+-- This update will populate the world database with data required to
+-- highlight locations on posts and signs.
 --
 -- Global Unique Identifier ranges used:
 --
