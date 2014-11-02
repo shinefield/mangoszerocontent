@@ -18,6 +18,8 @@ A feature release to address various issues.
 * basic class/level based stat values for creature templates have been added.
 * signs have been added through the world, showing the directions to all known
   and unknown places.
+* to accommodate for tired adventurers, we now offer a variety of seating
+  opportunities all over the world. Enjoy our sense for chairity.
 
 0.1.2 (2014-08-02)
 ------------------
