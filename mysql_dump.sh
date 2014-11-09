@@ -21,7 +21,7 @@ function dump_data ()
 {
     echo -n "Dumping contents of $1:$3 to $2..."
     [ ! -d ${DIR}/$2 ] && mkdir ${DIR}/$2
-    mysqldump${OPTS} -Q --skip-comments --skip-dump-date --add-drop-table $1 $3 >${DIR}/$2/$3.sql
+    mysqldump${OPTS} -Q --skip-comments --skip-dump-date --add-drop-table $1 $3 >${DIR}/_init/$2/$3.sql
     echo " done"
 }
 
@@ -29,7 +29,7 @@ function dump_struc ()
 {
     echo -n "Dumping contents of $1:$3 to $2..."
     [ ! -d ${DIR}/$2 ] && mkdir ${DIR}/$2
-    mysqldump${OPTS} -Q --skip-comments --skip-dump-date --add-drop-table --no-data $1 $3 >${DIR}/$2/$3.sql
+    mysqldump${OPTS} -Q --skip-comments --skip-dump-date --add-drop-table --no-data $1 $3 >${DIR}/_init/$2/$3.sql
     echo " done"
 }
 
