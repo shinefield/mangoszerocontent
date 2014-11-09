@@ -30,14 +30,14 @@ SET @REALM_FLAG_FULL                            = 128;
 
 -- Create a default realm, set to PvE, and allowing access to
 -- client builds 5875 (1.12.1), and 6005 (1.12.2).
-INSERT INTO `realmlist`
+INSERT IGNORE INTO `realmlist`
     (`id`,  `name`,             `address`,      `port`, `icon`,             `realmflags`,           `timezone`,                 `allowedSecurityLevel`, `population`,   `realmbuilds`)
 VALUES
     (1,     'Bronzebeard',      '127.0.0.1',    8085,   @REALM_ICON_NORMAL, @REALM_FLAG_OFFLINE,    @REALM_TZ_DEVELOPMENT,       0,                      0,              '5875 6005 6141')
 ;
 
 -- Insert default accounts ---------------------------------------------------
-INSERT INTO `account`
+INSERT IGNORE INTO `account`
     (`id`, `username`, `sha_pass_hash`, `gmlevel`, `sessionkey`, `v`, `s`, `email`, `joindate`, `last_ip`, `failed_logins`, `locked`, `last_login`, `active_realm_id`, `expansion`, `mutetime`, `locale`)
 VALUES
 -- Create an administrator account
@@ -51,7 +51,7 @@ VALUES
 ;
 
 -- Insert realm list database version
-INSERT INTO `realmd_db_version`
+INSERT IGNORE INTO `realmd_db_version`
 VALUES
     (NULL)
 ;

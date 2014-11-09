@@ -7,7 +7,7 @@
 --
 
 -- Insert generic text strings for errors and common creature behavior -------
-INSERT INTO `script_texts`
+INSERT IGNORE INTO `script_texts`
     (`entry`, `content_default`, `sound`, `type`, `language`, `emote`, `comment`)
 VALUES
      (-1000000,'<ScriptDev2 Text Entry Missing!>',0,0,0,0,'DEFAULT_TEXT')
@@ -19,14 +19,14 @@ VALUES
     ,(-1000006,'%s becomes enraged!',0,3,0,0,'EMOTE_BOSS_GENERIC_ENRAGED')
 ;
 
-INSERT INTO `gossip_texts`
+INSERT IGNORE INTO `gossip_texts`
     (`entry`, `content_default`, `comment`)
 VALUES
      (-3000000, '[PH] SD2 unknown text', 'GOSSIP_ID_UNKNOWN_TEXT')
  ;
 
 -- Insert script library database version ------------------------------------
-INSERT INTO `sd2_db_version`
+INSERT IGNORE INTO `sd2_db_version`
 VALUES
     ('ScriptDev2 - Version 0.1.0 (Community Rebuild)')
 ;
