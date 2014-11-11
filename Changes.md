@@ -20,6 +20,8 @@ A feature release to address various issues.
   and unknown places.
 * to accommodate for tired adventurers, we now offer a variety of seating
   opportunities all over the world. Enjoy our sense for chairity.
+* when logging out in your favourite in, you will now properly take advantage
+  of the resting bonus.
 
 0.1.2 (2014-08-02)
 ------------------
