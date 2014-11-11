@@ -1,10 +1,5 @@
--- MySQL dump 10.13  Distrib 5.5.29, for debian-linux-gnu (x86_64)
---
--- Host: localhost    Database: zp_world
--- ------------------------------------------------------
--- Server version   5.5.29-0ubuntu0.12.10.1
-
---
+-- Host: localhost    Database: world
+-- ---------------------------------------------------------------------------
 -- World optimization script
 --
 -- This script will runs a few order queries to ensure world content

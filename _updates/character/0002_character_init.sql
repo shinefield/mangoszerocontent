@@ -6,7 +6,7 @@
 --
 
 -- Insert character database version -----------------------------------------
-INSERT INTO `character_db_version`
+INSERT IGNORE INTO `character_db_version`
 VALUES
     (NULL)
 ;

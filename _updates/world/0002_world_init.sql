@@ -5,6 +5,10 @@
 -- This update will populate the world database with initial data required to
 -- run the server.
 --
+-- Global Unique Identifier ranges used:
+--
+-- - Spirit Healers, Azeroth: 1-500
+-- - Elevators, Azeroth:      1-100
 
 -- Provide variables for various item stats ----------------------------------
 -- -> classes and subclasses -------------------------------------------------
@@ -232,6 +236,273 @@ SET @CLASS_MAGE                                 = 8;
 SET @CLASS_WARLOCK                              = 9;
 SET @CLASS_DRUID                                = 11;
 
+-- Provide variables for NPC flags -------------------------------------------
+SET @CREATURE_FLAG_NPC_NONE                     = 0;
+SET @CREATURE_FLAG_NPC_GOSSIP                   = 1;
+SET @CREATURE_FLAG_NPC_QUESTGIVER               = 2;
+SET @CREATURE_FLAG_NPC_VENDOR                   = 4;
+SET @CREATURE_FLAG_NPC_FLIGHTMASTER             = 8;
+SET @CREATURE_FLAG_NPC_TRAINER                  = 16;
+SET @CREATURE_FLAG_NPC_SPIRITHEALER             = 32;
+SET @CREATURE_FLAG_NPC_SPIRITGUIDE              = 64;
+SET @CREATURE_FLAG_NPC_INNKEEPER                = 128;
+SET @CREATURE_FLAG_NPC_BANKER                   = 256;
+SET @CREATURE_FLAG_NPC_PETITIONER               = 512;
+SET @CREATURE_FLAG_NPC_TABARDDESIGNER           = 1024;
+SET @CREATURE_FLAG_NPC_BATTLEMASTER             = 2048;
+SET @CREATURE_FLAG_NPC_AUCTIONEER               = 4096;
+SET @CREATURE_FLAG_NPC_STABLEMASTER             = 8192;
+SET @CREATURE_FLAG_NPC_REPAIR                   = 16384;
+SET @CREATURE_FLAG_NPC_OUTDOORPVP               = 536870912;
+
+-- Provide variables for NPC rank --------------------------------------------
+SET @CREATURE_RANK_NORMAL                       = 0; -- Default rank
+SET @CREATURE_RANK_ELITE                        = 1; -- Higher damage, more health, better loot
+SET @CREATURE_RANK_RARE_ELITE                   = 2; -- Rare mob but with elite damage and health
+SET @CREATURE_RANK_WORLD_BOSS                   = 3; -- Highest rank, best loot, longest respawn time
+SET @CREATURE_RANK_RARE                         = 4; -- Somewhat better loot, longer respawn time
+
+-- Provide variables for NPC classes -----------------------------------------
+SET @CREATURE_CLASS_WARRIOR                     = 1;
+SET @CREATURE_CLASS_PALADIN                     = 2;
+SET @CREATURE_CLASS_ROGUE                       = 4;
+SET @CREATURE_CLASS_MAGE                        = 8;
+
+-- Provide variables for dynamic flags ---------------------------------------
+SET @CREATURE_FLAG_DYN_NONE                         = 0;
+SET @CREATURE_FLAG_DYN_LOOTABLE                     = 1;
+SET @CREATURE_FLAG_DYN_TRACK_UNIT                   = 2;
+SET @CREATURE_FLAG_DYN_OTHER_TAGGER                 = 4;
+SET @CREATURE_FLAG_DYN_ROOTED                       = 8;
+SET @CREATURE_FLAG_DYN_SPECIALINFO                  = 16;
+SET @CREATURE_FLAG_DYN_DEAD                         = 32;
+SET @CREATURE_FLAG_DYN_TAPPED_BY_ALL_THREAT_LIST    = 64;
+
+-- Provide variables for creature type ---------------------------------------
+SET @CREATURE_TYPE_NONE                         = 0;
+SET @CREATURE_TYPE_BEAST                        = 1;
+SET @CREATURE_TYPE_DRAGONKIN                    = 2;
+SET @CREATURE_TYPE_DEMON                        = 3;
+SET @CREATURE_TYPE_ELEMENTAL                    = 4;
+SET @CREATURE_TYPE_GIANT                        = 5;
+SET @CREATURE_TYPE_UNDEAD                       = 6;
+SET @CREATURE_TYPE_HUMANOID                     = 7;
+SET @CREATURE_TYPE_CRITTER                      = 8;
+SET @CREATURE_TYPE_MECHANICAL                   = 9;
+SET @CREATURE_TYPE_NOT_SPECIFIED                = 10;
+SET @CREATURE_TYPE_TOTEM                        = 11;
+
+-- Provide variables for creature of type 1 (Beast) --------------------------
+SET @CREATURE_BEAST_FAMILY_NONE                 = 0;
+SET @CREATURE_BEAST_FAMILY_WOLF                 = 1;
+SET @CREATURE_BEAST_FAMILY_CAT                  = 2;
+SET @CREATURE_BEAST_FAMILY_SPIDER               = 3;
+SET @CREATURE_BEAST_FAMILY_BEAR                 = 4;
+SET @CREATURE_BEAST_FAMILY_BOAR                 = 5;
+SET @CREATURE_BEAST_FAMILY_CROCOLISK            = 6;
+SET @CREATURE_BEAST_FAMILY_CARRION_BIRD         = 7;
+SET @CREATURE_BEAST_FAMILY_CRAB                 = 8;
+SET @CREATURE_BEAST_FAMILY_GORILLA              = 9;
+SET @CREATURE_BEAST_FAMILY_RAPTOR               = 10;
+SET @CREATURE_BEAST_FAMILY_TALLSTRIDER          = 11;
+SET @CREATURE_BEAST_FAMILY_FELHUNTER            = 12;
+SET @CREATURE_BEAST_FAMILY_VOIDWALKER           = 13;
+SET @CREATURE_BEAST_FAMILY_SUCCUBUS             = 14;
+SET @CREATURE_BEAST_FAMILY_DOOMGUARD            = 15;
+SET @CREATURE_BEAST_FAMILY_SCORPID              = 16;
+SET @CREATURE_BEAST_FAMILY_TURTLE               = 17;
+SET @CREATURE_BEAST_FAMILY_IMP                  = 18;
+SET @CREATURE_BEAST_FAMILY_BAT                  = 19;
+SET @CREATURE_BEAST_FAMILY_HYENA                = 20;
+SET @CREATURE_BEAST_FAMILY_BIRD_OF_PREY         = 21;
+SET @CREATURE_BEAST_FAMILY_WIND_SERPENT         = 22;
+SET @CREATURE_BEAST_FAMILY_REMOTE_CONTROL       = 23;
+SET @CREATURE_BEAST_FAMILY_FELGUARD             = 24;
+SET @CREATURE_BEAST_FAMILY_DRAGONHAWK           = 25;
+SET @CREATURE_BEAST_FAMILY_RAVAGER              = 26;
+SET @CREATURE_BEAST_FAMILY_WARP_STALKER         = 27;
+SET @CREATURE_BEAST_FAMILY_SPOREBAT             = 28;
+SET @CREATURE_BEAST_FAMILY_NETHER_RAY           = 29;
+SET @CREATURE_BEAST_FAMILY_SERPENT              = 30;
+SET @CREATURE_BEAST_FAMILY_MOTH                 = 31;
+SET @CREATURE_BEAST_FAMILY_CHIMAERA             = 32;
+SET @CREATURE_BEAST_FAMILY_DEVILSAUR            = 33;
+SET @CREATURE_BEAST_FAMILY_GHOUL                = 34;
+SET @CREATURE_BEAST_FAMILY_SILITHID             = 35;
+SET @CREATURE_BEAST_FAMILY_WORM                 = 36;
+SET @CREATURE_BEAST_FAMILY_RHINO                = 37;
+SET @CREATURE_BEAST_FAMILY_WASP                 = 38;
+SET @CREATURE_BEAST_FAMILY_CORE_HOUND           = 39;
+SET @CREATURE_BEAST_FAMILY_SPIRIT_BEAST         = 40;
+
+-- Provide variables for creature type flags ---------------------------------
+SET @CREATURE_TYPE_FLAG_NONE                    = 0;
+SET @CREATURE_TYPE_FLAG_TAMEABLE                = 1;
+SET @CREATURE_TYPE_FLAG_NOT_ATTACKABLE          = 2;
+SET @CREATURE_TYPE_FLAG_ATTACKABLE              = 8;
+SET @CREATURE_TYPE_FLAG_NOT_ATTACKABLE_2        = 128;
+SET @CREATURE_TYPE_FLAG_NON_PVP_PLAYER          = 136;
+SET @CREATURE_TYPE_FLAG_HERBABLE                = 256;
+SET @CREATURE_TYPE_FLAG_MINEABLE                = 512;
+SET @CREATURE_TYPE_FLAG_ANIMATION_FROZEN        = 1024;
+SET @CREATURE_TYPE_FLAG_WAR_PLAYER              = 4096;
+
+-- Provide variables for creatures flagged as trainer ------------------------
+SET @CREATURE_TRAINER_TYPE_CLASS                = 0;
+SET @CREATURE_TRAINER_TYPE_MOUNTS               = 1;
+SET @CREATURE_TRAINER_TYPE_TRADESKILLS          = 2;
+SET @CREATURE_TRAINER_TYPE_PETS                 = 3;
+
+-- Provide variables for creature movement types -----------------------------
+SET @CREATURE_MOVEMENT_IDLE                     = 0;
+SET @CREATURE_MOVEMENT_RANDOM                   = 1;
+SET @CREATURE_MOVEMENT_WAYPOINT                 = 2;
+
+-- Provide variables for creature inhabit types ------------------------------
+SET @CREATURE_INHABIT_GROUND                    = 1;
+SET @CREATURE_INHABIT_WATER                     = 2;
+SET @CREATURE_INHABIT_GROUND_WATER              = @CREATURE_INHABIT_GROUND | @CREATURE_INHABIT_WATER;
+SET @CREATURE_INHABIT_AIR                       = 4;
+SET @CREATURE_INHABIT_ANY                       = @CREATURE_INHABIT_GROUND_WATER | @CREATURE_INHABIT_AIR;
+
+-- Provide variables for creature immunity masks ----------------------------
+SET @CREATURE_IMMUNITY_NONE                     = 0;
+SET @CREATURE_IMMUNITY_CHARM                    = 1;
+SET @CREATURE_IMMUNITY_CONFUSED                 = 2;
+SET @CREATURE_IMMUNITY_DISARM                   = 4;
+SET @CREATURE_IMMUNITY_DISTRACT                 = 8;
+SET @CREATURE_IMMUNITY_FEAR                     = 16;
+SET @CREATURE_IMMUNITY_FUMBLE                   = 32;
+SET @CREATURE_IMMUNITY_ROOT                     = 64;
+SET @CREATURE_IMMUNITY_PACIFY                   = 128;
+SET @CREATURE_IMMUNITY_SILENCE                  = 256;
+SET @CREATURE_IMMUNITY_SLEEP                    = 512;
+SET @CREATURE_IMMUNITY_SNARE                    = 1024;
+SET @CREATURE_IMMUNITY_STUN                     = 2048;
+SET @CREATURE_IMMUNITY_FREEZE                   = 4096;
+SET @CREATURE_IMMUNITY_KNOCKOUT                 = 8192;
+SET @CREATURE_IMMUNITY_BLEED                    = 16384;
+SET @CREATURE_IMMUNITY_BANDAGE                  = 32768;
+SET @CREATURE_IMMUNITY_POLYMORPH                = 65536;
+SET @CREATURE_IMMUNITY_BANISH                   = 131072;
+SET @CREATURE_IMMUNITY_SHIELD                   = 262144;
+SET @CREATURE_IMMUNITY_SHACKLE                  = 524288;
+SET @CREATURE_IMMUNITY_MOUNT                    = 1048576;
+SET @CREATURE_IMMUNITY_PERSUADE                 = 2097152;
+SET @CREATURE_IMMUNITY_TURN                     = 4194304;
+SET @CREATURE_IMMUNITY_HORROR                   = 8388608;
+SET @CREATURE_IMMUNITY_INVULNERABILITY          = 16777216;
+SET @CREATURE_IMMUNITY_INTERRUPT                = 33554432;
+SET @CREATURE_IMMUNITY_DAZE                     = 67108864;
+SET @CREATURE_IMMUNITY_DISCOVERY                = 134217728;
+SET @CREATURE_IMMUNITY_IMMUNE_SHIELD            = 268435456;
+SET @CREATURE_IMMUNITY_SAPPED                   = 536870912;
+
+-- Provide variables for creature extra flags --------------------------------
+SET @CREATURE_FLAG_EXTRA_NONE                   = 0;
+SET @CREATURE_FLAG_EXTRA_INSTANCE_BIND          = 1;
+SET @CREATURE_FLAG_EXTRA_CIVILIAN               = 2;
+SET @CREATURE_FLAG_EXTRA_NO_PARRY               = 4;
+SET @CREATURE_FLAG_EXTRA_NO_PARRY_HASTEN        = 8;
+SET @CREATURE_FLAG_EXTRA_NO_BLOCK               = 16;
+SET @CREATURE_FLAG_EXTRA_NO_CRUSH               = 32;
+SET @CREATURE_FLAG_EXTRA_NO_XP_AT_KILL          = 64;
+SET @CREATURE_FLAG_EXTRA_INVISIBLE              = 128;
+SET @CREATURE_FLAG_EXTRA_NOT_TAUNTABLE          = 256;
+SET @CREATURE_FLAG_EXTRA_AGGRO_ZONE             = 512;
+SET @CREATURE_FLAG_EXTRA_GUARD                  = 1024;
+SET @CREATURE_FLAG_EXTRA_NO_TALKTO_CREDIT       = 2048;
+
+-- Provide variables for game objects ----------------------------------------
+SET @GO_TYPE_DOOR                               = 0;
+SET @GO_TYPE_BUTTON                             = 1;
+SET @GO_TYPE_QUESTGIVER                         = 2;
+SET @GO_TYPE_CHEST                              = 3;
+SET @GO_TYPE_BINDER                             = 4;
+SET @GO_TYPE_GENERIC                            = 5;
+SET @GO_TYPE_TRAP                               = 6;
+SET @GO_TYPE_CHAIR                              = 7;
+SET @GO_TYPE_SPELL_FOCUS                        = 8;
+SET @GO_TYPE_TEXT                               = 9;
+SET @GO_TYPE_GOOBER                             = 10;
+SET @GO_TYPE_TRANSPORT                          = 11;
+SET @GO_TYPE_AREA_DAMAGE                        = 12;
+SET @GO_TYPE_CAMERA                             = 13;
+SET @GO_TYPE_MAP_OBJECT                         = 14;
+SET @GO_TYPE_MO_TRANSPORT                       = 15;
+SET @GO_TYPE_DUEL_ARBITER                       = 16;
+SET @GO_TYPE_FISHING_NODE                       = 17;
+SET @GO_TYPE_SUMMONING_RITUAL                   = 18;
+SET @GO_TYPE_MAILBOX                            = 19;
+SET @GO_TYPE_AUCTION_HOUSE                      = 20;
+SET @GO_TYPE_GUARD_POST                         = 21;
+SET @GO_TYPE_SPELL_CASTER                       = 22;
+SET @GO_TYPE_MEETING_STONE                      = 23;
+SET @GO_TYPE_FLAG_STAND                         = 24;
+SET @GO_TYPE_FISHING_HOLE                       = 25;
+SET @GO_TYPE_FLAG_DROP                          = 26;
+SET @GO_TYPE_MINI_GAME                          = 27;
+SET @GO_TYPE_LOTTERY_KIOSK                      = 28;
+SET @GO_TYPE_CAPTURE_POINT                      = 29;
+SET @GO_TYPE_AURA_GENERATOR                     = 30;
+
+-- -> Game object flags ------------------------------------------------------
+SET @GO_FLAG_IN_USE                             = 1;
+SET @GO_FLAG_LOCKED                             = 2;
+SET @GO_FLAG_INTERACT_COND                      = 4;
+SET @GO_FLAG_TRANSPORT                          = 8;
+SET @GO_FLAG_NO_INTERACT                        = 16;
+SET @GO_FLAG_NODESPAWN                          = 32;
+SET @GO_FLAG_TRIGGERED                          = 64;
+
+-- Provide variables for gossip menu options ---------------------------------
+SET @GOSSIP_ICON_CHAT                           = 0;
+SET @GOSSIP_ICON_VENDOR                         = 1;
+SET @GOSSIP_ICON_TAXI                           = 2;
+SET @GOSSIP_ICON_TRAINER                        = 3;
+SET @GOSSIP_ICON_INTERACT_1                     = 4;
+SET @GOSSIP_ICON_INTERACT_2                     = 5;
+SET @GOSSIP_ICON_MONEY_BAG                      = 6;
+SET @GOSSIP_ICON_TALK                           = 7;
+SET @GOSSIP_ICON_TABARD                         = 8;
+SET @GOSSIP_ICON_BATTLE                         = 9;
+SET @GOSSIP_ICON_DOT                            = 10;
+
+-- Provide variables for gossip menu icons -----------------------------------
+SET @GOSSIP_OPTION_NONE                         = 0;
+SET @GOSSIP_OPTION_GOSSIP                       = 1;
+SET @GOSSIP_OPTION_QUESTGIVER                   = 2;
+SET @GOSSIP_OPTION_VENDOR                       = 3;
+SET @GOSSIP_OPTION_TAXIVENDOR                   = 4;
+SET @GOSSIP_OPTION_TRAINER                      = 5;
+SET @GOSSIP_OPTION_SPIRITHEALER                 = 6;
+SET @GOSSIP_OPTION_SPIRITGUIDE                  = 7;
+SET @GOSSIP_OPTION_INNKEEPER                    = 8;
+SET @GOSSIP_OPTION_BANKER                       = 9;
+SET @GOSSIP_OPTION_PETITIONER                   = 10;
+SET @GOSSIP_OPTION_TABARDDESIGNER               = 11;
+SET @GOSSIP_OPTION_BATTLEFIELD                  = 12;
+SET @GOSSIP_OPTION_AUCTIONEER                   = 13;
+SET @GOSSIP_OPTION_STABLEPET                    = 14;
+SET @GOSSIP_OPTION_ARMORER                      = 15;
+SET @GOSSIP_OPTION_UNLEARNTALENTS               = 16;
+SET @GOSSIP_OPTION_UNLEARNPETSKILLS             = 17;
+
+-- Provide variables for warlock pets ----------------------------------------
+SET @PLAYER_PET_IMP                             = 416;
+SET @PLAYER_PET_FELHUNTER                       = 417;
+SET @PLAYER_PET_VOIDWALKER                      = 1860;
+SET @PLAYER_PET_SUCCUBUS                        = 1863;
+
+-- Provide variables for spell schools ---------------------------------------
+SET @SPELL_SCHOOL_NORMAL                        = 0;
+SET @SPELL_SCHOOL_HOLY                          = 1;
+SET @SPELL_SCHOOL_FIRE                          = 2;
+SET @SPELL_SCHOOL_NATURE                        = 3;
+SET @SPELL_SCHOOL_FROST                         = 4;
+SET @SPELL_SCHOOL_SHADOW                        = 5;
+SET @SPELL_SCHOOL_ARCANE                        = 6;
+
 -- Provide variables for actions, and buttons --------------------------------
 SET @ACTION_TYPE_SPELL                          = 0;
 SET @ACTION_TYPE_MACRO                          = 64;
@@ -358,235 +629,6 @@ SET @ZONE_ARATHI_BASIN                          = 3358;
 SET @ZONE_AHNQIRAJ                              = 3428;
 SET @ZONE_NAXXRAMAS                             = 3456;
 SET @ZONE_GATES_OF_AHNQIRAJ                     = 3478;
-
--- Provide variables for NPC flags -------------------------------------------
-SET @CREATURE_FLAG_NPC_NONE                     = 0;
-SET @CREATURE_FLAG_NPC_GOSSIP                   = 1;
-SET @CREATURE_FLAG_NPC_QUESTGIVER               = 2;
-SET @CREATURE_FLAG_NPC_VENDOR                   = 4;
-SET @CREATURE_FLAG_NPC_FLIGHTMASTER             = 8;
-SET @CREATURE_FLAG_NPC_TRAINER                  = 16;
-SET @CREATURE_FLAG_NPC_SPIRITHEALER             = 32;
-SET @CREATURE_FLAG_NPC_SPIRITGUIDE              = 64;
-SET @CREATURE_FLAG_NPC_INNKEEPER                = 128;
-SET @CREATURE_FLAG_NPC_BANKER                   = 256;
-SET @CREATURE_FLAG_NPC_PETITIONER               = 512;
-SET @CREATURE_FLAG_NPC_TABARDDESIGNER           = 1024;
-SET @CREATURE_FLAG_NPC_BATTLEMASTER             = 2048;
-SET @CREATURE_FLAG_NPC_AUCTIONEER               = 4096;
-SET @CREATURE_FLAG_NPC_STABLEMASTER             = 8192;
-SET @CREATURE_FLAG_NPC_REPAIR                   = 16384;
-SET @CREATURE_FLAG_NPC_OUTDOORPVP               = 536870912;
-
--- Provide variables for NPC rank --------------------------------------------
-SET @CREATURE_RANK_NORMAL                       = 0; -- Default rank
-SET @CREATURE_RANK_ELITE                        = 1; -- Higher damage, more health, better loot
-SET @CREATURE_RANK_RARE_ELITE                   = 2; -- Rare mob but with elite damage and health
-SET @CREATURE_RANK_WORLD_BOSS                   = 3; -- Highest rank, best loot, longest respawn time
-SET @CREATURE_RANK_RARE                         = 4; -- Somewhat better loot, longer respawn time
-
--- Provide variables for spell schools ---------------------------------------
-SET @SPELL_SCHOOL_NORMAL                        = 0;
-SET @SPELL_SCHOOL_HOLY                          = 1;
-SET @SPELL_SCHOOL_FIRE                          = 2;
-SET @SPELL_SCHOOL_NATURE                        = 3;
-SET @SPELL_SCHOOL_FROST                         = 4;
-SET @SPELL_SCHOOL_SHADOW                        = 5;
-SET @SPELL_SCHOOL_ARCANE                        = 6;
-
--- Provide variables for NPC classes -----------------------------------------
-SET @CREATURE_CLASS_NONE                        = 0;
-SET @CREATURE_CLASS_WARRIOR                     = 1;
-SET @CREATURE_CLASS_PALADIN                     = 2;
-SET @CREATURE_CLASS_ROGUE                       = 4;
-SET @CREATURE_CLASS_MAGE                        = 8;
-
--- Provide variables for dynamic flags ---------------------------------------
-SET @CREATURE_FLAG_DYN_NONE                         = 0;
-SET @CREATURE_FLAG_DYN_LOOTABLE                     = 1;
-SET @CREATURE_FLAG_DYN_TRACK_UNIT                   = 2;
-SET @CREATURE_FLAG_DYN_OTHER_TAGGER                 = 4;
-SET @CREATURE_FLAG_DYN_ROOTED                       = 8;
-SET @CREATURE_FLAG_DYN_SPECIALINFO                  = 16;
-SET @CREATURE_FLAG_DYN_DEAD                         = 32;
-SET @CREATURE_FLAG_DYN_TAPPED_BY_ALL_THREAT_LIST    = 64;
-
--- Provide variables for creature type ---------------------------------------
-SET @CREATURE_TYPE_NONE                         = 0;
-SET @CREATURE_TYPE_BEAST                        = 1;
-SET @CREATURE_TYPE_DRAGONKIN                    = 2;
-SET @CREATURE_TYPE_DEMON                        = 3;
-SET @CREATURE_TYPE_ELEMENTAL                    = 4;
-SET @CREATURE_TYPE_GIANT                        = 5;
-SET @CREATURE_TYPE_UNDEAD                       = 6;
-SET @CREATURE_TYPE_HUMANOID                     = 7;
-SET @CREATURE_TYPE_CRITTER                      = 8;
-SET @CREATURE_TYPE_MECHANICAL                   = 9;
-SET @CREATURE_TYPE_NOT_SPECIFIED                = 10;
-SET @CREATURE_TYPE_TOTEM                        = 11;
-
--- Provide variables for creature of type 1 (Beast) --------------------------
-SET @CREATURE_BEAST_FAMILY_NONE                 = 0;
-SET @CREATURE_BEAST_FAMILY_WOLF                 = 1;
-SET @CREATURE_BEAST_FAMILY_CAT                  = 2;
-SET @CREATURE_BEAST_FAMILY_SPIDER               = 3;
-SET @CREATURE_BEAST_FAMILY_BEAR                 = 4;
-SET @CREATURE_BEAST_FAMILY_BOAR                 = 5;
-SET @CREATURE_BEAST_FAMILY_CROCOLISK            = 6;
-SET @CREATURE_BEAST_FAMILY_CARRION_BIRD         = 7;
-SET @CREATURE_BEAST_FAMILY_CRAB                 = 8;
-SET @CREATURE_BEAST_FAMILY_GORILLA              = 9;
-SET @CREATURE_BEAST_FAMILY_RAPTOR               = 10;
-SET @CREATURE_BEAST_FAMILY_TALLSTRIDER          = 11;
-SET @CREATURE_BEAST_FAMILY_FELHUNTER            = 12;
-SET @CREATURE_BEAST_FAMILY_VOIDWALKER           = 13;
-SET @CREATURE_BEAST_FAMILY_SUCCUBUS             = 14;
-SET @CREATURE_BEAST_FAMILY_DOOMGUARD            = 15;
-SET @CREATURE_BEAST_FAMILY_SCORPID              = 16;
-SET @CREATURE_BEAST_FAMILY_TURTLE               = 17;
-SET @CREATURE_BEAST_FAMILY_IMP                  = 18;
-SET @CREATURE_BEAST_FAMILY_BAT                  = 19;
-SET @CREATURE_BEAST_FAMILY_HYENA                = 20;
-SET @CREATURE_BEAST_FAMILY_BIRD_OF_PREY         = 21;
-SET @CREATURE_BEAST_FAMILY_WIND_SERPENT         = 22;
-SET @CREATURE_BEAST_FAMILY_REMOTE_CONTROL       = 23;
-SET @CREATURE_BEAST_FAMILY_FELGUARD             = 24;
-SET @CREATURE_BEAST_FAMILY_DRAGONHAWK           = 25;
-SET @CREATURE_BEAST_FAMILY_RAVAGER              = 26;
-SET @CREATURE_BEAST_FAMILY_WARP_STALKER         = 27;
-SET @CREATURE_BEAST_FAMILY_SPOREBAT             = 28;
-SET @CREATURE_BEAST_FAMILY_NETHER_RAY           = 29;
-SET @CREATURE_BEAST_FAMILY_SERPENT              = 30;
-SET @CREATURE_BEAST_FAMILY_MOTH                 = 31;
-SET @CREATURE_BEAST_FAMILY_CHIMAERA             = 32;
-SET @CREATURE_BEAST_FAMILY_DEVILSAUR            = 33;
-SET @CREATURE_BEAST_FAMILY_GHOUL                = 34;
-SET @CREATURE_BEAST_FAMILY_SILITHID             = 35;
-SET @CREATURE_BEAST_FAMILY_WORM                 = 36;
-SET @CREATURE_BEAST_FAMILY_RHINO                = 37;
-SET @CREATURE_BEAST_FAMILY_WASP                 = 38;
-SET @CREATURE_BEAST_FAMILY_CORE_HOUND           = 39;
-SET @CREATURE_BEAST_FAMILY_SPIRIT_BEAST         = 40;
-
--- Provide variables for creature type flags ---------------------------------
-SET @CREATURE_TYPE_FLAG_NONE                    = 0;
-SET @CREATURE_TYPE_FLAG_TAMEABLE                = 1;
-SET @CREATURE_TYPE_FLAG_NOT_ATTACKABLE          = 2;
-SET @CREATURE_TYPE_FLAG_ATTACKABLE              = 8;
-SET @CREATURE_TYPE_FLAG_NOT_ATTACKABLE_2        = 128;
-SET @CREATURE_TYPE_FLAG_NON_PVP_PLAYER          = 136;
-SET @CREATURE_TYPE_FLAG_HERBABLE                = 256;
-SET @CREATURE_TYPE_FLAG_MINEABLE                = 512;
-SET @CREATURE_TYPE_FLAG_ANIMATION_FROZEN        = 1024;
-SET @CREATURE_TYPE_FLAG_WAR_PLAYER              = 4096;
-
--- Provide variables for creatures flagged as trainer ------------------------
-SET @CREATURE_TRAINER_TYPE_CLASS                = 0;
-SET @CREATURE_TRAINER_TYPE_MOUNTS               = 1;
-SET @CREATURE_TRAINER_TYPE_TRADESKILLS          = 2;
-SET @CREATURE_TRAINER_TYPE_PETS                 = 3;
-
--- Provide variables for creature movement types -----------------------------
-SET @CREATURE_MOVEMENT_IDLE                     = 0;
-SET @CREATURE_MOVEMENT_RANDOM                   = 1;
-SET @CREATURE_MOVEMENT_WAYPOINT                 = 2;
-
--- Provide variables for creature inhabit types ------------------------------
-SET @CREATURE_INHABIT_GROUND                    = 1;
-SET @CREATURE_INHABIT_WATER                     = 2;
-SET @CREATURE_INHABIT_GROUND_WATER              = @CREATURE_INHABIT_GROUND | @CREATURE_INHABIT_WATER;
-SET @CREATURE_INHABIT_AIR                       = 4;
-SET @CREATURE_INHABIT_ANY                       = @CREATURE_INHABIT_GROUND_WATER | @CREATURE_INHABIT_AIR;
-
--- Provide varbiables for creature immunity masks ----------------------------
-SET @CREATURE_IMMUNITY_NONE                     = 0;
-SET @CREATURE_IMMUNITY_CHARM                    = 1;
-SET @CREATURE_IMMUNITY_CONFUSED                 = 2;
-SET @CREATURE_IMMUNITY_DISARM                   = 4;
-SET @CREATURE_IMMUNITY_DISTRACT                 = 8;
-SET @CREATURE_IMMUNITY_FEAR                     = 16;
-SET @CREATURE_IMMUNITY_FUMBLE                   = 32;
-SET @CREATURE_IMMUNITY_ROOT                     = 64;
-SET @CREATURE_IMMUNITY_PACIFY                   = 128;
-SET @CREATURE_IMMUNITY_SILENCE                  = 256;
-SET @CREATURE_IMMUNITY_SLEEP                    = 512;
-SET @CREATURE_IMMUNITY_SNARE                    = 1024;
-SET @CREATURE_IMMUNITY_STUN                     = 2048;
-SET @CREATURE_IMMUNITY_FREEZE                   = 4096;
-SET @CREATURE_IMMUNITY_KNOCKOUT                 = 8192;
-SET @CREATURE_IMMUNITY_BLEED                    = 16384;
-SET @CREATURE_IMMUNITY_BANDAGE                  = 32768;
-SET @CREATURE_IMMUNITY_POLYMORPH                = 65536;
-SET @CREATURE_IMMUNITY_BANISH                   = 131072;
-SET @CREATURE_IMMUNITY_SHIELD                   = 262144;
-SET @CREATURE_IMMUNITY_SHACKLE                  = 524288;
-SET @CREATURE_IMMUNITY_MOUNT                    = 1048576;
-SET @CREATURE_IMMUNITY_PERSUADE                 = 2097152;
-SET @CREATURE_IMMUNITY_TURN                     = 4194304;
-SET @CREATURE_IMMUNITY_HORROR                   = 8388608;
-SET @CREATURE_IMMUNITY_INVULNERABILITY          = 16777216;
-SET @CREATURE_IMMUNITY_INTERRUPT                = 33554432;
-SET @CREATURE_IMMUNITY_DAZE                     = 67108864;
-SET @CREATURE_IMMUNITY_DISCOVERY                = 134217728;
-SET @CREATURE_IMMUNITY_IMMUNE_SHIELD            = 268435456;
-SET @CREATURE_IMMUNITY_SAPPED                   = 536870912;
-
--- Provide variables for creature extra flags --------------------------------
-SET @CREATURE_FLAG_EXTRA_NONE                   = 0;
-SET @CREATURE_FLAG_EXTRA_INSTANCE_BIND          = 1;
-SET @CREATURE_FLAG_EXTRA_CIVILIAN               = 2;
-SET @CREATURE_FLAG_EXTRA_NO_PARRY               = 4;
-SET @CREATURE_FLAG_EXTRA_NO_PARRY_HASTEN        = 8;
-SET @CREATURE_FLAG_EXTRA_NO_BLOCK               = 16;
-SET @CREATURE_FLAG_EXTRA_NO_CRUSH               = 32;
-SET @CREATURE_FLAG_EXTRA_NO_XP_AT_KILL          = 64;
-SET @CREATURE_FLAG_EXTRA_INVISIBLE              = 128;
-SET @CREATURE_FLAG_EXTRA_NOT_TAUNTABLE          = 256;
-SET @CREATURE_FLAG_EXTRA_AGGRO_ZONE             = 512;
-SET @CREATURE_FLAG_EXTRA_GUARD                  = 1024;
-SET @CREATURE_FLAG_EXTRA_NO_TALKTO_CREDIT       = 2048;
-
--- Provide variables for game objects ----------------------------------------
-SET @GO_TYPE_DOOR                               = 0;
-SET @GO_TYPE_BUTTON                             = 1;
-SET @GO_TYPE_QUESTGIVER                         = 2;
-SET @GO_TYPE_CHEST                              = 3;
-SET @GO_TYPE_BINDER                             = 4;
-SET @GO_TYPE_GENERIC                            = 5;
-SET @GO_TYPE_TRAP                               = 6;
-SET @GO_TYPE_CHAIR                              = 7;
-SET @GO_TYPE_SPELL_FOCUS                        = 8;
-SET @GO_TYPE_TEXT                               = 9;
-SET @GO_TYPE_GOOBER                             = 10;
-SET @GO_TYPE_TRANSPORT                          = 11;
-SET @GO_TYPE_AREA_DAMAGE                        = 12;
-SET @GO_TYPE_CAMERA                             = 13;
-SET @GO_TYPE_MAP_OBJECT                         = 14;
-SET @GO_TYPE_MO_TRANSPORT                       = 15;
-SET @GO_TYPE_DUEL_ARBITER                       = 16;
-SET @GO_TYPE_FISHING_NODE                       = 17;
-SET @GO_TYPE_SUMMONING_RITUAL                   = 18;
-SET @GO_TYPE_MAILBOX                            = 19;
-SET @GO_TYPE_AUCTION_HOUSE                      = 20;
-SET @GO_TYPE_GUARD_POST                         = 21;
-SET @GO_TYPE_SPELL_CASTER                       = 22;
-SET @GO_TYPE_MEETING_STONE                      = 23;
-SET @GO_TYPE_FLAG_STAND                         = 24;
-SET @GO_TYPE_FISHING_HOLE                       = 25;
-SET @GO_TYPE_FLAG_DROP                          = 26;
-SET @GO_TYPE_MINI_GAME                          = 27;
-SET @GO_TYPE_LOTTERY_KIOSK                      = 28;
-SET @GO_TYPE_CAPTURE_POINT                      = 29;
-SET @GO_TYPE_AURA_GENERATOR                     = 30;
-
--- -> Game object flags ------------------------------------------------------
-SET @GO_FLAG_IN_USE                             = 1;
-SET @GO_FLAG_LOCKED                             = 2;
-SET @GO_FLAG_INTERACT_COND                      = 4;
-SET @GO_FLAG_TRANSPORT                          = 8;
-SET @GO_FLAG_NO_INTERACT                        = 16;
-SET @GO_FLAG_NODESPAWN                          = 32;
-SET @GO_FLAG_TRIGGERED                          = 64;
 
 -- Insert world database version ---------------------------------------------
 INSERT INTO `db_version`
@@ -1308,27 +1350,6 @@ VALUES
     ,(1167, 'Scripting library has wrong list functions (outdated?).')
     ,(1168, 'Scripting library reloaded.')
     ,(1169, 'Scripting library build for different server revision.')
-    ,(1171, 'Auction house bot configuration reloaded.')
-    ,(1172, 'Error while trying to reload auction house bot configuration.')
-    ,(1173, '==========================================================')
-    ,(1174, '|--------------------------------------------------------|')
-    ,(1175, '|            | Alliance |  Horde   | Neutral  |  Total   |')
-    ,(1176, '          Alliance/Horde/Neutral/Total')
-    ,(1177, '| %-10s | %8u | %8u | %8u | %8u |')
-    ,(1178, '%-10s = %6u / %6u / %6u / %6u')
-    ,(1179, 'Count')
-    ,(1180, 'Item Ratio')
-    ,(1181, '|            | Alliance |   Horde  | Neutral  |  Amount  |')
-    ,(1182, '          Alliance/Horde/Neutral/Amount')
-    ,(1183, 'Grey')
-    ,(1184, 'White')
-    ,(1185, 'Green')
-    ,(1186, 'Blue')
-    ,(1187, 'Purple')
-    ,(1188, 'Orange')
-    ,(1189, 'Yellow')
-    ,(1190, 'Amount of %s items is set to %u.')
-    ,(1191, 'Items ratio for %s is set to %u.')
     ,(1192, 'Effect movement')
     ,(1194, 'Current State Information: GOState %u, LootState %u. Collision %s')
     ,(1195, 'Current State Information: GOState %u, LootState %u. Collision %s, (door %s by default)')
@@ -1416,21 +1437,6 @@ VALUES
     ,('account set password',4,'Syntax: .account set password (#accountId|$accountName) $password $password\n\nSet password for account.')
     ,('additem',3,'Syntax: .additem #itemid/[#itemname]/#shift-click-item-link #itemcount\n\nAdds the specified number of items of id #itemid (or exact (!) name $itemname in brackets, or link created by shift-click at item in inventory or recipe) to your or selected character inventory. If #itemcount is omitted, only one item will be added.\n.')
     ,('additemset',3,'Syntax: .additemset #itemsetid\n\nAdd items from itemset of id #itemsetid to your or selected character inventory. Will add by one example each item from itemset.')
-    ,('ahbot items amount blue',3,'Syntax: .ahbot items amount blue $BlueItems\n\nSet amount of Blue color items be selled on auction.')
-    ,('ahbot items amount green',3,'Syntax: .ahbot items amount green $GreenItems\n\nSet amount of Green color items be selled on auction.')
-    ,('ahbot items amount grey',3,'Syntax: .ahbot items amount grey $GreyItems\n\nSet amount of Grey color items be selled on auction.')
-    ,('ahbot items amount orange',3,'Syntax: .ahbot items amount orange $OrangeItems\n\nSet amount of Orange color items be selled on auction.')
-    ,('ahbot items amount purple',3,'Syntax: .ahbot items amount purple $PurpleItems\n\nSet amount of Purple color items be selled on auction.')
-    ,('ahbot items amount white',3,'Syntax: .ahbot items amount white $WhiteItems\n\nSet amount of White color items be selled on auction.')
-    ,('ahbot items amount yellow',3,'Syntax: .ahbot items amount yellow $YellowItems\n\nSet amount of Yellow color items be selled on auction.')
-    ,('ahbot items amount',3,'Syntax: .ahbot items amount $GreyItems $WhiteItems $GreenItems $BlueItems $PurpleItems $OrangeItems $YellowItems\n\nSet amount of each items color be selled on auction.')
-    ,('ahbot items ratio alliance',3,'Syntax: .ahbot items ratio alliance $allianceratio\n\nSet ratio of items in alliance auction house.')
-    ,('ahbot items ratio horde',3,'Syntax: .ahbot items ratio horde $horderatio\n\nSet ratio of items in horde auction house.')
-    ,('ahbot items ratio neutral',3,'Syntax: .ahbot items ratio neutral $neutralratio\n\nSet ratio of items in $neutral auction house.')
-    ,('ahbot items ratio',3,'Syntax: .ahbot items ratio $allianceratio $horderatio $neutralratio\n\nSet ratio of items in 3 auctions house.')
-    ,('ahbot rebuild',3,'Syntax: .ahbot rebuild [all]\n\nExpire all actual auction of ahbot except bided by player. Binded auctions included to expire if \"all\" option used. Ahbot re-fill auctions base at current settings then.')
-    ,('ahbot reload',3,'Syntax: .ahbot reload\n\nReload AHBot settings from configuration file.')
-    ,('ahbot status',3,'Syntax: .ahbot status [all]\n\nShow current ahbot state data in short form, and with \"all\" with details.')
     ,('announce',1,'Syntax: .announce $MessageToBroadcast\n\nSend a global message to all players online in chat log.')
     ,('appear',1,'Syntax: .appear [$charactername]\n\nTeleport to the given character. Either specify the character name or click on the character\'s portrait, e.g. when you are in a group. Character can be offline.')
     ,('auction alliance',3,'Syntax: .auction alliance\n\nShow alliance auction store independent from your team.')
@@ -8034,6 +8040,329 @@ VALUES
     ,(59, 209800)
 ;
 
+-- Insert pet name generation templates --------------------------------------
+INSERT INTO `pet_name_generation`
+    (`id`, `word`, `entry`, `half`)
+VALUES
+     (1,'Aba',@PLAYER_PET_IMP,0)
+    ,(2,'Az',@PLAYER_PET_IMP,0)
+    ,(3,'Bel',@PLAYER_PET_IMP,0)
+    ,(4,'Biz',@PLAYER_PET_IMP,0)
+    ,(5,'Cho',@PLAYER_PET_IMP,0)
+    ,(6,'Dag',@PLAYER_PET_IMP,0)
+    ,(7,'Gak',@PLAYER_PET_IMP,0)
+    ,(8,'Gar',@PLAYER_PET_IMP,0)
+    ,(9,'Gel',@PLAYER_PET_IMP,0)
+    ,(10,'Gho',@PLAYER_PET_IMP,0)
+    ,(11,'Gob',@PLAYER_PET_IMP,0)
+    ,(12,'Gra',@PLAYER_PET_IMP,0)
+    ,(13,'Jak',@PLAYER_PET_IMP,0)
+    ,(14,'Jub',@PLAYER_PET_IMP,0)
+    ,(15,'Kar',@PLAYER_PET_IMP,0)
+    ,(16,'Kup',@PLAYER_PET_IMP,0)
+    ,(17,'Laz',@PLAYER_PET_IMP,0)
+    ,(18,'Nal',@PLAYER_PET_IMP,0)
+    ,(19,'Nok',@PLAYER_PET_IMP,0)
+    ,(20,'Pag',@PLAYER_PET_IMP,0)
+    ,(21,'Pig',@PLAYER_PET_IMP,0)
+    ,(22,'Pip',@PLAYER_PET_IMP,0)
+    ,(23,'Piz',@PLAYER_PET_IMP,0)
+    ,(24,'Quz',@PLAYER_PET_IMP,0)
+    ,(25,'Rui',@PLAYER_PET_IMP,0)
+    ,(26,'Rul',@PLAYER_PET_IMP,0)
+    ,(27,'Rup',@PLAYER_PET_IMP,0)
+    ,(28,'Tar',@PLAYER_PET_IMP,0)
+    ,(29,'Vol',@PLAYER_PET_IMP,0)
+    ,(30,'Yaz',@PLAYER_PET_IMP,0)
+    ,(31,'Zep',@PLAYER_PET_IMP,0)
+    ,(32,'Zig',@PLAYER_PET_IMP,0)
+    ,(33,'Zil',@PLAYER_PET_IMP,0)
+    ,(34,'Zor',@PLAYER_PET_IMP,0)
+    ,(35,'bis',@PLAYER_PET_IMP,1)
+    ,(36,'fip',@PLAYER_PET_IMP,1)
+    ,(37,'gup',@PLAYER_PET_IMP,1)
+    ,(38,'ham',@PLAYER_PET_IMP,1)
+    ,(39,'jub',@PLAYER_PET_IMP,1)
+    ,(40,'kin',@PLAYER_PET_IMP,1)
+    ,(41,'kol',@PLAYER_PET_IMP,1)
+    ,(42,'lop',@PLAYER_PET_IMP,1)
+    ,(43,'loz',@PLAYER_PET_IMP,1)
+    ,(44,'mat',@PLAYER_PET_IMP,1)
+    ,(45,'mir',@PLAYER_PET_IMP,1)
+    ,(46,'nam',@PLAYER_PET_IMP,1)
+    ,(47,'nar',@PLAYER_PET_IMP,1)
+    ,(48,'nik',@PLAYER_PET_IMP,1)
+    ,(49,'nip',@PLAYER_PET_IMP,1)
+    ,(50,'pad',@PLAYER_PET_IMP,1)
+    ,(51,'pep',@PLAYER_PET_IMP,1)
+    ,(52,'pit',@PLAYER_PET_IMP,1)
+    ,(53,'qua',@PLAYER_PET_IMP,1)
+    ,(54,'rai',@PLAYER_PET_IMP,1)
+    ,(55,'rin',@PLAYER_PET_IMP,1)
+    ,(56,'rot',@PLAYER_PET_IMP,1)
+    ,(57,'tai',@PLAYER_PET_IMP,1)
+    ,(58,'tal',@PLAYER_PET_IMP,1)
+    ,(59,'tik',@PLAYER_PET_IMP,1)
+    ,(60,'tip',@PLAYER_PET_IMP,1)
+    ,(61,'tog',@PLAYER_PET_IMP,1)
+    ,(62,'tuk',@PLAYER_PET_IMP,1)
+    ,(63,'uri',@PLAYER_PET_IMP,1)
+    ,(64,'yal',@PLAYER_PET_IMP,1)
+    ,(65,'yap',@PLAYER_PET_IMP,1)
+    ,(66,'Bhee',@PLAYER_PET_FELHUNTER,0)
+    ,(67,'Bruu',@PLAYER_PET_FELHUNTER,0)
+    ,(68,'Czaa',@PLAYER_PET_FELHUNTER,0)
+    ,(69,'Droo',@PLAYER_PET_FELHUNTER,0)
+    ,(70,'Flaa',@PLAYER_PET_FELHUNTER,0)
+    ,(71,'Fzuu',@PLAYER_PET_FELHUNTER,0)
+    ,(72,'Ghaa',@PLAYER_PET_FELHUNTER,0)
+    ,(73,'Gree',@PLAYER_PET_FELHUNTER,0)
+    ,(74,'Gzaa',@PLAYER_PET_FELHUNTER,0)
+    ,(75,'Haa',@PLAYER_PET_FELHUNTER,0)
+    ,(76,'Haad',@PLAYER_PET_FELHUNTER,0)
+    ,(77,'Haag',@PLAYER_PET_FELHUNTER,0)
+    ,(78,'Haap',@PLAYER_PET_FELHUNTER,0)
+    ,(79,'Jhaa',@PLAYER_PET_FELHUNTER,0)
+    ,(80,'Jhuu',@PLAYER_PET_FELHUNTER,0)
+    ,(81,'Khaa',@PLAYER_PET_FELHUNTER,0)
+    ,(82,'Khii',@PLAYER_PET_FELHUNTER,0)
+    ,(83,'Khuu',@PLAYER_PET_FELHUNTER,0)
+    ,(84,'Kree',@PLAYER_PET_FELHUNTER,0)
+    ,(85,'Luu',@PLAYER_PET_FELHUNTER,0)
+    ,(86,'Maa',@PLAYER_PET_FELHUNTER,0)
+    ,(87,'Nhee',@PLAYER_PET_FELHUNTER,0)
+    ,(88,'Phuu',@PLAYER_PET_FELHUNTER,0)
+    ,(89,'Pryy',@PLAYER_PET_FELHUNTER,0)
+    ,(90,'Rhuu',@PLAYER_PET_FELHUNTER,0)
+    ,(91,'Shaa',@PLAYER_PET_FELHUNTER,0)
+    ,(92,'Sloo',@PLAYER_PET_FELHUNTER,0)
+    ,(93,'Sruu',@PLAYER_PET_FELHUNTER,0)
+    ,(94,'Thoo',@PLAYER_PET_FELHUNTER,0)
+    ,(95,'Traa',@PLAYER_PET_FELHUNTER,0)
+    ,(96,'Wraa',@PLAYER_PET_FELHUNTER,0)
+    ,(97,'Zhaa',@PLAYER_PET_FELHUNTER,0)
+    ,(98,'dhon',@PLAYER_PET_FELHUNTER,1)
+    ,(99,'dhum',@PLAYER_PET_FELHUNTER,1)
+    ,(100,'dhun',@PLAYER_PET_FELHUNTER,1)
+    ,(101,'dom',@PLAYER_PET_FELHUNTER,1)
+    ,(102,'don',@PLAYER_PET_FELHUNTER,1)
+    ,(103,'drom',@PLAYER_PET_FELHUNTER,1)
+    ,(104,'dym',@PLAYER_PET_FELHUNTER,1)
+    ,(105,'fenn',@PLAYER_PET_FELHUNTER,1)
+    ,(106,'fum',@PLAYER_PET_FELHUNTER,1)
+    ,(107,'fun',@PLAYER_PET_FELHUNTER,1)
+    ,(108,'ghon',@PLAYER_PET_FELHUNTER,1)
+    ,(109,'ghun',@PLAYER_PET_FELHUNTER,1)
+    ,(110,'grom',@PLAYER_PET_FELHUNTER,1)
+    ,(111,'grym',@PLAYER_PET_FELHUNTER,1)
+    ,(112,'hom',@PLAYER_PET_FELHUNTER,1)
+    ,(113,'hon',@PLAYER_PET_FELHUNTER,1)
+    ,(114,'hun',@PLAYER_PET_FELHUNTER,1)
+    ,(115,'jhom',@PLAYER_PET_FELHUNTER,1)
+    ,(116,'kun',@PLAYER_PET_FELHUNTER,1)
+    ,(117,'lum',@PLAYER_PET_FELHUNTER,1)
+    ,(118,'mmon',@PLAYER_PET_FELHUNTER,1)
+    ,(119,'mon',@PLAYER_PET_FELHUNTER,1)
+    ,(120,'myn',@PLAYER_PET_FELHUNTER,1)
+    ,(121,'nam',@PLAYER_PET_FELHUNTER,1)
+    ,(122,'nem',@PLAYER_PET_FELHUNTER,1)
+    ,(123,'nhym',@PLAYER_PET_FELHUNTER,1)
+    ,(124,'nom',@PLAYER_PET_FELHUNTER,1)
+    ,(125,'num',@PLAYER_PET_FELHUNTER,1)
+    ,(126,'phom',@PLAYER_PET_FELHUNTER,1)
+    ,(127,'roon',@PLAYER_PET_FELHUNTER,1)
+    ,(128,'rym',@PLAYER_PET_FELHUNTER,1)
+    ,(129,'shon',@PLAYER_PET_FELHUNTER,1)
+    ,(130,'thun',@PLAYER_PET_FELHUNTER,1)
+    ,(131,'tom',@PLAYER_PET_FELHUNTER,1)
+    ,(132,'zhem',@PLAYER_PET_FELHUNTER,1)
+    ,(133,'zhum',@PLAYER_PET_FELHUNTER,1)
+    ,(134,'zun',@PLAYER_PET_FELHUNTER,1)
+    ,(135,'Bar',@PLAYER_PET_VOIDWALKER,0)
+    ,(136,'Bel',@PLAYER_PET_VOIDWALKER,0)
+    ,(137,'Char',@PLAYER_PET_VOIDWALKER,0)
+    ,(138,'Grak\'',@PLAYER_PET_VOIDWALKER,0)
+    ,(139,'Graz\'',@PLAYER_PET_VOIDWALKER,0)
+    ,(140,'Grim',@PLAYER_PET_VOIDWALKER,0)
+    ,(141,'Hath',@PLAYER_PET_VOIDWALKER,0)
+    ,(142,'Hel',@PLAYER_PET_VOIDWALKER,0)
+    ,(143,'Hok',@PLAYER_PET_VOIDWALKER,0)
+    ,(144,'Huk',@PLAYER_PET_VOIDWALKER,0)
+    ,(145,'Jhaz',@PLAYER_PET_VOIDWALKER,0)
+    ,(146,'Jhom',@PLAYER_PET_VOIDWALKER,0)
+    ,(147,'Juk\'',@PLAYER_PET_VOIDWALKER,0)
+    ,(148,'Kal\'',@PLAYER_PET_VOIDWALKER,0)
+    ,(149,'Klath',@PLAYER_PET_VOIDWALKER,0)
+    ,(150,'Kon',@PLAYER_PET_VOIDWALKER,0)
+    ,(151,'Krag',@PLAYER_PET_VOIDWALKER,0)
+    ,(152,'Krak',@PLAYER_PET_VOIDWALKER,0)
+    ,(153,'Mak',@PLAYER_PET_VOIDWALKER,0)
+    ,(154,'Mezz',@PLAYER_PET_VOIDWALKER,0)
+    ,(155,'Orm',@PLAYER_PET_VOIDWALKER,0)
+    ,(156,'Phan',@PLAYER_PET_VOIDWALKER,0)
+    ,(157,'Sar',@PLAYER_PET_VOIDWALKER,0)
+    ,(158,'Tang',@PLAYER_PET_VOIDWALKER,0)
+    ,(159,'Than',@PLAYER_PET_VOIDWALKER,0)
+    ,(160,'Thog',@PLAYER_PET_VOIDWALKER,0)
+    ,(161,'Thok',@PLAYER_PET_VOIDWALKER,0)
+    ,(162,'Thul',@PLAYER_PET_VOIDWALKER,0)
+    ,(163,'Zag\'',@PLAYER_PET_VOIDWALKER,0)
+    ,(164,'Zang',@PLAYER_PET_VOIDWALKER,0)
+    ,(165,'Zhar\'',@PLAYER_PET_VOIDWALKER,0)
+    ,(166,'kath',@PLAYER_PET_VOIDWALKER,1)
+    ,(167,'doc',@PLAYER_PET_VOIDWALKER,1)
+    ,(168,'dok',@PLAYER_PET_VOIDWALKER,1)
+    ,(169,'gak',@PLAYER_PET_VOIDWALKER,1)
+    ,(170,'garth',@PLAYER_PET_VOIDWALKER,1)
+    ,(171,'gore',@PLAYER_PET_VOIDWALKER,1)
+    ,(172,'gorg',@PLAYER_PET_VOIDWALKER,1)
+    ,(173,'grave',@PLAYER_PET_VOIDWALKER,1)
+    ,(174,'gron',@PLAYER_PET_VOIDWALKER,1)
+    ,(175,'juk',@PLAYER_PET_VOIDWALKER,1)
+    ,(176,'krast',@PLAYER_PET_VOIDWALKER,1)
+    ,(177,'kresh',@PLAYER_PET_VOIDWALKER,1)
+    ,(178,'krit',@PLAYER_PET_VOIDWALKER,1)
+    ,(179,'los',@PLAYER_PET_VOIDWALKER,1)
+    ,(180,'mon',@PLAYER_PET_VOIDWALKER,1)
+    ,(181,'mos',@PLAYER_PET_VOIDWALKER,1)
+    ,(182,'moth',@PLAYER_PET_VOIDWALKER,1)
+    ,(183,'nagma',@PLAYER_PET_VOIDWALKER,1)
+    ,(184,'nak',@PLAYER_PET_VOIDWALKER,1)
+    ,(185,'nar',@PLAYER_PET_VOIDWALKER,1)
+    ,(186,'nos',@PLAYER_PET_VOIDWALKER,1)
+    ,(187,'nuz',@PLAYER_PET_VOIDWALKER,1)
+    ,(188,'phog',@PLAYER_PET_VOIDWALKER,1)
+    ,(189,'rath',@PLAYER_PET_VOIDWALKER,1)
+    ,(190,'tast',@PLAYER_PET_VOIDWALKER,1)
+    ,(191,'taz',@PLAYER_PET_VOIDWALKER,1)
+    ,(192,'thak',@PLAYER_PET_VOIDWALKER,1)
+    ,(193,'thang',@PLAYER_PET_VOIDWALKER,1)
+    ,(194,'thyk',@PLAYER_PET_VOIDWALKER,1)
+    ,(195,'vhug',@PLAYER_PET_VOIDWALKER,1)
+    ,(196,'zazt',@PLAYER_PET_VOIDWALKER,1)
+    ,(197,'Ael',@PLAYER_PET_SUCCUBUS,0)
+    ,(198,'Aez',@PLAYER_PET_SUCCUBUS,0)
+    ,(199,'Ang',@PLAYER_PET_SUCCUBUS,0)
+    ,(200,'Ban',@PLAYER_PET_SUCCUBUS,0)
+    ,(201,'Bet',@PLAYER_PET_SUCCUBUS,0)
+    ,(202,'Bro',@PLAYER_PET_SUCCUBUS,0)
+    ,(203,'Bry',@PLAYER_PET_SUCCUBUS,0)
+    ,(204,'Cat',@PLAYER_PET_SUCCUBUS,0)
+    ,(205,'Dir',@PLAYER_PET_SUCCUBUS,0)
+    ,(206,'Dis',@PLAYER_PET_SUCCUBUS,0)
+    ,(207,'Dom',@PLAYER_PET_SUCCUBUS,0)
+    ,(208,'Drus',@PLAYER_PET_SUCCUBUS,0)
+    ,(209,'Fie',@PLAYER_PET_SUCCUBUS,0)
+    ,(210,'Fier',@PLAYER_PET_SUCCUBUS,0)
+    ,(211,'Gly',@PLAYER_PET_SUCCUBUS,0)
+    ,(212,'Hel',@PLAYER_PET_SUCCUBUS,0)
+    ,(213,'Hes',@PLAYER_PET_SUCCUBUS,0)
+    ,(214,'Kal',@PLAYER_PET_SUCCUBUS,0)
+    ,(215,'Lyn',@PLAYER_PET_SUCCUBUS,0)
+    ,(216,'Mir',@PLAYER_PET_SUCCUBUS,0)
+    ,(217,'Nim',@PLAYER_PET_SUCCUBUS,0)
+    ,(218,'Sar',@PLAYER_PET_SUCCUBUS,0)
+    ,(219,'Sel',@PLAYER_PET_SUCCUBUS,0)
+    ,(220,'Vil',@PLAYER_PET_SUCCUBUS,0)
+    ,(221,'Zah',@PLAYER_PET_SUCCUBUS,0)
+    ,(222,'aith',@PLAYER_PET_SUCCUBUS,1)
+    ,(223,'anda',@PLAYER_PET_SUCCUBUS,1)
+    ,(224,'antia',@PLAYER_PET_SUCCUBUS,1)
+    ,(225,'evere',@PLAYER_PET_SUCCUBUS,1)
+    ,(226,'lia',@PLAYER_PET_SUCCUBUS,1)
+    ,(227,'lissa',@PLAYER_PET_SUCCUBUS,1)
+    ,(228,'neri',@PLAYER_PET_SUCCUBUS,1)
+    ,(229,'neth',@PLAYER_PET_SUCCUBUS,1)
+    ,(230,'nia',@PLAYER_PET_SUCCUBUS,1)
+    ,(231,'nlissa',@PLAYER_PET_SUCCUBUS,1)
+    ,(232,'nora',@PLAYER_PET_SUCCUBUS,1)
+    ,(233,'nva',@PLAYER_PET_SUCCUBUS,1)
+    ,(234,'nys',@PLAYER_PET_SUCCUBUS,1)
+    ,(235,'ola',@PLAYER_PET_SUCCUBUS,1)
+    ,(236,'ona',@PLAYER_PET_SUCCUBUS,1)
+    ,(237,'ora',@PLAYER_PET_SUCCUBUS,1)
+    ,(238,'rah',@PLAYER_PET_SUCCUBUS,1)
+    ,(239,'riana',@PLAYER_PET_SUCCUBUS,1)
+    ,(240,'riel',@PLAYER_PET_SUCCUBUS,1)
+    ,(241,'rona',@PLAYER_PET_SUCCUBUS,1)
+    ,(242,'tai',@PLAYER_PET_SUCCUBUS,1)
+    ,(243,'tevere',@PLAYER_PET_SUCCUBUS,1)
+    ,(244,'thea',@PLAYER_PET_SUCCUBUS,1)
+    ,(245,'vina',@PLAYER_PET_SUCCUBUS,1)
+    ,(246,'wena',@PLAYER_PET_SUCCUBUS,1)
+    ,(247,'wyn',@PLAYER_PET_SUCCUBUS,1)
+    ,(248,'xia',@PLAYER_PET_SUCCUBUS,1)
+    ,(249,'yla',@PLAYER_PET_SUCCUBUS,1)
+    ,(250,'yssa',@PLAYER_PET_SUCCUBUS,1)
+;
+
+-- Insert base experience awarded for exploration ----------------------------
+INSERT INTO `exploration_basexp`
+    (`level`,   `basexp`)
+VALUES
+     (0,        0)
+    ,(1,        5)
+    ,(2,        15)
+    ,(3,        25)
+    ,(4,        35)
+    ,(5,        45)
+    ,(6,        55)
+    ,(7,        65)
+    ,(8,        70)
+    ,(9,        80)
+    ,(10,       85)
+    ,(11,       90)
+    ,(12,       90)
+    ,(13,       90)
+    ,(14,       100)
+    ,(15,       105)
+    ,(16,       115)
+    ,(17,       125)
+    ,(18,       135)
+    ,(19,       145)
+    ,(20,       155)
+    ,(21,       165)
+    ,(22,       175)
+    ,(23,       185)
+    ,(24,       195)
+    ,(25,       200)
+    ,(26,       210)
+    ,(27,       220)
+    ,(28,       230)
+    ,(29,       240)
+    ,(30,       245)
+    ,(31,       250)
+    ,(32,       255)
+    ,(33,       265)
+    ,(34,       270)
+    ,(35,       275)
+    ,(36,       280)
+    ,(37,       285)
+    ,(38,       285)
+    ,(39,       300)
+    ,(40,       315)
+    ,(41,       330)
+    ,(42,       345)
+    ,(43,       360)
+    ,(44,       375)
+    ,(45,       390)
+    ,(46,       405)
+    ,(47,       420)
+    ,(48,       440)
+    ,(49,       455)
+    ,(50,       470)
+    ,(51,       490)
+    ,(52,       510)
+    ,(53,       530)
+    ,(54,       540)
+    ,(55,       560)
+    ,(56,       580)
+    ,(57,       600)
+    ,(58,       620)
+    ,(59,       640)
+    ,(60,       660)
+;
+
 -- Insert weather data for each zone -----------------------------------------
 INSERT INTO `game_weather`
     (`zone`, `spring_rain_chance`, `spring_snow_chance`, `spring_storm_chance`, `summer_rain_chance`, `summer_snow_chance`, `summer_storm_chance`, `fall_rain_chance`, `fall_snow_chance`, `fall_storm_chance`, `winter_rain_chance`, `winter_snow_chance`, `winter_storm_chance`)
@@ -8399,7 +8728,7 @@ SET
     `RangedAttackPower`  = 100,
     `SpeedWalk`          = 1.1,
     `InhabitType`        = @CREATURE_INHABIT_GROUND,
-    `UnitClass`          = @CREATURE_CLASS_MAGE,
+    `UnitClass`          = @CREATURE_CLASS_PALADIN,
     `CreatureType`       = @CREATURE_TYPE_DEMON
 WHERE `Entry` = 1863;
 
@@ -8674,103 +9003,111 @@ VALUES
 
 -- Insert spawns for creatures -----------------------------------------------
 INSERT INTO `creature`
-    (`guid`, `id`, `map`, `modelid`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `spawndist`, `currentwaypoint`, `curhealth`)
+    (`guid`, `id`, `map`, `modelid`, `position_x`, `position_y`, `position_z`, `orientation`)
 VALUES
-     (6491001,    6491, 0, 5233, 1819.41, 219.233, 60.0732, 0.337883, 25, 0, 0, 7680)
-    ,(6491002,    6491, 1, 5233, -8591.09, -3623.91, 13.478, 4.54902, 60, 0, 0, 7680)
-    ,(6491003,    6491, 1, 5233, 466.735, 1466.16, 12.8983, 0.112288, 60, 0, 0, 7680)
-    ,(6491004,    6491, 1, 5233, 2734.82, 1279.54, 295.79, 2.00745, 60, 0, 0, 7680)
-    ,(6491005,    6491, 1, 5233, -8146.14, -4608.99, -125.103, 4.16259, 60, 0, 0, 7680)
-    ,(6491006,    6491, 1, 5233, -4637.91, -3139.22, 34.9469, 0.761173, 60, 0, 0, 7680)
-    ,(6491007,    6491, 1, 5233, -4031.16, -3422.71, 38.8247, 1.69815, 60, 0, 0, 7680)
-    ,(6491008,    6491, 1, 5233, -3973.19, -2017.75, 96.0305, 0.966001, 60, 0, 0, 7680)
-    ,(6491009,    6491, 0, 5233, 790.751, -418.588, 136.861, 5.48565, 60, 0, 0, 7680)
-    ,(6491010,    6491, 0, 5233, -6863.62, -1537.06, 241.746, 3.72703, 60, 0, 0, 7680)
-    ,(6491011,    6491, 1, 5233, -7348.79, -1316.54, -260.86, 2.90753, 60, 0, 0, 7680)
-    ,(6491012,    6491, 1, 5233, 6499.08, -2378.94, 589.681, 4.80547, 60, 0, 0, 7680)
-    ,(6491013,    6491, 1, 5233, -7748.02, -4978.67, 6.00826, 2.27058, 60, 0, 0, 7680)
-    ,(6491014,    6491, 0, 5233, 1840.76, -2149.67, 67.4929, 2.38151, 60, 0, 0, 7680)
-    ,(6491015,    6491, 0, 5233, -7105.79, -3488.52, 242.318, 0.00187445, 60, 0, 0, 7680)
-    ,(6491016,    6491, 1, 5233, 5633.21, -4765.75, 777.907, 1.47459, 60, 0, 0, 7680)
-    ,(6491017,    6491, 1, 5233, -6154.23, -1142.67, -216.588, 2.99628, 60, 0, 0, 7680)
-    ,(6491018,    6491, 1, 5233, -7981.09, 1556.57, 3.64432, 3.17291, 60, 0, 0, 7680)
-    ,(6491019,    6491, 0, 5233, 1989.31, -3650.44, 120.369, 3.70566, 60, 0, 0, 7680)
-    ,(6491021,    6491, 0, 5233, -10602.4, 293.623, 31.7491, 3.09761, 25, 0, 0, 7680)
-    ,(6491022,    6491, 0, 5233, -11103, -1833.2, 71.8642, 3.04545, 60, 0, 0, 7680)
-    ,(6491023,    6491, 0, 5233, -9554.16, -1367.13, 51.202, 4.91271, 60, 0, 0, 7680)
-    ,(6491024,    6491, 0, 5233, -6439, -1115, 312.16, 3.172, 490, 0, 0, 7680)
-    ,(6491025,    6491, 0, 5233, -14286, 283.778, 32.739, 1.543, 490, 0, 0, 7680)
-    ,(6491026,    6491, 0, 5233, -11550, -228, 28.285, 6.161, 490, 0, 0, 7680)
-    ,(6491027,    6491, 0, 5233, -10836, -2953, 13.941, 3.054, 490, 0, 0, 7680)
-    ,(6491028,    6491, 0, 5233, -10779, -1194, 35.275, 0.915, 490, 0, 0, 7680)
-    ,(6491029,    6491, 0, 5233, -10575, -3377, 22.344, 0.017, 490, 0, 0, 7680)
-    ,(6491030,    6491, 0, 5233, -10559, 1206.87, 31.476, 5.616, 490, 0, 0, 7680)
-    ,(6491031,    6491, 0, 5233, -9394, -2022, 58.275, 4.33, 490, 0, 0, 7680)
-    ,(6491032,    6491, 0, 5233, -7501, -2145, 146.088, 0.955, 490, 0, 0, 7680)
-    ,(6491033,    6491, 0, 5233, -6807, -2289, 280.753, 2.587, 490, 0, 0, 7680)
-    ,(6491034,    6491, 0, 5233, -5352, -2892, 341.729, 1.654, 490, 0, 0, 7680)
-    ,(6491035,    6491, 0, 5233, -3355, -845, 1.063, 1.734, 490, 0, 0, 7680)
-    ,(6491036,    6491, 0, 5233, -3299, -2430, 18.597, 5.693, 490, 0, 0, 7680)
-    ,(6491037,    6491, 0, 5233, -1468, -2625, 48.363, 4.617, 490, 0, 0, 7680)
-    ,(6491038,    6491, 0, 5233, -721, -592, 25.011, 3.121, 490, 0, 0, 7680)
-    ,(6491039,    6491, 0, 5233, -285, -4388, 108.627, 2.007, 490, 0, 0, 7680)
-    ,(6491040,    6491, 0, 5233, -20, -996, 55.837, 1.499, 490, 0, 0, 7680)
-    ,(6491041,    6491, 0, 5233, 324.261, -2227, 137.775, 3.107, 490, 0, 0, 7680)
-    ,(6491042,    6491, 0, 5233, 476.229, 1595.9, 126.662, 5.942, 490, 0, 0, 7680)
-    ,(6491043,    6491, 0, 5233, 902.236, -1517, 55.037, 4.744, 490, 0, 0, 7680)
-    ,(6491044,    6491, 0, 5233, 1238.37, -2414, 60.739, 2.359, 490, 0, 0, 7680)
-    ,(6491045,    6491, 0, 5233, 1380.44, -3701, 77.017, 6.271, 490, 0, 0, 7680)
-    ,(6491046,    6491, 0, 5233, 1739.56, -672, 45.062, 6.275, 490, 0, 0, 7680)
-    ,(6491047,    6491, 0, 5233, 1882.3, 1641.52, 93.646, 4.491, 490, 0, 0, 7680)
-    ,(6491048,    6491, 0, 5233, 2115.64, -5299, 82.163, 1.075, 490, 0, 0, 7680)
-    ,(6491049,    6491, 0, 5233, 2348.58, 492.862, 33.358, 4.879, 490, 0, 0, 7680)
-    ,(6491050,    6491, 0, 5233, 2603.09, -535, 89, 5.596, 490, 0, 0, 7680)
-    ,(6491051,    6491, 0, 5233, 2641.28, -4015, 106.292, 6.239, 490, 0, 0, 7680)
-    ,(6491052,    6491, 1, 5233, -7207, -2439, -218, 1.084, 490, 0, 0, 7680)
-    ,(6491053,    6491, 1, 5233, -7200, -3938, 9.204, 4.711, 490, 0, 0, 7680)
-    ,(6491054,    6491, 1, 5233, -6824, 892.716, 33.999, 3.062, 490, 0, 0, 7680)
-    ,(6491055,    6491, 1, 5233, -6442, -290, 3.555, 0.717, 490, 0, 0, 7680)
-    ,(6491056,    6491, 1, 5233, -5530, -3455, -44, 4.603, 490, 0, 0, 7680)
-    ,(6491057,    6491, 1, 5233, -4642, -1778, -41, 2.489, 490, 0, 0, 7680)
-    ,(6491058,    6491, 1, 5233, -4600, 3229.67, 9.006, 0.093, 490, 0, 0, 7680)
-    ,(6491059,    6491, 1, 5233, -4593, 1631.68, 93.968, 6.225, 490, 0, 0, 7680)
-    ,(6491060,    6491, 1, 5233, -4429, 370.415, 51.727, 3.401, 490, 0, 0, 7680)
-    ,(6491061,    6491, 1, 5233, -2949, -142, 67.093, 5.067, 490, 0, 0, 7680)
-    ,(6491062,    6491, 1, 5233, -2506, -1968, 91.784, 2.796, 490, 0, 0, 7680)
-    ,(6491063,    6491, 1, 5233, -2173, -342, -5, 3.594, 490, 0, 0, 7680)
-    ,(6491064,    6491, 1, 5233, -1434, 1967.04, 86.041, 1.71, 490, 0, 0, 7680)
-    ,(6491065,    6491, 1, 5233, -1073, -3479, 63.044, 3.446, 490, 0, 0, 7680)
-    ,(6491066,    6491, 1, 5233, -983, -75, 20.431, 0.033, 490, 0, 0, 7680)
-    ,(6491067,    6491, 1, 5233, -774, -4988, 19.257, 3.291, 490, 0, 0, 7680)
-    ,(6491068,    6491, 1, 5233, -639, -4298, 40.942, 1.082, 490, 0, 0, 7680)
-    ,(6491069,    6491, 1, 5233, -590, -2515, 91.761, 4.549, 490, 0, 0, 7680)
-    ,(6491070,    6491, 1, 5233, 240.765, -4791, 10.256, 3.43, 490, 0, 0, 7680)
-    ,(6491071,    6491, 1, 5233, 919.297, 436.482, 65.128, 3.009, 490, 0, 0, 7680)
-    ,(6491072,    6491, 1, 5233, 1178.15, -4467, 21.323, 1.176, 490, 0, 0, 7680)
-    ,(6491073,    6491, 1, 5233, 2428.47, -2953, 123.513, 0.062, 490, 0, 0, 7680)
-    ,(6491074,    6491, 1, 5233, 2644.78, -635, 107.674, 3.347, 490, 0, 0, 7680)
-    ,(6491075,    6491, 1, 5233, 2683.48, -3988, 108.41, 4.673, 490, 0, 0, 7680)
-    ,(6491076,    6491, 1, 5233, 2924.51, -6031, 4.946, 6.02, 490, 0, 0, 7680)
-    ,(6491077,    6491, 1, 5233, 3796.96, -1622, 219.894, 1.45, 490, 0, 0, 7680)
-    ,(6491078,    6491, 1, 5233, 4299.27, 89.079, 42.752, 2.397, 490, 0, 0, 7680)
-    ,(6491079,    6491, 1, 5233, 4798.35, -6846, 89.817, 3.236, 490, 0, 0, 7680)
-    ,(6491080,    6491, 1, 5233, 5943.01, -1205, 382.952, 5.47, 490, 0, 0, 7680)
-    ,(6491081,    6491, 1, 5233, 6736.36, 202.91, 23.255, 4.121, 490, 0, 0, 7680)
-    ,(6491082,    6491, 1, 5233, 6857.31, -4680, 700.936, 1.527, 490, 0, 0, 7680)
-    ,(6491083,    6491, 1, 5233, 7412.88, -2817, 464.855, 0.253, 490, 0, 0, 7680)
-    ,(6491084,    6491, 1, 5233, 16320.2, 16243.6, 24.4, 2.253, 490, 0, 0, 7680)
-    ,(6491085,    6491, 0, 5233, -6282.51, -3488.48, 252.189, 3.6477, 180, 0, 0, 7680)
-    ,(6491086,    6491, 0, 5233, -9341, 165.021, 61.641, 1.096, 490, 0, 0, 7680)
-    ,(6491087,    6491, 1, 5233, -3518, -4315, 6.77, 3.035, 490, 0, 0, 7680)
-    ,(6491088,    6491, 1, 5233, -3134, -3048, 34.246, 5.711, 490, 0, 0, 7680)
-    ,(6491089,    6491, 0, 5233, -5165, -876, 507.245, 0.929, 60, 0, 0, 7680)
-    ,(6491090,    6491, 0, 5233, -5670, -528, 398.13, 2.381, 60, 0, 0, 7680)
-    ,(6491091,    6491, 0, 5233, -6160, 325.568, 399.968, 1.928, 60, 0, 0, 7680)
-    ,(6491092,    6491, 0, 5233, -8924, -189, 80.555, 2.77, 60, 0, 0, 7680)
-    ,(6491093,    6491, 1, 5233, 9683.39, 952.225, 1291.87, 5.752, 60, 0, 0, 7680)
-    ,(6491094,    6491, 1, 5233, 10055.4, 2116.32, 1329.71, 2.54, 60, 0, 0, 7680)
-    ,(6491095,    6491, 1, 5233, 10394.7, 825.111, 1317.52, 3.753, 60, 0, 0, 7680)
+     ( 1,    6491,     0,      5233,      1819.41,      219.233,      60.0732,      0.337883)
+    ,( 2,    6491,     1,      5233,     -8591.09,     -3623.91,       13.478,       4.54902)
+    ,( 3,    6491,     1,      5233,      466.735,      1466.16,      12.8983,      0.112288)
+    ,( 4,    6491,     1,      5233,      2734.82,      1279.54,       295.79,       2.00745)
+    ,( 5,    6491,     1,      5233,     -8146.14,     -4608.99,     -125.103,       4.16259)
+    ,( 6,    6491,     1,      5233,     -4637.91,     -3139.22,      34.9469,      0.761173)
+    ,( 7,    6491,     1,      5233,     -4031.16,     -3422.71,      38.8247,       1.69815)
+    ,( 8,    6491,     1,      5233,     -3973.19,     -2017.75,      96.0305,      0.966001)
+    ,( 9,    6491,     0,      5233,      790.751,     -418.588,      136.861,       5.48565)
+    ,(10,    6491,     0,      5233,     -6863.62,     -1537.06,      241.746,       3.72703)
+    ,(11,    6491,     1,      5233,     -7348.79,     -1316.54,      -260.86,       2.90753)
+    ,(12,    6491,     1,      5233,      6499.08,     -2378.94,      589.681,       4.80547)
+    ,(13,    6491,     1,      5233,     -7748.02,     -4978.67,      6.00826,       2.27058)
+    ,(14,    6491,     0,      5233,      1840.76,     -2149.67,      67.4929,       2.38151)
+    ,(15,    6491,     0,      5233,     -7105.79,     -3488.52,      242.318,    0.00187445)
+    ,(16,    6491,     1,      5233,      5633.21,     -4765.75,      777.907,       1.47459)
+    ,(17,    6491,     1,      5233,     -6154.23,     -1142.67,     -216.588,       2.99628)
+    ,(18,    6491,     1,      5233,     -7981.09,      1556.57,      3.64432,       3.17291)
+    ,(19,    6491,     0,      5233,      1989.31,     -3650.44,      120.369,       3.70566)
+    ,(21,    6491,     0,      5233,     -10602.4,      293.623,      31.7491,       3.09761)
+    ,(22,    6491,     0,      5233,       -11103,      -1833.2,      71.8642,       3.04545)
+    ,(23,    6491,     0,      5233,     -9554.16,     -1367.13,       51.202,       4.91271)
+    ,(24,    6491,     0,      5233,        -6439,        -1115,       312.16,         3.172)
+    ,(25,    6491,     0,      5233,       -14286,      283.778,       32.739,         1.543)
+    ,(26,    6491,     0,      5233,       -11550,         -228,       28.285,         6.161)
+    ,(27,    6491,     0,      5233,       -10836,        -2953,       13.941,         3.054)
+    ,(28,    6491,     0,      5233,       -10779,        -1194,       35.275,         0.915)
+    ,(29,    6491,     0,      5233,       -10575,        -3377,       22.344,         0.017)
+    ,(30,    6491,     0,      5233,       -10559,      1206.87,       31.476,         5.616)
+    ,(31,    6491,     0,      5233,        -9394,        -2022,       58.275,          4.33)
+    ,(32,    6491,     0,      5233,        -7501,        -2145,      146.088,         0.955)
+    ,(33,    6491,     0,      5233,        -6807,        -2289,      280.753,         2.587)
+    ,(34,    6491,     0,      5233,        -5352,        -2892,      341.729,         1.654)
+    ,(35,    6491,     0,      5233,        -3355,         -845,        1.063,         1.734)
+    ,(36,    6491,     0,      5233,        -3299,        -2430,       18.597,         5.693)
+    ,(37,    6491,     0,      5233,        -1468,        -2625,       48.363,         4.617)
+    ,(38,    6491,     0,      5233,         -721,         -592,       25.011,         3.121)
+    ,(39,    6491,     0,      5233,         -285,        -4388,      108.627,         2.007)
+    ,(40,    6491,     0,      5233,          -20,         -996,       55.837,         1.499)
+    ,(41,    6491,     0,      5233,      324.261,        -2227,      137.775,         3.107)
+    ,(42,    6491,     0,      5233,      476.229,       1595.9,      126.662,         5.942)
+    ,(43,    6491,     0,      5233,      902.236,        -1517,       55.037,         4.744)
+    ,(44,    6491,     0,      5233,      1238.37,        -2414,       60.739,         2.359)
+    ,(45,    6491,     0,      5233,      1380.44,        -3701,       77.017,         6.271)
+    ,(46,    6491,     0,      5233,      1739.56,         -672,       45.062,         6.275)
+    ,(47,    6491,     0,      5233,       1882.3,      1641.52,       93.646,         4.491)
+    ,(48,    6491,     0,      5233,      2115.64,        -5299,       82.163,         1.075)
+    ,(49,    6491,     0,      5233,      2348.58,      492.862,       33.358,         4.879)
+    ,(50,    6491,     0,      5233,      2603.09,         -535,           89,         5.596)
+    ,(51,    6491,     0,      5233,      2641.28,        -4015,      106.292,         6.239)
+    ,(52,    6491,     1,      5233,        -7207,        -2439,         -218,         1.084)
+    ,(53,    6491,     1,      5233,        -7200,        -3938,        9.204,         4.711)
+    ,(54,    6491,     1,      5233,        -6824,      892.716,       33.999,         3.062)
+    ,(55,    6491,     1,      5233,        -6442,         -290,        3.555,         0.717)
+    ,(56,    6491,     1,      5233,        -5530,        -3455,          -44,         4.603)
+    ,(57,    6491,     1,      5233,        -4642,        -1778,          -41,         2.489)
+    ,(58,    6491,     1,      5233,        -4600,      3229.67,        9.006,         0.093)
+    ,(59,    6491,     1,      5233,        -4593,      1631.68,       93.968,         6.225)
+    ,(60,    6491,     1,      5233,        -4429,      370.415,       51.727,         3.401)
+    ,(61,    6491,     1,      5233,        -2949,         -142,       67.093,         5.067)
+    ,(62,    6491,     1,      5233,        -2506,        -1968,       91.784,         2.796)
+    ,(63,    6491,     1,      5233,        -2173,         -342,           -5,         3.594)
+    ,(64,    6491,     1,      5233,        -1434,      1967.04,       86.041,          1.71)
+    ,(65,    6491,     1,      5233,        -1073,        -3479,       63.044,         3.446)
+    ,(66,    6491,     1,      5233,         -983,          -75,       20.431,         0.033)
+    ,(67,    6491,     1,      5233,         -774,        -4988,       19.257,         3.291)
+    ,(68,    6491,     1,      5233,         -639,        -4298,       40.942,         1.082)
+    ,(69,    6491,     1,      5233,         -590,        -2515,       91.761,         4.549)
+    ,(70,    6491,     1,      5233,      240.765,        -4791,       10.256,          3.43)
+    ,(71,    6491,     1,      5233,      919.297,      436.482,       65.128,         3.009)
+    ,(72,    6491,     1,      5233,      1178.15,        -4467,       21.323,         1.176)
+    ,(73,    6491,     1,      5233,      2428.47,        -2953,      123.513,         0.062)
+    ,(74,    6491,     1,      5233,      2644.78,         -635,      107.674,         3.347)
+    ,(75,    6491,     1,      5233,      2683.48,        -3988,       108.41,         4.673)
+    ,(76,    6491,     1,      5233,      2924.51,        -6031,        4.946,          6.02)
+    ,(77,    6491,     1,      5233,      3796.96,        -1622,      219.894,          1.45)
+    ,(78,    6491,     1,      5233,      4299.27,       89.079,       42.752,         2.397)
+    ,(79,    6491,     1,      5233,      4798.35,        -6846,       89.817,         3.236)
+    ,(80,    6491,     1,      5233,      5943.01,        -1205,      382.952,          5.47)
+    ,(81,    6491,     1,      5233,      6736.36,       202.91,       23.255,         4.121)
+    ,(82,    6491,     1,      5233,      6857.31,        -4680,      700.936,         1.527)
+    ,(83,    6491,     1,      5233,      7412.88,        -2817,      464.855,         0.253)
+    ,(84,    6491,     1,      5233,      16320.2,      16243.6,         24.4,         2.253)
+    ,(85,    6491,     0,      5233,     -6282.51,     -3488.48,      252.189,        3.6477)
+    ,(86,    6491,     0,      5233,        -9341,      165.021,       61.641,         1.096)
+    ,(87,    6491,     1,      5233,        -3518,        -4315,         6.77,         3.035)
+    ,(88,    6491,     1,      5233,        -3134,        -3048,       34.246,         5.711)
+    ,(89,    6491,     0,      5233,        -5165,         -876,      507.245,         0.929)
+    ,(90,    6491,     0,      5233,        -5670,         -528,       398.13,         2.381)
+    ,(91,    6491,     0,      5233,        -6160,      325.568,      399.968,         1.928)
+    ,(92,    6491,     0,      5233,        -8924,         -189,       80.555,          2.77)
+    ,(93,    6491,     1,      5233,      9683.39,      952.225,      1291.87,         5.752)
+    ,(94,    6491,     1,      5233,      10055.4,      2116.32,      1329.71,          2.54)
+    ,(95,    6491,     1,      5233,      10394.7,      825.111,      1317.52,         3.753)
 ;
+
+UPDATE `creature`
+SET
+    `spawntimesecs`     = 490,
+    `spawndist`         = 0,
+    `curhealth`         = 7680
+WHERE
+    `id` = 6491;
 
 -- Insert gossip text --------------------------------------------------------
 INSERT INTO `npc_text`
@@ -8782,19 +9119,20 @@ VALUES
 INSERT INTO `gossip_menu`
     (`entry`, `text_id`)
 VALUES
-    (83, 580);
+    (83,            580);
 
 -- Add options for gossip menus ----------------------------------------------
 INSERT INTO `gossip_menu_option`
-    (`menu_id`, `id`, `option_icon`, `option_text`, `option_id`, `npc_option_npcflag`)
+    (`menu_id`, `id`,           `option_icon`,        `option_text`,                 `option_id`,            `npc_option_npcflag`)
 VALUES
-    (83, 0, 4, 'Return me to life.', 6, 32);
+    (83,           0, @GOSSIP_ICON_INTERACT_1, 'Return me to life.', @GOSSIP_OPTION_SPIRITHEALER, @CREATURE_FLAG_NPC_SPIRITHEALER);
 
 -- Add gossip menus for creatures --------------------------------------------
 UPDATE `creature_template`
 SET
-    `GossipMenuId` = 83
-WHERE `Entry` = 6491;
+    `GossipMenuId`  = 83
+WHERE
+    `Entry`         = 6491;
 
 -- Insert pet level stats: these are creatures summoned by Warlocks ----------
 INSERT INTO `pet_levelstats`
@@ -8861,6 +9199,7 @@ VALUES
     ,(416, 58, 862, 1763, 1125, 125, 27, 224, 250, 189)
     ,(416, 59, 878, 1824, 1150, 127, 27, 230, 258, 192)
     ,(416, 60, 920, 1898, 1163, 122, 27, 128, 264, 197)
+
     -- Stats for creature #417: Felhunter ------------------------------------
     ,(417, 1, 60, 48, 144, 11, 17, 12, 11, 22)
     ,(417, 2, 73, 59, 168, 12, 18, 14, 13, 23)
@@ -8922,6 +9261,7 @@ VALUES
     ,(417, 58, 2424, 1763, 2709, 125, 83, 226, 101, 97)
     ,(417, 59, 2476, 1824, 2821, 127, 85, 231, 103, 99)
     ,(417, 60, 2529, 1874, 2938, 130, 87, 235, 106, 101)
+
     -- Stats for creature #1860: Voidwalker ----------------------------------
     ,(1860, 1, 40, 48, 20, 12, 14, 1, 1, 0)
     ,(1860, 2, 49, 59, 40, 14, 15, 2, 1, 0)
@@ -8983,7 +9323,8 @@ VALUES
     ,(1860, 58, 3222, 1763, 4579, 125, 82, 224, 68, 144)
     ,(1860, 59, 3318, 1824, 4673, 127, 83, 230, 69, 147)
     ,(1860, 60, 3419, 1874, 4745, 129, 85, 249, 70, 150)
--- Stats for creature #1863: Succubus
+
+    -- Stats for creature #1863: Succubus
     ,(1863, 1, 40, 48, 20, 12, 14, 1, 1, 25)
     ,(1863, 2, 49, 59, 40, 14, 15, 2, 1, 26)
     ,(1863, 3, 58, 70, 60, 15, 16, 4, 1, 27)
@@ -9046,144 +9387,137 @@ VALUES
     ,(1863, 60, 1709, 1874, 2261, 130, 87, 232, 106, 98)
 ;
 
--- Insert instance templates -------------------------------------------------
+-- Insert instance / raid templates ------------------------------------------
 INSERT INTO `instance_template`
-    (`map`, `levelMin`, `levelMax`, `maxPlayers`, `reset_delay`, `ghostEntranceMap`, `ghostEntranceX`, `ghostEntranceY`)
+    (`map`, `parent`,   `levelMin`, `levelMax`, `maxPlayers`,   `reset_delay`,  `ghostEntranceMap`, `ghostEntranceX`,   `ghostEntranceY`)
 VALUES
-     (33,   20,         26,         10,           0,              0,                 -230.989,  1571.57)    -- Shadowfang Keep
-    ,(34,   22,         34,         10,           0,              0,                 -8762.38,   848.01)    -- Stormwind Stockade
-    ,(36,   17,         26,         10,           0,              0,                 -11207.8,  1681.15)    -- Deadmines
-    ,(43,   17,         24,         10,           0,              1,                 -751.131, -2209.24)    -- Wailing Caverns
-    ,(47,   24,         40,         10,           0,              1,                 -4459.45, -1660.21)    -- Razorfen Kraul
-    ,(48,   20,         34,         10,           0,              1,                  4249.12,  748.387)    -- Blackfathom Deeps
-    ,(70,   41,         51,         10,           0,              0,                 -6060.18,    -2955)    -- Uldaman
-    ,(90,   24,         40,         10,           0,              0,                 -5162.66,  931.599)    -- Gnomeregan
-    ,(109,  50,         0,          10,           0,              0,                 -10170.1, -3995.97)    -- Sunken Temple
-    ,(129,  33,         47,         10,           0,              1,                 -4662.88, -2535.87)    -- Razorfen Downs
-    ,(189,  29,         48,         10,           0,              0,                  2892.24, -811.264)    -- Scarlet Monastery
-    ,(209,  43,         54,         10,           0,              1,                 -6790.58, -2891.28)    -- Zul'Farrak
-    ,(229,  55,         0,          10,           3,              0,                 -7522.53, -1233.04)    -- Blackrock Spire
-    ,(230,  48,         60,         5,            0,              0,                  -7178.1, -928.639)    -- Blackrock Depths
-    ,(249,  60,         60,         40,           5,              1,                 -4753.31, -3752.42)    -- Onyxia's Lair
-    ,(289,  58,         0,          5,            0,              0,                  1274.78, -2552.56)    -- Scholomance
-    ,(309,  60,         60,         20,           3,              0,                 -11916.1, -1224.58)    -- Zul'Gurub
-    ,(329,  58,         0,          5,            0,              0,                  3392.32, -3378.48)    -- Stratholme
-    ,(349,  40,         58,         10,           0,              1,                  -1432.7,  2924.98)    -- Maraudon
-    ,(389,  13,         22,         10,           0,              1,                  1816.76, -4423.37)    -- Ragefire Chasm
-    ,(409,  60,         60,         40,           7,              0,                 -7510.56,  -1036.7)    -- Molten Core
-    ,(429,  55,         0,          5,            0,              1,                 -3908.03,     1130)    -- Dire Maul
-    ,(469,  60,         60,         40,           7,              0,                 -7663.41, -1218.67)    -- Blackwing Lair
-    ,(509,  60,         60,         20,           3,              1,                 -8114.46,  1526.37)    -- Ruins of Ahn'Qiraj
-    ,(531,  60,         60,         40,           7,              1,                 -8111.72,  1526.79)    -- Ahn'Qiraj Temple
-    ,(533,  60,         60,         40,           7,              0,                        0,        0)    -- Naxxramas
+     (33,   0,          20,         26,         10,             0,              0,                  -230.989,           1571.57)    -- instance_shadowfang_keep
+    ,(34,   0,          22,         34,         10,             0,              0,                  -8762.38,           848.01)     -- instance_stormwind_stockade
+    ,(36,   0,          17,         26,         10,             0,              0,                  -11207.8,           1681.15)    -- instance_deadmines
+    ,(43,   0,          17,         24,         10,             0,              1,                  -751.131,           -2209.24)   -- instance_wailing_caverns
+    ,(47,   0,          24,         40,         10,             0,              1,                  -4459.45,           -1660.21)   -- instance_razorfen_kraul
+    ,(48,   0,          20,         34,         10,             0,              1,                  4249.12,            748.387)    -- instance_blackfathom_deeps
+    ,(70,   0,          41,         51,         10,             0,              0,                  -6060.18,           -2955)      -- instance_uldaman
+    ,(90,   0,          24,         40,         10,             0,              0,                  -5162.66,           931.599)    -- instance_gnomeregan
+    ,(109,  0,          50,         0,          10,             0,              0,                  -10170.1,           -3995.97)   -- instance_sunken_temple
+    ,(129,  0,          33,         47,         10,             0,              1,                  -4662.88,           -2535.87)   -- instance_razorfen_downs
+    ,(189,  0,          29,         48,         10,             0,              0,                  2892.24,            -811.264)   -- instance_scarlet_monastery
+    ,(209,  0,          43,         54,         10,             0,              1,                  -6790.58,           -2891.28)   -- instance_zulfarrak
+    ,(229,  0,          55,         0,          10,             3,              0,                  -7522.53,           -1233.04)   -- instance_blackrock_spire
+    ,(230,  0,          48,         60,         5,              0,              0,                  -7178.1,            -928.639)   -- instance_blackrock_depths
+    ,(249,  0,          60,         60,         40,             5,              1,                  -4753.31,           -3752.42)   -- instance_onyxias_lair
+    ,(289,  0,          58,         0,          5,              0,              0,                  1274.78,            -2552.56)   -- instance_scholomance
+    ,(309,  0,          60,         60,         20,             3,              0,                  -11916.1,           -1224.58)   -- instance_zulgurub
+    ,(329,  0,          58,         0,          5,              0,              0,                  3392.32,            -3378.48)   -- instance_stratholme
+    ,(349,  0,          40,         58,         10,             0,              1,                  -1432.7,            2924.98)    -- instance_maraudon
+    ,(389,  0,          13,         22,         10,             0,              1,                  1816.76,            -4423.37)   -- instance_ragefire_chasm
+    ,(409,  0,          60,         60,         40,             7,              0,                  -7510.56,           -1036.7)    -- instance_molten_core
+    ,(429,  0,          55,         0,          5,              0,              1,                  -3908.03,           1130)       -- instance_dire_maul
+    ,(469,  0,          60,         60,         40,             7,              0,                  -7663.41,           -1218.67)   -- instance_blackwing_lair
+    ,(509,  0,          60,         60,         20,             3,              1,                  -8114.46,           1526.37)    -- instance_ruins_of_ahnqiraj
+    ,(531,  0,          60,         60,         40,             7,              1,                  -8111.72,           1526.79)    -- instance_ahnqiraj_temple
+    ,(533,  0,          60,         60,         40,             7,              0,                  0,                  0)          -- instance_naxxramas
 ;
 
--- Insert area triggers for instanced zones ----------------------------------
+-- Insert area triggers for instances / raids --------------------------------
 INSERT INTO `areatrigger_teleport`
     (`target_position_x`, `target_position_y`, `target_position_z`, `target_map`, `target_orientation`, `id`, `name`)
 VALUES
-     (-11208.3,           1672.52,              24.66,              0,            4.55217,              119,    'The Deadmines - Entrance - Outside')
-    ,(-11339.4,           1571.16,              100.56,             0,            0,                    121,    'The Deadmines - Exit - Soutside')
-    ,(-232.796,           1568.28,              76.8909,            0,            4.398,                194,    'Shadowfang keep - Entrance - Outside')
-    ,(-6066.73,           -2955.63,             209.776,            0,            3.20443,              288,    'Uldaman - Dig One - Entrance - Outside')
-    ,(-5163.33,           927.623,              257.188,            0,            0,                    322,    'Gnomeregan - Entrance - Outside')
-    ,(-10175.1,           -3995.15,             -112.9,             0,            2.95938,              448,    "The Temple of Atal'Hakkar - Entrance - Outside")
-    ,(-8764.83,           846.075,              87.4842,            0,            3.77934,              503,    'Stormwind Stockades - Entrance - Outside')
-    ,(-4858.27,           756.435,              244.923,            0,            0,                    525,    'Gnomeregan - Train Depot - Entrance - Outside')
-    ,(2913.92,            -802.404,             160.333,            0,            3.50405,              602,    'Scarlet Monastery - Graveyard - Entrance - Outside')
-    ,(2906.14,            -813.772,             160.333,            0,            1.95739,              604,    'Scarlet Monastery - Cathedral - Entrance - Outside')
-    ,(2884.45,            -822.01,              160.333,            0,            1.95268,              606,    'Scarlet Monastery - Armory - Entrance - Outside')
-    ,(2870.9,             -820.164,             160.333,            0,            0.387856,             608,    'Scarlet Monastery - Library - Entrance - Outside')
-    ,(-9015.97,           875.318,              148.617,            0,            0,                    702,    'Stormwind - Wizard Sanctum - Entrance - Outside')
-    ,(-9019.16,           887.596,              29.6206,            0,            0,                    704,    'Stormwind - Wizard Sanctum - Exit - Inside')
-    ,(-6620.48,           -3765.19,             266.226,            0,            3.13531,              882,    'Dustwind Gulch - Uldaman - Entrance - Outside')
-    ,(-7524.19,           -1230.13,             285.743,            0,            2.09544,              1470,   'Blackrock Spire - Entrance - Outside')
-    ,(-7179.63,           -923.667,             166.416,            0,            1.84097,              1472,   'Blackrock Depths - Entrance - Outside')
-    ,(-7524.19,           -1230.13,             285.743,            0,            2.09544,              2068,   'Blackrock Spire - Fall out')
-    ,(3235.46,            -4050.6,              108.45,             0,            1.93522,              2221,   'Stratholme - Eastwall Gate - Entrance - Outside')
-    ,(-8762.45,           403.062,              103.902,            0,            5.34463,              2534,   'Stormwind City - Champions Hall - Entrance - Outside')
-    ,(1275.05,            -2552.03,             90.3994,            0,            3.6631,               2568,   'Scholomance - Entrance - Outside')
-    ,(534.868,            -1087.68,             106.119,            0,            3.35758,              2606,   'Alterac Valley - Horde - Entrance - Outside')
-    ,(98.432,             -182.274,             127.52,             0,            5.02654,              2608,   'Alterac Valley - Alliance - Entrance - Outside')
-    ,(-7524.19,           -1230.13,             285.743,            0,            2.09544,              3728,   'Blackrock Spire - Entrance - Outside')
-    ,(-11916.3,           -1208.37,             92.2868,            0,            1.61792,              3930,   "Zul'Gurub - Entrance - Outside")
-    ,(-1198,              -2533,                22,                 0,            0,                    3948,   'Arathi Basin - Refuge Point - Entrance - Outside')
-    ,(-817,               -3509,                73,                 0,            0,                    3949,   'Arathi Basin - Hammerfall - Entrance - Outside')
-    ,(-740.059,           -2214.23,             16.1374,            1,            5.68,                 226,    'The Wailing Caverns - Caverns of Mist - Entrance - Outside')
-    ,(-4464.92,           -1666.24,             90,                 1,            0,                    242,    'Razorfen Kraul - Entrance - Outside')
-    ,(4247.74,            745.879,              -24.5299,           1,            4.5828,               259,    'Blackfathom Deeps - Entrance - Outside')
-    ,(-4658.12,           -2526.35,             81.492,             1,            1.25978,              444,    'Razorfen Downs - Entrance - Outside')
-    ,(8786.36,            967.445,              30.197,             1,            3.39632,              527,    "Teldrassil - Rut'theran Village")
-    ,(9945.13,            2616.89,              1316.46,            1,            4.61446,              542,    'Teldrassil - Darnassus')
-    ,(-6796.49,           -2890.77,             8.88063,            1,            3.30496,              922,    "Zul'Farrak - Entrance - Outside")
-    ,(-5187.47,           -2804.32,             -8.375,             1,            5.76,                 943,    'Leap of Faith - End of fall')
-    ,(-4747.17,           -3753.27,             49.8122,            1,            0.713271,             1064,   "Onyxia's Lair - Entrance - Outside")
-    ,(1813.49,            -4418.58,             -18.57,             1,            1.78,                 2226,   'Ragefire Chasm - Entrance - Outside')
-    ,(1637.32,            -4242.7,              56.1827,            1,            4.1927,               2530,   'Orgrimmar - Hall of Legends - Entrance - Outside')
-    ,(-1186.98,           2875.95,              85.7258,            1,            1.78443,              3126,   'Maraudon - Purple - Entrance - Outside')
-    ,(-1471.07,           2618.57,              76.1944,            1,            0,                    3131,   'Maraudon - Orange - Entrance - Outside')
-    ,(-3831.79,           1250.23,              160.223,            1,            0,                    3190,   'Dire Maul - West - Left - Entrance - Outside')
-    ,(-3747.96,           1249.18,              160.217,            1,            3.15827,              3191,   'Dire Maul - West - Right - Entrance - Outside')
-    ,(-3520.65,           1077.72,              161.138,            1,            1.5009,               3193,   'Dire Maul - North - Entrance - Outside')
-    ,(-3737.48,           934.975,              160.973,            1,            3.13864,              3194,   'Dire Maul - East - Entrance - Outside')
-    ,(-3980.58,           776.193,              161.006,            1,            0,                    3195,   'Dire Maul - East - Side Entrance - Outside')
-    ,(-4030.21,           127.966,              26.8109,            1,            0,                    3196,   'Dire Maul - East - Lariss Pavilion - Entrance - Outside')
-    ,(-3577.67,           841.859,              134.594,            1,            0,                    3197,   'Dire Maul - East - Alzzin - Exit - Outside')
-    ,(-8418.5,            1505.94,              31.8232,            1,            0,                    4006,   "Ruins Of Ahn'Qiraj - Entrance - Outside")
-    ,(-8242.67,           1992.06,              129.072,            1,            0,                    4012,   "Ahn'Qiraj Temple - Entrance - Outside")
+     (-232.796,           1568.28,              76.8909,            0,            4.398,                194,    'Shadowfang Keep - Entrance - Outside')
     ,(-229.135,           2109.18,              76.8898,            33,           1.267,                145,    'Shadowfang Keep - Entrance - Inside')
-    ,(54.23,              0.28,                 -18.34,             34,           6.26,                 101,    'Stormwind Stockades - Entrance - Inside')
-    ,(-16.4,              -383.07,              61.78,              36,           1.86,                 78,     'The Deadmines - Entrance - Inside')
-    ,(-163.49,            132.9,                -73.66,             43,           5.83,                 228,    'The Wailing Caverns - Entrance - Inside')
+    ,(-8764.83,           846.075,              87.4842,            0,            3.77934,              503,    'Stormwind Stockade - Entrance - Outside')
+    ,(54.23,              0.28,                 -18.34,             34,           6.26,                 101,    'Stormwind Stockade - Entrance - Inside')
+    ,(-11208.3,           1672.52,              24.66,              0,            4.55217,              119,    'Deadmines - Entrance - Outside')
+    ,(-16.4,              -383.07,              61.78,              36,           1.86,                 78,     'Deadmines - Entrance - Inside')
+    ,(-11339.4,           1571.16,              100.56,             0,            0,                    121,    'Deadmines - Exit - South side')
+    ,(-163.49,            132.9,                -73.66,             43,           5.83,                 228,    'Wailing Caverns - Entrance - Inside')
+    ,(-740.059,           -2214.23,             16.1374,            1,            5.68,                 226,    'Wailing Caverns - Caverns of Mist - Entrance - Outside')
+    ,(-4464.92,           -1666.24,             90,                 1,            0,                    242,    'Razorfen Kraul - Entrance - Outside')
     ,(1943,               1544.63,              82,                 47,           1.38,                 244,    'Razorfen Kraul - Entrance - Inside')
+    ,(4247.74,            745.879,              -24.5299,           1,            4.5828,               259,    'Blackfathom Deeps - Entrance - Outside')
     ,(-151.89,            106.96,               -39.87,             48,           4.53,                 257,    'Blackfathom Deeps - Entrance - Inside')
-    ,(-226.8,             49.09,                -46.03,             70,           1.39,                 286,    'Uldaman - Hall of the Keepers - Entrance - Entrance - Inside')
+    ,(-6066.73,           -2955.63,             209.776,            0,            3.20443,              288,    'Uldaman - Dig One - Entrance - Outside')
     ,(-214.02,            383.607,              -38.7687,           70,           0.5,                  902,    'Uldaman - Echomok Caverns - Side Entrance - Inside')
+    ,(-6620.48,           -3765.19,             266.226,            0,            3.13531,              882,    'Dustwind Gulch - Uldaman - Entrance - Outside')
+    ,(-226.8,             49.09,                -46.03,             70,           1.39,                 286,    'Uldaman - Hall of the Keepers - Entrance - Entrance - Inside')
+    ,(-5163.33,           927.623,              257.188,            0,            0,                    322,    'Gnomeregan - Entrance - Outside')
     ,(-332.22,            -2.28,                -150.86,            90,           2.77,                 324,    'Gnomeregan - The Clockwerk Run - Entrance - Inside')
+    ,(-4858.27,           756.435,              244.923,            0,            0,                    525,    'Gnomeregan - Train Depot - Entrance - Outside')
     ,(-736.51,            2.71,                 -249.99,            90,           3.14,                 523,    'Gnomeregan - Train Depot - Entrance - Inside')
-    ,(-319.24,            99.9,                 -131.85,            109,          3.19,                 446,    "The Temple of Atal'Hakkar - Entrance - Inside")
+    ,(-10175.1,           -3995.15,             -112.9,             0,            2.95938,              448,    'Sunken Temple - Entrance - Outside')
+    ,(-319.24,            99.9,                 -131.85,            109,          3.19,                 446,    'Sunken Temple - Entrance - Inside')
+    ,(-4658.12,           -2526.35,             81.492,             1,            1.25978,              444,    'Razorfen Downs - Entrance - Outside')
     ,(2592.55,            1107.5,               51.29,              129,          4.74,                 442,    'Razorfen Downs - Entrance - Inside')
+    ,(2913.92,            -802.404,             160.333,            0,            3.50405,              602,    'Scarlet Monastery - Graveyard - Entrance - Outside')
     ,(1688.99,            1053.48,              18.6775,            189,          0.00117,              45,     'Scarlet Monastery - Graveyard - Entrance - Inside')
-    ,(855.683,            1321.5,               18.6709,            189,          0.001747,             610,    'Scarlet Monastery - Cathedral - Entrance - Inside')
-    ,(1610.83,            -323.433,             18.6738,            189,          6.28022,              612,    'Scarlet Monastery - Armory - Entrance - Inside')
+    ,(2870.9,             -820.164,             160.333,            0,            0.387856,             608,    'Scarlet Monastery - Library - Entrance - Outside')
     ,(255.346,            -209.09,              18.6773,            189,          6.26656,              614,    'Scarlet Monastery - Library - Entrance - Inside')
-    ,(1213.52,            841.59,               8.93,               209,          6.09,                 924,    "Zul'Farrak - Entrance - ")
+    ,(2884.45,            -822.01,              160.333,            0,            1.95268,              606,    'Scarlet Monastery - Armory - Entrance - Outside')
+    ,(1610.83,            -323.433,             18.6738,            189,          6.28022,              612,    'Scarlet Monastery - Armory - Entrance - Inside')
+    ,(2906.14,            -813.772,             160.333,            0,            1.95739,              604,    'Scarlet Monastery - Cathedral - Entrance - Outside')
+    ,(855.683,            1321.5,               18.6709,            189,          0.001747,             610,    'Scarlet Monastery - Cathedral - Entrance - Inside')
+    ,(-6796.49,           -2890.77,             8.88063,            1,            3.30496,              922,    "Zul'Farrak - Entrance - Outside")
+    ,(1213.52,            841.59,               8.93,               209,          6.09,                 924,    "Zul'Farrak - Entrance - Inside")
+    ,(-7524.19,           -1230.13,             285.743,            0,            2.09544,              1470,   'Blackrock Spire - Entrance - Outside')
     ,(78.5083,            -225.044,             49.839,             229,          5.1,                  1468,   'Blackrock Spire - Entrance - Inside')
+    ,(-7524.19,           -1230.13,             285.743,            0,            2.09544,              2068,   'Blackrock Spire - Fall out')
+    ,(-7179.63,           -923.667,             166.416,            0,            1.84097,              1472,   'Blackrock Depths - Entrance - Outside')
     ,(458.32,             26.52,                -70.67,             230,          4.95,                 1466,   'Blackrock Depths - Entrance - Inside')
     ,(1115.35,            -457.35,              -102.7,             230,          0.5,                  2890,   'Blackrock Depths - Molten Core - Entrance - Outside')
-    ,(29.1607,            -71.3372,             -8.18032,           249,          4.58,                 2848,   "Onyxias Lair - Entrance - Inside")
+    ,(-4747.17,           -3753.27,             49.8122,            1,            0.713271,             1064,   "Onyxia's Lair - Entrance - Outside")
+    ,(29.1607,            -71.3372,             -8.18032,           249,          4.58,                 2848,   "Onyxia's Lair - Entrance - Inside")
+    ,(1275.05,            -2552.03,             90.3994,            0,            3.6631,               2568,   'Scholomance - Entrance - Outside')
     ,(196.37,             127.05,               134.91,             289,          6.09,                 2567,   'Scholomance - Entrance - Inside')
+    ,(-11916.3,           -1208.37,             92.2868,            0,            1.61792,              3930,   "Zul'Gurub - Entrance - Outside")
     ,(-11916.1,           -1230.53,             92.5334,            309,          4.71867,              3928,   "Zul'Gurub - Entrance - Inside")
+    ,(3235.46,            -4050.6,              108.45,             0,            1.93522,              2221,   'Stratholme - Eastwall Gate - Entrance - Outside')
     ,(3593.15,            -3646.56,             138.5,              329,          5.33,                 2214,   'Stratholme - Eastwall Gate - Entrance - Inside')
-    ,(3395.09,            -3380.25,             142.702,            329,          0.1,                  2216,   'Stratholme - Main Entrance - Right - Entrance - Inside')
     ,(3395.09,            -3380.25,             142.702,            329,          0.1,                  2217,   'Stratholme - Main Entrance - Left - Entrance - Inside')
-    ,(1019.69,            -458.31,              -43.43,             349,          0.31,                 3133,   'Maraudon - Entrance - Orange')
-    ,(752.91,             -616.53,              -33.11,             349,          1.37,                 3134,   'Maraudon - Entrance - Purple')
+    ,(3395.09,            -3380.25,             142.702,            329,          0.1,                  2216,   'Stratholme - Main Entrance - Right - Entrance - Inside')
+    ,(-1186.98,           2875.95,              85.7258,            1,            1.78443,              3126,   'Maraudon - Purple - Entrance - Outside')
+    ,(752.91,             -616.53,              -33.11,             349,          1.37,                 3134,   'Maraudon - Purple - Entrance - Inside')
+    ,(1019.69,            -458.31,              -43.43,             349,          0.31,                 3133,   'Maraudon - Orange - Entrance - Inside')
+    ,(-1471.07,           2618.57,              76.1944,            1,            0,                    3131,   'Maraudon - Orange - Entrance - Outside')
+    ,(1813.49,            -4418.58,             -18.57,             1,            1.78,                 2226,   'Ragefire Chasm - Entrance - Outside')
     ,(3.81,               -14.82,               -17.84,             389,          4.39,                 2230,   'Ragefire Chasm - Entrance - Inside')
-    ,(1096,               -467,                 -104.6,             409,          3.64,                 2886,   'The Molten Core - The Molten Bridge - Entrance - Inside')
-    ,(1096,               -467,                 -104.6,             409,          3.64,                 3528,   'The Molten Core - Window - Entrance - Inside')
-    ,(1096,               -467,                 -104.6,             409,          3.64,                 3529,   'The Molten Core - Window(Lava) - Entrance - Inside')
+    ,(1096,               -467,                 -104.6,             409,          3.64,                 2886,   'Molten Core - The Molten Bridge - Entrance - Inside')
+    ,(1096,               -467,                 -104.6,             409,          3.64,                 3528,   'Molten Core - Window - Entrance - Inside')
+    ,(1096,               -467,                 -104.6,             409,          3.64,                 3529,   'Molten Core - Window(Lava) - Entrance - Inside')
+    ,(-3737.48,           934.975,              160.973,            1,            3.13864,              3194,   'Dire Maul - East - Entrance - Outside')
     ,(44.4499,            -154.822,             -2.71201,           429,          0,                    3183,   'Dire Maul - East - Entrance - Inside')
+    ,(-3980.58,           776.193,              161.006,            1,            0,                    3195,   'Dire Maul - East - Side Entrance - Outside')
     ,(-201.11,            -328.66,              -2.72,              429,          5.22,                 3184,   'Dire Maul - East - Side Entrance - Entrance - Inside')
+    ,(-4030.21,           127.966,              26.8109,            1,            0,                    3196,   'Dire Maul - East - Lariss Pavilion - Entrance - Outside')
     ,(9.31119,            -837.085,             -32.5305,           429,          0,                    3185,   'Dire Maul - East - Lariss Pavilion - Entrance - Inside')
-    ,(-62.9658,           159.867,              -3.46206,           429,          3.14788,              3186,   'Dire Maul - West - Right - Entrance - Inside')
+    ,(-3577.67,           841.859,              134.594,            1,            0,                    3197,   'Dire Maul - East - Alzzin - Exit - Outside')
+    ,(-3831.79,           1250.23,              160.223,            1,            0,                    3190,   'Dire Maul - West - Left - Entrance - Outside')
     ,(31.5609,            159.45,               -3.4777,            429,          0.01,                 3187,   'Dire Maul - West - Left - Entrance - Inside')
+    ,(-3747.96,           1249.18,              160.217,            1,            3.15827,              3191,   'Dire Maul - West - Right - Entrance - Outside')
+    ,(-62.9658,           159.867,              -3.46206,           429,          3.14788,              3186,   'Dire Maul - West - Right - Entrance - Inside')
+    ,(-3520.65,           1077.72,              161.138,            1,            1.5009,               3193,   'Dire Maul - North - Entrance - Outside')
     ,(255.249,            -16.0561,             -2.58737,           429,          4.7,                  3189,   'Dire Maul - North - Entrance - Inside')
-    ,(-0.299116,          4.39156,              -0.255884,          449,          1.54805,              2532,   'Stormwind City - Champions Hall - Entrance - Inside')
-    ,(221.322,            74.4933,              25.7195,            450,          0.484836,             2527,   'Orgrimmar - Hall of Legends - Entrance - Inside')
     ,(-7666.23,           -1102.79,             399.68,             469,          0.601256,             3726,   'Blackwing Lair - Entrance - Inside')
+    ,(-8418.5,            1505.94,              31.8232,            1,            0,                    4006,   "Ruins Of Ahn'Qiraj - Entrance - Outside")
     ,(-8429.74,           1512.14,              31.9074,            509,          2.58,                 4008,   "Ruins Of Ahn'Qiraj - Entrance - Inside")
+    ,(-8242.67,           1992.06,              129.072,            1,            0,                    4012,   "Ahn'Qiraj Temple - Entrance - Outside")
     ,(-8231.33,           2010.6,               129.861,            531,          0,                    4010,   "Ahn'Qiraj Temple - Entrance - Inside")
     ,(3005.87,            -3435.01,             293.882,            533,          0,                    4055,   'Naxxramas - Entrance - Inside')
     ,(3498.28,            -5349.9,              144.968,            533,          1.31324,              4156,   "Naxxramas - Sapphiron's Lair - Entrance - Inside")
 ;
--- Insert battleground templates ---------------------------------------------
-INSERT INTO `battleground_template`
-    (`id`, `MinPlayersPerTeam`, `MaxPlayersPerTeam`, `MinLvl`, `MaxLvl`, `AllianceStartLoc`, `AllianceStartO`, `HordeStartLoc`, `HordeStartO`)
+
+-- Insert area triggers for world locations ----------------------------------
+INSERT INTO `areatrigger_teleport`
+    (`target_position_x`, `target_position_y`, `target_position_z`, `target_map`, `target_orientation`, `id`, `name`)
 VALUES
-     (1, 20, 40, 51, 60, 611, 2.72532, 610, 2.27452)
-    ,(2, 5, 10, 10, 60, 769, 3.14159, 770, 3.14159)
-    ,(3, 8, 15, 20, 60, 890, 3.40156, 889, 0.263892)
+     (-9015.97,           875.318,              148.617,            0,            0,                    702,    'Stormwind - Wizard Sanctum - Entrance - Outside')
+    ,(-9019.16,           887.596,              29.6206,            0,            0,                    704,    'Stormwind - Wizard Sanctum - Exit - Inside')
+    ,(-8762.45,           403.062,              103.902,            0,            5.34463,              2534,   'Stormwind City - Champions Hall - Entrance - Outside')
+    ,(-0.299116,          4.39156,              -0.255884,          449,          1.54805,              2532,   'Stormwind City - Champions Hall - Entrance - Inside')
+    ,(221.322,            74.4933,              25.7195,            450,          0.484836,             2527,   'Orgrimmar - Hall of Legends - Entrance - Inside')
+    ,(1637.32,            -4242.7,              56.1827,            1,            4.1927,               2530,   'Orgrimmar - Hall of Legends - Entrance - Outside')
+    ,(8786.36,            967.445,              30.197,             1,            3.39632,              527,    "Teldrassil - Rut'theran Village")
+    ,(9945.13,            2616.89,              1316.46,            1,            4.61446,              542,    'Teldrassil - Darnassus')
+    ,(-5187.47,           -2804.32,             -8.375,             1,            5.76,                 943,    'Leap of Faith - End of fall')
 ;
 
 -- Insert transport game objects ---------------------------------------------
@@ -9211,7 +9545,7 @@ VALUES
     ,(85556,  @GO_TYPE_TRANSPORT,     852,        "Vator2"                          ) -- Gnomeregan instance, elevator
     ,(149045, @GO_TYPE_TRANSPORT,    2454,        "Scaffold Cars"                   ) -- Burning Steps elevator, The Cauldron
     ,(149046, @GO_TYPE_TRANSPORT,    2454,        "Scaffold Cars"                   ) -- Burning Steps elevator, The Cauldron
-    ,(152614, @GO_TYPE_TRANSPORT,    1587,        "Elevator"                        ) -- Gnomish inhouse elevator
+    ,(152614, @GO_TYPE_TRANSPORT,    1587,        "Elevator"                        ) -- Gnomish in-house elevator
     ,(176080, @GO_TYPE_TRANSPORT,    3831,        "Subway"                          ) -- Deeprun Tram carts
     ,(176081, @GO_TYPE_TRANSPORT,    3831,        "Subway"                          ) -- Deeprun Tram carts
     ,(176082, @GO_TYPE_TRANSPORT,    3831,        "Subway"                          ) -- Deeprun Tram carts
@@ -9230,6 +9564,9 @@ VALUES
     ,(176495, @GO_TYPE_MO_TRANSPORT, 3031,        "Grom'Gol Base Camp - Undercity"  ) -- Grom'Gol <-> Undercity
     ,(177233, @GO_TYPE_MO_TRANSPORT, 3015,        "Feathermoon Ferry"               ) -- Feathermoon <-> Forgotten Coast
     ,(181056, @GO_TYPE_MO_TRANSPORT, 6637,        "Naxxramas"                       ) -- Naxxramas Citadel roaming over the Eastern Plaguelands
+
+    -- Duel flag -------------------------------------------------------------
+    ,(21680, @GO_TYPE_DUEL_ARBITER,   787,        "Duel Flag"                       ) -- No duels without the flag!
 ;
 
 -- Configure fixed location transport game objects ---------------------------
@@ -9313,6 +9650,12 @@ SET
     `data0` = 436
 WHERE `entry` = 181056;
 
+-- Configure duel arbiter game object ----------------------------------------
+UPDATE `gameobject_template`
+SET
+    `faction` = 5
+WHERE `entry` = 21680;
+
 -- Insert stationery transports ----------------------------------------------
 INSERT INTO `gameobject`
     (`guid`,    `id`,   `map`,  `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`)
@@ -9382,4 +9725,3210 @@ VALUES
     ,(2171, 'Deeprun Tram - Stormwind Instance (Inside)',   0,            -8364.57,             535.981,             91.7969,            2.24619)
     ,(2173, 'Deeprun Tram - Stormwind Instance',            369,           68.3006,             2490.91,            -4.29647,            3.12192)
     ,(2175, 'Deeprun Tram - Ironforge Instance',            369,           69.2542,              10.257,            -4.29664,            3.09832)
+;
+
+-- Insert spell affect data --------------------------------------------------
+INSERT INTO `spell_affect`
+    (`entry`, `effectId`, `SpellFamilyMask`)
+VALUES
+     (11083,0,12714007)
+    ,(11115,0,146931735)
+    ,(11124,0,146931735)
+    ,(11170,0,1090394871)
+    ,(11242,0,4096)
+    ,(11247,0,8192)
+    ,(11367,0,146931735)
+    ,(11368,0,146931735)
+    ,(11369,0,146931735)
+    ,(11370,0,146931735)
+    ,(12042,0,551557879)
+    ,(12042,1,551557879)
+    ,(12042,2,551557879)
+    ,(12285,0,1)
+    ,(12288,0,8)
+    ,(12288,1,8)
+    ,(12301,0,256)
+    ,(12351,0,12714007)
+    ,(12378,0,146931735)
+    ,(12398,0,146931735)
+    ,(12399,0,146931735)
+    ,(12400,0,146931735)
+    ,(12467,0,4096)
+    ,(12469,0,4096)
+    ,(12536,0,549460727)
+    ,(12593,1,551557879)
+    ,(12697,0,1)
+    ,(12707,0,8)
+    ,(12707,1,8)
+    ,(12818,0,256)
+    ,(12842,0,2359296)
+    ,(12982,0,1090394871)
+    ,(12983,0,1090394871)
+    ,(12984,0,1090394871)
+    ,(12985,0,1090394871)
+    ,(13742,0,96)
+    ,(13743,0,64)
+    ,(13872,0,96)
+    ,(13875,0,64)
+    ,(13975,1,4194304)
+    ,(13976,0,1792)
+    ,(13979,0,1792)
+    ,(13980,0,1792)
+    ,(13981,0,16779264)
+    ,(14062,1,4194304)
+    ,(14063,1,4194304)
+    ,(14064,1,4194304)
+    ,(14065,1,4194304)
+    ,(14066,0,16779264)
+    ,(14067,0,16779264)
+    ,(14082,0,1280)
+    ,(14083,0,1280)
+    ,(14113,0,268558336)
+    ,(14114,0,268558336)
+    ,(14115,0,268558336)
+    ,(14116,0,268558336)
+    ,(14117,0,268558336)
+    ,(14143,0,67109382)
+    ,(14149,0,67109382)
+    ,(14168,0,524288)
+    ,(14169,0,524288)
+    ,(14174,0,2097152)
+    ,(14175,0,2097152)
+    ,(14176,0,2097152)
+    ,(14909,1,1048704)
+    ,(15017,1,1048704)
+    ,(15058,0,2233056)
+    ,(15059,0,2233056)
+    ,(15060,0,2233056)
+    ,(16035,0,2416967683)
+    ,(16038,0,1073741824)
+    ,(16039,0,2416967683)
+    ,(16041,0,3)
+    ,(16043,0,8)
+    ,(16043,1,536870912)
+    ,(16086,0,32)
+    ,(16086,1,134217728)
+    ,(16086,2,4)
+    ,(16089,0,20723008519)
+    ,(16105,0,2416967683)
+    ,(16106,0,2416967683)
+    ,(16106,1,268435456)
+    ,(16107,0,2416967683)
+    ,(16108,0,2416967683)
+    ,(16109,0,2416967683)
+    ,(16110,0,2416967683)
+    ,(16111,0,2416967683)
+    ,(16112,0,2416967683)
+    ,(16117,0,3)
+    ,(16118,0,3)
+    ,(16119,0,3)
+    ,(16120,0,3)
+    ,(16130,0,8)
+    ,(16130,1,536870912)
+    ,(16160,0,1073741824)
+    ,(16161,0,1073741824)
+    ,(16166,0,2416967683)
+    ,(16166,1,2416967683)
+    ,(16173,0,537395200)
+    ,(16181,0,448)
+    ,(16183,0,256)
+    ,(16184,0,512)
+    ,(16184,1,512)
+    ,(16187,0,24576)
+    ,(16189,0,67362816)
+    ,(16205,0,24576)
+    ,(16206,0,24576)
+    ,(16207,0,24576)
+    ,(16208,0,24576)
+    ,(16209,1,512)
+    ,(16222,0,537395200)
+    ,(16223,0,537395200)
+    ,(16224,0,537395200)
+    ,(16225,0,537395200)
+    ,(16230,0,448)
+    ,(16232,0,448)
+    ,(16233,0,448)
+    ,(16234,0,448)
+    ,(16258,0,32768)
+    ,(16258,1,262144)
+    ,(16259,0,65536)
+    ,(16259,1,131072)
+    ,(16266,0,4194304)
+    ,(16266,1,16777216)
+    ,(16266,2,8388608)
+    ,(16293,0,32768)
+    ,(16293,1,262144)
+    ,(16295,0,65536)
+    ,(16295,1,131072)
+    ,(16513,0,34359861248)
+    ,(16513,1,122880)
+    ,(16513,2,122880)
+    ,(16514,0,34359861248)
+    ,(16514,1,122880)
+    ,(16514,2,122880)
+    ,(16515,0,34359861248)
+    ,(16515,1,122880)
+    ,(16515,2,122880)
+    ,(16544,2,4)
+    ,(16719,0,34359861248)
+    ,(16719,1,122880)
+    ,(16719,2,122880)
+    ,(16720,0,34359861248)
+    ,(16720,1,122880)
+    ,(16720,2,122880)
+    ,(16870,0,4512331310825215)
+    ,(17123,0,128)
+    ,(17124,0,128)
+    ,(17904,0,0)
+    ,(17912,0,0)
+    ,(17913,0,0)
+    ,(17914,0,0)
+    ,(17915,0,0)
+    ,(17916,0,0)
+    ,(17954,1,824633725796)
+    ,(17955,1,824633725796)
+    ,(17956,1,824633725796)
+    ,(17957,1,824633725796)
+    ,(17958,1,824633725796)
+    ,(18174,0,6447531034)
+    ,(18175,0,6447531034)
+    ,(18176,0,6447531034)
+    ,(18177,0,6447531034)
+    ,(18178,0,6447531034)
+    ,(18218,0,6447531034)
+    ,(18219,0,6447531034)
+    ,(18271,0,12884993161)
+    ,(18271,1,4295492618)
+    ,(18271,2,0)
+    ,(18272,0,12884993161)
+    ,(18272,1,4295492618)
+    ,(18272,2,0)
+    ,(18273,0,12884993161)
+    ,(18273,1,4295492618)
+    ,(18273,2,0)
+    ,(18274,0,12884993161)
+    ,(18274,1,4295492618)
+    ,(18274,2,0)
+    ,(18275,0,12884993161)
+    ,(18275,1,4295492618)
+    ,(18275,2,0)
+    ,(20101,0,176161280)
+    ,(20102,0,176161280)
+    ,(20103,0,176161280)
+    ,(20104,0,176161280)
+    ,(20105,0,176161280)
+    ,(20575,1,67108864)
+    ,(21942,1,134217728)
+    ,(23300,0,536870912)
+    ,(26118,0,67108864)
+    ,(26118,1,67108864)
+    ,(28539,0,4096)
+    ,(28682,0,4194327)
+    ,(28743,0,240)
+    ,(28746,1,66566)
+    ,(28751,0,135168)
+    ,(28755,0,32)
+    ,(28763,0,67108864)
+    ,(28774,0,32768)
+    ,(28787,0,8589934592)
+    ,(28807,0,64)
+    ,(28808,0,17465351744)
+    ,(28811,0,8388608)
+    ,(28814,0,131072)
+    ,(28815,0,33554438)
+    ,(28818,0,537395200)
+    ,(28821,0,1024)
+    ,(28829,0,2)
+    ,(28830,0,262144)
+    ,(28831,0,1)
+    ,(28842,0,4294984768)
+    ,(28843,0,557056)
+    ,(28844,0,1024)
+    ,(28852,0,512)
+    ,(28852,1,536870912)
+    ,(28855,0,2048)
+    ,(28999,0,3)
+    ,(29000,0,3)
+    ,(29005,0,2416967683)
+    ,(29063,0,2499)
+    ,(29079,0,4194304)
+    ,(29079,1,16777216)
+    ,(29079,2,8388608)
+    ,(29080,0,4194304)
+    ,(29080,1,16777216)
+    ,(29080,2,8388608)
+    ,(29171,0,16384)
+    ,(29187,0,448)
+    ,(29189,0,448)
+    ,(29191,0,448)
+    ,(29192,0,8388608)
+    ,(29192,1,2097152)
+    ,(29193,0,8388608)
+    ,(29193,1,2097152)
+    ,(29202,0,64)
+    ,(29205,0,64)
+    ,(29206,0,64)
+    ,(29438,0,4195063)
+    ,(29439,0,4195063)
+    ,(29440,0,4195063)
+    ,(30440,0,557056)
+    ,(30441,0,34359738368)
+    ,(30640,0,256)
+    ,(30812,0,2954368024)
+    ,(30813,0,2954368024)
+    ,(30814,0,2954368024)
+    ,(30872,0,256)
+    ,(30892,0,134217728)
+    ,(30893,0,134217728)
+;
+
+-- Insert spells which require facing the target -----------------------------
+INSERT INTO `spell_facing`
+    (`entry`, `facingcasterflag`)
+VALUES
+     (53,1)      -- Backstab
+    ,(72,1)      -- Shield Bash
+    ,(75,1)      -- Auto Shot
+    ,(78,1)      -- Heroic Strike
+    ,(100,1)     -- Charge
+    ,(116,1)     -- Frostbolt
+    ,(133,1)     -- Fireball
+    ,(143,1)     -- Fireball
+    ,(145,1)     -- Fireball
+    ,(205,1)     -- Frostbolt
+    ,(284,1)     -- Heroic Strike
+    ,(285,1)     -- Heroic Strike
+    ,(348,1)     -- Immolate
+    ,(403,1)     -- Lightning Bolt
+    ,(408,1)     -- Kidney Shot
+    ,(421,1)     -- Chain Lightning
+    ,(529,1)     -- Lightning Bolt
+    ,(548,1)     -- Lightning Bolt
+    ,(585,1)     -- Smite
+    ,(591,1)     -- Smite
+    ,(598,1)     -- Smite
+    ,(676,1)     -- Disarm
+    ,(686,1)     -- Shadow Bolt
+    ,(689,1)     -- Drain Life
+    ,(694,1)     -- Mocking Blow
+    ,(695,1)     -- Shadow Bolt
+    ,(699,1)     -- Drain Life
+    ,(703,1)     -- Garrote
+    ,(705,1)     -- Shadow Bolt
+    ,(707,1)     -- Immolate
+    ,(709,1)     -- Drain Life
+    ,(769,1)     -- Swipe
+    ,(772,1)     -- Rend
+    ,(779,1)     -- Swipe
+    ,(780,1)     -- Swipe
+    ,(837,1)     -- Frostbolt
+    ,(845,1)     -- Cleave
+    ,(879,1)     -- Exorcism
+    ,(915,1)     -- Lightning Bolt
+    ,(930,1)     -- Chain Lightning
+    ,(943,1)     -- Lightning Bolt
+    ,(984,1)     -- Smite
+    ,(1004,1)    -- Smite
+    ,(1079,1)    -- Rip
+    ,(1082,1)    -- Claw
+    ,(1088,1)    -- Shadow Bolt
+    ,(1094,1)    -- Immolate
+    ,(1106,1)    -- Shadow Bolt
+    ,(1120,1)    -- Drain Soul
+    ,(1329,1)    -- Bloodlust II
+    ,(1464,1)    -- Slam
+    ,(1495,1)    -- Mongoose Bite
+    ,(1608,1)    -- Heroic Strike
+    ,(1671,1)    -- Shield Bash
+    ,(1672,1)    -- Shield Bash
+    ,(1715,1)    -- Hamstring
+    ,(1742,1)    -- Cower
+    ,(1752,1)    -- Sinister Strike
+    ,(1753,1)    -- Cower
+    ,(1754,1)    -- Cower
+    ,(1755,1)    -- Cower
+    ,(1756,1)    -- Cower
+    ,(1757,1)    -- Sinister Strike
+    ,(1758,1)    -- Sinister Strike
+    ,(1759,1)    -- Sinister Strike
+    ,(1760,1)    -- Sinister Strike
+    ,(1766,1)    -- Kick
+    ,(1767,1)    -- Kick
+    ,(1768,1)    -- Kick
+    ,(1769,1)    -- Kick
+    ,(1776,1)    -- Gouge
+    ,(1777,1)    -- Gouge
+    ,(1822,1)    -- Rake
+    ,(1823,1)    -- Rake
+    ,(1824,1)    -- Rake
+    ,(1833,1)    -- Cheap Shot
+    ,(1943,1)    -- Rupture
+    ,(1966,1)    -- Feint
+    ,(1978,1)    -- Serpent Sting
+    ,(2070,1)    -- Sap
+    ,(2098,1)    -- Eviscerate
+    ,(2136,1)    -- Fire Blast
+    ,(2137,1)    -- Fire Blast
+    ,(2138,1)    -- Fire Blast
+    ,(2589,1)    -- Backstab
+    ,(2590,1)    -- Backstab
+    ,(2591,1)    -- Backstab
+    ,(2643,1)    -- Multi-Shot
+    ,(2764,1)    -- Throw
+    ,(2860,1)    -- Chain Lightning
+    ,(2912,1)    -- Starfire
+    ,(2941,1)    -- Immolate
+    ,(2948,1)    -- Scorch
+    ,(2973,1)    -- Raptor Strike
+    ,(2974,1)    -- Wing Clip
+    ,(3009,1)    -- Claw
+    ,(3010,1)    -- Claw
+    ,(3029,1)    -- Claw
+    ,(3034,1)    -- Viper Sting
+    ,(3043,1)    -- Scorpid Sting
+    ,(3044,1)    -- Arcane Shot
+    ,(3140,1)    -- Fireball
+    ,(3674,1)    -- Black Arrow
+    ,(4164,1)    -- Throw Rock
+    ,(4165,1)    -- Throw Rock II
+    ,(5019,1)    -- Shoot
+    ,(5116,1)    -- Concussive Shot
+    ,(5133,1)    -- Interrupt (PT)
+    ,(5138,1)    -- Drain Mana
+    ,(5143,1)    -- Arcane Missiles
+    ,(5144,1)    -- Arcane Missiles
+    ,(5145,1)    -- Arcane Missiles
+    ,(5176,1)    -- Wrath
+    ,(5177,1)    -- Wrath
+    ,(5178,1)    -- Wrath
+    ,(5179,1)    -- Wrath
+    ,(5180,1)    -- Wrath
+    ,(5201,1)    -- Claw
+    ,(5211,1)    -- Bash
+    ,(5221,1)    -- Shred
+    ,(5308,1)    -- Execute
+    ,(5401,1)    -- Lizard Bolt
+    ,(5614,1)    -- Exorcism
+    ,(5615,1)    -- Exorcism
+    ,(5676,1)    -- Searing Pain
+    ,(6041,1)    -- Lightning Bolt
+    ,(6060,1)    -- Smite
+    ,(6178,1)    -- Charge
+    ,(6252,1)    -- Southsea Cannon Fire
+    ,(6254,1)    -- Chained Bolt
+    ,(6255,1)    -- Lizard Bolt
+    ,(6353,1)    -- Soul Fire
+    ,(6546,1)    -- Rend
+    ,(6547,1)    -- Rend
+    ,(6548,1)    -- Rend
+    ,(6552,1)    -- Pummel
+    ,(6554,1)    -- Pummel
+    ,(6572,1)    -- Revenge
+    ,(6574,1)    -- Revenge
+    ,(6660,1)    -- Shoot
+    ,(6726,1)    -- Silence
+    ,(6760,1)    -- Eviscerate
+    ,(6761,1)    -- Eviscerate
+    ,(6762,1)    -- Eviscerate
+    ,(6768,1)    -- Feint
+    ,(6770,1)    -- Sap
+    ,(6780,1)    -- Wrath
+    ,(6785,1)    -- Ravage
+    ,(6787,1)    -- Ravage
+    ,(6789,1)    -- Death Coil
+    ,(6798,1)    -- Bash
+    ,(6800,1)    -- Shred
+    ,(6807,1)    -- Maul
+    ,(6808,1)    -- Maul
+    ,(6809,1)    -- Maul
+    ,(6949,1)    -- Weak Frostbolt
+    ,(7105,1)    -- Fake Shot
+    ,(7145,1)    -- Diving Sweep
+    ,(7268,1)    -- Arcane Missile
+    ,(7269,1)    -- Arcane Missiles
+    ,(7270,1)    -- Arcane Missiles
+    ,(7290,1)    -- Soul Siphon
+    ,(7295,1)    -- Soul Drain
+    ,(7322,1)    -- Frostbolt
+    ,(7369,1)    -- Cleave
+    ,(7372,1)    -- Hamstring
+    ,(7373,1)    -- Hamstring
+    ,(7379,1)    -- Revenge
+    ,(7384,1)    -- Overpower
+    ,(7386,1)    -- Sunder Armor
+    ,(7400,1)    -- Mocking Blow
+    ,(7402,1)    -- Mocking Blow
+    ,(7405,1)    -- Sunder Armor
+    ,(7641,1)    -- Shadow Bolt
+    ,(7651,1)    -- Drain Life
+    ,(7712,1)    -- Fire Strike
+    ,(7714,1)    -- Fire Strike
+    ,(7715,1)    -- Fire Strike
+    ,(7716,1)    -- Fire Strike
+    ,(7717,1)    -- Fire Strike
+    ,(7718,1)    -- Fire Strike
+    ,(7719,1)    -- Fire Strike
+    ,(7887,1)    -- Overpower
+    ,(8042,1)    -- Earth Shock
+    ,(8044,1)    -- Earth Shock
+    ,(8045,1)    -- Earth Shock
+    ,(8046,1)    -- Earth Shock
+    ,(8050,1)    -- Flame Shock
+    ,(8052,1)    -- Flame Shock
+    ,(8053,1)    -- Flame Shock
+    ,(8056,1)    -- Frost Shock
+    ,(8058,1)    -- Frost Shock
+    ,(8092,1)    -- Mind Blast
+    ,(8102,1)    -- Mind Blast
+    ,(8103,1)    -- Mind Blast
+    ,(8104,1)    -- Mind Blast
+    ,(8105,1)    -- Mind Blast
+    ,(8106,1)    -- Mind Blast
+    ,(8129,1)    -- Mana Burn
+    ,(8246,1)    -- Lightning Bolt
+    ,(8255,1)    -- Strong Cleave
+    ,(8288,1)    -- Drain Soul
+    ,(8289,1)    -- Drain Soul
+    ,(8380,1)    -- Sunder Armor
+    ,(8398,1)    -- Frostbolt Volley
+    ,(8400,1)    -- Fireball
+    ,(8401,1)    -- Fireball
+    ,(8402,1)    -- Fireball
+    ,(8406,1)    -- Frostbolt
+    ,(8407,1)    -- Frostbolt
+    ,(8408,1)    -- Frostbolt
+    ,(8412,1)    -- Fire Blast
+    ,(8413,1)    -- Fire Blast
+    ,(8416,1)    -- Arcane Missiles
+    ,(8417,1)    -- Arcane Missiles
+    ,(8418,1)    -- Arcane Missiles
+    ,(8419,1)    -- Arcane Missiles
+    ,(8444,1)    -- Scorch
+    ,(8445,1)    -- Scorch
+    ,(8446,1)    -- Scorch
+    ,(8598,1)    -- Lightning Blast
+    ,(8621,1)    -- Sinister Strike
+    ,(8623,1)    -- Eviscerate
+    ,(8624,1)    -- Eviscerate
+    ,(8629,1)    -- Gouge
+    ,(8631,1)    -- Garrote
+    ,(8632,1)    -- Garrote
+    ,(8633,1)    -- Garrote
+    ,(8637,1)    -- Feint
+    ,(8639,1)    -- Rupture
+    ,(8640,1)    -- Rupture
+    ,(8643,1)    -- Kidney Shot
+    ,(8647,1)    -- Expose Armor
+    ,(8649,1)    -- Expose Armor
+    ,(8650,1)    -- Expose Armor
+    ,(8676,1)    -- Ambush
+    ,(8682,1)    -- Fake Shot
+    ,(8721,1)    -- Backstab
+    ,(8724,1)    -- Ambush
+    ,(8725,1)    -- Ambush
+    ,(8820,1)    -- Slam
+    ,(8905,1)    -- Wrath
+    ,(8921,1)    -- Moonfire
+    ,(8924,1)    -- Moonfire
+    ,(8925,1)    -- Moonfire
+    ,(8926,1)    -- Moonfire
+    ,(8927,1)    -- Moonfire
+    ,(8928,1)    -- Moonfire
+    ,(8929,1)    -- Moonfire
+    ,(8949,1)    -- Starfire
+    ,(8950,1)    -- Starfire
+    ,(8951,1)    -- Starfire
+    ,(8972,1)    -- Maul
+    ,(8983,1)    -- Bash
+    ,(8992,1)    -- Shred
+    ,(8998,1)    -- Cower
+    ,(9000,1)    -- Cower
+    ,(9005,1)    -- Pounce
+    ,(9053,1)    -- Fireball
+    ,(9057,1)    -- Firebolt
+    ,(9081,1)    -- Shadow Bolt Volley
+    ,(9373,1)    -- Soul Siphon
+    ,(9481,1)    -- Holy Smite
+    ,(9483,1)    -- Boulder
+    ,(9487,1)    -- Fireball
+    ,(9488,1)    -- Fireball
+    ,(9492,1)    -- Rip
+    ,(9493,1)    -- Rip
+    ,(9532,1)    -- Lightning Bolt
+    ,(9591,1)    -- Acid Spit
+    ,(9613,1)    -- Shadow Bolt
+    ,(9654,1)    -- Jumping Lightning
+    ,(9672,1)    -- Frostbolt
+    ,(9734,1)    -- Holy Smite
+    ,(9739,1)    -- Wrath
+    ,(9745,1)    -- Maul
+    ,(9752,1)    -- Rip
+    ,(9754,1)    -- Swipe
+    ,(9771,1)    -- Radiation Bolt
+    ,(9823,1)    -- Pounce
+    ,(9827,1)    -- Pounce
+    ,(9829,1)    -- Shred
+    ,(9830,1)    -- Shred
+    ,(9833,1)    -- Moonfire
+    ,(9834,1)    -- Moonfire
+    ,(9835,1)    -- Moonfire
+    ,(9849,1)    -- Claw
+    ,(9850,1)    -- Claw
+    ,(9866,1)    -- Ravage
+    ,(9867,1)    -- Ravage
+    ,(9875,1)    -- Starfire
+    ,(9876,1)    -- Starfire
+    ,(9880,1)    -- Maul
+    ,(9881,1)    -- Maul
+    ,(9892,1)    -- Cower
+    ,(9894,1)    -- Rip
+    ,(9896,1)    -- Rip
+    ,(9904,1)    -- Rake
+    ,(9908,1)    -- Swipe
+    ,(9912,1)    -- Wrath
+    ,(10148,1)   -- Fireball
+    ,(10149,1)   -- Fireball
+    ,(10150,1)   -- Fireball
+    ,(10151,1)   -- Fireball
+    ,(10179,1)   -- Frostbolt
+    ,(10180,1)   -- Frostbolt
+    ,(10181,1)   -- Frostbolt
+    ,(10197,1)   -- Fire Blast
+    ,(10199,1)   -- Fire Blast
+    ,(10205,1)   -- Scorch
+    ,(10206,1)   -- Scorch
+    ,(10207,1)   -- Scorch
+    ,(10211,1)   -- Arcane Missiles
+    ,(10212,1)   -- Arcane Missiles
+    ,(10273,1)   -- Arcane Missiles
+    ,(10274,1)   -- Arcane Missiles
+    ,(10277,1)   -- Throw
+    ,(10312,1)   -- Exorcism
+    ,(10313,1)   -- Exorcism
+    ,(10314,1)   -- Exorcism
+    ,(10346,1)   -- Machine Gun
+    ,(10391,1)   -- Lightning Bolt
+    ,(10392,1)   -- Lightning Bolt
+    ,(10412,1)   -- Earth Shock
+    ,(10413,1)   -- Earth Shock
+    ,(10414,1)   -- Earth Shock
+    ,(10447,1)   -- Flame Shock
+    ,(10448,1)   -- Flame Shock
+    ,(10472,1)   -- Frost Shock
+    ,(10473,1)   -- Frost Shock
+    ,(10578,1)   -- Fireball
+    ,(10605,1)   -- Chain Lightning
+    ,(10933,1)   -- Smite
+    ,(10934,1)   -- Smite
+    ,(10945,1)   -- Mind Blast
+    ,(10946,1)   -- Mind Blast
+    ,(10947,1)   -- Mind Blast
+    ,(11021,1)   -- Flamespit
+    ,(11131,1)   -- Icicle
+    ,(11197,1)   -- Expose Armor
+    ,(11198,1)   -- Expose Armor
+    ,(11267,1)   -- Ambush
+    ,(11268,1)   -- Ambush
+    ,(11269,1)   -- Ambush
+    ,(11273,1)   -- Rupture
+    ,(11274,1)   -- Rupture
+    ,(11275,1)   -- Rupture
+    ,(11279,1)   -- Backstab
+    ,(11280,1)   -- Backstab
+    ,(11281,1)   -- Backstab
+    ,(11285,1)   -- Gouge
+    ,(11286,1)   -- Gouge
+    ,(11289,1)   -- Garrote
+    ,(11290,1)   -- Garrote
+    ,(11293,1)   -- Sinister Strike
+    ,(11294,1)   -- Sinister Strike
+    ,(11297,1)   -- Sap
+    ,(11299,1)   -- Eviscerate
+    ,(11300,1)   -- Eviscerate
+    ,(11303,1)   -- Feint
+    ,(11366,1)   -- Pyroblast
+    ,(11538,1)   -- Frostbolt
+    ,(11564,1)   -- Heroic Strike
+    ,(11565,1)   -- Heroic Strike
+    ,(11566,1)   -- Heroic Strike
+    ,(11567,1)   -- Heroic Strike
+    ,(11572,1)   -- Rend
+    ,(11573,1)   -- Rend
+    ,(11574,1)   -- Rend
+    ,(11578,1)   -- Charge
+    ,(11584,1)   -- Overpower
+    ,(11585,1)   -- Overpower
+    ,(11596,1)   -- Sunder Armor
+    ,(11597,1)   -- Sunder Armor
+    ,(11600,1)   -- Revenge
+    ,(11601,1)   -- Revenge
+    ,(11604,1)   -- Slam
+    ,(11605,1)   -- Slam
+    ,(11608,1)   -- Cleave
+    ,(11609,1)   -- Cleave
+    ,(11659,1)   -- Shadow Bolt
+    ,(11660,1)   -- Shadow Bolt
+    ,(11661,1)   -- Shadow Bolt
+    ,(11665,1)   -- Immolate
+    ,(11667,1)   -- Immolate
+    ,(11668,1)   -- Immolate
+    ,(11675,1)   -- Drain Soul
+    ,(11699,1)   -- Drain Life
+    ,(11700,1)   -- Drain Life
+    ,(11839,1)   -- Fireball
+    ,(11921,1)   -- Fireball
+    ,(11985,1)   -- Fireball
+    ,(11988,1)   -- Fireball Volley
+    ,(11989,1)   -- Fireball Volley
+    ,(12058,1)   -- Chain Lightning
+    ,(12167,1)   -- Lightning Bolt
+    ,(12280,1)   -- Acid of Hakkar
+    ,(12294,1)   -- Mortal Strike
+    ,(12466,1)   -- Fireball
+    ,(12471,1)   -- Shadow Bolt
+    ,(12505,1)   -- Pyroblast
+    ,(12522,1)   -- Pyroblast
+    ,(12523,1)   -- Pyroblast
+    ,(12524,1)   -- Pyroblast
+    ,(12525,1)   -- Pyroblast
+    ,(12526,1)   -- Pyroblast
+    ,(12555,1)   -- Pummel
+    ,(12557,1)   -- Cone of Cold
+    ,(12611,1)   -- Cone of Cold
+    ,(12675,1)   -- Frostbolt
+    ,(12693,1)   -- Drain Life
+    ,(12737,1)   -- Frostbolt
+    ,(12739,1)   -- Shadow Bolt
+    ,(12809,1)   -- Concussion Blow
+    ,(13140,1)   -- Fireball
+    ,(13322,1)   -- Frostbolt
+    ,(13339,1)   -- Fire Blast
+    ,(13340,1)   -- Fire Blast
+    ,(13341,1)   -- Fire Blast
+    ,(13342,1)   -- Fire Blast
+    ,(13374,1)   -- Fire Blast
+    ,(13375,1)   -- Fireball
+    ,(13398,1)   -- Throw Wrench
+    ,(13438,1)   -- Fireball
+    ,(13439,1)   -- Frostbolt
+    ,(13440,1)   -- Shadow Bolt
+    ,(13441,1)   -- Firebolt
+    ,(13480,1)   -- Shadow Bolt
+    ,(13482,1)   -- Lightning Bolt
+    ,(13491,1)   -- Pummel
+    ,(13519,1)   -- Holy Smite
+    ,(13527,1)   -- Lightning Bolt
+    ,(13549,1)   -- Serpent Sting
+    ,(13550,1)   -- Serpent Sting
+    ,(13551,1)   -- Serpent Sting
+    ,(13552,1)   -- Serpent Sting
+    ,(13553,1)   -- Serpent Sting
+    ,(13554,1)   -- Serpent Sting
+    ,(13555,1)   -- Serpent Sting
+    ,(13748,1)   -- Arcane Bolt
+    ,(13900,1)   -- Fiery Burst
+    ,(13901,1)   -- Arcane Bolt
+    ,(13953,1)   -- Holy Strike
+    ,(14034,1)   -- Fireball
+    ,(14105,1)   -- Frost Blast
+    ,(14106,1)   -- Shadow Bolt
+    ,(14109,1)   -- Lightning Bolt
+    ,(14112,1)   -- Flaying Vine
+    ,(14119,1)   -- Lightning Bolt
+    ,(14122,1)   -- Shadow Bolt
+    ,(14145,1)   -- Fire Blast
+    ,(14200,1)   -- Chained Bolt
+    ,(14251,1)   -- Riposte
+    ,(14260,1)   -- Raptor Strike
+    ,(14261,1)   -- Raptor Strike
+    ,(14262,1)   -- Raptor Strike
+    ,(14263,1)   -- Raptor Strike
+    ,(14264,1)   -- Raptor Strike
+    ,(14265,1)   -- Raptor Strike
+    ,(14266,1)   -- Raptor Strike
+    ,(14269,1)   -- Mongoose Bite
+    ,(14270,1)   -- Mongoose Bite
+    ,(14271,1)   -- Mongoose Bite
+    ,(14278,1)   -- Ghostly Strike
+    ,(14281,1)   -- Arcane Shot
+    ,(14282,1)   -- Arcane Shot
+    ,(14283,1)   -- Arcane Shot
+    ,(14284,1)   -- Arcane Shot
+    ,(14285,1)   -- Arcane Shot
+    ,(14286,1)   -- Arcane Shot
+    ,(14287,1)   -- Arcane Shot
+    ,(14288,1)   -- Multi-Shot
+    ,(14289,1)   -- Multi-Shot
+    ,(14290,1)   -- Multi-Shot
+    ,(14443,1)   -- Multi-Shot
+    ,(14517,1)   -- Crusader Strike
+    ,(14518,1)   -- Crusader Strike
+    ,(14873,1)   -- Sinister Strike
+    ,(14874,1)   -- Rupture
+    ,(14895,1)   -- Overpower
+    ,(14902,1)   -- Cheap Shot
+    ,(14903,1)   -- Rupture
+    ,(14914,1)   -- Holy Fire
+    ,(15040,1)   -- Molten Blast
+    ,(15043,1)   -- Frostbolt
+    ,(15095,1)   -- Molten Blast
+    ,(15117,1)   -- Chain Lightning
+    ,(15124,1)   -- Arcane Bolt
+    ,(15207,1)   -- Lightning Bolt
+    ,(15208,1)   -- Lightning Bolt
+    ,(15228,1)   -- Fireball
+    ,(15230,1)   -- Arcane Bolt
+    ,(15232,1)   -- Shadow Bolt
+    ,(15234,1)   -- Lightning Bolt
+    ,(15238,1)   -- Holy Smite
+    ,(15242,1)   -- Fireball
+    ,(15243,1)   -- Fireball Volley
+    ,(15244,1)   -- Cone of Cold
+    ,(15249,1)   -- Machine Gun
+    ,(15254,1)   -- Arcane Bolt
+    ,(15261,1)   -- Holy Fire
+    ,(15262,1)   -- Holy Fire
+    ,(15263,1)   -- Holy Fire
+    ,(15264,1)   -- Holy Fire
+    ,(15265,1)   -- Holy Fire
+    ,(15266,1)   -- Holy Fire
+    ,(15267,1)   -- Holy Fire
+    ,(15284,1)   -- Cleave
+    ,(15285,1)   -- Fireball Volley
+    ,(15305,1)   -- Chain Lightning
+    ,(15407,1)   -- Mind Flay
+    ,(15451,1)   -- Arcane Bolt
+    ,(15472,1)   -- Shadow Bolt
+    ,(15496,1)   -- Cleave
+    ,(15497,1)   -- Frostbolt
+    ,(15498,1)   -- Holy Smite
+    ,(15530,1)   -- Frostbolt
+    ,(15536,1)   -- Fireball
+    ,(15537,1)   -- Shadow Bolt
+    ,(15547,1)   -- Shoot
+    ,(15549,1)   -- Chained Bolt
+    ,(15574,1)   -- Fire Blast
+    ,(15575,1)   -- Flame Cannon
+    ,(15581,1)   -- Sinister Strike
+    ,(15583,1)   -- Rupture
+    ,(15598,1)   -- Firebolt
+    ,(15607,1)   -- Throw
+    ,(15611,1)   -- Lizard Bolt
+    ,(15612,1)   -- Lizard Bolt
+    ,(15615,1)   -- Pummel
+    ,(15619,1)   -- Throw Wrench
+    ,(15620,1)   -- Shoot
+    ,(15653,1)   -- Acid Spit
+    ,(15659,1)   -- Chain Lightning
+    ,(15662,1)   -- Fireball
+    ,(15665,1)   -- Fireball
+    ,(15667,1)   -- Sinister Strike
+    ,(15668,1)   -- Fiery Burst
+    ,(15691,1)   -- Eviscerate
+    ,(15692,1)   -- Eviscerate
+    ,(15735,1)   -- Arcane Missiles
+    ,(15736,1)   -- Arcane Missiles
+    ,(15790,1)   -- Arcane Missiles
+    ,(15791,1)   -- Arcane Missiles
+    ,(15795,1)   -- Throw
+    ,(15797,1)   -- Lightning Breath
+    ,(15801,1)   -- Lightning Bolt
+    ,(15860,1)   -- Impale
+    ,(15968,1)   -- Lash of Pain
+    ,(16000,1)   -- Throw
+    ,(16001,1)   -- Impale
+    ,(16006,1)   -- Chain Lightning
+    ,(16033,1)   -- Chain Lightning
+    ,(16044,1)   -- Cleave
+    ,(16067,1)   -- Arcane Blast
+    ,(16100,1)   -- Shoot
+    ,(16101,1)   -- Fireball
+    ,(16144,1)   -- Fire Blast
+    ,(16243,1)   -- Ribbon of Souls
+    ,(16249,1)   -- Frostbolt
+    ,(16250,1)   -- Fireball Volley
+    ,(16375,1)   -- Drain Life
+    ,(16407,1)   -- Frost Blast
+    ,(16408,1)   -- Shadow Bolt
+    ,(16409,1)   -- Shadow Bolt
+    ,(16410,1)   -- Shadow Bolt
+    ,(16412,1)   -- Fireball
+    ,(16413,1)   -- Fireball
+    ,(16414,1)   -- Drain Life
+    ,(16415,1)   -- Fireball
+    ,(16430,1)   -- Soul Tap
+    ,(16454,1)   -- Searing Blast
+    ,(16496,1)   -- Shoot
+    ,(16511,1)   -- Hemorrhage
+    ,(16564,1)   -- Gargoyle Strike
+    ,(16565,1)   -- Banshee Wail
+    ,(16570,1)   -- Charged Arcane Bolt
+    ,(16603,1)   -- Demonfork
+    ,(16614,1)   -- Lightning Strike
+    ,(16697,1)   -- Cower
+    ,(16784,1)   -- Shadow Bolt
+    ,(16788,1)   -- Fireball
+    ,(16790,1)   -- Knockdown
+    ,(16799,1)   -- Frostbolt
+    ,(16827,1)   -- Claw
+    ,(16828,1)   -- Claw
+    ,(16829,1)   -- Claw
+    ,(16830,1)   -- Claw
+    ,(16831,1)   -- Claw
+    ,(16832,1)   -- Claw
+    ,(16868,1)   -- Banshee Wail
+    ,(16908,1)   -- Dispel Magic
+    ,(16979,1)   -- Feral Charge
+    ,(16997,1)   -- Gargoyle Strike
+    ,(17008,1)   -- Drain Mana
+    ,(17140,1)   -- Holy Fire
+    ,(17141,1)   -- Holy Fire
+    ,(17142,1)   -- Holy Fire
+    ,(17143,1)   -- Holy Strike
+    ,(17144,1)   -- Wrath
+    ,(17147,1)   -- Exorcism
+    ,(17149,1)   -- Exorcism
+    ,(17157,1)   -- Lightning Breath
+    ,(17171,1)   -- Shadow Shot
+    ,(17173,1)   -- Drain Life
+    ,(17174,1)   -- Concussive Shot
+    ,(17198,1)   -- Overpower
+    ,(17203,1)   -- Fireball Volley
+    ,(17238,1)   -- Drain Life
+    ,(17243,1)   -- Drain Mana
+    ,(17253,1)   -- Bite
+    ,(17255,1)   -- Bite
+    ,(17256,1)   -- Bite
+    ,(17257,1)   -- Bite
+    ,(17258,1)   -- Bite
+    ,(17259,1)   -- Bite
+    ,(17260,1)   -- Bite
+    ,(17261,1)   -- Bite
+    ,(17273,1)   -- Pyroblast
+    ,(17274,1)   -- Pyroblast
+    ,(17276,1)   -- Scald
+    ,(17281,1)   -- Crusader Strike
+    ,(17284,1)   -- Holy Strike
+    ,(17290,1)   -- Fireball
+    ,(17311,1)   -- Mind Flay
+    ,(17312,1)   -- Mind Flay
+    ,(17313,1)   -- Mind Flay
+    ,(17314,1)   -- Mind Flay
+    ,(17333,1)   -- Spider's Kiss
+    ,(17347,1)   -- Hemorrhage
+    ,(17348,1)   -- Hemorrhage
+    ,(17353,1)   -- Shoot
+    ,(17364,1)   -- Stormstrike
+    ,(17393,1)   -- Shadow Bolt
+    ,(17434,1)   -- Shadow Bolt
+    ,(17435,1)   -- Shadow Bolt
+    ,(17483,1)   -- Shadow Bolt
+    ,(17501,1)   -- Cannon Fire
+    ,(17503,1)   -- Frostbolt
+    ,(17509,1)   -- Shadow Bolt
+    ,(17620,1)   -- Drain Life
+    ,(17682,1)   -- Drain Mana
+    ,(17745,1)   -- Diseased Spit
+    ,(17877,1)   -- Shadowburn
+    ,(17919,1)   -- Searing Pain
+    ,(17920,1)   -- Searing Pain
+    ,(17921,1)   -- Searing Pain
+    ,(17922,1)   -- Searing Pain
+    ,(17923,1)   -- Searing Pain
+    ,(17924,1)   -- Soul Fire
+    ,(17925,1)   -- Death Coil
+    ,(17926,1)   -- Death Coil
+    ,(17962,1)   -- Conflagrate
+    ,(17963,1)   -- Sundering Cleave
+    ,(18081,1)   -- Lightning Bolt
+    ,(18082,1)   -- Fireball
+    ,(18083,1)   -- Firebolt
+    ,(18084,1)   -- Drain Life
+    ,(18085,1)   -- Frost Blast
+    ,(18089,1)   -- Lightning Bolt
+    ,(18091,1)   -- Arcane Blast
+    ,(18092,1)   -- Frost Blast
+    ,(18104,1)   -- Wrath
+    ,(18105,1)   -- Fireball
+    ,(18108,1)   -- Fireball
+    ,(18111,1)   -- Shadow Bolt
+    ,(18138,1)   -- Shadow Bolt
+    ,(18164,1)   -- Shadow Bolt
+    ,(18165,1)   -- Holy Fire
+    ,(18187,1)   -- Firebolt
+    ,(18199,1)   -- Fireball
+    ,(18204,1)   -- Frost Blast
+    ,(18205,1)   -- Shadow Bolt
+    ,(18211,1)   -- Shadow Bolt
+    ,(18214,1)   -- Shadow Bolt
+    ,(18217,1)   -- Shadow Bolt
+    ,(18276,1)   -- Frost Blast
+    ,(18278,1)   -- Silence
+    ,(18392,1)   -- Fireball
+    ,(18398,1)   -- Frost Blast
+    ,(18545,1)   -- Scorpid Sting
+    ,(18557,1)   -- Drain Life
+    ,(18561,1)   -- Shoot
+    ,(18649,1)   -- Shadow Shot
+    ,(18651,1)   -- Multi-Shot
+    ,(18796,1)   -- Fireball
+    ,(18807,1)   -- Mind Flay
+    ,(18809,1)   -- Pyroblast
+    ,(18817,1)   -- Drain Life
+    ,(18819,1)   -- Holy Cleave
+    ,(18833,1)   -- Firebolt
+    ,(18867,1)   -- Shadowburn
+    ,(18868,1)   -- Shadowburn
+    ,(18869,1)   -- Shadowburn
+    ,(18870,1)   -- Shadowburn
+    ,(18871,1)   -- Shadowburn
+    ,(18980,1)   -- Lightning
+    ,(18984,1)   -- Heal on Kill
+    ,(19128,1)   -- Knockdown
+    ,(19260,1)   -- Frost Blast
+    ,(19306,1)   -- Counterattack
+    ,(19319,1)   -- Vicious Bite
+    ,(19386,1)   -- Wyvern Sting
+    ,(19391,1)   -- Fireball
+    ,(19434,1)   -- Aimed Shot
+    ,(19463,1)   -- Corrosive Acid Spit
+    ,(19472,1)   -- Sinister Strike
+    ,(19503,1)   -- Scatter Shot
+    ,(19632,1)   -- Cleave
+    ,(19639,1)   -- Pummel
+    ,(19642,1)   -- Cleave
+    ,(19701,1)   -- Boulder
+    ,(19715,1)   -- Counterspell
+    ,(19725,1)   -- Turn Undead
+    ,(19728,1)   -- Shadow Bolt
+    ,(19729,1)   -- Shadow Bolt
+    ,(19767,1)   -- Aynasha's Bow
+    ,(19777,1)   -- Dark Strike
+    ,(19781,1)   -- Flame Spear
+    ,(19785,1)   -- Throw
+    ,(19801,1)   -- Tranquilizing Shot
+    ,(19816,1)   -- Fireball
+    ,(19874,1)   -- Lightning Bolt
+    ,(19983,1)   -- Cleave
+    ,(20228,1)   -- Pyroblast
+    ,(20240,1)   -- Retaliation
+    ,(20243,1)   -- Devastate
+    ,(20252,1)   -- Intercept
+    ,(20276,1)   -- Knockdown
+    ,(20295,1)   -- Lightning Bolt
+    ,(20297,1)   -- Frostbolt
+    ,(20298,1)   -- Shadow Bolt
+    ,(20420,1)   -- Fireball
+    ,(20463,1)   -- Shoot
+    ,(20535,1)   -- Lightning Breath
+    ,(20536,1)   -- Lightning Breath
+    ,(20543,1)   -- Lightning Breath
+    ,(20559,1)   -- Mocking Blow
+    ,(20560,1)   -- Mocking Blow
+    ,(20569,1)   -- Cleave
+    ,(20605,1)   -- Cleave
+    ,(20616,1)   -- Intercept
+    ,(20617,1)   -- Intercept
+    ,(20627,1)   -- Lightning Breath
+    ,(20630,1)   -- Lightning Breath
+    ,(20657,1)   -- Acid Spit
+    ,(20658,1)   -- Execute
+    ,(20660,1)   -- Execute
+    ,(20661,1)   -- Execute
+    ,(20662,1)   -- Execute
+    ,(20666,1)   -- Cleave
+    ,(20678,1)   -- Fireball
+    ,(20684,1)   -- Cleave
+    ,(20691,1)   -- Cleave
+    ,(20692,1)   -- Fireball
+    ,(20695,1)   -- Holy Smite
+    ,(20696,1)   -- Holy Smite
+    ,(20698,1)   -- Wrath
+    ,(20714,1)   -- Fireball
+    ,(20720,1)   -- Arcane Bolt
+    ,(20735,1)   -- Multi-Shot
+    ,(20736,1)   -- Distracting Shot
+    ,(20743,1)   -- Drain Life
+    ,(20791,1)   -- Shadow Bolt
+    ,(20792,1)   -- Frostbolt
+    ,(20793,1)   -- Fireball
+    ,(20795,1)   -- Fire Blast
+    ,(20797,1)   -- Fireball
+    ,(20802,1)   -- Lightning Bolt
+    ,(20805,1)   -- Lightning Bolt
+    ,(20806,1)   -- Frostbolt
+    ,(20807,1)   -- Shadow Bolt
+    ,(20808,1)   -- Fireball
+    ,(20811,1)   -- Fireball
+    ,(20815,1)   -- Fireball
+    ,(20816,1)   -- Shadow Bolt
+    ,(20819,1)   -- Frostbolt
+    ,(20820,1)   -- Holy Smite
+    ,(20821,1)   -- Acid Spit
+    ,(20822,1)   -- Frostbolt
+    ,(20823,1)   -- Fireball
+    ,(20824,1)   -- Lightning Bolt
+    ,(20825,1)   -- Shadow Bolt
+    ,(20828,1)   -- Cone of Cold
+    ,(20829,1)   -- Arcane Bolt
+    ,(20831,1)   -- Chain Lightning
+    ,(20832,1)   -- Fire Blast
+    ,(20869,1)   -- Frost Blast
+    ,(20883,1)   -- Arcane Blast
+    ,(20900,1)   -- Aimed Shot
+    ,(20901,1)   -- Aimed Shot
+    ,(20902,1)   -- Aimed Shot
+    ,(20903,1)   -- Aimed Shot
+    ,(20904,1)   -- Aimed Shot
+    ,(20909,1)   -- Counterattack
+    ,(20910,1)   -- Counterattack
+    ,(21008,1)   -- Mocking Blow
+    ,(21027,1)   -- Spark
+    ,(21047,1)   -- Corrosive Acid Spit
+    ,(21059,1)   -- Acid Spit
+    ,(21071,1)   -- Boulder
+    ,(21072,1)   -- Fireball
+    ,(21077,1)   -- Shadow Bolt
+    ,(21141,1)   -- Shadow Bolt
+    ,(21151,1)   -- Gutgore Ripper
+    ,(21159,1)   -- Fireball
+    ,(21162,1)   -- Fireball
+    ,(21167,1)   -- Snowball
+    ,(21170,1)   -- Drain Life
+    ,(21343,1)   -- Snowball
+    ,(21354,1)   -- Snowball Resistant
+    ,(21369,1)   -- Frostbolt
+    ,(21390,1)   -- Multi-Shot
+    ,(21402,1)   -- Fireball
+    ,(21549,1)   -- Fireball
+    ,(21551,1)   -- Mortal Strike
+    ,(21552,1)   -- Mortal Strike
+    ,(21553,1)   -- Mortal Strike
+    ,(21667,1)   -- Wrath
+    ,(21668,1)   -- Starfire
+    ,(21807,1)   -- Wrath
+    ,(21832,1)   -- Boulder
+    ,(21978,1)   -- Engulfing Shadows
+    ,(22088,1)   -- Fireball
+    ,(22121,1)   -- Shoot
+    ,(22272,1)   -- Arcane Missiles
+    ,(22273,1)   -- Arcane Missiles
+    ,(22336,1)   -- Shadow Bolt
+    ,(22355,1)   -- Chain Lightning
+    ,(22357,1)   -- Icebolt
+    ,(22411,1)   -- Shoot
+    ,(22414,1)   -- Lightning Bolt
+    ,(22425,1)   -- Fireball Volley
+    ,(22427,1)   -- Concussion Blow
+    ,(22568,1)   -- Ferocious Bite
+    ,(22570,1)   -- Mangle
+    ,(22574,1)   -- Dark Strike
+    ,(22643,1)   -- Frostbolt Volley
+    ,(22666,1)   -- Silence
+    ,(22677,1)   -- Shadow Bolt
+    ,(22746,1)   -- Cone of Cold
+    ,(22827,1)   -- Ferocious Bite
+    ,(22828,1)   -- Ferocious Bite
+    ,(22829,1)   -- Ferocious Bite
+    ,(22859,1)   -- Mortal Cleave
+    ,(22878,1)   -- Shadow Bolt Volley
+    ,(22887,1)   -- Throw
+    ,(22907,1)   -- Shoot
+    ,(22908,1)   -- Volley
+    ,(23073,1)   -- Shoot
+    ,(23102,1)   -- Frostbolt
+    ,(23106,1)   -- Chain Lightning
+    ,(23206,1)   -- Chain Lightning
+    ,(23267,1)   -- Firebolt
+    ,(23391,1)   -- Boulder
+    ,(23392,1)   -- Boulder
+    ,(23512,1)   -- Fireball Volley
+    ,(23592,1)   -- Lightning Bolt
+    ,(23601,1)   -- Scatter Shot
+    ,(23860,1)   -- Holy Fire
+    ,(23881,1)   -- Bloodthirst
+    ,(23892,1)   -- Bloodthirst
+    ,(23893,1)   -- Bloodthirst
+    ,(23894,1)   -- Bloodthirst
+    ,(23922,1)   -- Shield Slam
+    ,(23923,1)   -- Shield Slam
+    ,(23924,1)   -- Shield Slam
+    ,(23925,1)   -- Shield Slam
+    ,(24049,1)   -- Impale
+    ,(24132,1)   -- Wyvern Sting
+    ,(24133,1)   -- Wyvern Sting
+    ,(24238,1)   -- Test Rip
+    ,(24239,1)   -- Hammer of Wrath
+    ,(24248,1)   -- Copy of Ferocious Bite
+    ,(24274,1)   -- Hammer of Wrath
+    ,(24275,1)   -- Hammer of Wrath
+    ,(24300,1)   -- Drain Life
+    ,(24331,1)   -- Rake
+    ,(24332,1)   -- Rake
+    ,(24334,1)   -- Acid Spit
+    ,(24335,1)   -- Wyvern Sting
+    ,(24374,1)   -- Fireball
+    ,(24407,1)   -- Overpower
+    ,(24583,1)   -- Scorpid Poison
+    ,(24585,1)   -- Drain Life
+    ,(24586,1)   -- Scorpid Poison
+    ,(24587,1)   -- Scorpid Poison
+    ,(24619,1)   -- Soul Tap
+    ,(24640,1)   -- Scorpid Poison
+    ,(24668,1)   -- Shadow Bolt
+    ,(24680,1)   -- Chain Lightning
+    ,(24844,1)   -- Lightning Breath
+    ,(24942,1)   -- Frostbolt
+    ,(25008,1)   -- Lightning Breath
+    ,(25009,1)   -- Lightning Breath
+    ,(25010,1)   -- Lightning Breath
+    ,(25011,1)   -- Lightning Breath
+    ,(25012,1)   -- Lightning Breath
+    ,(25021,1)   -- Chain Lightning
+    ,(25052,1)   -- Acid Spit
+    ,(25054,1)   -- Holy Smite
+    ,(25055,1)   -- Arcane Bolt
+    ,(25174,1)   -- Sundering Cleave
+    ,(25286,1)   -- Heroic Strike
+    ,(25288,1)   -- Revenge
+    ,(25294,1)   -- Multi-Shot
+    ,(25295,1)   -- Serpent Sting
+    ,(25298,1)   -- Starfire
+    ,(25300,1)   -- Backstab
+    ,(25302,1)   -- Feint
+    ,(25304,1)   -- Frostbolt
+    ,(25306,1)   -- Fireball
+    ,(25307,1)   -- Shadow Bolt
+    ,(25309,1)   -- Immolate
+    ,(25345,1)   -- Arcane Missiles
+    ,(25346,1)   -- Arcane Missiles
+    ,(25677,1)   -- Snowball
+    ,(25686,1)   -- Super Snowball
+    ,(25710,1)   -- Heroic Strike
+    ,(25712,1)   -- Heroic Strike
+    ,(25783,15)  -- Place Arcanite Buoy
+    ,(25902,1)   -- Holy Shock
+    ,(25911,1)   -- Holy Shock
+    ,(25912,1)   -- Holy Shock
+    ,(25995,1)   -- Snowball Visual Test
+    ,(26006,1)   -- Shadow Bolt
+    ,(26098,1)   -- Lightning Bolt
+    ,(26282,1)   -- Shoot Tauren Rifleman
+    ,(26350,1)   -- Cleave
+    ,(26616,1)   -- Boulder
+    ,(26693,1)   -- Drain Life
+    ,(27360,1)   -- Instill Lord Valthalak's Spirit DND
+    ,(27552,1)   -- Cupid's Arrow
+    ,(27554,1)   -- Swipe
+    ,(27559,1)   -- Silence
+    ,(27567,1)   -- Chain Lightning
+    ,(27572,1)   -- Smitten
+    ,(27580,1)   -- Mortal Strike
+    ,(27581,1)   -- Disarm
+    ,(27584,1)   -- Hamstring
+    ,(27611,1)   -- Eviscerate
+    ,(27615,1)   -- Kidney Shot
+    ,(27632,1)   -- Aimed Shot
+    ,(27633,1)   -- Wing Clip
+    ,(27794,1)   -- Cleave
+    ,(27860,1)   -- Engulfing Shadows
+    ,(28318,1)   -- Slime Shot
+    ,(28412,1)   -- Death Coil
+    ,(28478,1)   -- Frostbolt
+    ,(28599,1)   -- Shadow Bolt Volley
+    ,(29155,1)   -- Drain Life
+    ,(29228,1)   -- Flame Shock
+    ,(29317,1)   -- Shadow Bolt
+    ,(30095,1)   -- Cone of Cold
+    ,(31016,1)   -- Eviscerate
+    ,(31018,1)   -- Ferocious Bite
+;
+
+-- Insert spells considered elixirs ------------------------------------------
+INSERT INTO `spell_elixir`
+    (`entry`, `mask`)
+VALUES
+     (673,0)     -- Lesser Armor
+    ,(2367,0)    -- Lesser Strength
+    ,(2374,0)    -- Lesser Agility
+    ,(2378,0)    -- Health
+    ,(2380,0)    -- Resistance
+    ,(3160,0)    -- Agility
+    ,(3164,0)    -- Strength
+    ,(3166,0)    -- Lesser Intellect
+    ,(3219,0)    -- Regeneration
+    ,(3220,0)    -- Armor
+    ,(3222,0)    -- Regeneration
+    ,(3223,0)    -- Regeneration
+    ,(3593,0)    -- Health II
+    ,(7844,0)    -- Fire Power
+    ,(8212,0)    -- Enlarge
+    ,(10667,0)   -- Rage of Ages
+    ,(10668,0)   -- Spirit of Boar
+    ,(10669,0)   -- Strike of the Scorpok
+    ,(10692,0)   -- Infallible Mind
+    ,(10693,0)   -- Spiritual Domination
+    ,(11319,0)   -- Water Walking
+    ,(11328,0)   -- Agility
+    ,(11334,0)   -- Greater Agility
+    ,(11348,0)   -- Greater Armor
+    ,(11349,0)   -- Armor
+    ,(11364,0)   -- Resistance
+    ,(11371,0)   -- Gift of Arthas
+    ,(11390,0)   -- Arcane Elixir
+    ,(11396,0)   -- Greater Intellect
+    ,(11405,0)   -- Elixir of the Giants
+    ,(11406,0)   -- Elixir of Demonslaying
+    ,(11474,0)   -- Shadow Power
+    ,(15231,0)   -- Crystal Force
+    ,(15233,0)   -- Crystal Ward
+    ,(16321,0)   -- Juju Escape
+    ,(16322,0)   -- Juju Flurry
+    ,(16323,0)   -- Juju Power
+    ,(16325,0)   -- Juju Chill
+    ,(16326,0)   -- Juju Ember
+    ,(16327,0)   -- Juju Guile
+    ,(16329,0)   -- Juju Might
+    ,(17038,0)   -- Winterfall Firewater
+    ,(17535,0)   -- Elixir of the Sages
+    ,(17537,0)   -- Elixir of Brute Force
+    ,(17538,0)   -- Elixir of the Mongoose
+    ,(17539,0)   -- Greater Arcane Elixir
+    ,(17624,0)   -- Petrification
+    ,(17626,0)   -- Flask of the Titans
+    ,(17627,0)   -- Distilled Wisdom
+    ,(17628,0)   -- Supreme Power
+    ,(17629,0)   -- Chromatic Resistance
+    ,(21920,0)   -- Frost Power
+    ,(24361,0)   -- Regeneration
+    ,(24363,0)   -- Mana Regeneration
+    ,(24382,0)   -- Spirit of Zanza
+    ,(24383,0)   -- Swiftness of Zanza
+    ,(24417,0)   -- Sheen of Zanza
+    ,(26276,0)   -- Greater Firepower
+    ,(27652,0)   -- Elixir of Resistance
+    ,(27653,0)   -- Elixir of Dodging
+;
+
+-- Insert spell bonus data ---------------------------------------------------
+INSERT INTO `spell_bonus_data`
+    (`entry`,`direct_bonus`,`dot_bonus`,`ap_bonus`,`ap_dot_bonus`,`comments`)
+VALUES
+     (116,0.8143,0,0,0,'Mage - Frostbolt (Rank 1)')
+    ,(120,0.1357,0,0,0,'Mage - Cone of Cold (Rank 1)')
+    ,(133,1,0,0,0,'Mage - Fireball (Rank 1)')
+    ,(172,0,0.156,0,0,'Warlock - Corruption (Rank 1)')
+    ,(331,0.8571,0,0,0,'Shaman - Healing Wave (Rank 1)')
+    ,(339,0,0.1,0,0,'Druid - Entangling Roots (Rank 1)')
+    ,(348,0.2,0.2,0,0,'Warlock - Immolate (Rank 1)')
+    ,(403,0.7143,0,0,0,'Shaman - Lightning Bolt (Rank 1)')
+    ,(421,0.57,0,0,0,'Shaman - Chain Lightning (Rank 1)')
+    ,(585,0.714,0,0,0,'Priest - Smite (Rank 1)')
+    ,(603,0,2,0,0,'Warlock - Curse of Doom')
+    ,(686,0.8571,0,0,0,'Warlock - Shadow Bolt (Rank 1)')
+    ,(703,0,0,0,0.03,'Rogue - Garrote (Rank 1)')
+    ,(755,0,0.4485,0,0,'Warlock - Health Funnel (Rank 1)')
+    ,(980,0,0.1,0,0,'Warlock - Curse of Agony (Rank 1)')
+    ,(1120,0,0.4286,0,0,'Warlock - Drain Soul (Rank 1)')
+    ,(1454,0.8,0,0,0,'Warlock - Life Tap (Rank 1)')
+    ,(1463,0.8053,0,0,0,'Mage - Mana Shield (Rank 1)')
+    ,(1949,0,0.0946,0,0,'Warlock - Hellfire (Rank 1)')
+    ,(2060,1.2353,0,0,0,'Priest - Greater Heal (Rank 1)')
+    ,(2061,0.6177,0,0,0,'Priest - Flash Heal (Rank 1)')
+    ,(2120,0.2357,0.122,0,0,'Mage - Flamestrike (Rank 1)')
+    ,(3606,0.1667,0,0,0,'Shaman - Attack (Rank 1)')
+    ,(5138,0,0,0,0,'Warlock - Drain Mana (Rank 1)')
+    ,(5176,0.5714,0,0,0,'Druid - Wrath (Rank 1)')
+    ,(5185,1.6104,0,0,0,'Druid - Healing Touch (Rank 1)')
+    ,(5570,0,0.127,0,0,'Druid - Insect Swarm (Rank 1)')
+    ,(5672,0,0.045,0,0,'Shaman - Healing Stream (Rank 1)')
+    ,(5857,0.1428,0,0,0,'Warlock - Hellfire Effect (Rank 1)')
+    ,(6350,0.1667,0,0,0,'Shaman - Attack (Rank 2)')
+    ,(6351,0.1667,0,0,0,'Shaman - Attack (Rank 3)')
+    ,(6352,0.1667,0,0,0,'Shaman - Attack (Rank 4)')
+    ,(6353,1.15,0,0,0,'Warlock - Soul Fire (Rank 1)')
+    ,(7268,0.2857,0,0,0,'Mage - Arcane Missile (Rank 1)')
+    ,(7269,0.2857,0,0,0,'Mage - Arcane Missiles (Rank 2)')
+    ,(7270,0.2857,0,0,0,'Mage - Arcane Missiles (Rank 3)')
+    ,(8026,0.1,0,0,0,'Shaman - Flametongue Weapon Proc (Rank 1)')
+    ,(8028,0.1,0,0,0,'Shaman - Flametongue Weapon Proc (Rank 2)')
+    ,(8029,0.1,0,0,0,'Shaman - Flametongue Weapon Proc (Rank 3)')
+    ,(8034,0.1,0,0,0,'Shaman - Frostbrand Attack (Rank 1)')
+    ,(8042,0.3858,0,0,0,'Shaman - Earth Shock (Rank 1)')
+    ,(8050,0.2142,0.1,0,0,'Shaman - Flame Shock (Rank 1)')
+    ,(8056,0.3858,0,0,0,'Shaman - Frost Shock (Rank 1)')
+    ,(8129,0,0,0,0,'Priest - Mana Burn (Rank 1)')
+    ,(8418,0.2857,0,0,0,'Mage - Arcane Missiles (Rank 5)')
+    ,(8419,0.2857,0,0,0,'Mage - Arcane Missiles (Rank 4)')
+    ,(8443,0.2142,0,0,0,'Shaman - Fire Nova (Rank 1)')
+    ,(8504,0.2142,0,0,0,'Shaman - Fire Nova (Rank 2)')
+    ,(8505,0.2142,0,0,0,'Shaman - Fire Nova (Rank 3)')
+    ,(8921,0.1515,0.13,0,0,'Druid - Moonfire (Rank 1)')
+    ,(8936,0.3,0.1,0,0,'Druid - Regrowth (Rank 1)')
+    ,(10273,0.2857,0,0,0,'Mage - Arcane Missiles (Rank 6)')
+    ,(10274,0.2857,0,0,0,'Mage - Arcane Missiles (Rank 7)')
+    ,(10435,0.1667,0,0,0,'Shaman - Attack (Rank 5)')
+    ,(10436,0.1667,0,0,0,'Shaman - Attack (Rank 6)')
+    ,(10444,0,0,0,0,'Shaman - Flametongue Attack (Rank 3)')
+    ,(10445,0.1,0,0,0,'Shaman - Flametongue Weapon Proc (Rank 4)')
+    ,(11113,0.1357,0,0,0,'Mage - Blast Wave (Rank 1)')
+    ,(11310,0.2142,0,0,0,'Shaman - Fire Nova (Rank 4)')
+    ,(11311,0.2142,0,0,0,'Shaman - Fire Nova (Rank 5)')
+    ,(11681,0.1428,0,0,0,'Warlock - Hellfire Effect (Rank 2)')
+    ,(11682,0.1428,0,0,0,'Warlock - Hellfire Effect (Rank 3)')
+    ,(14914,0.5711,0.024,0,0,'Priest - Holy Fire (Rank 1)')
+    ,(15237,0.1606,0,0,0,'Priest - Holy Nova (Rank 1)')
+    ,(15407,0,0.19,0,0,'Priest - Mind Flay (Rank 1)')
+    ,(15662,0,0,0,0,'Mage - Fireball')
+    ,(16343,0.1,0,0,0,'Shaman - Flametongue Weapon Proc (Rank 5)')
+    ,(16344,0.1,0,0,0,'Shaman - Flametongue Weapon Proc (Rank 6)')
+    ,(18220,0.96,0,0,0,'Warlock - Dark Pact (Rank 1)')
+    ,(18562,0,0,0,0,'Druid - Swiftmend')
+    ,(18790,0,0,0,0,'Warlock - Fel Stamina')
+    ,(20167,0.25,0,0.16,0,'Paladin - Seal of Light (Rank 1)')
+    ,(20925,0.09,0,0.056,0,'Paladin - Holy Shield (Rank 1)')
+    ,(23455,0.3035,0,0,0,'Priest - Holy Nova (Rank 1)')
+    ,(23458,0.3035,0,0,0,'Priest - Holy Nova (Rank 2)')
+    ,(23459,0.3035,0,0,0,'Priest - Holy Nova (Rank 3)')
+    ,(24275,0.15,0,0.15,0,'Paladin - Hammer of Wrath (Rank 1)')
+    ,(25346,0.2857,0,0,0,'Mage - Arcane Missiles (Rank 8)')
+    ,(25742,0.07,0,0.039,0,'Paladin - Seal of Righteousness (Rank 1)')
+    ,(26363,0.33,0,0,0,'Shaman - Lightning Shield (Rank 7)')
+    ,(26364,0.33,0,0,0,'Shaman - Lightning Shield (Rank 1)')
+    ,(26365,0.33,0,0,0,'Shaman - Lightning Shield (Rank 2)')
+    ,(26366,0.33,0,0,0,'Shaman - Lightning Shield (Rank 3)')
+    ,(26367,0.33,0,0,0,'Shaman - Lightning Shield (Rank 4)')
+    ,(26369,0.33,0,0,0,'Shaman - Lightning Shield (Rank 5)')
+    ,(26370,0.33,0,0,0,'Shaman - Lightning Shield (Rank 6)')
+    ,(26573,0,0.04,0,0.04,'Paladin - Consecration (Rank 1)')
+    ,(27803,0.3035,0,0,0,'Priest - Holy Nova (Rank 4)')
+    ,(27804,0.3035,0,0,0,'Priest - Holy Nova (Rank 5)')
+    ,(27805,0.3035,0,0,0,'Priest - Holy Nova (Rank 6)')
+;
+
+-- Insert warlock pet auras --------------------------------------------------
+INSERT INTO `spell_pet_auras`
+    (`spell`, `pet`, `aura`)
+VALUES
+     (23785, @PLAYER_PET_IMP,        23759) -- Master Demonologist
+    ,(23823, @PLAYER_PET_IMP,        23827) -- Master Demonologist
+    ,(23825, @PLAYER_PET_IMP,        23829) -- Master Demonologist
+    ,(23822, @PLAYER_PET_IMP,        23826) -- Master Demonologist
+    ,(23824, @PLAYER_PET_IMP,        23828) -- Master Demonologist
+    ,(23825, @PLAYER_PET_FELHUNTER,  23840) -- Master Demonologist
+    ,(23822, @PLAYER_PET_FELHUNTER,  23837) -- Master Demonologist
+    ,(23785, @PLAYER_PET_FELHUNTER,  23762) -- Master Demonologist
+    ,(23823, @PLAYER_PET_FELHUNTER,  23838) -- Master Demonologist
+    ,(23824, @PLAYER_PET_FELHUNTER,  23839) -- Master Demonologist
+    ,(23825, @PLAYER_PET_VOIDWALKER, 23844) -- Master Demonologist
+    ,(23824, @PLAYER_PET_VOIDWALKER, 23843) -- Master Demonologist
+    ,(23823, @PLAYER_PET_VOIDWALKER, 23842) -- Master Demonologist
+    ,(23822, @PLAYER_PET_VOIDWALKER, 23841) -- Master Demonologist
+    ,(23785, @PLAYER_PET_VOIDWALKER, 23760) -- Master Demonologist
+    ,(23823, @PLAYER_PET_SUCCUBUS,   23834) -- Master Demonologist
+    ,(23822, @PLAYER_PET_SUCCUBUS,   23833) -- Master Demonologist
+    ,(23824, @PLAYER_PET_SUCCUBUS,   23835) -- Master Demonologist
+    ,(23785, @PLAYER_PET_SUCCUBUS,   23761) -- Master Demonologist
+    ,(23825, @PLAYER_PET_SUCCUBUS,   23836) -- Master Demonologist
+;
+
+-- Insert spells with modified threat values ---------------------------------
+INSERT INTO `spell_threat`
+    (`entry`,`Threat`,`multiplier`,`ap_bonus`)
+VALUES
+     (72,180,1,0)    -- Shield Bash (Rank 1)
+    ,(78,20,1,0)     -- Heroic Strike (Rank 1)
+    ,(99,15,1,0)     -- Demoralizing Roar (Rank 1)
+    ,(284,39,1,0)    -- Heroic Strike (Rank 2)
+    ,(285,59,1,0)    -- Heroic Strike (Rank 3)
+    ,(770,108,1,0)   -- Faerie Fire (Rank 1)
+    ,(845,10,1,0)    -- Cleave (Rank 1)
+    ,(1160,43,1,0)   -- Demoralizing Shout (Rank 1)
+    ,(1608,78,1,0)   -- Heroic Strike (Rank 4)
+    ,(1715,61,1,0)   -- Hamstring (Rank 1)
+    ,(1735,25,1,0)   -- Demoralizing Roar (Rank 2)
+    ,(2139,300,1,0)  -- Counterspell
+    ,(2649,415,1,0)  -- Growl (Rank 1)
+    ,(3716,395,1,0)  -- Torment (Rank 1)
+    ,(6343,17,1,0)   -- Thunder Clap (Rank 1)
+    ,(6572,155,1,0)  -- Revenge (Rank 1)
+    ,(6574,195,1,0)  -- Revenge (Rank 2)
+    ,(6673,60,1,0)   -- Battle Shout (Rank 1)
+    ,(6807,59,1,0)   -- Maul (Rank 1)
+    ,(6809,89,1,0)   -- Maul (Rank 3)
+    ,(7369,40,1,0)   -- Cleave (Rank 2)
+    ,(7372,101,1,0)  -- Hamstring (Rank 2)
+    ,(7373,141,1,0)  -- Hamstring (Rank 3)
+    ,(7379,235,1,0)  -- Revenge (Rank 3)
+    ,(7386,100,1,0)  -- Sunder Armor (Rank 1)
+    ,(7405,140,1,0)  -- Sunder Armor (Rank 2)
+    ,(8198,40,1,0)   -- Thunder Clap (Rank 2)
+    ,(8204,64,1,0)   -- Thunder Clap (Rank 3)
+    ,(8205,96,1,0)   -- Thunder Clap (Rank 4)
+    ,(8380,180,1,0)  -- Sunder Armor (Rank 3)
+    ,(8972,118,1,0)  -- Maul (Rank 4)
+    ,(9490,29,1,0)   -- Demoralizing Roar (Rank 3)
+    ,(9745,148,1,0)  -- Maul (Rank 5)
+    ,(9747,36,1,0)   -- Demoralizing Roar (Rank 4)
+    ,(9880,178,1,0)  -- Maul (Rank 6)
+    ,(9881,207,1,0)  -- Maul (Rank 7)
+    ,(9898,42,1,0)   -- Demoralizing Roar (Rank 5)
+    ,(11564,98,1,0)  -- Heroic Strike (Rank 5)
+    ,(11565,118,1,0) -- Heroic Strike (Rank 6)
+    ,(11566,137,1,0) -- Heroic Strike (Rank 7)
+    ,(11567,145,1,0) -- Heroic Strike (Rank 8)
+    ,(11580,143,1,0) -- Thunder Clap (Rank 5)
+    ,(11581,180,1,0) -- Thunder Clap (Rank 6)
+    ,(11596,220,1,0) -- Sunder Armor (Rank 4)
+    ,(11597,261,1,0) -- Sunder Armor (Rank 5)
+    ,(11600,275,1,0) -- Revenge (Rank 4)
+    ,(11601,315,1,0) -- Revenge (Rank 5)
+    ,(11608,60,1,0)  -- Cleave (Rank 3)
+    ,(11609,70,1,0)  -- Cleave (Rank 4)
+    ,(14274,200,1,0) -- Distracting Shot (Rank 2)
+    ,(15629,300,1,0) -- Distracting Shot (Rank 3)
+    ,(15630,400,1,0) -- Distracting Shot (Rank 4)
+    ,(15631,500,1,0) -- Distracting Shot (Rank 5)
+    ,(15632,600,1,0) -- Distracting Shot (Rank 6)
+    ,(16857,108,1,0) -- Faerie Fire (Feral) (Rank 1)
+    ,(17735,200,1,0) -- Suffering (Rank 1)
+    ,(17750,300,1,0) -- Suffering (Rank 2)
+    ,(17751,450,1,0) -- Suffering (Rank 3)
+    ,(17752,600,1,0) -- Suffering (Rank 4)
+    ,(20243,101,1,0) -- Devastate (Rank 1)
+    ,(20569,100,1,0) -- Cleave (Rank 5)
+    ,(20736,100,1,0) -- Distracting Shot (Rank 1)
+    ,(20925,20,1,0)  -- Holy Shield (Rank 1)
+    ,(20927,30,1,0)  -- Holy Shield (Rank 2)
+    ,(20928,40,1,0)  -- Holy Shield (Rank 3)
+    ,(23922,160,1,0) -- Shield Slam (Rank 1)
+    ,(23923,190,1,0) -- Shield Slam (Rank 2)
+    ,(23924,220,1,0) -- Shield Slam (Rank 3)
+    ,(23925,250,1,0) -- Shield Slam (Rank 4)
+    ,(24394,580,1,0) -- Intimidation
+    ,(24640,5,1,0)   -- Scorpid Poison (Rank 1)
+    ,(25286,175,1,0) -- Heroic Strike (Rank 9)
+    ,(25288,355,1,0) -- Revenge (Rank 6)
+;
+
+-- Insert weapon enchant spell procs -----------------------------------------
+INSERT INTO `spell_proc_item_enchant`
+    (`entry`,`ppmRate`)
+VALUES
+     (8034,9)    -- Frostbrand Attack (Rank 1)
+    ,(13897,6)   -- Fiery Weapon
+    ,(20004,6)   -- Life Steal
+    ,(20005,1.6) -- Chilled
+;
+
+-- Insert target positions for spells ----------------------------------------
+INSERT INTO `spell_target_position`
+    (`id`,`target_map`,`target_position_x`,`target_position_y`,`target_position_z`,`target_orientation`)
+VALUES
+     (31,0,-9464,62,56,0)                               -- Teleport Goldshire
+    ,(33,0,-10643,1052,34,0)                            -- Teleport Westfall
+    ,(34,0,-10368,-422,66,0)                            -- Teleport Duskwood
+    ,(35,0,-9104,-70,83,0)                              -- Teleport Elwynn
+    ,(427,189,1688.99,1053.48,18.6775,0.00117)          -- Teleport Monastery
+    ,(428,0,-11020,1436,44,0)                           -- Teleport Moonbrook
+    ,(442,129,2592.55,1107.5,51.29,4.74)                -- Teleport Northshire Abbey
+    ,(443,0,16229,16265,14,4.74)                        -- Teleport Barracks
+    ,(444,1,-4658.12,-2526.35,82.9671,0)                -- Teleport Lighthouse
+    ,(445,0,-10566,-1189,28,0)                          -- Teleport Darkshire
+    ,(446,109,-319.24,99.9,-131.85,3.19)                -- Teleport Cemetary
+    ,(447,0,16229,16265,14,3.19)                        -- Teleport Treant
+    ,(720,531,-8043.01,1254.21,-84.19,0)                -- Entangle
+    ,(731,531,-8003,1222.9,-82.1,0)                     -- Entangle
+    ,(1121,531,-8022.68,1150.08,-89.33,0)               -- Entangle
+    ,(1936,0,16229,16265,14,0)                          -- Teleport Anvilmar
+    ,(3561,0,-9003.46,870.031,29.6206,5.28)             -- Teleport: Stormwind
+    ,(3562,0,-4613.62,-915.38,501.062,3.88)             -- Teleport: Ironforge
+    ,(3563,0,1773.47,61.121,-46.3207,0.54)              -- Teleport: Undercity
+    ,(3565,1,9660.81,2513.64,1331.66,3.06)              -- Teleport: Darnassus
+    ,(3566,1,-964.98,283.433,111.187,3.02)              -- Teleport: Thunder Bluff
+    ,(3567,1,1469.85,-4221.52,58.9939,5.98)             -- Teleport: Orgrimmar
+    ,(3721,0,16229,16265,14,3.19)                       -- Teleport Altar of the Tides
+    ,(4801,531,-8340.78,2083.81,125.649,0)              -- Teleport
+    ,(4996,1,1552.5,-4420.66,8.94802,0)                 -- [PH] Teleport to Orgrimmar
+    ,(4997,0,-14457,496.45,39.1392,0)                   -- [PH] Teleport to Booty Bay
+    ,(4998,0,-12415,207.618,31.5017,0.124875)           -- [PH] Teleport to Grom'Gol
+    ,(4999,1,-998.359,-3827.52,5.44507,4.16654)         -- [PH] Teleport to Ratchet
+    ,(6348,0,-3752.81,-851.558,10.1153,0)               -- [PH] Teleport to Menethil Harbor
+    ,(6349,1,6581.05,767.5,5.78428,6.01616)             -- [PH] Teleport to Auberdine
+    ,(6483,1,5483.9,-749.881,334.621,0)                 -- [PH] Teleport to Felwood
+    ,(6714,1,-4884.49,-1596.2,101.2,3.17)               -- Test of Faith
+    ,(6719,1,-3615.49,-4467.34,24.3141,0)               -- [PH] Teleport to Theramore
+    ,(6766,1,-2354.03,-1902.07,95.78,4.6)               -- Test of Lore
+    ,(7136,33,-105.654,2154.98,156.43,1.24782)          -- Shadow Port
+    ,(7586,33,-84.99,2151.01,155.62,1.11623)            -- Shadow Port
+    ,(7587,33,-103.46,2122.1,155.655,4.4224)            -- Shadow Port
+    ,(8136,43,116.35,239.8,-95.08,3.1)                  -- Naralex's Awakening
+    ,(8195,531,-8341.55,2118.5,133.058,0)               -- Teleport
+    ,(8606,0,325.8,-1481.47,42.68,0.47)                 -- Summon Cyclonian
+    ,(8735,48,-151.89,106.96,-39.87,4.53)               -- Blackfathom Teleport
+    ,(8995,0,-2646.62,-2455.57,80.87,0)                 -- Shoot (Rank 1)
+    ,(8996,0,-2645.25,-2449.5,82.65,0)                  -- Shoot (Rank 1)
+    ,(8997,0,-2648.88,-2442.54,80.71,0)                 -- Shoot (Rank 1)
+    ,(9002,0,-2625,-2423,79,0)                          -- Coarse Dynamite
+    ,(9003,0,-2607,-2434,80,0)                          -- Coarse Dynamite
+    ,(9004,0,-2634,-2411,81,0)                          -- Coarse Dynamite
+    ,(9055,0,-1350.83,-2740.16,62.74,2.95)              -- Create Witherbark Totem Bundle
+    ,(9268,1,8786.36,967.445,30.197,3.39632)            -- Teleport to Darnassus - Event
+    ,(11012,1,161,299.05,-51.36,0.37)                   -- Stone Watcher of Norgannon Spawn
+    ,(11362,0,-5095,757,261,4.42)                       -- Teleport to Gnomeregan
+    ,(11409,0,-14462,460,16,3.49)                       -- Teleport to Booty Bay
+    ,(11511,90,-530.754,670.571,-313.784,0)             -- Activate Bomb A
+    ,(11795,90,-530.754,670.571,-313.784,0)             -- Activate Bomb B
+    ,(12158,90,-478.448,-89.3074,-146.602,0)            -- Explosion
+    ,(12159,90,-562.7,-121.674,-150.862,0)              -- Explosion
+    ,(12241,1,-3254.76,2022.67,250.716,4.15)            -- Twin Colossals Teleport
+    ,(12510,1,3778,-4612,228,4.23263)                   -- Teleport to Azshara Tower
+    ,(12520,1,3641,-4702,121,6.25)                      -- Teleport from Azshara Tower
+    ,(12885,0,-11238.4,-2831.97,157.93,5.11)            -- Teleport to Razelikh
+    ,(13044,0,-11224.8,-2835.35,158.85,3.73)            -- Teleport to Ground
+    ,(13142,0,-11238.4,-2831.97,157.93,5.11)            -- Teleport to Razelikh
+    ,(13461,0,-11234.8,-2842.52,157.92,1.47)            -- Go Home
+    ,(13912,230,1380.58,-819.48,-92.72,4.69)            -- Princess Summons Portal
+    ,(14208,1,-6025.75,-1021.17,-216,0)                 -- JD Explosion
+    ,(15737,230,611.073,-222.201,-52.6412,0)            -- Arena Flash
+    ,(15739,230,600.752,-225.146,-52.6315,0)            -- Arena Flash
+    ,(15740,230,630.355,-174.342,-52.6395,0)            -- Arena Flash
+    ,(15741,230,633.182,-184.641,-52.6346,0)            -- Arena Flash
+    ,(17086,249,25,-216.025,-84.874,3.142)              -- Breath
+    ,(17087,249,15,-216.025,-85.8052,3.142)             -- Breath
+    ,(17088,249,5,-216.025,-86.0683,3.142)              -- Breath
+    ,(17089,249,-5,-216.025,-86.9675,3.142)             -- Breath
+    ,(17090,249,-15,-216.025,-88.3522,3.142)            -- Breath
+    ,(17091,249,-25,-216.025,-89.2463,3.142)            -- Breath
+    ,(17092,249,-35,-216.025,-87.4351,3.142)            -- Breath
+    ,(17093,249,-45,-216.025,-86.4653,3.142)            -- Breath
+    ,(17094,249,-55,-216.025,-85.3717,3.142)            -- Breath
+    ,(17095,249,-65,-216.025,-84.3052,3.142)            -- Breath
+    ,(17097,249,-75,-216.025,-83.395,3.142)             -- Breath
+    ,(17159,1,6106.4,-4191.1,849.74,0.0201)             -- Port to Haleh
+    ,(17160,1,5904.2,-4045.9,596.43,0.0083)             -- Port to Mazthoril
+    ,(17237,329,3838,-3500,195,0)                       -- Upgrade Zigguraut
+    ,(17239,329,3847,-3748,195,0)                       -- Upgrade Zigguraut
+    ,(17240,329,4057,-3665,182,0)                       -- Upgrade Zigguraut
+    ,(17278,329,3533.95,-2965.1,125,0)                  -- Cannon Fire
+    ,(17334,0,-9003.46,870.031,29.6206,2.28)            -- Portal Effect: Stormwind
+    ,(17475,329,4012.92,-3365.7,116.251,5.48)           -- Raise Dead
+    ,(17476,329,4009.1,-3352.31,116.712,0.13)           -- Raise Dead
+    ,(17477,329,4013.96,-3338.65,116.242,0.72)          -- Raise Dead
+    ,(17478,329,4051.75,-3339.05,116.241,3.62)          -- Raise Dead
+    ,(17479,329,4055.96,-3351.46,116.586,3.06)          -- Raise Dead
+    ,(17480,329,4053.11,-3364.98,116.402,2.45)          -- Raise Dead
+    ,(17607,0,-4613.62,-915.38,501.062,3.88)            -- Portal Effect: Ironforge
+    ,(17608,1,9660.81,2513.64,1331.66,3.06)             -- Portal Effect: Darnassus
+    ,(17609,1,1469.85,-4221.52,58.9939,5.98)            -- Portal Effect: Orgrimmar
+    ,(17610,1,-964.98,283.433,111.187,3.02)             -- Portal Effect: Thunder Bluff
+    ,(17611,0,1773.47,61.121,-46.3207,0.54)             -- Portal Effect: Undercity
+    ,(17863,289,250.07,0.3921,84.8408,3.149)            -- Shadow Portal
+    ,(17939,289,181.422,-91.9481,84.841,1.608)          -- Shadow Portal
+    ,(17943,289,95.1547,-1.8173,85.2289,0.043)          -- Shadow Portal
+    ,(17944,289,250.07,0.3921,72.6722,3.149)            -- Shadow Portal
+    ,(17946,289,181.422,-91.9481,70.7734,1.608)         -- Shadow Portal
+    ,(17948,289,106.154,-1.8994,75.3663,0.043)          -- Shadow Portal
+    ,(18351,249,-68.8342,-215.036,-84.0189,6.28)        -- Breath
+    ,(18352,249,-61.8343,-215.052,-84.6734,6.28)        -- Breath
+    ,(18353,249,-53.3433,-215.071,-85.5972,6.28)        -- Breath
+    ,(18354,249,-42.6193,-215.095,-86.6636,6.28)        -- Breath
+    ,(18355,249,-35.8993,-215.11,-87.1965,6.28)         -- Breath
+    ,(18356,249,-28.2483,-215.127,-89.1917,6.28)        -- Breath
+    ,(18357,249,-20.3244,-215.145,-88.964,6.28)         -- Breath
+    ,(18358,249,-11.1894,-215.166,-87.8171,6.28)        -- Breath
+    ,(18359,249,-2.04741,-215.186,-86.2797,6.28)        -- Breath
+    ,(18360,249,7.47957,-215.208,-86.0755,6.28)         -- Breath
+    ,(18361,249,20.7305,-215.238,-85.2544,6.28)         -- Breath
+    ,(18564,249,-56.5597,-241.224,-85.4236,0.666)       -- Breath
+    ,(18565,249,-51.0675,-228.91,-85.7656,0.666)        -- Breath
+    ,(18566,249,-41.7621,-221.897,-86.1141,0.666)       -- Breath
+    ,(18567,249,-35.4399,-217.26,-87.3363,0.666)        -- Breath
+    ,(18568,249,-29.4959,-213.014,-88.9104,0.666)       -- Breath
+    ,(18569,249,-23.6503,-221.969,-89.1727,0.666)       -- Breath
+    ,(18570,249,-15.6021,-216.894,-88.4032,0.666)       -- Breath
+    ,(18571,249,-14.3212,-199.462,-87.9225,0.666)       -- Breath
+    ,(18572,249,-8.4493,-193.958,-87.565,0.666)         -- Breath
+    ,(18573,249,-2.52965,-188.69,-87.1729,0.666)        -- Breath
+    ,(18574,249,3.86022,-183.227,-86.3754,0.666)        -- Breath
+    ,(18575,249,6.01671,-181.306,-85.6546,0.666)        -- Breath
+    ,(18576,249,-37.7439,-243.668,-88.2177,1.416)       -- Breath
+    ,(18578,249,-35.8053,-232.029,-87.7492,1.416)       -- Breath
+    ,(18579,249,-34.0457,-224.715,-85.5295,1.416)       -- Breath
+    ,(18580,249,-32.0816,-214.917,-88.3274,1.416)       -- Breath
+    ,(18581,249,-36.6117,-202.685,-85.6538,1.416)       -- Breath
+    ,(18582,249,-37.0673,-195.759,-87.7458,1.416)       -- Breath
+    ,(18583,249,-37.7285,-188.617,-88.0749,1.416)       -- Breath
+    ,(18584,249,6.01671,-181.306,-85.6546,3.776)        -- Breath
+    ,(18585,249,3.86022,-183.227,-86.3754,3.776)        -- Breath
+    ,(18586,249,-2.52965,-188.69,-87.1729,3.776)        -- Breath
+    ,(18587,249,-8.4493,-193.958,-87.565,3.776)         -- Breath
+    ,(18588,249,-14.3212,-199.462,-87.9225,3.776)       -- Breath
+    ,(18589,249,-15.6021,-216.894,-88.4032,3.776)       -- Breath
+    ,(18590,249,-23.6503,-221.969,-89.1727,3.776)       -- Breath
+    ,(18591,249,-29.4959,-213.014,-88.9104,3.776)       -- Breath
+    ,(18592,249,-35.4399,-217.26,-87.3363,3.776)        -- Breath
+    ,(18593,249,-41.7621,-221.897,-86.1141,3.776)       -- Breath
+    ,(18594,249,-51.0675,-228.91,-85.7656,3.776)        -- Breath
+    ,(18595,249,-56.5597,-241.224,-85.4236,3.776)       -- Breath
+    ,(18596,249,-58.2509,-189.02,-85.2923,5.587)        -- Breath
+    ,(18597,249,-52.0063,-193.797,-85.8088,5.587)       -- Breath
+    ,(18598,249,-46.1355,-198.549,-85.9018,5.587)       -- Breath
+    ,(18599,249,-40.5002,-203.001,-85.5551,5.587)       -- Breath
+    ,(18600,249,-30.9076,-211.058,-88.5921,5.587)       -- Breath
+    ,(18601,249,-20.0981,-218.681,-88.9371,5.587)       -- Breath
+    ,(18602,249,-12.2232,-224.666,-87.8563,5.587)       -- Breath
+    ,(18603,249,-6.4753,-229.099,-87.0764,5.587)        -- Breath
+    ,(18604,249,-2.01026,-232.542,-86.9951,5.587)       -- Breath
+    ,(18605,249,2.7363,-236.202,-86.7904,5.587)         -- Breath
+    ,(18606,249,7.19778,-239.643,-86.3073,5.587)        -- Breath
+    ,(18607,249,12.1209,-243.439,-85.8743,5.587)        -- Breath
+    ,(18609,249,-37.7285,-188.617,-88.0749,4.526)       -- Breath
+    ,(18611,249,-37.0673,-195.759,-87.7458,4.526)       -- Breath
+    ,(18612,249,-36.6117,-202.685,-85.6538,4.526)       -- Breath
+    ,(18613,249,-32.0816,-214.917,-88.3274,4.526)       -- Breath
+    ,(18614,249,-34.0457,-224.715,-85.5295,4.526)       -- Breath
+    ,(18615,249,-35.8053,-232.029,-87.7492,4.526)       -- Breath
+    ,(18616,249,-37.7439,-243.668,-88.2177,4.526)       -- Breath
+    ,(18617,249,12.1209,-243.439,-85.8743,2.428)        -- Breath
+    ,(18618,249,-58.2509,-189.02,-85.2923,2.428)        -- Breath
+    ,(18619,249,7.19778,-239.643,-86.3073,2.428)        -- Breath
+    ,(18620,249,2.7363,-236.202,-86.7904,2.428)         -- Breath
+    ,(18621,249,-2.01026,-232.542,-86.9951,2.428)       -- Breath
+    ,(18622,249,-6.4753,-229.099,-87.0764,2.428)        -- Breath
+    ,(18623,249,-12.2232,-224.666,-87.8563,2.428)       -- Breath
+    ,(18624,249,-20.0981,-218.681,-88.9371,2.428)       -- Breath
+    ,(18625,249,-30.9076,-211.058,-88.5921,2.428)       -- Breath
+    ,(18626,249,-40.5002,-203.001,-85.5551,2.428)       -- Breath
+    ,(18627,249,-46.1355,-198.549,-85.9018,2.428)       -- Breath
+    ,(18628,249,-52.0063,-193.797,-85.8088,2.428)       -- Breath
+    ,(18960,1,7991.88,-2679.84,512.1,0.034183)          -- Teleport: Moonglade
+    ,(20449,531,-8318.82,2058.23,133.058,0)             -- Teleport
+    ,(20534,409,736.516,-1176.35,-119.006,0)            -- Teleport
+    ,(20618,409,736.516,-1176.35,-119.006,0)            -- Teleport
+    ,(20682,1,-4018.1,-4525.24,12,6.13)                 -- Teleport
+    ,(21128,349,419.84,11.3365,-131.079,0)              -- Maraudon Portal Effect
+    ,(21132,249,-120.471,-214.335,-71.9481,3.142)       -- Breath
+    ,(21133,249,-142.719,-213.206,-68.8335,3.142)       -- Breath
+    ,(21135,249,-162.585,-205.683,-68.7282,3.142)       -- Breath
+    ,(21136,249,-194.92,-206.546,-68.7282,3.142)        -- Breath
+    ,(21137,249,-173.573,-186.406,-66.1293,3.142)       -- Breath
+    ,(21138,249,-164.067,-164.104,-59.5405,3.142)       -- Breath
+    ,(21139,249,-144.485,-149.742,-53.8462,3.142)       -- Breath
+    ,(22191,249,-42.4794,-270.487,-92.11,0)             -- Heated Ground
+    ,(22192,249,-59.0983,-269.976,-94.3079,0)           -- Heated Ground
+    ,(22193,249,-72.5971,-264.395,-94.267,0)            -- Heated Ground
+    ,(22194,249,-88.7517,-259.617,-93.7426,0)           -- Heated Ground
+    ,(22195,249,-104.072,-244.79,-94.0876,0)            -- Heated Ground
+    ,(22196,249,-106.875,-223.247,-94.6765,0)           -- Heated Ground
+    ,(22197,249,-107.076,-197.489,-94.1113,0)           -- Heated Ground
+    ,(22198,249,-102.751,-181.577,-94.06,0)             -- Heated Ground
+    ,(22199,249,-89.9793,-171.261,-93.8249,0)           -- Heated Ground
+    ,(22200,249,-72.6705,-164.756,-94.2678,0)           -- Heated Ground
+    ,(22201,249,-50.8834,-159.992,-93.6519,0)           -- Heated Ground
+    ,(22202,249,-40.259,-158.961,-91.75,0)              -- Heated Ground
+    ,(22267,249,-85,-216.025,-82.5516,3.142)            -- Breath
+    ,(22268,249,-96.8227,-214.425,-82.2065,3.142)       -- Breath
+    ,(22563,30,-1345.82,-289.861,90.8835,5.19479)       -- Recall
+    ,(22564,30,665.02,-27.7919,50.6199,3.36559)         -- Recall
+    ,(22651,429,-25.98,-448.24,-36.09,3.13)             -- Sacrifice
+    ,(22668,469,-7581.11,-1216.19,476.8,0)              -- Shadowblink
+    ,(22669,469,-7542.47,-1191.92,476.355,0)            -- Shadowblink
+    ,(22670,469,-7506.58,-1165.26,476.796,0)            -- Shadowblink
+    ,(22671,469,-7561.54,-1244.01,476.8,0)              -- Shadowblink
+    ,(22674,469,-7538.63,-1273.64,476.8,0)              -- Shadowblink
+    ,(22675,469,-7500.7,-1249.89,476.798,0)             -- Shadowblink
+    ,(22676,469,-7469.93,-1227.93,476.777,0)            -- Shadowblink
+    ,(22950,429,-37.5643,813.433,-7.43823,4.77)         -- Portal of Immol'thar
+    ,(22951,1,-3760.87,1086.28,131.96,1.53)             -- Summon Player
+    ,(22972,469,-7538.63,-1277.56,476.799,0)            -- Shadow Flame
+    ,(22975,469,-7557.95,-1249.87,476.799,0)            -- Shadow Flame
+    ,(22976,469,-7579.59,-1218.76,476.799,0)            -- Shadow Flame
+    ,(22977,469,-7599.83,-1190.94,475.472,0)            -- Shadow Flame
+    ,(22978,469,-7497.51,-1249.17,476.798,0)            -- Shadow Flame
+    ,(22979,469,-7519.9,-1218.85,476.799,0)             -- Shadow Flame
+    ,(22980,469,-7540.82,-1190.7,476.355,0)             -- Shadow Flame
+    ,(22981,469,-7461.41,-1226.29,476.781,0)            -- Shadow Flame
+    ,(22982,469,-7483.16,-1195.39,476.799,0)            -- Shadow Flame
+    ,(22983,469,-7504.77,-1164.43,476.797,0)            -- Shadow Flame
+    ,(22984,469,-7524.15,-1138.16,473.348,0)            -- Shadow Flame
+    ,(22985,469,-7538.63,-1277.56,476.799,0)            -- Shadow Flame
+    ,(23441,1,-7109.1,-3825.21,10.151,2.8331)           -- Gadgetzan Transporter
+    ,(23442,1,6755.33,-4658.09,724.8,3.4049)            -- Everlook Transporter
+    ,(23446,1,-7303,-3545,137,2.8331)                   -- Gadgetzan Transporter Failure
+    ,(23460,469,-7672.46,-1107.19,396.65,0.59)          -- Teleport to Blackwing Lair DND
+    ,(24228,309,-11516.1,-1605.31,41.3,0)               -- Vanish
+    ,(24325,309,-11726.3,-1777.38,10.46,0.16)           -- Pagle's Point Cast - Create Mudskunk Lure
+    ,(24593,309,-11726.3,-1777.38,10.46,0.16)           -- Pagle's Point Cast - Create Splash and Quake
+    ,(24730,1,-1327.66,85.9815,134.169,0)               -- Cannon Prep
+    ,(25139,409,1096,-467,-104.6,3.64)                  -- Teleport to Molten Core DND
+    ,(25182,1,-8124.41,1525.13,16.368,3.05)             -- Staghelm Shatters Hammer DND
+    ,(25725,509,-9717.2,1517.81,27.6,5.4)               -- Paralyze
+    ,(26448,1,7571.95,-2202.04,474.86,5.4358)           -- Holiday - Teleport: Moonglade
+    ,(26450,1,10150.1,2602,1330.83,4.80894)             -- Holiday - Lunar Teleport: Darnassus
+    ,(26452,0,-4663,-955.663,500.377,0.722862)          -- Holiday - Lunar Teleport: Ironforge
+    ,(26453,1,1982.9,-4255.62,31.6692,3.31984)          -- Holiday - Lunar Teleport: Orgrimmar
+    ,(26454,0,-8748.48,1073.61,90.4898,5.03789)         -- Holiday - Lunar Teleport: Stormwind
+    ,(26455,1,-1031.45,-230.867,160.14,3.28358)         -- Holiday - Lunar Teleport: Thunderbluff
+    ,(26456,0,1642.01,239.002,62.5918,3.02316)          -- Holiday - Lunar Teleport: Undercity
+    ,(28025,533,2692,-3399.27,267.686,4.70454)          -- Teleport Left
+    ,(28026,533,2692,-3321.86,267.686,2.19126)          -- Teleport Right
+    ,(28280,533,3125.44,-3309.74,293.251,3.14929)       -- Bombard Slime
+    ,(28444,533,3005.74,-3434.27,304.196,0)             -- Portal Effect: Deathknight Wing
+    ,(29181,531,-8971.81,1321.47,-104.249,0)            -- Teleport to Twin Emps Effect DND
+    ,(29190,531,-8632.84,2055.87,108.86,0)              -- Teleport to Final Chamber Effect DND
+    ,(29216,533,2633.49,-3529.56,274.111,0)             -- Teleport
+    ,(29217,533,2646.37,-3466.23,263.098,6.17666)       -- Summon Skeleton
+    ,(29224,533,2704.86,-3458.79,264.067,5.43839)       -- Summon Skeleton
+    ,(29225,533,2725.71,-3463.45,263.415,5.45017)       -- Summon Skeleton
+    ,(29226,533,2724.76,-3514.27,263.067,2.87018)       -- Summon Skeleton
+    ,(29227,533,2663.92,-3464.7,262.574,5.15958)        -- Summon Skeleton
+    ,(29231,533,2685.06,-3502.37,261.315,0)             -- Teleport Return
+    ,(29237,533,2648.83,-3467.3,262.399,5.46297)        -- Summon Skeletons
+    ,(29238,533,2684.95,-3457.55,262.578,4.62159)       -- Summon Skeleton
+    ,(29239,533,2706.78,-3461.59,262.517,4.00358)       -- Summon Skeleton
+    ,(29247,533,2646.37,-3466.23,263.098,5.46297)       -- Summon Skeleton
+    ,(29248,533,2704.86,-3458.79,264.067,4.31236)       -- Summon Skeleton
+    ,(29249,533,2724.76,-3514.27,263.067,3.09084)       -- Summon Skeleton
+    ,(29255,533,2704.22,-3461.86,262.546,4.37027)       -- Summon Skeleton
+    ,(29256,533,2663.7,-3461.9,263.763,5.07774)         -- Summon Skeleton
+    ,(29257,533,2704.86,-3458.79,264.067,3.85584)       -- Summon Skeleton
+    ,(29258,533,2722.03,-3514.3,262.354,2.84269)        -- Summon Skeleton
+    ,(29262,533,2727.58,-3535.23,263.012,2.60314)       -- Summon Skeleton
+    ,(29267,533,2711.72,-3458.56,262.384,4.02864)       -- Summon Skeleton
+    ,(29268,533,2646.93,-3470.95,262.427,5.51363)       -- Summon Skeleton
+    ,(29273,533,3498.28,-5349.9,144.968,1.31324)        -- Teleport
+    ,(29318,533,3493.45,-5375.38,138.168,0)             -- Frost Breath
+    ,(30211,533,2794.61,-3707.68,276.552,2.32)          -- Teleport Self
+;
+
+-- Insert spells that teach other spells -------------------------------------
+INSERT INTO `spell_learn_spell`
+    (`entry`,`SpellID`,`Active`)
+VALUES
+     (2842,8681,1)   -- 'Poisons' teaches 'Instant Poison (Rank 1)'
+    ,(5149,1853,1)   -- 'Beast Training' teaches 'Growl (Rank 1)'
+    ,(5149,14922,1)  -- 'Beast Training' teaches 'Growl (Rank 2)'
+    ,(5784,33388,1)  -- 'Summon Felsteed (Summon)' teaches 'Riding (Apprentice)'
+    ,(13819,33388,1) -- 'Summon Warhorse (Summon)' teaches 'Riding (Apprentice)'
+    ,(17002,24867,0) -- 'Feline Swiftness' teaches 'Feline Swiftness Passive 1a'
+    ,(23161,33391,1) -- 'Summon Dreadsteed (Summon)' teaches 'Riding (Journeyman)'
+    ,(23214,33391,1) -- 'Summon Charger (Summon)' teaches 'Riding (Journeyman)'
+    ,(24866,24864,0) -- 'Feline Swiftness' teaches 'Feline Swiftness Passive 2a'
+;
+
+-- Insert spell chains for ranked spells -------------------------------------
+INSERT INTO `spell_chain`
+    (`spell_id`,`prev_spell`,`first_spell`,`rank`,`req_spell`)
+VALUES
+     (10,0,10,1,0)      -- 'Blizzard (Rank 1)'
+    ,(17,0,17,1,0)      -- 'Power Word: Shield (Rank 1)'
+    ,(116,0,116,1,0)    -- 'Frostbolt (Rank 1)'
+    ,(118,0,118,1,0)    -- 'Polymorph (Rank 1)'
+    ,(120,0,120,1,0)    -- 'Cone of Cold (Rank 1)'
+    ,(122,0,122,1,0)    -- 'Frost Nova (Rank 1)'
+    ,(133,0,133,1,0)    -- 'Fireball (Rank 1)'
+    ,(136,0,136,1,0)    -- 'Mend Pet (Rank 1)'
+    ,(139,0,139,1,0)    -- 'Renew (Rank 1)'
+    ,(143,133,133,2,0)    -- 'Fireball (Rank 2)'
+    ,(145,143,133,3,0)    -- 'Fireball (Rank 3)'
+    ,(168,0,168,1,0)    -- 'Frost Armor (Rank 1)'
+    ,(172,0,172,1,0)    -- 'Corruption (Rank 1)'
+    ,(205,116,116,2,0)    -- 'Frostbolt (Rank 2)'
+    ,(324,0,324,1,0)    -- 'Lightning Shield (Rank 1)'
+    ,(325,324,324,2,0)    -- 'Lightning Shield (Rank 2)'
+    ,(331,0,331,1,0)    -- 'Healing Wave (Rank 1)'
+    ,(332,331,331,2,0)    -- 'Healing Wave (Rank 2)'
+    ,(339,0,339,1,0)    -- 'Entangling Roots (Rank 1)'
+    ,(348,0,348,1,0)    -- 'Immolate (Rank 1)'
+    ,(370,0,370,1,0)    -- 'Purge (Rank 1)'
+    ,(403,0,403,1,0)    -- 'Lightning Bolt (Rank 1)'
+    ,(421,0,421,1,0)    -- 'Chain Lightning (Rank 1)'
+    ,(453,0,453,1,0)    -- 'Mind Soothe (Rank 1)'
+    ,(467,0,467,1,0)    -- 'Thorns (Rank 1)'
+    ,(498,0,498,1,0)    -- 'Divine Protection (Rank 1)'
+    ,(527,0,527,1,0)    -- 'Dispel Magic (Rank 1)'
+    ,(529,403,403,2,0)    -- 'Lightning Bolt (Rank 2)'
+    ,(543,0,543,1,0)    -- 'Fire Ward (Rank 1)'
+    ,(547,332,331,3,0)    -- 'Healing Wave (Rank 3)'
+    ,(548,529,403,3,0)    -- 'Lightning Bolt (Rank 3)'
+    ,(585,0,585,1,0)    -- 'Smite (Rank 1)'
+    ,(586,0,586,1,0)    -- 'Fade (Rank 1)'
+    ,(587,0,587,1,0)    -- 'Conjure Food (Rank 1)'
+    ,(588,0,588,1,0)    -- 'Inner Fire (Rank 1)'
+    ,(589,0,589,1,0)    -- 'Shadow Word: Pain (Rank 1)'
+    ,(591,585,585,2,0)    -- 'Smite (Rank 2)'
+    ,(592,17,17,2,0)    -- 'Power Word: Shield (Rank 2)'
+    ,(594,589,589,2,0)    -- 'Shadow Word: Pain (Rank 2)'
+    ,(596,0,596,1,0)    -- 'Prayer of Healing (Rank 1)'
+    ,(597,587,587,2,0)    -- 'Conjure Food (Rank 2)'
+    ,(598,591,585,3,0)    -- 'Smite (Rank 3)'
+    ,(600,592,17,3,0)    -- 'Power Word: Shield (Rank 3)'
+    ,(602,7128,588,3,0)    -- 'Inner Fire (Rank 3)'
+    ,(604,0,604,1,0)    -- 'Dampen Magic (Rank 1)'
+    ,(605,0,605,1,0)    -- 'Mind Control (Rank 1)'
+    ,(635,0,635,1,0)    -- 'Holy Light (Rank 1)'
+    ,(639,635,635,2,0)    -- 'Holy Light (Rank 2)'
+    ,(642,0,642,1,0)    -- 'Divine Shield (Rank 1)'
+    ,(647,639,635,3,0)    -- 'Holy Light (Rank 3)'
+    ,(686,0,686,1,0)    -- 'Shadow Bolt (Rank 1)'
+    ,(687,0,687,1,0)    -- 'Demon Skin (Rank 1)'
+    ,(689,0,689,1,0)    -- 'Drain Life (Rank 1)'
+    ,(693,0,693,1,0)    -- 'Create Soulstone (Minor)'
+    ,(695,686,686,2,0)    -- 'Shadow Bolt (Rank 2)'
+    ,(696,687,687,2,0)    -- 'Demon Skin (Rank 2)'
+    ,(699,689,689,2,0)    -- 'Drain Life (Rank 2)'
+    ,(702,0,702,1,0)    -- 'Curse of Weakness (Rank 1)'
+    ,(704,0,704,1,0)    -- 'Curse of Recklessness (Rank 1)'
+    ,(705,695,686,3,0)    -- 'Shadow Bolt (Rank 3)'
+    ,(706,0,706,1,0)    -- 'Demon Armor (Rank 1)'
+    ,(707,348,348,2,0)    -- 'Immolate (Rank 2)'
+    ,(709,699,689,3,0)    -- 'Drain Life (Rank 3)'
+    ,(710,0,710,1,0)    -- 'Banish (Rank 1)'
+    ,(724,0,724,1,0)    -- 'Lightwell (Rank 1)'
+    ,(740,0,740,1,0)    -- 'Tranquility (Rank 1)'
+    ,(755,0,755,1,0)    -- 'Health Funnel (Rank 1)'
+    ,(770,0,770,1,0)    -- 'Faerie Fire (Rank 1)'
+    ,(774,0,774,1,0)    -- 'Rejuvenation (Rank 1)'
+    ,(778,770,770,2,0)    -- 'Faerie Fire (Rank 2)'
+    ,(781,0,781,1,0)    -- 'Disengage (Rank 1)'
+    ,(782,467,467,2,0)    -- 'Thorns (Rank 2)'
+    ,(837,205,116,3,0)    -- 'Frostbolt (Rank 3)'
+    ,(853,0,853,1,0)    -- 'Hammer of Justice (Rank 1)'
+    ,(865,122,122,2,0)    -- 'Frost Nova (Rank 2)'
+    ,(879,0,879,1,0)    -- 'Exorcism (Rank 1)'
+    ,(905,325,324,3,0)    -- 'Lightning Shield (Rank 3)'
+    ,(913,547,331,4,0)    -- 'Healing Wave (Rank 4)'
+    ,(915,548,403,4,0)    -- 'Lightning Bolt (Rank 4)'
+    ,(930,421,421,2,0)    -- 'Chain Lightning (Rank 2)'
+    ,(939,913,331,5,0)    -- 'Healing Wave (Rank 5)'
+    ,(943,915,403,5,0)    -- 'Lightning Bolt (Rank 5)'
+    ,(945,905,324,4,0)    -- 'Lightning Shield (Rank 4)'
+    ,(959,939,331,6,0)    -- 'Healing Wave (Rank 6)'
+    ,(970,594,589,3,0)    -- 'Shadow Word: Pain (Rank 3)'
+    ,(976,0,976,1,0)    -- 'Shadow Protection (Rank 1)'
+    ,(980,0,980,1,0)    -- 'Curse of Agony (Rank 1)'
+    ,(984,598,585,4,0)    -- 'Smite (Rank 4)'
+    ,(988,527,527,2,0)    -- 'Dispel Magic (Rank 2)'
+    ,(990,597,587,3,0)    -- 'Conjure Food (Rank 3)'
+    ,(992,970,589,4,0)    -- 'Shadow Word: Pain (Rank 4)'
+    ,(996,596,596,2,0)    -- 'Prayer of Healing (Rank 2)'
+    ,(1004,984,585,5,0)    -- 'Smite (Rank 5)'
+    ,(1006,602,588,4,0)    -- 'Inner Fire (Rank 4)'
+    ,(1008,0,1008,1,0)    -- 'Amplify Magic (Rank 1)'
+    ,(1014,980,980,2,0)    -- 'Curse of Agony (Rank 2)'
+    ,(1020,642,642,2,0)    -- 'Divine Shield (Rank 2)'
+    ,(1022,0,1022,1,0)    -- 'Blessing of Protection (Rank 1)'
+    ,(1026,647,635,4,0)    -- 'Holy Light (Rank 4)'
+    ,(1038,0,1038,1,0)    -- 'Blessing of Salvation'
+    ,(1042,1026,635,5,0)    -- 'Holy Light (Rank 5)'
+    ,(1058,774,774,2,0)    -- 'Rejuvenation (Rank 2)'
+    ,(1062,339,339,2,0)    -- 'Entangling Roots (Rank 2)'
+    ,(1064,0,1064,1,0)    -- 'Chain Heal (Rank 1)'
+    ,(1075,782,467,3,0)    -- 'Thorns (Rank 3)'
+    ,(1086,706,706,2,0)    -- 'Demon Armor (Rank 2)'
+    ,(1088,705,686,4,0)    -- 'Shadow Bolt (Rank 4)'
+    ,(1094,707,348,3,0)    -- 'Immolate (Rank 3)'
+    ,(1098,0,1098,1,0)    -- 'Enslave Demon (Rank 1)'
+    ,(1106,1088,686,5,0)    -- 'Shadow Bolt (Rank 5)'
+    ,(1108,702,702,2,0)    -- 'Curse of Weakness (Rank 2)'
+    ,(1120,0,1120,1,0)    -- 'Drain Soul (Rank 1)'
+    ,(1126,0,1126,1,0)    -- 'Mark of the Wild (Rank 1)'
+    ,(1130,0,1130,1,0)    -- 'Hunter\'s Mark (Rank 1)'
+    ,(1243,0,1243,1,0)    -- 'Power Word: Fortitude (Rank 1)'
+    ,(1244,1243,1243,2,0)    -- 'Power Word: Fortitude (Rank 2)'
+    ,(1245,1244,1243,3,0)    -- 'Power Word: Fortitude (Rank 3)'
+    ,(1430,1058,774,3,0)    -- 'Rejuvenation (Rank 3)'
+    ,(1449,0,1449,1,0)    -- 'Arcane Explosion (Rank 1)'
+    ,(1454,0,1454,1,0)    -- 'Life Tap (Rank 1)'
+    ,(1455,1454,1454,2,0)    -- 'Life Tap (Rank 2)'
+    ,(1456,1455,1454,3,0)    -- 'Life Tap (Rank 3)'
+    ,(1459,0,1459,1,0)    -- 'Arcane Intellect (Rank 1)'
+    ,(1460,1459,1459,2,0)    -- 'Arcane Intellect (Rank 2)'
+    ,(1461,1460,1459,3,0)    -- 'Arcane Intellect (Rank 3)'
+    ,(1463,0,1463,1,0)    -- 'Mana Shield (Rank 1)'
+    ,(1490,0,1490,1,0)    -- 'Curse of the Elements (Rank 1)'
+    ,(1495,0,1495,1,0)    -- 'Mongoose Bite (Rank 1)'
+    ,(1499,0,1499,1,0)    -- 'Freezing Trap (Rank 1)'
+    ,(1510,0,1510,1,0)    -- 'Volley (Rank 1)'
+    ,(1513,0,1513,1,0)    -- 'Scare Beast (Rank 1)'
+    ,(1535,0,1535,1,0)    -- 'Fire Nova Totem (Rank 1)'
+    ,(1714,0,1714,1,0)    -- 'Curse of Tongues (Rank 1)'
+    ,(1949,0,1949,1,0)    -- 'Hellfire (Rank 1)'
+    ,(1978,0,1978,1,0)    -- 'Serpent Sting (Rank 1)'
+    ,(2006,0,2006,1,0)    -- 'Resurrection (Rank 1)'
+    ,(2008,0,2008,1,0)    -- 'Ancestral Spirit (Rank 1)'
+    ,(2010,2006,2006,2,0)    -- 'Resurrection (Rank 2)'
+    ,(2050,0,2050,1,0)    -- 'Lesser Heal (Rank 1)'
+    ,(2052,2050,2050,2,0)    -- 'Lesser Heal (Rank 2)'
+    ,(2053,2052,2050,3,0)    -- 'Lesser Heal (Rank 3)'
+    ,(2054,0,2054,1,0)    -- 'Heal (Rank 1)'
+    ,(2055,2054,2054,2,0)    -- 'Heal (Rank 2)'
+    ,(2060,0,2060,1,0)    -- 'Greater Heal (Rank 1)'
+    ,(2061,0,2061,1,0)    -- 'Flash Heal (Rank 1)'
+    ,(2090,1430,774,4,0)    -- 'Rejuvenation (Rank 4)'
+    ,(2091,2090,774,5,0)    -- 'Rejuvenation (Rank 5)'
+    ,(2096,0,2096,1,0)    -- 'Mind Vision (Rank 1)'
+    ,(2120,0,2120,1,0)    -- 'Flamestrike (Rank 1)'
+    ,(2121,2120,2120,2,0)    -- 'Flamestrike (Rank 2)'
+    ,(2136,0,2136,1,0)    -- 'Fire Blast (Rank 1)'
+    ,(2137,2136,2136,2,0)    -- 'Fire Blast (Rank 2)'
+    ,(2138,2137,2136,3,0)    -- 'Fire Blast (Rank 3)'
+    ,(2362,0,2362,1,0)    -- 'Create Spellstone'
+    ,(2637,0,2637,1,0)    -- 'Hibernate (Rank 1)'
+    ,(2643,0,2643,1,0)    -- 'Multi-Shot (Rank 1)'
+    ,(2651,0,2651,1,0)    -- 'Elune\'s Grace (Rank 1)'
+    ,(2652,0,2652,1,0)    -- 'Touch of Weakness (Rank 1)'
+    ,(2767,992,589,5,0)    -- 'Shadow Word: Pain (Rank 5)'
+    ,(2791,1245,1243,4,0)    -- 'Power Word: Fortitude (Rank 4)'
+    ,(2812,0,2812,1,0)    -- 'Holy Wrath (Rank 1)'
+    ,(2818,0,2818,1,0)    -- 'Deadly Poison (Rank 1)'
+    ,(2819,2818,2818,2,0)    -- 'Deadly Poison II (Rank 2)'
+    ,(2835,0,2835,1,0)    -- 'Deadly Poison (Rank 1)'
+    ,(2837,2835,2835,2,0)    -- 'Deadly Poison II (Rank 2)'
+    ,(2860,930,421,3,0)    -- 'Chain Lightning (Rank 3)'
+    ,(2878,0,2878,1,0)    -- 'Turn Undead (Rank 1)'
+    ,(2908,0,2908,1,0)    -- 'Soothe Animal (Rank 1)'
+    ,(2912,0,2912,1,0)    -- 'Starfire (Rank 1)'
+    ,(2941,1094,348,4,0)    -- 'Immolate (Rank 4)'
+    ,(2944,0,2944,1,0)    -- 'Devouring Plague (Rank 1)'
+    ,(2948,0,2948,1,0)    -- 'Scorch (Rank 1)'
+    ,(2973,0,2973,1,0)    -- 'Raptor Strike (Rank 1)'
+    ,(2974,0,2974,1,0)    -- 'Wing Clip (Rank 1)'
+    ,(3034,0,3034,1,0)    -- 'Viper Sting (Rank 1)'
+    ,(3044,0,3044,1,0)    -- 'Arcane Shot (Rank 1)'
+    ,(3111,136,136,2,0)    -- 'Mend Pet (Rank 2)'
+    ,(3140,145,133,4,0)    -- 'Fireball (Rank 4)'
+    ,(3420,0,3420,1,0)    -- 'Crippling Poison (Rank 1)'
+    ,(3421,3420,3420,2,0)    -- 'Crippling Poison II (Rank 2)'
+    ,(3472,1042,635,6,0)    -- 'Holy Light (Rank 6)'
+    ,(3599,0,3599,1,0)    -- 'Searing Totem (Rank 1)'
+    ,(3627,2091,774,6,0)    -- 'Rejuvenation (Rank 6)'
+    ,(3661,3111,136,3,0)    -- 'Mend Pet (Rank 3)'
+    ,(3662,3661,136,4,0)    -- 'Mend Pet (Rank 4)'
+    ,(3698,755,755,2,0)    -- 'Health Funnel (Rank 2)'
+    ,(3699,3698,755,3,0)    -- 'Health Funnel (Rank 3)'
+    ,(3700,3699,755,4,0)    -- 'Health Funnel (Rank 4)'
+    ,(3747,600,17,4,0)    -- 'Power Word: Shield (Rank 4)'
+    ,(5138,0,5138,1,0)    -- 'Drain Mana (Rank 1)'
+    ,(5143,0,5143,1,0)    -- 'Arcane Missiles (Rank 1)'
+    ,(5144,5143,5143,2,0)    -- 'Arcane Missiles (Rank 2)'
+    ,(5145,5144,5143,3,0)    -- 'Arcane Missiles (Rank 3)'
+    ,(5176,0,5176,1,0)    -- 'Wrath (Rank 1)'
+    ,(5177,5176,5176,2,0)    -- 'Wrath (Rank 2)'
+    ,(5178,5177,5176,3,0)    -- 'Wrath (Rank 3)'
+    ,(5179,5178,5176,4,0)    -- 'Wrath (Rank 4)'
+    ,(5180,5179,5176,5,0)    -- 'Wrath (Rank 5)'
+    ,(5185,0,5185,1,0)    -- 'Healing Touch (Rank 1)'
+    ,(5186,5185,5185,2,0)    -- 'Healing Touch (Rank 2)'
+    ,(5187,5186,5185,3,0)    -- 'Healing Touch (Rank 3)'
+    ,(5188,5187,5185,4,0)    -- 'Healing Touch (Rank 4)'
+    ,(5189,5188,5185,5,0)    -- 'Healing Touch (Rank 5)'
+    ,(5195,1062,339,3,0)    -- 'Entangling Roots (Rank 3)'
+    ,(5196,5195,339,4,0)    -- 'Entangling Roots (Rank 4)'
+    ,(5232,1126,1126,2,0)    -- 'Mark of the Wild (Rank 2)'
+    ,(5234,6756,1126,4,0)    -- 'Mark of the Wild (Rank 4)'
+    ,(5394,0,5394,1,0)    -- 'Healing Stream Totem (Rank 1)'
+    ,(5484,0,5484,1,0)    -- 'Howl of Terror (Rank 1)'
+    ,(5504,0,5504,1,0)    -- 'Conjure Water (Rank 1)'
+    ,(5505,5504,5504,2,0)    -- 'Conjure Water (Rank 2)'
+    ,(5506,5505,5504,3,0)    -- 'Conjure Water (Rank 3)'
+    ,(5570,0,5570,1,0)    -- 'Insect Swarm (Rank 1)'
+    ,(5573,498,498,2,0)    -- 'Divine Protection (Rank 2)'
+    ,(5588,853,853,2,0)    -- 'Hammer of Justice (Rank 2)'
+    ,(5589,5588,853,3,0)    -- 'Hammer of Justice (Rank 3)'
+    ,(5599,1022,1022,2,0)    -- 'Blessing of Protection (Rank 2)'
+    ,(5614,879,879,2,0)    -- 'Exorcism (Rank 2)'
+    ,(5615,5614,879,3,0)    -- 'Exorcism (Rank 3)'
+    ,(5627,2878,2878,2,0)    -- 'Turn Undead (Rank 2)'
+    ,(5672,0,5672,1,0)    -- 'Healing Stream (Rank 1)'
+    ,(5675,0,5675,1,0)    -- 'Mana Spring Totem (Rank 1)'
+    ,(5676,0,5676,1,0)    -- 'Searing Pain (Rank 1)'
+    ,(5699,6202,6201,3,0)    -- 'Create Healthstone'
+    ,(5730,0,5730,1,0)    -- 'Stoneclaw Totem (Rank 1)'
+    ,(5740,0,5740,1,0)    -- 'Rain of Fire (Rank 1)'
+    ,(5763,0,5763,1,0)    -- 'Mind-numbing Poison (Rank 1)'
+    ,(5782,0,5782,1,0)    -- 'Fear (Rank 1)'
+    ,(6041,943,403,6,0)    -- 'Lightning Bolt (Rank 6)'
+    ,(6060,1004,585,6,0)    -- 'Smite (Rank 6)'
+    ,(6063,2055,2054,3,0)    -- 'Heal (Rank 3)'
+    ,(6064,6063,2054,4,0)    -- 'Heal (Rank 4)'
+    ,(6065,3747,17,5,0)    -- 'Power Word: Shield (Rank 5)'
+    ,(6066,6065,17,6,0)    -- 'Power Word: Shield (Rank 6)'
+    ,(6074,139,139,2,0)    -- 'Renew (Rank 2)'
+    ,(6075,6074,139,3,0)    -- 'Renew (Rank 3)'
+    ,(6076,6075,139,4,0)    -- 'Renew (Rank 4)'
+    ,(6077,6076,139,5,0)    -- 'Renew (Rank 5)'
+    ,(6078,6077,139,6,0)    -- 'Renew (Rank 6)'
+    ,(6117,0,6117,1,0)    -- 'Mage Armor (Rank 1)'
+    ,(6127,5506,5504,4,0)    -- 'Conjure Water (Rank 4)'
+    ,(6129,990,587,4,0)    -- 'Conjure Food (Rank 4)'
+    ,(6131,865,122,3,0)    -- 'Frost Nova (Rank 3)'
+    ,(6141,10,10,2,0)    -- 'Blizzard (Rank 2)'
+    ,(6143,0,6143,1,0)    -- 'Frost Ward (Rank 1)'
+    ,(6201,0,6201,1,0)    -- 'Create Healthstone (Minor)'
+    ,(6202,6201,6201,2,0)    -- 'Create Healthstone (Lesser)'
+    ,(6205,1108,702,3,0)    -- 'Curse of Weakness (Rank 3)'
+    ,(6213,5782,5782,2,0)    -- 'Fear (Rank 2)'
+    ,(6215,6213,5782,3,0)    -- 'Fear (Rank 3)'
+    ,(6217,1014,980,3,0)    -- 'Curse of Agony (Rank 3)'
+    ,(6219,5740,5740,2,0)    -- 'Rain of Fire (Rank 2)'
+    ,(6222,172,172,2,0)    -- 'Corruption (Rank 2)'
+    ,(6223,6222,172,3,0)    -- 'Corruption (Rank 3)'
+    ,(6226,5138,5138,2,0)    -- 'Drain Mana (Rank 2)'
+    ,(6229,0,6229,1,0)    -- 'Shadow Ward (Rank 1)'
+    ,(6353,0,6353,1,0)    -- 'Soul Fire (Rank 1)'
+    ,(6363,3599,3599,2,0)    -- 'Searing Totem (Rank 2)'
+    ,(6364,6363,3599,3,0)    -- 'Searing Totem (Rank 3)'
+    ,(6365,6364,3599,4,0)    -- 'Searing Totem (Rank 4)'
+    ,(6366,0,6366,1,0)    -- 'Create Firestone (Lesser)'
+    ,(6371,5672,5672,2,0)    -- 'Healing Stream (Rank 2)'
+    ,(6372,6371,5672,3,0)    -- 'Healing Stream (Rank 3)'
+    ,(6375,5394,5394,2,0)    -- 'Healing Stream Totem (Rank 2)'
+    ,(6377,6375,5394,3,0)    -- 'Healing Stream Totem (Rank 3)'
+    ,(6390,5730,5730,2,0)    -- 'Stoneclaw Totem (Rank 2)'
+    ,(6391,6390,5730,3,0)    -- 'Stoneclaw Totem (Rank 3)'
+    ,(6392,6391,5730,4,0)    -- 'Stoneclaw Totem (Rank 4)'
+    ,(6756,5232,1126,3,0)    -- 'Mark of the Wild (Rank 3)'
+    ,(6778,5189,5185,6,0)    -- 'Healing Touch (Rank 6)'
+    ,(6780,5180,5176,6,0)    -- 'Wrath (Rank 6)'
+    ,(6789,0,6789,1,0)    -- 'Death Coil (Rank 1)'
+    ,(6940,0,6940,1,0)    -- 'Blessing of Sacrifice (Rank 1)'
+    ,(7128,588,588,2,0)    -- 'Inner Fire (Rank 2)'
+    ,(7300,168,168,2,0)    -- 'Frost Armor (Rank 2)'
+    ,(7301,7300,168,3,0)    -- 'Frost Armor (Rank 3)'
+    ,(7302,0,7302,1,0)    -- 'Ice Armor (Rank 1)'
+    ,(7320,7302,7302,2,0)    -- 'Ice Armor (Rank 2)'
+    ,(7322,837,116,4,0)    -- 'Frostbolt (Rank 4)'
+    ,(7328,0,7328,1,0)    -- 'Redemption (Rank 1)'
+    ,(7641,1106,686,6,0)    -- 'Shadow Bolt (Rank 6)'
+    ,(7646,6205,702,4,0)    -- 'Curse of Weakness (Rank 4)'
+    ,(7648,6223,172,4,0)    -- 'Corruption (Rank 4)'
+    ,(7651,709,689,4,0)    -- 'Drain Life (Rank 4)'
+    ,(7658,704,704,2,0)    -- 'Curse of Recklessness (Rank 2)'
+    ,(7659,7658,704,3,0)    -- 'Curse of Recklessness (Rank 3)'
+    ,(8004,0,8004,1,0)    -- 'Lesser Healing Wave (Rank 1)'
+    ,(8005,959,331,7,0)    -- 'Healing Wave (Rank 7)'
+    ,(8008,8004,8004,2,0)    -- 'Lesser Healing Wave (Rank 2)'
+    ,(8010,8008,8004,3,0)    -- 'Lesser Healing Wave (Rank 3)'
+    ,(8012,370,370,2,0)    -- 'Purge (Rank 2)'
+    ,(8017,0,8017,1,0)    -- 'Rockbiter Weapon (Rank 1)'
+    ,(8018,8017,8017,2,0)    -- 'Rockbiter Weapon (Rank 2)'
+    ,(8019,8018,8017,3,0)    -- 'Rockbiter Weapon (Rank 3)'
+    ,(8024,0,8024,1,0)    -- 'Flametongue Weapon (Rank 1)'
+    ,(8027,8024,8024,2,0)    -- 'Flametongue Weapon (Rank 2)'
+    ,(8030,8027,8024,3,0)    -- 'Flametongue Weapon (Rank 3)'
+    ,(8033,0,8033,1,0)    -- 'Frostbrand Weapon (Rank 1)'
+    ,(8034,0,8034,1,0)    -- 'Frostbrand Attack (Rank 1)'
+    ,(8037,8034,8034,2,0)    -- 'Frostbrand Attack (Rank 2)'
+    ,(8038,8033,8033,2,0)    -- 'Frostbrand Weapon (Rank 2)'
+    ,(8042,0,8042,1,0)    -- 'Earth Shock (Rank 1)'
+    ,(8044,8042,8042,2,0)    -- 'Earth Shock (Rank 2)'
+    ,(8045,8044,8042,3,0)    -- 'Earth Shock (Rank 3)'
+    ,(8046,8045,8042,4,0)    -- 'Earth Shock (Rank 4)'
+    ,(8050,0,8050,1,0)    -- 'Flame Shock (Rank 1)'
+    ,(8052,8050,8050,2,0)    -- 'Flame Shock (Rank 2)'
+    ,(8053,8052,8050,3,0)    -- 'Flame Shock (Rank 3)'
+    ,(8056,0,8056,1,0)    -- 'Frost Shock (Rank 1)'
+    ,(8058,8056,8056,2,0)    -- 'Frost Shock (Rank 2)'
+    ,(8071,0,8071,1,0)    -- 'Stoneskin Totem (Rank 1)'
+    ,(8075,0,8075,1,0)    -- 'Strength of Earth Totem (Rank 1)'
+    ,(8092,0,8092,1,0)    -- 'Mind Blast (Rank 1)'
+    ,(8102,8092,8092,2,0)    -- 'Mind Blast (Rank 2)'
+    ,(8103,8102,8092,3,0)    -- 'Mind Blast (Rank 3)'
+    ,(8104,8103,8092,4,0)    -- 'Mind Blast (Rank 4)'
+    ,(8105,8104,8092,5,0)    -- 'Mind Blast (Rank 5)'
+    ,(8106,8105,8092,6,0)    -- 'Mind Blast (Rank 6)'
+    ,(8122,0,8122,1,0)    -- 'Psychic Scream (Rank 1)'
+    ,(8124,8122,8122,2,0)    -- 'Psychic Scream (Rank 2)'
+    ,(8129,0,8129,1,0)    -- 'Mana Burn (Rank 1)'
+    ,(8131,8129,8129,2,0)    -- 'Mana Burn (Rank 2)'
+    ,(8134,945,324,5,0)    -- 'Lightning Shield (Rank 5)'
+    ,(8154,8071,8071,2,0)    -- 'Stoneskin Totem (Rank 2)'
+    ,(8155,8154,8071,3,0)    -- 'Stoneskin Totem (Rank 3)'
+    ,(8160,8075,8075,2,0)    -- 'Strength of Earth Totem (Rank 2)'
+    ,(8161,8160,8075,3,0)    -- 'Strength of Earth Totem (Rank 3)'
+    ,(8181,0,8181,1,0)    -- 'Frost Resistance Totem (Rank 1)'
+    ,(8184,0,8184,1,0)    -- 'Fire Resistance Totem (Rank 1)'
+    ,(8190,0,8190,1,0)    -- 'Magma Totem (Rank 1)'
+    ,(8192,453,453,2,0)    -- 'Mind Soothe (Rank 2)'
+    ,(8227,0,8227,1,0)    -- 'Flametongue Totem (Rank 1)'
+    ,(8232,0,8232,1,0)    -- 'Windfury Weapon (Rank 1)'
+    ,(8235,8232,8232,2,0)    -- 'Windfury Weapon (Rank 2)'
+    ,(8249,8227,8227,2,0)    -- 'Flametongue Totem (Rank 2)'
+    ,(8288,1120,1120,2,0)    -- 'Drain Soul (Rank 2)'
+    ,(8289,8288,1120,3,0)    -- 'Drain Soul (Rank 3)'
+    ,(8400,3140,133,5,0)    -- 'Fireball (Rank 5)'
+    ,(8401,8400,133,6,0)    -- 'Fireball (Rank 6)'
+    ,(8402,8401,133,7,0)    -- 'Fireball (Rank 7)'
+    ,(8406,7322,116,5,0)    -- 'Frostbolt (Rank 5)'
+    ,(8407,8406,116,6,0)    -- 'Frostbolt (Rank 6)'
+    ,(8408,8407,116,7,0)    -- 'Frostbolt (Rank 7)'
+    ,(8412,2138,2136,4,0)    -- 'Fire Blast (Rank 4)'
+    ,(8413,8412,2136,5,0)    -- 'Fire Blast (Rank 5)'
+    ,(8416,5145,5143,4,0)    -- 'Arcane Missiles (Rank 4)'
+    ,(8417,8416,5143,5,0)    -- 'Arcane Missiles (Rank 5)'
+    ,(8422,2121,2120,3,0)    -- 'Flamestrike (Rank 3)'
+    ,(8423,8422,2120,4,0)    -- 'Flamestrike (Rank 4)'
+    ,(8427,6141,10,3,0)    -- 'Blizzard (Rank 3)'
+    ,(8437,1449,1449,2,0)    -- 'Arcane Explosion (Rank 2)'
+    ,(8438,8437,1449,3,0)    -- 'Arcane Explosion (Rank 3)'
+    ,(8439,8438,1449,4,0)    -- 'Arcane Explosion (Rank 4)'
+    ,(8444,2948,2948,2,0)    -- 'Scorch (Rank 2)'
+    ,(8445,8444,2948,3,0)    -- 'Scorch (Rank 3)'
+    ,(8446,8445,2948,4,0)    -- 'Scorch (Rank 4)'
+    ,(8450,604,604,2,0)    -- 'Dampen Magic (Rank 2)'
+    ,(8451,8450,604,3,0)    -- 'Dampen Magic (Rank 3)'
+    ,(8455,1008,1008,2,0)    -- 'Amplify Magic (Rank 2)'
+    ,(8457,543,543,2,0)    -- 'Fire Ward (Rank 2)'
+    ,(8458,8457,543,3,0)    -- 'Fire Ward (Rank 3)'
+    ,(8461,6143,6143,2,0)    -- 'Frost Ward (Rank 2)'
+    ,(8462,8461,6143,3,0)    -- 'Frost Ward (Rank 3)'
+    ,(8492,120,120,2,0)    -- 'Cone of Cold (Rank 2)'
+    ,(8494,1463,1463,2,0)    -- 'Mana Shield (Rank 2)'
+    ,(8495,8494,1463,3,0)    -- 'Mana Shield (Rank 3)'
+    ,(8498,1535,1535,2,0)    -- 'Fire Nova Totem (Rank 2)'
+    ,(8499,8498,1535,3,0)    -- 'Fire Nova Totem (Rank 3)'
+    ,(8512,0,8512,1,0)    -- 'Windfury Totem (Rank 1)'
+    ,(8680,0,8680,1,0)    -- 'Instant Poison (Rank 1)'
+    ,(8681,0,8681,1,0)    -- 'Instant Poison (Rank 1)'
+    ,(8685,8680,8680,2,0)    -- 'Instant Poison II (Rank 2)'
+    ,(8687,8681,8681,2,0)    -- 'Instant Poison II (Rank 2)'
+    ,(8689,8685,8680,3,0)    -- 'Instant Poison III (Rank 3)'
+    ,(8691,8687,8681,3,0)    -- 'Instant Poison III (Rank 3)'
+    ,(8694,5763,5763,2,0)    -- 'Mind-numbing Poison II (Rank 2)'
+    ,(8835,0,8835,1,0)    -- 'Grace of Air Totem (Rank 1)'
+    ,(8903,6778,5185,7,0)    -- 'Healing Touch (Rank 7)'
+    ,(8905,6780,5176,7,0)    -- 'Wrath (Rank 7)'
+    ,(8907,5234,1126,5,0)    -- 'Mark of the Wild (Rank 5)'
+    ,(8910,3627,774,7,0)    -- 'Rejuvenation (Rank 7)'
+    ,(8914,1075,467,4,0)    -- 'Thorns (Rank 4)'
+    ,(8918,740,740,2,0)    -- 'Tranquility (Rank 2)'
+    ,(8921,0,8921,1,0)    -- 'Moonfire (Rank 1)'
+    ,(8924,8921,8921,2,0)    -- 'Moonfire (Rank 2)'
+    ,(8925,8924,8921,3,0)    -- 'Moonfire (Rank 3)'
+    ,(8926,8925,8921,4,0)    -- 'Moonfire (Rank 4)'
+    ,(8927,8926,8921,5,0)    -- 'Moonfire (Rank 5)'
+    ,(8928,8927,8921,6,0)    -- 'Moonfire (Rank 6)'
+    ,(8929,8928,8921,7,0)    -- 'Moonfire (Rank 7)'
+    ,(8936,0,8936,1,0)    -- 'Regrowth (Rank 1)'
+    ,(8938,8936,8936,2,0)    -- 'Regrowth (Rank 2)'
+    ,(8939,8938,8936,3,0)    -- 'Regrowth (Rank 3)'
+    ,(8940,8939,8936,4,0)    -- 'Regrowth (Rank 4)'
+    ,(8941,8940,8936,5,0)    -- 'Regrowth (Rank 5)'
+    ,(8949,2912,2912,2,0)    -- 'Starfire (Rank 2)'
+    ,(8950,8949,2912,3,0)    -- 'Starfire (Rank 3)'
+    ,(8951,8950,2912,4,0)    -- 'Starfire (Rank 4)'
+    ,(8955,2908,2908,2,0)    -- 'Soothe Animal (Rank 2)'
+    ,(9035,0,9035,1,0)    -- 'Hex of Weakness (Rank 1)'
+    ,(9472,2061,2061,2,0)    -- 'Flash Heal (Rank 2)'
+    ,(9473,9472,2061,3,0)    -- 'Flash Heal (Rank 3)'
+    ,(9474,9473,2061,4,0)    -- 'Flash Heal (Rank 4)'
+    ,(9484,0,9484,1,0)    -- 'Shackle Undead (Rank 1)'
+    ,(9485,9484,9484,2,0)    -- 'Shackle Undead (Rank 2)'
+    ,(9578,586,586,2,0)    -- 'Fade (Rank 2)'
+    ,(9579,9578,586,3,0)    -- 'Fade (Rank 3)'
+    ,(9592,9579,586,4,0)    -- 'Fade (Rank 4)'
+    ,(9749,778,770,3,0)    -- 'Faerie Fire (Rank 3)'
+    ,(9750,8941,8936,6,0)    -- 'Regrowth (Rank 6)'
+    ,(9756,8914,467,5,0)    -- 'Thorns (Rank 5)'
+    ,(9758,8903,5185,8,0)    -- 'Healing Touch (Rank 8)'
+    ,(9787,9785,2018,5,0)    -- 'Weaponsmith (Artisan)'
+    ,(9788,9785,2018,5,0)    -- 'Armorsmith (Artisan)'
+    ,(9833,8929,8921,8,0)    -- 'Moonfire (Rank 8)'
+    ,(9834,9833,8921,9,0)    -- 'Moonfire (Rank 9)'
+    ,(9835,9834,8921,10,0)    -- 'Moonfire (Rank 10)'
+    ,(9839,8910,774,8,0)    -- 'Rejuvenation (Rank 8)'
+    ,(9840,9839,774,9,0)    -- 'Rejuvenation (Rank 9)'
+    ,(9841,9840,774,10,0)    -- 'Rejuvenation (Rank 10)'
+    ,(9852,5196,339,5,0)    -- 'Entangling Roots (Rank 5)'
+    ,(9853,9852,339,6,0)    -- 'Entangling Roots (Rank 6)'
+    ,(9856,9750,8936,7,0)    -- 'Regrowth (Rank 7)'
+    ,(9857,9856,8936,8,0)    -- 'Regrowth (Rank 8)'
+    ,(9858,9857,8936,9,0)    -- 'Regrowth (Rank 9)'
+    ,(9862,8918,740,3,0)    -- 'Tranquility (Rank 3)'
+    ,(9863,9862,740,4,0)    -- 'Tranquility (Rank 4)'
+    ,(9875,8951,2912,5,0)    -- 'Starfire (Rank 5)'
+    ,(9876,9875,2912,6,0)    -- 'Starfire (Rank 6)'
+    ,(9884,8907,1126,6,0)    -- 'Mark of the Wild (Rank 6)'
+    ,(9885,9884,1126,7,0)    -- 'Mark of the Wild (Rank 7)'
+    ,(9888,9758,5185,9,0)    -- 'Healing Touch (Rank 9)'
+    ,(9889,9888,5185,10,0)    -- 'Healing Touch (Rank 10)'
+    ,(9901,8955,2908,3,0)    -- 'Soothe Animal (Rank 3)'
+    ,(9907,9749,770,4,0)    -- 'Faerie Fire (Rank 4)'
+    ,(9910,9756,467,6,0)    -- 'Thorns (Rank 6)'
+    ,(9912,8905,5176,8,0)    -- 'Wrath (Rank 8)'
+    ,(10138,6127,5504,5,0)    -- 'Conjure Water (Rank 5)'
+    ,(10139,10138,5504,6,0)    -- 'Conjure Water (Rank 6)'
+    ,(10140,10139,5504,7,0)    -- 'Conjure Water (Rank 7)'
+    ,(10144,6129,587,5,0)    -- 'Conjure Food (Rank 5)'
+    ,(10145,10144,587,6,0)    -- 'Conjure Food (Rank 6)'
+    ,(10148,8402,133,8,0)    -- 'Fireball (Rank 8)'
+    ,(10149,10148,133,9,0)    -- 'Fireball (Rank 9)'
+    ,(10150,10149,133,10,0)    -- 'Fireball (Rank 10)'
+    ,(10151,10150,133,11,0)    -- 'Fireball (Rank 11)'
+    ,(10156,1461,1459,4,0)    -- 'Arcane Intellect (Rank 4)'
+    ,(10157,10156,1459,5,0)    -- 'Arcane Intellect (Rank 5)'
+    ,(10159,8492,120,3,0)    -- 'Cone of Cold (Rank 3)'
+    ,(10160,10159,120,4,0)    -- 'Cone of Cold (Rank 4)'
+    ,(10161,10160,120,5,0)    -- 'Cone of Cold (Rank 5)'
+    ,(10169,8455,1008,3,0)    -- 'Amplify Magic (Rank 3)'
+    ,(10170,10169,1008,4,0)    -- 'Amplify Magic (Rank 4)'
+    ,(10173,8451,604,4,0)    -- 'Dampen Magic (Rank 4)'
+    ,(10174,10173,604,5,0)    -- 'Dampen Magic (Rank 5)'
+    ,(10177,8462,6143,4,0)    -- 'Frost Ward (Rank 4)'
+    ,(10179,8408,116,8,0)    -- 'Frostbolt (Rank 8)'
+    ,(10180,10179,116,9,0)    -- 'Frostbolt (Rank 9)'
+    ,(10181,10180,116,10,0)    -- 'Frostbolt (Rank 10)'
+    ,(10185,8427,10,4,0)    -- 'Blizzard (Rank 4)'
+    ,(10186,10185,10,5,0)    -- 'Blizzard (Rank 5)'
+    ,(10187,10186,10,6,0)    -- 'Blizzard (Rank 6)'
+    ,(10191,8495,1463,4,0)    -- 'Mana Shield (Rank 4)'
+    ,(10192,10191,1463,5,0)    -- 'Mana Shield (Rank 5)'
+    ,(10193,10192,1463,6,0)    -- 'Mana Shield (Rank 6)'
+    ,(10197,8413,2136,6,0)    -- 'Fire Blast (Rank 6)'
+    ,(10199,10197,2136,7,0)    -- 'Fire Blast (Rank 7)'
+    ,(10201,8439,1449,5,0)    -- 'Arcane Explosion (Rank 5)'
+    ,(10202,10201,1449,6,0)    -- 'Arcane Explosion (Rank 6)'
+    ,(10205,8446,2948,5,0)    -- 'Scorch (Rank 5)'
+    ,(10206,10205,2948,6,0)    -- 'Scorch (Rank 6)'
+    ,(10207,10206,2948,7,0)    -- 'Scorch (Rank 7)'
+    ,(10211,8417,5143,6,0)    -- 'Arcane Missiles (Rank 6)'
+    ,(10212,10211,5143,7,0)    -- 'Arcane Missiles (Rank 7)'
+    ,(10215,8423,2120,5,0)    -- 'Flamestrike (Rank 5)'
+    ,(10216,10215,2120,6,0)    -- 'Flamestrike (Rank 6)'
+    ,(10219,7320,7302,3,0)    -- 'Ice Armor (Rank 3)'
+    ,(10220,10219,7302,4,0)    -- 'Ice Armor (Rank 4)'
+    ,(10223,8458,543,4,0)    -- 'Fire Ward (Rank 4)'
+    ,(10225,10223,543,5,0)    -- 'Fire Ward (Rank 5)'
+    ,(10230,6131,122,4,0)    -- 'Frost Nova (Rank 4)'
+    ,(10278,5599,1022,3,0)    -- 'Blessing of Protection (Rank 3)'
+    ,(10308,5589,853,4,0)    -- 'Hammer of Justice (Rank 4)'
+    ,(10312,5615,879,4,0)    -- 'Exorcism (Rank 4)'
+    ,(10313,10312,879,5,0)    -- 'Exorcism (Rank 5)'
+    ,(10314,10313,879,6,0)    -- 'Exorcism (Rank 6)'
+    ,(10318,2812,2812,2,0)    -- 'Holy Wrath (Rank 2)'
+    ,(10322,7328,7328,2,0)    -- 'Redemption (Rank 2)'
+    ,(10324,10322,7328,3,0)    -- 'Redemption (Rank 3)'
+    ,(10326,5627,2878,3,0)    -- 'Turn Undead (Rank 3)'
+    ,(10328,3472,635,7,0)    -- 'Holy Light (Rank 7)'
+    ,(10329,10328,635,8,0)    -- 'Holy Light (Rank 8)'
+    ,(10391,6041,403,7,0)    -- 'Lightning Bolt (Rank 7)'
+    ,(10392,10391,403,8,0)    -- 'Lightning Bolt (Rank 8)'
+    ,(10395,8005,331,8,0)    -- 'Healing Wave (Rank 8)'
+    ,(10396,10395,331,9,0)    -- 'Healing Wave (Rank 9)'
+    ,(10399,8019,8017,4,0)    -- 'Rockbiter Weapon (Rank 4)'
+    ,(10406,8155,8071,4,0)    -- 'Stoneskin Totem (Rank 4)'
+    ,(10407,10406,8071,5,0)    -- 'Stoneskin Totem (Rank 5)'
+    ,(10408,10407,8071,6,0)    -- 'Stoneskin Totem (Rank 6)'
+    ,(10412,8046,8042,5,0)    -- 'Earth Shock (Rank 5)'
+    ,(10413,10412,8042,6,0)    -- 'Earth Shock (Rank 6)'
+    ,(10414,10413,8042,7,0)    -- 'Earth Shock (Rank 7)'
+    ,(10427,6392,5730,5,0)    -- 'Stoneclaw Totem (Rank 5)'
+    ,(10428,10427,5730,6,0)    -- 'Stoneclaw Totem (Rank 6)'
+    ,(10431,8134,324,6,0)    -- 'Lightning Shield (Rank 6)'
+    ,(10432,10431,324,7,0)    -- 'Lightning Shield (Rank 7)'
+    ,(10437,6365,3599,5,0)    -- 'Searing Totem (Rank 5)'
+    ,(10438,10437,3599,6,0)    -- 'Searing Totem (Rank 6)'
+    ,(10442,8161,8075,4,0)    -- 'Strength of Earth Totem (Rank 4)'
+    ,(10447,8053,8050,4,0)    -- 'Flame Shock (Rank 4)'
+    ,(10448,10447,8050,5,0)    -- 'Flame Shock (Rank 5)'
+    ,(10456,8038,8033,3,0)    -- 'Frostbrand Weapon (Rank 3)'
+    ,(10458,8037,8034,3,0)    -- 'Frostbrand Attack (Rank 3)'
+    ,(10460,6372,5672,4,0)    -- 'Healing Stream (Rank 4)'
+    ,(10461,10460,5672,5,0)    -- 'Healing Stream (Rank 5)'
+    ,(10462,6377,5394,4,0)    -- 'Healing Stream Totem (Rank 4)'
+    ,(10463,10462,5394,5,0)    -- 'Healing Stream Totem (Rank 5)'
+    ,(10466,8010,8004,4,0)    -- 'Lesser Healing Wave (Rank 4)'
+    ,(10467,10466,8004,5,0)    -- 'Lesser Healing Wave (Rank 5)'
+    ,(10468,10467,8004,6,0)    -- 'Lesser Healing Wave (Rank 6)'
+    ,(10472,8058,8056,3,0)    -- 'Frost Shock (Rank 3)'
+    ,(10473,10472,8056,4,0)    -- 'Frost Shock (Rank 4)'
+    ,(10478,8181,8181,2,0)    -- 'Frost Resistance Totem (Rank 2)'
+    ,(10479,10478,8181,3,0)    -- 'Frost Resistance Totem (Rank 3)'
+    ,(10486,8235,8232,3,0)    -- 'Windfury Weapon (Rank 3)'
+    ,(10495,5675,5675,2,0)    -- 'Mana Spring Totem (Rank 2)'
+    ,(10496,10495,5675,3,0)    -- 'Mana Spring Totem (Rank 3)'
+    ,(10497,10496,5675,4,0)    -- 'Mana Spring Totem (Rank 4)'
+    ,(10526,8249,8227,3,0)    -- 'Flametongue Totem (Rank 3)'
+    ,(10537,8184,8184,2,0)    -- 'Fire Resistance Totem (Rank 2)'
+    ,(10538,10537,8184,3,0)    -- 'Fire Resistance Totem (Rank 3)'
+    ,(10585,8190,8190,2,0)    -- 'Magma Totem (Rank 2)'
+    ,(10586,10585,8190,3,0)    -- 'Magma Totem (Rank 3)'
+    ,(10587,10586,8190,4,0)    -- 'Magma Totem (Rank 4)'
+    ,(10595,0,10595,1,0)    -- 'Nature Resistance Totem (Rank 1)'
+    ,(10600,10595,10595,2,0)    -- 'Nature Resistance Totem (Rank 2)'
+    ,(10601,10600,10595,3,0)    -- 'Nature Resistance Totem (Rank 3)'
+    ,(10605,2860,421,4,0)    -- 'Chain Lightning (Rank 4)'
+    ,(10613,8512,8512,2,0)    -- 'Windfury Totem (Rank 2)'
+    ,(10614,10613,8512,3,0)    -- 'Windfury Totem (Rank 3)'
+    ,(10622,1064,1064,2,0)    -- 'Chain Heal (Rank 2)'
+    ,(10623,10622,1064,3,0)    -- 'Chain Heal (Rank 3)'
+    ,(10627,8835,8835,2,0)    -- 'Grace of Air Totem (Rank 2)'
+    ,(10656,10662,2108,5,0)    -- 'Dragonscale Leatherworking'
+    ,(10658,10662,2108,5,0)    -- 'Elemental Leatherworking'
+    ,(10660,10662,2108,5,0)    -- 'Tribal Leatherworking'
+    ,(10797,0,10797,1,0)    -- 'Starshards (Rank 1)'
+    ,(10874,8131,8129,3,0)    -- 'Mana Burn (Rank 3)'
+    ,(10875,10874,8129,4,0)    -- 'Mana Burn (Rank 4)'
+    ,(10876,10875,8129,5,0)    -- 'Mana Burn (Rank 5)'
+    ,(10880,2010,2006,3,0)    -- 'Resurrection (Rank 3)'
+    ,(10881,10880,2006,4,0)    -- 'Resurrection (Rank 4)'
+    ,(10888,8124,8122,3,0)    -- 'Psychic Scream (Rank 3)'
+    ,(10890,10888,8122,4,0)    -- 'Psychic Scream (Rank 4)'
+    ,(10892,2767,589,6,0)    -- 'Shadow Word: Pain (Rank 6)'
+    ,(10893,10892,589,7,0)    -- 'Shadow Word: Pain (Rank 7)'
+    ,(10894,10893,589,8,0)    -- 'Shadow Word: Pain (Rank 8)'
+    ,(10898,6066,17,7,0)    -- 'Power Word: Shield (Rank 7)'
+    ,(10899,10898,17,8,0)    -- 'Power Word: Shield (Rank 8)'
+    ,(10900,10899,17,9,0)    -- 'Power Word: Shield (Rank 9)'
+    ,(10901,10900,17,10,0)    -- 'Power Word: Shield (Rank 10)'
+    ,(10909,2096,2096,2,0)    -- 'Mind Vision (Rank 2)'
+    ,(10911,605,605,2,0)    -- 'Mind Control (Rank 2)'
+    ,(10912,10911,605,3,0)    -- 'Mind Control (Rank 3)'
+    ,(10915,9474,2061,5,0)    -- 'Flash Heal (Rank 5)'
+    ,(10916,10915,2061,6,0)    -- 'Flash Heal (Rank 6)'
+    ,(10917,10916,2061,7,0)    -- 'Flash Heal (Rank 7)'
+    ,(10927,6078,139,7,0)    -- 'Renew (Rank 7)'
+    ,(10928,10927,139,8,0)    -- 'Renew (Rank 8)'
+    ,(10929,10928,139,9,0)    -- 'Renew (Rank 9)'
+    ,(10933,6060,585,7,0)    -- 'Smite (Rank 7)'
+    ,(10934,10933,585,8,0)    -- 'Smite (Rank 8)'
+    ,(10937,2791,1243,5,0)    -- 'Power Word: Fortitude (Rank 5)'
+    ,(10938,10937,1243,6,0)    -- 'Power Word: Fortitude (Rank 6)'
+    ,(10941,9592,586,5,0)    -- 'Fade (Rank 5)'
+    ,(10942,10941,586,6,0)    -- 'Fade (Rank 6)'
+    ,(10945,8106,8092,7,0)    -- 'Mind Blast (Rank 7)'
+    ,(10946,10945,8092,8,0)    -- 'Mind Blast (Rank 8)'
+    ,(10947,10946,8092,9,0)    -- 'Mind Blast (Rank 9)'
+    ,(10951,1006,588,5,0)    -- 'Inner Fire (Rank 5)'
+    ,(10952,10951,588,6,0)    -- 'Inner Fire (Rank 6)'
+    ,(10953,8192,453,3,0)    -- 'Mind Soothe (Rank 3)'
+    ,(10955,9485,9484,3,0)    -- 'Shackle Undead (Rank 3)'
+    ,(10957,976,976,2,0)    -- 'Shadow Protection (Rank 2)'
+    ,(10958,10957,976,3,0)    -- 'Shadow Protection (Rank 3)'
+    ,(10960,996,596,3,0)    -- 'Prayer of Healing (Rank 3)'
+    ,(10961,10960,596,4,0)    -- 'Prayer of Healing (Rank 4)'
+    ,(10963,2060,2060,2,0)    -- 'Greater Heal (Rank 2)'
+    ,(10964,10963,2060,3,0)    -- 'Greater Heal (Rank 3)'
+    ,(10965,10964,2060,4,0)    -- 'Greater Heal (Rank 4)'
+    ,(11113,0,11113,1,0)    -- 'Blast Wave (Rank 1)'
+    ,(11314,8499,1535,4,0)    -- 'Fire Nova Totem (Rank 4)'
+    ,(11315,11314,1535,5,0)    -- 'Fire Nova Totem (Rank 5)'
+    ,(11335,8689,8680,4,0)    -- 'Instant Poison IV (Rank 4)'
+    ,(11336,11335,8680,5,0)    -- 'Instant Poison V (Rank 5)'
+    ,(11337,11336,8680,6,0)    -- 'Instant Poison VI (Rank 6)'
+    ,(11341,8691,8681,4,0)    -- 'Instant Poison IV (Rank 4)'
+    ,(11342,11341,8681,5,0)    -- 'Instant Poison V (Rank 5)'
+    ,(11343,11342,8681,6,0)    -- 'Instant Poison VI (Rank 6)'
+    ,(11353,2819,2818,3,0)    -- 'Deadly Poison III (Rank 3)'
+    ,(11354,11353,2818,4,0)    -- 'Deadly Poison IV (Rank 4)'
+    ,(11357,2837,2835,3,0)    -- 'Deadly Poison III (Rank 3)'
+    ,(11358,11357,2835,4,0)    -- 'Deadly Poison IV (Rank 4)'
+    ,(11366,0,11366,1,0)    -- 'Pyroblast (Rank 1)'
+    ,(11400,8694,5763,3,0)    -- 'Mind-numbing Poison III (Rank 3)'
+    ,(11426,0,11426,1,0)    -- 'Ice Barrier (Rank 1)'
+    ,(11659,7641,686,7,0)    -- 'Shadow Bolt (Rank 7)'
+    ,(11660,11659,686,8,0)    -- 'Shadow Bolt (Rank 8)'
+    ,(11661,11660,686,9,0)    -- 'Shadow Bolt (Rank 9)'
+    ,(11665,2941,348,5,0)    -- 'Immolate (Rank 5)'
+    ,(11667,11665,348,6,0)    -- 'Immolate (Rank 6)'
+    ,(11668,11667,348,7,0)    -- 'Immolate (Rank 7)'
+    ,(11671,7648,172,5,0)    -- 'Corruption (Rank 5)'
+    ,(11672,11671,172,6,0)    -- 'Corruption (Rank 6)'
+    ,(11675,8289,1120,4,0)    -- 'Drain Soul (Rank 4)'
+    ,(11677,6219,5740,3,0)    -- 'Rain of Fire (Rank 3)'
+    ,(11678,11677,5740,4,0)    -- 'Rain of Fire (Rank 4)'
+    ,(11683,1949,1949,2,0)    -- 'Hellfire (Rank 2)'
+    ,(11684,11683,1949,3,0)    -- 'Hellfire (Rank 3)'
+    ,(11687,1456,1454,4,0)    -- 'Life Tap (Rank 4)'
+    ,(11688,11687,1454,5,0)    -- 'Life Tap (Rank 5)'
+    ,(11689,11688,1454,6,0)    -- 'Life Tap (Rank 6)'
+    ,(11693,3700,755,5,0)    -- 'Health Funnel (Rank 5)'
+    ,(11694,11693,755,6,0)    -- 'Health Funnel (Rank 6)'
+    ,(11695,11694,755,7,0)    -- 'Health Funnel (Rank 7)'
+    ,(11699,7651,689,5,0)    -- 'Drain Life (Rank 5)'
+    ,(11700,11699,689,6,0)    -- 'Drain Life (Rank 6)'
+    ,(11703,6226,5138,3,0)    -- 'Drain Mana (Rank 3)'
+    ,(11704,11703,5138,4,0)    -- 'Drain Mana (Rank 4)'
+    ,(11707,7646,702,5,0)    -- 'Curse of Weakness (Rank 5)'
+    ,(11708,11707,702,6,0)    -- 'Curse of Weakness (Rank 6)'
+    ,(11711,6217,980,4,0)    -- 'Curse of Agony (Rank 4)'
+    ,(11712,11711,980,5,0)    -- 'Curse of Agony (Rank 5)'
+    ,(11713,11712,980,6,0)    -- 'Curse of Agony (Rank 6)'
+    ,(11717,7659,704,4,0)    -- 'Curse of Recklessness (Rank 4)'
+    ,(11719,1714,1714,2,0)    -- 'Curse of Tongues (Rank 2)'
+    ,(11721,1490,1490,2,0)    -- 'Curse of the Elements (Rank 2)'
+    ,(11722,11721,1490,3,0)    -- 'Curse of the Elements (Rank 3)'
+    ,(11725,1098,1098,2,0)    -- 'Enslave Demon (Rank 2)'
+    ,(11726,11725,1098,3,0)    -- 'Enslave Demon (Rank 3)'
+    ,(11729,5699,6201,4,0)    -- 'Create Healthstone (Greater)'
+    ,(11730,11729,6201,5,0)    -- 'Create Healthstone (Major)'
+    ,(11733,1086,706,3,0)    -- 'Demon Armor (Rank 3)'
+    ,(11734,11733,706,4,0)    -- 'Demon Armor (Rank 4)'
+    ,(11735,11734,706,5,0)    -- 'Demon Armor (Rank 5)'
+    ,(11739,6229,6229,2,0)    -- 'Shadow Ward (Rank 2)'
+    ,(11740,11739,6229,3,0)    -- 'Shadow Ward (Rank 3)'
+    ,(12505,11366,11366,2,0)    -- 'Pyroblast (Rank 2)'
+    ,(12522,12505,11366,3,0)    -- 'Pyroblast (Rank 3)'
+    ,(12523,12522,11366,4,0)    -- 'Pyroblast (Rank 4)'
+    ,(12524,12523,11366,5,0)    -- 'Pyroblast (Rank 5)'
+    ,(12525,12524,11366,6,0)    -- 'Pyroblast (Rank 6)'
+    ,(12526,12525,11366,7,0)    -- 'Pyroblast (Rank 7)'
+    ,(12824,118,118,2,0)    -- 'Polymorph (Rank 2)'
+    ,(12825,12824,118,3,0)    -- 'Polymorph (Rank 3)'
+    ,(12826,12825,118,4,0)    -- 'Polymorph (Rank 4)'
+    ,(12880,0,12880,1,0)    -- 'Enrage (Rank 1)'
+    ,(12966,0,12966,1,0)    -- 'Flurry (Rank 1)'
+    ,(12967,12966,12966,2,0)    -- 'Flurry (Rank 2)'
+    ,(12968,12967,12966,3,0)        -- 'Flurry (Rank 3)'
+    ,(12969,12968,12966,4,0)        -- 'Flurry (Rank 4)'
+    ,(12970,12969,12966,5,0)        -- 'Flurry (Rank 5)'
+    ,(13018,11113,11113,2,0)    -- 'Blast Wave (Rank 2)'
+    ,(13019,13018,11113,3,0)    -- 'Blast Wave (Rank 3)'
+    ,(13020,13019,11113,4,0)    -- 'Blast Wave (Rank 4)'
+    ,(13021,13020,11113,5,0)    -- 'Blast Wave (Rank 5)'
+    ,(13031,11426,11426,2,0)    -- 'Ice Barrier (Rank 2)'
+    ,(13032,13031,11426,3,0)    -- 'Ice Barrier (Rank 3)'
+    ,(13033,13032,11426,4,0)    -- 'Ice Barrier (Rank 4)'
+    ,(13165,0,13165,1,0)    -- 'Aspect of the Hawk (Rank 1)'
+    ,(13218,0,13218,1,0)    -- 'Wound Poison (Rank 1)'
+    ,(13220,0,13220,1,0)    -- 'Wound Poison (Rank 1)'
+    ,(13222,13218,13218,2,0)    -- 'Wound Poison (Rank 2)'
+    ,(13223,13222,13218,3,0)    -- 'Wound Poison (Rank 3)'
+    ,(13224,13223,13218,4,0)    -- 'Wound Poison (Rank 4)'
+    ,(13228,13220,13220,2,0)    -- 'Wound Poison II (Rank 2)'
+    ,(13229,13228,13220,3,0)    -- 'Wound Poison III (Rank 3)'
+    ,(13230,13229,13220,4,0)    -- 'Wound Poison IV (Rank 4)'
+    ,(13542,3662,136,5,0)    -- 'Mend Pet (Rank 5)'
+    ,(13543,13542,136,6,0)    -- 'Mend Pet (Rank 6)'
+    ,(13544,13543,136,7,0)    -- 'Mend Pet (Rank 7)'
+    ,(13549,1978,1978,2,0)    -- 'Serpent Sting (Rank 2)'
+    ,(13550,13549,1978,3,0)    -- 'Serpent Sting (Rank 3)'
+    ,(13551,13550,1978,4,0)    -- 'Serpent Sting (Rank 4)'
+    ,(13552,13551,1978,5,0)    -- 'Serpent Sting (Rank 5)'
+    ,(13553,13552,1978,6,0)    -- 'Serpent Sting (Rank 6)'
+    ,(13554,13553,1978,7,0)    -- 'Serpent Sting (Rank 7)'
+    ,(13555,13554,1978,8,0)    -- 'Serpent Sting (Rank 8)'
+    ,(13795,0,13795,1,0)    -- 'Immolation Trap (Rank 1)'
+    ,(13797,0,13797,1,0)    -- 'Immolation Trap Effect (Rank 1)'
+    ,(13812,0,13812,1,0)    -- 'Explosive Trap Effect (Rank 1)'
+    ,(13813,0,13813,1,0)    -- 'Explosive Trap (Rank 1)'
+    ,(13896,0,13896,1,0)    -- 'Feedback (Rank 1)'
+    ,(13908,0,13908,1,0)    -- 'Desperate Prayer (Rank 1)'
+    ,(14201,12880,12880,2,0)    -- 'Enrage (Rank 2)'
+    ,(14202,14201,12880,3,0)    -- 'Enrage (Rank 3)'
+    ,(14203,14202,12880,4,0)    -- 'Enrage (Rank 4)'
+    ,(14204,14203,12880,5,0)    -- 'Enrage (Rank 5)'
+    ,(14260,2973,2973,2,0)    -- 'Raptor Strike (Rank 2)'
+    ,(14261,14260,2973,3,0)    -- 'Raptor Strike (Rank 3)'
+    ,(14262,14261,2973,4,0)    -- 'Raptor Strike (Rank 4)'
+    ,(14263,14262,2973,5,0)    -- 'Raptor Strike (Rank 5)'
+    ,(14264,14263,2973,6,0)    -- 'Raptor Strike (Rank 6)'
+    ,(14265,14264,2973,7,0)    -- 'Raptor Strike (Rank 7)'
+    ,(14266,14265,2973,8,0)    -- 'Raptor Strike (Rank 8)'
+    ,(14267,2974,2974,2,0)    -- 'Wing Clip (Rank 2)'
+    ,(14268,14267,2974,3,0)    -- 'Wing Clip (Rank 3)'
+    ,(14269,1495,1495,2,0)    -- 'Mongoose Bite (Rank 2)'
+    ,(14270,14269,1495,3,0)    -- 'Mongoose Bite (Rank 3)'
+    ,(14271,14270,1495,4,0)    -- 'Mongoose Bite (Rank 4)'
+    ,(14272,781,781,2,0)    -- 'Disengage (Rank 2)'
+    ,(14273,14272,781,3,0)    -- 'Disengage (Rank 3)'
+    ,(14274,20736,20736,2,0)    -- 'Distracting Shot (Rank 2)'
+    ,(14279,3034,3034,2,0)    -- 'Viper Sting (Rank 2)'
+    ,(14280,14279,3034,3,0)    -- 'Viper Sting (Rank 3)'
+    ,(14281,3044,3044,2,0)    -- 'Arcane Shot (Rank 2)'
+    ,(14282,14281,3044,3,0)    -- 'Arcane Shot (Rank 3)'
+    ,(14283,14282,3044,4,0)    -- 'Arcane Shot (Rank 4)'
+    ,(14284,14283,3044,5,0)    -- 'Arcane Shot (Rank 5)'
+    ,(14285,14284,3044,6,0)    -- 'Arcane Shot (Rank 6)'
+    ,(14286,14285,3044,7,0)    -- 'Arcane Shot (Rank 7)'
+    ,(14287,14286,3044,8,0)    -- 'Arcane Shot (Rank 8)'
+    ,(14288,2643,2643,2,0)    -- 'Multi-Shot (Rank 2)'
+    ,(14289,14288,2643,3,0)    -- 'Multi-Shot (Rank 3)'
+    ,(14290,14289,2643,4,0)    -- 'Multi-Shot (Rank 4)'
+    ,(14294,1510,1510,2,0)    -- 'Volley (Rank 2)'
+    ,(14295,14294,1510,3,0)    -- 'Volley (Rank 3)'
+    ,(14298,13797,13797,2,0)    -- 'Immolation Trap Effect (Rank 2)'
+    ,(14299,14298,13797,3,0)    -- 'Immolation Trap Effect (Rank 3)'
+    ,(14300,14299,13797,4,0)    -- 'Immolation Trap Effect (Rank 4)'
+    ,(14301,14300,13797,5,0)    -- 'Immolation Trap Effect (Rank 5)'
+    ,(14302,13795,13795,2,0)    -- 'Immolation Trap (Rank 2)'
+    ,(14303,14302,13795,3,0)    -- 'Immolation Trap (Rank 3)'
+    ,(14304,14303,13795,4,0)    -- 'Immolation Trap (Rank 4)'
+    ,(14305,14304,13795,5,0)    -- 'Immolation Trap (Rank 5)'
+    ,(14310,1499,1499,2,0)    -- 'Freezing Trap (Rank 2)'
+    ,(14311,14310,1499,3,0)    -- 'Freezing Trap (Rank 3)'
+    ,(14314,13812,13812,2,0)    -- 'Explosive Trap Effect (Rank 2)'
+    ,(14315,14314,13812,3,0)    -- 'Explosive Trap Effect (Rank 3)'
+    ,(14316,13813,13813,2,0)    -- 'Explosive Trap (Rank 2)'
+    ,(14317,14316,13813,3,0)    -- 'Explosive Trap (Rank 3)'
+    ,(14318,13165,13165,2,0)    -- 'Aspect of the Hawk (Rank 2)'
+    ,(14319,14318,13165,3,0)    -- 'Aspect of the Hawk (Rank 3)'
+    ,(14320,14319,13165,4,0)    -- 'Aspect of the Hawk (Rank 4)'
+    ,(14321,14320,13165,5,0)    -- 'Aspect of the Hawk (Rank 5)'
+    ,(14322,14321,13165,6,0)    -- 'Aspect of the Hawk (Rank 6)'
+    ,(14323,1130,1130,2,0)    -- 'Hunter\'s Mark (Rank 2)'
+    ,(14324,14323,1130,3,0)    -- 'Hunter\'s Mark (Rank 3)'
+    ,(14325,14324,1130,4,0)    -- 'Hunter\'s Mark (Rank 4)'
+    ,(14326,1513,1513,2,0)    -- 'Scare Beast (Rank 2)'
+    ,(14327,14326,1513,3,0)    -- 'Scare Beast (Rank 3)'
+    ,(14752,0,14752,1,0)    -- 'Divine Spirit (Rank 1)'
+    ,(14818,14752,14752,2,0)    -- 'Divine Spirit (Rank 2)'
+    ,(14819,14818,14752,3,0)    -- 'Divine Spirit (Rank 3)'
+    ,(14914,0,14914,1,0)    -- 'Holy Fire (Rank 1)'
+    ,(15107,0,15107,1,0)    -- 'Windwall Totem (Rank 1)'
+    ,(15111,15107,15107,2,0)    -- 'Windwall Totem (Rank 2)'
+    ,(15112,15111,15107,3,0)    -- 'Windwall Totem (Rank 3)'
+    ,(15207,10392,403,9,0)    -- 'Lightning Bolt (Rank 9)'
+    ,(15208,15207,403,10,0)    -- 'Lightning Bolt (Rank 10)'
+    ,(15237,0,15237,1,0)    -- 'Holy Nova (Rank 1)'
+    ,(15261,15267,14914,8,0)    -- 'Holy Fire (Rank 8)'
+    ,(15262,14914,14914,2,0)    -- 'Holy Fire (Rank 2)'
+    ,(15263,15262,14914,3,0)    -- 'Holy Fire (Rank 3)'
+    ,(15264,15263,14914,4,0)    -- 'Holy Fire (Rank 4)'
+    ,(15265,15264,14914,5,0)    -- 'Holy Fire (Rank 5)'
+    ,(15266,15265,14914,6,0)    -- 'Holy Fire (Rank 6)'
+    ,(15267,15266,14914,7,0)    -- 'Holy Fire (Rank 7)'
+    ,(15407,0,15407,1,0)    -- 'Mind Flay (Rank 1)'
+    ,(15430,15237,15237,2,0)    -- 'Holy Nova (Rank 2)'
+    ,(15431,15430,15237,3,0)    -- 'Holy Nova (Rank 3)'
+    ,(15629,14274,20736,3,0)    -- 'Distracting Shot (Rank 3)'
+    ,(15630,15629,20736,4,0)    -- 'Distracting Shot (Rank 4)'
+    ,(15631,15630,20736,5,0)    -- 'Distracting Shot (Rank 5)'
+    ,(15632,15631,20736,6,0)    -- 'Distracting Shot (Rank 6)'
+    ,(16190,0,16190,1,0)    -- 'Mana Tide Totem (Rank 1)'
+    ,(16257,0,16257,1,0)        -- 'Flurry (Rank 1)'
+    ,(16277,16257,16257,2,0)        -- 'Flurry (Rank 2)'
+    ,(16278,16277,16257,3,0)        -- 'Flurry (Rank 3)'
+    ,(16279,16278,16257,4,0)        -- 'Flurry (Rank 4)'
+    ,(16280,16279,16257,5,0)        -- 'Flurry (Rank 5)'
+    ,(16314,10399,8017,5,0)    -- 'Rockbiter Weapon (Rank 5)'
+    ,(16315,16314,8017,6,0)    -- 'Rockbiter Weapon (Rank 6)'
+    ,(16316,16315,8017,7,0)    -- 'Rockbiter Weapon (Rank 7)'
+    ,(16339,8030,8024,4,0)    -- 'Flametongue Weapon (Rank 4)'
+    ,(16341,16339,8024,5,0)    -- 'Flametongue Weapon (Rank 5)'
+    ,(16342,16341,8024,6,0)    -- 'Flametongue Weapon (Rank 6)'
+    ,(16352,10458,8034,4,0)    -- 'Frostbrand Attack (Rank 4)'
+    ,(16353,16352,8034,5,0)    -- 'Frostbrand Attack (Rank 5)'
+    ,(16355,10456,8033,4,0)    -- 'Frostbrand Weapon (Rank 4)'
+    ,(16356,16355,8033,5,0)    -- 'Frostbrand Weapon (Rank 5)'
+    ,(16362,10486,8232,4,0)    -- 'Windfury Weapon (Rank 4)'
+    ,(16387,10526,8227,4,0)    -- 'Flametongue Totem (Rank 4)'
+    ,(16689,0,16689,1,339)    -- 'Nature\'s Grasp (Rank 1)'
+    ,(16810,16689,16689,2,1062)    -- 'Nature\'s Grasp (Rank 2)'
+    ,(16811,16810,16689,3,5195)    -- 'Nature\'s Grasp (Rank 3)'
+    ,(16812,16811,16689,4,5196)    -- 'Nature\'s Grasp (Rank 4)'
+    ,(16813,16812,16689,5,9852)    -- 'Nature\'s Grasp (Rank 5)'
+    ,(16857,0,16857,1,0)    -- 'Faerie Fire (Feral) (Rank 1)'
+    ,(16914,0,16914,1,0)    -- 'Hurricane (Rank 1)'
+    ,(17039,9787,2018,6,0)    -- 'Master Swordsmith'
+    ,(17040,9787,2018,6,0)    -- 'Master Hammersmith'
+    ,(17041,9787,2018,6,0)    -- 'Master Axesmith'
+    ,(17311,15407,15407,2,0)    -- 'Mind Flay (Rank 2)'
+    ,(17312,17311,15407,3,0)    -- 'Mind Flay (Rank 3)'
+    ,(17313,17312,15407,4,0)    -- 'Mind Flay (Rank 4)'
+    ,(17314,17313,15407,5,0)    -- 'Mind Flay (Rank 5)'
+    ,(17329,16813,16689,6,9853)    -- 'Nature\'s Grasp (Rank 6)'
+    ,(17354,16190,16190,2,0)    -- 'Mana Tide Totem (Rank 2)'
+    ,(17359,17354,16190,3,0)    -- 'Mana Tide Totem (Rank 3)'
+    ,(17390,16857,16857,2,0)    -- 'Faerie Fire (Feral) (Rank 2)'
+    ,(17391,17390,16857,3,0)    -- 'Faerie Fire (Feral) (Rank 3)'
+    ,(17392,17391,16857,4,0)    -- 'Faerie Fire (Feral) (Rank 4)'
+    ,(17401,16914,16914,2,0)    -- 'Hurricane (Rank 2)'
+    ,(17402,17401,16914,3,0)    -- 'Hurricane (Rank 3)'
+    ,(17727,2362,2362,2,0)    -- 'Create Spellstone (Greater)'
+    ,(17728,17727,2362,3,0)    -- 'Create Spellstone (Major)'
+    ,(17862,0,17862,1,0)    -- 'Curse of Shadow (Rank 1)'
+    ,(17877,0,17877,1,0)    -- 'Shadowburn (Rank 1)'
+    ,(17919,5676,5676,2,0)    -- 'Searing Pain (Rank 2)'
+    ,(17920,17919,5676,3,0)    -- 'Searing Pain (Rank 3)'
+    ,(17921,17920,5676,4,0)    -- 'Searing Pain (Rank 4)'
+    ,(17922,17921,5676,5,0)    -- 'Searing Pain (Rank 5)'
+    ,(17923,17922,5676,6,0)    -- 'Searing Pain (Rank 6)'
+    ,(17924,6353,6353,2,0)    -- 'Soul Fire (Rank 2)'
+    ,(17925,6789,6789,2,0)    -- 'Death Coil (Rank 2)'
+    ,(17926,17925,6789,3,0)    -- 'Death Coil (Rank 3)'
+    ,(17928,5484,5484,2,0)    -- 'Howl of Terror (Rank 2)'
+    ,(17937,17862,17862,2,0)    -- 'Curse of Shadow (Rank 2)'
+    ,(17951,6366,6366,2,0)    -- 'Create Firestone'
+    ,(17952,17951,6366,3,0)    -- 'Create Firestone (Greater)'
+    ,(17953,17952,6366,4,0)    -- 'Create Firestone (Major)'
+    ,(17962,0,17962,1,0)    -- 'Conflagrate (Rank 1)'
+    ,(18137,0,18137,1,0)    -- 'Shadowguard (Rank 1)'
+    ,(18220,0,18220,1,0)    -- 'Dark Pact (Rank 1)'
+    ,(18265,0,18265,1,0)    -- 'Siphon Life (Rank 1)'
+    ,(18647,710,710,2,0)    -- 'Banish (Rank 2)'
+    ,(18657,2637,2637,2,0)    -- 'Hibernate (Rank 2)'
+    ,(18658,18657,2637,3,0)    -- 'Hibernate (Rank 3)'
+    ,(18807,17314,15407,6,0)    -- 'Mind Flay (Rank 6)'
+    ,(18809,12526,11366,8,0)    -- 'Pyroblast (Rank 8)'
+    ,(18867,17877,17877,2,0)    -- 'Shadowburn (Rank 2)'
+    ,(18868,18867,17877,3,0)    -- 'Shadowburn (Rank 3)'
+    ,(18869,18868,17877,4,0)    -- 'Shadowburn (Rank 4)'
+    ,(18870,18869,17877,5,0)    -- 'Shadowburn (Rank 5)'
+    ,(18871,18870,17877,6,0)    -- 'Shadowburn (Rank 6)'
+    ,(18879,18265,18265,2,0)    -- 'Siphon Life (Rank 2)'
+    ,(18880,18879,18265,3,0)    -- 'Siphon Life (Rank 3)'
+    ,(18881,18880,18265,4,0)    -- 'Siphon Life (Rank 4)'
+    ,(18930,17962,17962,2,0)    -- 'Conflagrate (Rank 2)'
+    ,(18931,18930,17962,3,0)    -- 'Conflagrate (Rank 3)'
+    ,(18932,18931,17962,4,0)    -- 'Conflagrate (Rank 4)'
+    ,(18937,18220,18220,2,0)    -- 'Dark Pact (Rank 2)'
+    ,(18938,18937,18220,3,0)    -- 'Dark Pact (Rank 3)'
+    ,(19236,13908,13908,2,0)    -- 'Desperate Prayer (Rank 2)'
+    ,(19238,19236,13908,3,0)    -- 'Desperate Prayer (Rank 3)'
+    ,(19240,19238,13908,4,0)    -- 'Desperate Prayer (Rank 4)'
+    ,(19241,19240,13908,5,0)    -- 'Desperate Prayer (Rank 5)'
+    ,(19242,19241,13908,6,0)    -- 'Desperate Prayer (Rank 6)'
+    ,(19243,19242,13908,7,0)    -- 'Desperate Prayer (Rank 7)'
+    ,(19261,2652,2652,2,0)    -- 'Touch of Weakness (Rank 2)'
+    ,(19262,19261,2652,3,0)    -- 'Touch of Weakness (Rank 3)'
+    ,(19264,19262,2652,4,0)    -- 'Touch of Weakness (Rank 4)'
+    ,(19265,19264,2652,5,0)    -- 'Touch of Weakness (Rank 5)'
+    ,(19266,19265,2652,6,0)    -- 'Touch of Weakness (Rank 6)'
+    ,(19271,13896,13896,2,0)    -- 'Feedback (Rank 2)'
+    ,(19273,19271,13896,3,0)    -- 'Feedback (Rank 3)'
+    ,(19274,19273,13896,4,0)    -- 'Feedback (Rank 4)'
+    ,(19275,19274,13896,5,0)    -- 'Feedback (Rank 5)'
+    ,(19276,2944,2944,2,0)    -- 'Devouring Plague (Rank 2)'
+    ,(19277,19276,2944,3,0)    -- 'Devouring Plague (Rank 3)'
+    ,(19278,19277,2944,4,0)    -- 'Devouring Plague (Rank 4)'
+    ,(19279,19278,2944,5,0)    -- 'Devouring Plague (Rank 5)'
+    ,(19280,19279,2944,6,0)    -- 'Devouring Plague (Rank 6)'
+    ,(19281,9035,9035,2,0)    -- 'Hex of Weakness (Rank 2)'
+    ,(19282,19281,9035,3,0)    -- 'Hex of Weakness (Rank 3)'
+    ,(19283,19282,9035,4,0)    -- 'Hex of Weakness (Rank 4)'
+    ,(19284,19283,9035,5,0)    -- 'Hex of Weakness (Rank 5)'
+    ,(19285,19284,9035,6,0)    -- 'Hex of Weakness (Rank 6)'
+    ,(19289,2651,2651,2,0)    -- 'Elune\'s Grace (Rank 2)'
+    ,(19291,19289,2651,3,0)    -- 'Elune\'s Grace (Rank 3)'
+    ,(19292,19291,2651,4,0)    -- 'Elune\'s Grace (Rank 4)'
+    ,(19293,19292,2651,5,0)    -- 'Elune\'s Grace (Rank 5)'
+    ,(19296,10797,10797,2,0)    -- 'Starshards (Rank 2)'
+    ,(19299,19296,10797,3,0)    -- 'Starshards (Rank 3)'
+    ,(19302,19299,10797,4,0)    -- 'Starshards (Rank 4)'
+    ,(19303,19302,10797,5,0)    -- 'Starshards (Rank 5)'
+    ,(19304,19303,10797,6,0)    -- 'Starshards (Rank 6)'
+    ,(19305,19304,10797,7,0)    -- 'Starshards (Rank 7)'
+    ,(19306,0,19306,1,0)    -- 'Counterattack (Rank 1)'
+    ,(19308,18137,18137,2,0)    -- 'Shadowguard (Rank 2)'
+    ,(19309,19308,18137,3,0)    -- 'Shadowguard (Rank 3)'
+    ,(19310,19309,18137,4,0)    -- 'Shadowguard (Rank 4)'
+    ,(19311,19310,18137,5,0)    -- 'Shadowguard (Rank 5)'
+    ,(19312,19311,18137,6,0)    -- 'Shadowguard (Rank 6)'
+    ,(19386,0,19386,1,0)    -- 'Wyvern Sting (Rank 1)'
+    ,(19434,0,19434,1,0)    -- 'Aimed Shot (Rank 1)'
+    ,(19506,0,19506,1,0)    -- 'Trueshot Aura (Rank 1)'
+    ,(19740,0,19740,1,0)    -- 'Blessing of Might (Rank 1)'
+    ,(19742,0,19742,1,0)    -- 'Blessing of Wisdom (Rank 1)'
+    ,(19750,0,19750,1,0)    -- 'Flash of Light (Rank 1)'
+    ,(19834,19740,19740,2,0)    -- 'Blessing of Might (Rank 2)'
+    ,(19835,19834,19740,3,0)    -- 'Blessing of Might (Rank 3)'
+    ,(19836,19835,19740,4,0)    -- 'Blessing of Might (Rank 4)'
+    ,(19837,19836,19740,5,0)    -- 'Blessing of Might (Rank 5)'
+    ,(19838,19837,19740,6,0)    -- 'Blessing of Might (Rank 6)'
+    ,(19850,19742,19742,2,0)    -- 'Blessing of Wisdom (Rank 2)'
+    ,(19852,19850,19742,3,0)    -- 'Blessing of Wisdom (Rank 3)'
+    ,(19853,19852,19742,4,0)    -- 'Blessing of Wisdom (Rank 4)'
+    ,(19854,19853,19742,5,0)    -- 'Blessing of Wisdom (Rank 5)'
+    ,(19939,19750,19750,2,0)    -- 'Flash of Light (Rank 2)'
+    ,(19940,19939,19750,3,0)    -- 'Flash of Light (Rank 3)'
+    ,(19941,19940,19750,4,0)    -- 'Flash of Light (Rank 4)'
+    ,(19942,19941,19750,5,0)    -- 'Flash of Light (Rank 5)'
+    ,(19943,19942,19750,6,0)    -- 'Flash of Light (Rank 6)'
+    ,(19977,0,19977,1,0)    -- 'Blessing of Light (Rank 1)'
+    ,(19978,19977,19977,2,0)    -- 'Blessing of Light (Rank 2)'
+    ,(19979,19978,19977,3,0)    -- 'Blessing of Light (Rank 3)'
+    ,(20043,0,20043,1,0)    -- 'Aspect of the Wild (Rank 1)'
+    ,(20116,26573,26573,2,0)    -- 'Consecration (Rank 2)'
+    ,(20162,21082,21082,2,0)    -- 'Seal of the Crusader (Rank 2)'
+    ,(20165,0,20165,1,0)    -- 'Seal of Light (Rank 1)'
+    ,(20166,0,20166,1,0)    -- 'Seal of Wisdom (Rank 1)'
+    ,(20190,20043,20043,2,0)    -- 'Aspect of the Wild (Rank 2)'
+    ,(20217,0,20217,1,0)    -- 'Blessing of Kings'
+    ,(20219,12656,4036,5,0)    -- 'Gnomish Engineer'
+    ,(20222,12656,4036,5,0)    -- 'Goblin Engineer'
+    ,(20287,21084,20154,3,0)    -- 'Seal of Righteousness (Rank 2)'
+    ,(20288,20287,20154,4,0)    -- 'Seal of Righteousness (Rank 3)'
+    ,(20289,20288,20154,5,0)    -- 'Seal of Righteousness (Rank 4)'
+    ,(20290,20289,20154,6,0)    -- 'Seal of Righteousness (Rank 5)'
+    ,(20291,20290,20154,7,0)    -- 'Seal of Righteousness (Rank 6)'
+    ,(20292,20291,20154,8,0)    -- 'Seal of Righteousness (Rank 7)'
+    ,(20293,20292,20154,9,0)    -- 'Seal of Righteousness (Rank 8)'
+    ,(20305,20162,21082,3,0)    -- 'Seal of the Crusader (Rank 3)'
+    ,(20306,20305,21082,4,0)    -- 'Seal of the Crusader (Rank 4)'
+    ,(20307,20306,21082,5,0)    -- 'Seal of the Crusader (Rank 5)'
+    ,(20308,20307,21082,6,0)    -- 'Seal of the Crusader (Rank 6)'
+    ,(20347,20165,20165,2,0)    -- 'Seal of Light (Rank 2)'
+    ,(20348,20347,20165,3,0)    -- 'Seal of Light (Rank 3)'
+    ,(20349,20348,20165,4,0)    -- 'Seal of Light (Rank 4)'
+    ,(20356,20166,20166,2,0)    -- 'Seal of Wisdom (Rank 2)'
+    ,(20357,20356,20166,3,0)    -- 'Seal of Wisdom (Rank 3)'
+    ,(20375,0,20375,1,0)    -- 'Seal of Command (Rank 1)'
+    ,(20473,0,20473,1,0)    -- 'Holy Shock (Rank 1)'
+    ,(20484,0,20484,1,0)    -- 'Rebirth (Rank 1)'
+    ,(20609,2008,2008,2,0)    -- 'Ancestral Spirit (Rank 2)'
+    ,(20610,20609,2008,3,0)    -- 'Ancestral Spirit (Rank 3)'
+    ,(20729,6940,6940,2,0)    -- 'Blessing of Sacrifice (Rank 2)'
+    ,(20736,0,20736,1,0)    -- 'Distracting Shot (Rank 1)'
+    ,(20739,20484,20484,2,0)    -- 'Rebirth (Rank 2)'
+    ,(20742,20739,20484,3,0)    -- 'Rebirth (Rank 3)'
+    ,(20747,20742,20484,4,0)    -- 'Rebirth (Rank 4)'
+    ,(20748,20747,20484,5,0)    -- 'Rebirth (Rank 5)'
+    ,(20752,693,693,2,0)    -- 'Create Soulstone (Lesser)'
+    ,(20755,20752,693,3,0)    -- 'Create Soulstone'
+    ,(20756,20755,693,4,0)    -- 'Create Soulstone (Greater)'
+    ,(20757,20756,693,5,0)    -- 'Create Soulstone (Major)'
+    ,(20770,10881,2006,5,0)    -- 'Resurrection (Rank 5)'
+    ,(20772,10324,7328,4,0)    -- 'Redemption (Rank 4)'
+    ,(20773,20772,7328,5,0)    -- 'Redemption (Rank 5)'
+    ,(20776,20610,2008,4,0)    -- 'Ancestral Spirit (Rank 4)'
+    ,(20777,20776,2008,5,0)    -- 'Ancestral Spirit (Rank 5)'
+    ,(20900,19434,19434,2,0)    -- 'Aimed Shot (Rank 2)'
+    ,(20901,20900,19434,3,0)    -- 'Aimed Shot (Rank 3)'
+    ,(20902,20901,19434,4,0)    -- 'Aimed Shot (Rank 4)'
+    ,(20903,20902,19434,5,0)    -- 'Aimed Shot (Rank 5)'
+    ,(20904,20903,19434,6,0)    -- 'Aimed Shot (Rank 6)'
+    ,(20905,19506,19506,2,0)    -- 'Trueshot Aura (Rank 2)'
+    ,(20906,20905,19506,3,0)    -- 'Trueshot Aura (Rank 3)'
+    ,(20909,19306,19306,2,0)    -- 'Counterattack (Rank 2)'
+    ,(20910,20909,19306,3,0)    -- 'Counterattack (Rank 3)'
+    ,(20911,0,20911,1,0)    -- 'Blessing of Sanctuary (Rank 1)'
+    ,(20912,20911,20911,2,0)    -- 'Blessing of Sanctuary (Rank 2)'
+    ,(20913,20912,20911,3,0)    -- 'Blessing of Sanctuary (Rank 3)'
+    ,(20914,20913,20911,4,0)    -- 'Blessing of Sanctuary (Rank 4)'
+    ,(20915,20375,20375,2,0)    -- 'Seal of Command (Rank 2)'
+    ,(20918,20915,20375,3,0)    -- 'Seal of Command (Rank 3)'
+    ,(20919,20918,20375,4,0)    -- 'Seal of Command (Rank 4)'
+    ,(20920,20919,20375,5,0)    -- 'Seal of Command (Rank 5)'
+    ,(20922,20116,26573,3,0)    -- 'Consecration (Rank 3)'
+    ,(20923,20922,26573,4,0)    -- 'Consecration (Rank 4)'
+    ,(20924,20923,26573,5,0)    -- 'Consecration (Rank 5)'
+    ,(20925,0,20925,1,0)    -- 'Holy Shield (Rank 1)'
+    ,(20927,20925,20925,2,0)    -- 'Holy Shield (Rank 2)'
+    ,(20928,20927,20925,3,0)    -- 'Holy Shield (Rank 3)'
+    ,(20929,20473,20473,2,0)    -- 'Holy Shock (Rank 2)'
+    ,(20930,20929,20473,3,0)    -- 'Holy Shock (Rank 3)'
+    ,(21082,0,21082,1,0)    -- 'Seal of the Crusader (Rank 1)'
+    ,(21562,0,21562,1,0)    -- 'Prayer of Fortitude (Rank 1)'
+    ,(21564,21562,21562,2,0)    -- 'Prayer of Fortitude (Rank 2)'
+    ,(21849,0,21849,1,0)    -- 'Gift of the Wild (Rank 1)'
+    ,(21850,21849,21849,2,0)    -- 'Gift of the Wild (Rank 2)'
+    ,(22782,6117,6117,2,0)    -- 'Mage Armor (Rank 2)'
+    ,(22783,22782,6117,3,0)    -- 'Mage Armor (Rank 3)'
+    ,(24132,19386,19386,2,0)    -- 'Wyvern Sting (Rank 2)'
+    ,(24133,24132,19386,3,0)    -- 'Wyvern Sting (Rank 3)'
+    ,(24239,24274,24275,3,0)    -- 'Hammer of Wrath (Rank 3)'
+    ,(24274,24275,24275,2,0)    -- 'Hammer of Wrath (Rank 2)'
+    ,(24275,0,24275,1,0)    -- 'Hammer of Wrath (Rank 1)'
+    ,(24974,5570,5570,2,0)    -- 'Insect Swarm (Rank 2)'
+    ,(24975,24974,5570,3,0)    -- 'Insect Swarm (Rank 3)'
+    ,(24976,24975,5570,4,0)    -- 'Insect Swarm (Rank 4)'
+    ,(24977,24976,5570,5,0)    -- 'Insect Swarm (Rank 5)'
+    ,(25290,19854,19742,6,0)    -- 'Blessing of Wisdom (Rank 6)'
+    ,(25291,19838,19740,7,0)    -- 'Blessing of Might (Rank 7)'
+    ,(25292,10329,635,9,0)    -- 'Holy Light (Rank 9)'
+    ,(25294,14290,2643,5,0)    -- 'Multi-Shot (Rank 5)'
+    ,(25295,13555,1978,9,0)    -- 'Serpent Sting (Rank 9)'
+    ,(25296,14322,13165,7,0)    -- 'Aspect of the Hawk (Rank 7)'
+    ,(25297,9889,5185,11,0)    -- 'Healing Touch (Rank 11)'
+    ,(25298,9876,2912,7,0)    -- 'Starfire (Rank 7)'
+    ,(25299,9841,774,11,0)    -- 'Rejuvenation (Rank 11)'
+    ,(25304,10181,116,11,0)    -- 'Frostbolt (Rank 11)'
+    ,(25306,10151,133,12,0)    -- 'Fireball (Rank 12)'
+    ,(25307,11661,686,10,0)    -- 'Shadow Bolt (Rank 10)'
+    ,(25309,11668,348,8,0)    -- 'Immolate (Rank 8)'
+    ,(25311,11672,172,7,0)    -- 'Corruption (Rank 7)'
+    ,(25314,10965,2060,5,0)    -- 'Greater Heal (Rank 5)'
+    ,(25315,10929,139,10,0)    -- 'Renew (Rank 10)'
+    ,(25316,10961,596,5,0)    -- 'Prayer of Healing (Rank 5)'
+    ,(25345,10212,5143,8,0)    -- 'Arcane Missiles (Rank 8)'
+    ,(25347,11358,2835,5,0)    -- 'Deadly Poison V (Rank 5)'
+    ,(25349,11354,2818,5,0)    -- 'Deadly Poison V (Rank 5)'
+    ,(25357,10396,331,10,0)    -- 'Healing Wave (Rank 10)'
+    ,(25359,10627,8835,3,0)    -- 'Grace of Air Totem (Rank 3)'
+    ,(25361,10442,8075,5,0)    -- 'Strength of Earth Totem (Rank 5)'
+    ,(25782,0,25782,1,19838)    -- 'Greater Blessing of Might (Rank 1)'
+    ,(25890,0,25890,1,19979)    -- 'Greater Blessing of Light (Rank 1)'
+    ,(25894,0,25894,1,19854)    -- 'Greater Blessing of Wisdom (Rank 1)'
+    ,(25895,0,25895,1,1038)    -- 'Greater Blessing of Salvation'
+    ,(25898,0,25898,1,20217)    -- 'Greater Blessing of Kings'
+    ,(25899,0,25899,1,20914)    -- 'Greater Blessing of Sanctuary (Rank 1)'
+    ,(25916,25782,25782,2,25291)    -- 'Greater Blessing of Might (Rank 2)'
+    ,(25918,25894,25894,2,25290)    -- 'Greater Blessing of Wisdom (Rank 2)'
+    ,(26573,0,26573,1,0)    -- 'Consecration (Rank 1)'
+    ,(27681,14752,14752,2,0)    -- 'Prayer of Spirit (Rank 1)'
+    ,(27685,26201,7371,6,0)    -- 'Charge (Rank 6)'
+    ,(27799,15431,15237,4,0)    -- 'Holy Nova (Rank 4)'
+    ,(27800,27799,15237,5,0)    -- 'Holy Nova (Rank 5)'
+    ,(27801,27800,15237,6,0)    -- 'Holy Nova (Rank 6)'
+    ,(27841,14819,14752,4,0)    -- 'Divine Spirit (Rank 4)'
+    ,(27870,724,724,2,0)    -- 'Lightwell (Rank 2)'
+    ,(27871,27870,724,3,0)    -- 'Lightwell (Rank 3)'
+    ,(28609,10177,6143,5,0)    -- 'Frost Ward (Rank 5)'
+    ,(28610,11740,6229,4,0)    -- 'Shadow Ward (Rank 4)'
+    ,(28612,10145,587,7,0)    -- 'Conjure Food (Rank 7)'
+    ,(29228,10448,8050,6,0)    -- 'Flame Shock (Rank 6)'
+    ,(33388,0,33388,1,0)    -- 'Riding (Apprentice)'
+    ,(33391,33388,33388,2,0)    -- 'Riding (Journeyman)'
+;
+
+-- Insert proc events for spells ---------------------------------------------
+INSERT INTO `spell_proc_event`
+    (`entry`,`SchoolMask`,`SpellFamilyName`,`SpellFamilyMask0`,`SpellFamilyMask1`,`SpellFamilyMask2`,`procFlags`,`procEx`,`ppmRate`,`CustomChance`,`Cooldown`)
+VALUES
+     (324,0,0,0,0,0,0,0,0,0,3)    -- 'Lightning Shield (Rank 1)'
+    ,(2565,0,0,0,0,0,0,64,0,0,0)    -- 'Shield Block'
+    ,(6346,127,0,0,0,0,0,256,0,0,0)    -- 'Fear Ward'
+    ,(6866,0,0,0,0,0,0,112,0,0,0)    -- 'Moss Covered Hands'
+    ,(7131,0,0,0,0,0,8,32,0,0,0)    -- 'Illusion Passive'
+    ,(9452,0,0,0,0,0,0,0,3,0,0)    -- 'Vindication (Rank 1)'
+    ,(9782,0,0,0,0,0,0,64,0,0,0)    -- 'Mithril Shield Spike'
+    ,(9784,0,0,0,0,0,0,64,0,0,0)    -- 'Iron Shield Spike'
+    ,(9799,0,0,0,0,0,0,2,0,0,0)    -- 'Eye for an Eye (Rank 1)'
+    ,(11103,4,0,0,0,0,0,0,0,0,0)    -- 'Impact (Rank 1)'
+    ,(11119,4,0,0,0,0,0,2,0,0,0)    -- 'Ignite (Rank 1)'
+    ,(11129,4,0,0,0,0,0,0,0,0,0)    -- 'Combustion'
+    ,(11180,16,0,0,0,0,0,0,0,0,0)    -- 'Winter's Chill (Rank 1)'
+    ,(11185,0,3,128,128,128,327680,0,0,0,0)    -- 'Improved Blizzard (Rank 1)'
+    ,(11255,0,3,16384,16384,16384,0,0,0,0,0)    -- 'Improved Counterspell (Rank 1)'
+    ,(12099,0,0,0,0,0,0,64,0,0,0)    -- 'Shield Spike'
+    ,(12169,0,0,0,0,0,0,64,0,0,0)    -- 'Shield Block'
+    ,(12284,0,0,0,0,0,0,0,0.33252,0,3)    -- 'Mace Specialization (Rank 1)'
+    ,(12289,0,0,2,2,2,0,0,0,0,0)    -- 'Improved Hamstring (Rank 1)'
+    ,(12298,0,0,0,0,0,0,64,0,0,0)    -- 'Shield Specialization (Rank 1)'
+    ,(12311,0,4,2048,2048,2048,0,0,0,0,0)    -- 'Improved Shield Bash (Rank 1)'
+    ,(12317,0,0,0,0,0,0,2,0,0,0)    -- 'Enrage (Rank 1)'
+    ,(12319,0,0,0,0,0,0,2,0,0,0)    -- 'Flurry (Rank 1)'
+    ,(12322,0,0,0,0,0,0,0,2,0,3)    -- 'Unbridled Wrath (Rank 1)'
+    ,(12701,0,0,0,0,0,0,0,0.66504,0,3)    -- 'Mace Specialization (Rank 2)'
+    ,(12702,0,0,0,0,0,0,0,0.99756,0,3)    -- 'Mace Specialization (Rank 3)'
+    ,(12703,0,0,0,0,0,0,0,1.33008,0,3)    -- 'Mace Specialization (Rank 4)'
+    ,(12704,0,0,0,0,0,0,0,1.6626,0,3)    -- 'Mace Specialization (Rank 5)'
+    ,(12782,0,0,0,0,0,0,64,0,0,0)    -- 'Shield Spike'
+    ,(12797,0,0,1024,1024,1024,0,0,0,0,0)    -- 'Improved Revenge (Rank 1)'
+    ,(12834,0,0,0,0,0,0,2,0,0,0)    -- 'Deep Wounds (Rank 1)'
+    ,(12880,0,0,0,0,0,0,65536,0,0,0)    -- 'Enrage (Rank 1)'
+    ,(12966,0,0,0,0,0,0,65536,0,0,0)    -- 'Flurry (Rank 1)'
+    ,(12999,0,0,0,0,0,0,0,4,0,3)    -- 'Unbridled Wrath (Rank 2)'
+    ,(13000,0,0,0,0,0,0,0,6,0,3)    -- 'Unbridled Wrath (Rank 3)'
+    ,(13001,0,0,0,0,0,0,0,8,0,3)    -- 'Unbridled Wrath (Rank 4)'
+    ,(13002,0,0,0,0,0,0,0,10,0,3)    -- 'Unbridled Wrath (Rank 5)'
+    ,(13754,0,0,16,16,16,0,0,0,0,0)    -- 'Improved Kick (Rank 1)'
+    ,(13983,0,0,0,0,0,0,24,0,0,0)    -- 'Setup (Rank 1)'
+    ,(14076,0,8,128,128,128,0,0,0,0,0)    -- 'Improved Sap (Rank 1)'
+    ,(14156,0,0,4063232,4063232,4063232,0,0,0,0,0)    -- 'Ruthlessness (Rank 1)'
+    ,(14186,0,8,1082131720,1082131720,1082131720,0,2,0,0,0)    -- 'Seal Fate (Rank 1)'
+    ,(14531,0,0,0,0,0,0,2,0,0,0)    -- 'Martyrdom (Rank 1)'
+    ,(14892,0,6,17448312320,17448312320,17448312320,0,2,0,0,0)    -- 'Inspiration (Rank 1)'
+    ,(15088,0,0,0,0,0,0,2,0,0,0)    -- 'Flurry'
+    ,(15268,0,6,41984016,41984016,41984016,0,0,0,0,0)    -- 'Blackout (Rank 1)'
+    ,(15277,0,0,0,0,0,0,0,6,0,3)    -- 'Seal of Reckoning'
+    ,(15286,32,0,0,0,0,0,0,0,0,0)    -- 'Vampiric Embrace'
+    ,(15346,0,0,0,0,0,0,0,6,0,3)    -- 'Seal of Reckoning'
+    ,(15600,0,0,0,0,0,0,0,0.6,0,3)    -- 'Hand of Justice'
+    ,(16164,28,0,0,0,0,0,0,0,0,0)    -- 'Elemental Focus'
+    ,(16176,0,11,448,448,448,0,2,0,0,0)    -- 'Ancestral Healing (Rank 1)'
+    ,(16256,0,0,0,0,0,0,2,0,0,0)    -- 'Flurry (Rank 1)'
+    ,(16257,0,0,0,0,0,0,65536,0,0,0)    -- 'Flurry (Rank 1)'
+    ,(16487,0,0,0,0,0,0,2,0,0,0)    -- 'Blood Craze (Rank 1)'
+    ,(16620,0,0,0,0,0,0,0,0,0,30)    -- 'Proc Self Invulnerability'
+    ,(16624,0,0,0,0,0,0,64,0,0,0)    -- 'Thorium Shield Spike'
+    ,(16850,0,0,4,4,4,0,0,0,0,0)    -- 'Improved Starfire (Rank 1)'
+    ,(16864,0,0,0,0,0,0,0,2,0,3)    -- 'Omen of Clarity'
+    ,(16880,0,0,0,0,0,0,2,0,0,0)    -- 'Nature's Grace'
+    ,(16952,0,0,4398046744576,4398046744576,4398046744576,0,2,0,0,0)    -- 'Blood Frenzy (Rank 1)'
+    ,(16958,0,0,0,0,0,0,2,0,0,0)    -- 'Primal Fury (Rank 1)'
+    ,(17079,0,7,524288,524288,524288,0,0,0,0,0)    -- 'Improved Enrage (Rank 1)'
+    ,(17364,8,0,0,0,0,0,0,0,0,0)    -- 'Stormstrike (Rank 1)'
+    ,(17495,0,0,0,0,0,0,64,0,0,0)    -- 'Crest of Retribution'
+    ,(17670,0,0,0,0,0,8,0,0,0,0)    -- 'Argent Dawn Commission'
+    ,(17687,0,0,0,0,0,0,116,0,0,0)    -- 'Flurry'
+    ,(17793,0,5,1,1,1,0,2,0,0,0)    -- 'Improved Shadow Bolt (Rank 1)'
+    ,(18094,0,5,10,10,10,0,0,0,0,0)    -- 'Nightfall (Rank 1)'
+    ,(18096,0,0,549755813984,549755813984,549755813984,0,0,0,0,0)    -- 'Pyroclasm (Rank 1)'
+    ,(18119,0,5,9189,9189,9189,0,0,0,0,0)    -- 'Aftermath (Rank 1)'
+    ,(18137,0,0,0,0,0,0,0,0,0,3)    -- 'Shadowguard (Rank 1)'
+    ,(18765,0,0,0,0,0,0,116,0,0,0)    -- 'Sweeping Strikes'
+    ,(18800,0,0,0,0,0,8,0,0,0,0)    -- 'Light Test'
+    ,(19228,0,0,64,64,64,0,0,0,0,0)    -- 'Improved Wing Clip (Rank 1)'
+    ,(19407,0,0,512,512,512,0,0,0,0,0)    -- 'Improved Concussive Shot (Rank 1)'
+    ,(19552,0,0,0,0,0,64,0,0,0,0)    -- 'Improved Aspect of the Hawk (Rank 1)'
+    ,(19572,0,9,8388608,8388608,8388608,16384,0,0,0,0)    -- 'Improved Mend Pet (Rank 1)'
+    ,(20049,0,0,0,0,0,0,2,0,0,0)    -- 'Vengeance (Rank 1)'
+    ,(20127,0,0,0,0,0,0,2,0,0,0)    -- 'Redoubt (Rank 1)'
+    ,(20128,0,0,0,0,0,0,64,0,0,0)    -- 'Redoubt'
+    ,(20131,0,0,0,0,0,0,64,0,0,0)    -- 'Redoubt'
+    ,(20132,0,0,0,0,0,0,64,0,0,0)    -- 'Redoubt'
+    ,(20133,0,0,0,0,0,0,64,0,0,0)    -- 'Redoubt'
+    ,(20134,0,0,0,0,0,0,64,0,0,0)    -- 'Redoubt'
+    ,(20164,0,0,0,0,0,0,0,5,0,3)    -- 'Seal of Justice'
+    ,(20165,0,0,0,0,0,0,0,20,0,3)    -- 'Seal of Light (Rank 1)'
+    ,(20166,0,0,0,0,0,0,0,20,0,3)    -- 'Seal of Wisdom (Rank 1)'
+    ,(20177,0,0,0,0,0,0,2,0,0,0)    -- 'Reckoning (Rank 1)'
+    ,(20210,0,10,3223322624,3223322624,3223322624,0,2,0,0,0)    -- 'Illumination (Rank 1)'
+    ,(20234,0,0,32768,32768,32768,0,0,0,0,0)    -- 'Improved Lay on Hands (Rank 1)'
+    ,(20375,0,0,0,0,0,0,0,7,0,3)    -- 'Seal of Command (Rank 1)'
+    ,(20500,0,4,268435456,268435456,268435456,0,0,0,0,0)    -- 'Improved Berserker Rage (Rank 1)'
+    ,(20725,0,0,0,0,0,0,2,0,0,0)    -- 'Greater Dragon Slayer 25'
+    ,(20784,0,0,0,0,0,0,2,0,0,0)    -- 'Tamed Pet Passive (DND)'
+    ,(20891,0,0,0,0,0,0,2,0,0,0)    -- 'Greater Beast Slayer 25'
+    ,(20911,0,0,0,0,0,0,64,0,0,0)    -- 'Blessing of Sanctuary (Rank 1)'
+    ,(20925,0,0,0,0,0,0,64,0,0,0)    -- 'Holy Shield (Rank 1)'
+    ,(21185,0,0,0,0,0,0,0,0,0,10)    -- 'Spinal Reaper'
+    ,(21882,0,0,0,0,0,0,2,0,0,0)    -- 'Judgement Smite'
+    ,(21890,0,4,3763103747823,3763103747823,3763103747823,0,0,0,0,0)    -- 'Warrior's Wrath'
+    ,(22007,0,0,2099233,2099233,2099233,0,0,0,0,0)    -- 'Netherwind Focus'
+    ,(22618,0,0,0,0,0,0,64,0,0,0)    -- 'Force Reactive Disk'
+    ,(22620,0,0,0,0,0,0,64,0,0,0)    -- 'Force Reactive Disk'
+    ,(22648,0,0,0,0,0,0,2,0,0,0)    -- 'Call of Eskhandar'
+    ,(23547,0,0,0,0,0,0,32,0,0,0)    -- 'Parry'
+    ,(23548,0,0,0,0,0,0,64,0,0,0)    -- 'Parry'
+    ,(23551,0,0,192,192,192,0,0,0,0,0)    -- 'Lightning Shield'
+    ,(23552,0,0,0,0,0,0,0,0,0,3)    -- 'Lightning Shield'
+    ,(23572,0,0,192,192,192,0,0,0,0,0)    -- 'Mana Surge'
+    ,(23578,0,0,0,0,0,0,0,2,0,3)    -- 'Expose Weakness'
+    ,(23581,0,0,0,0,0,0,0,2,0,3)    -- 'Bloodfang'
+    ,(23582,0,8,2048,2048,2048,16384,0,0,0,0)    -- 'Clean Escape'
+    ,(23686,0,0,0,0,0,0,0,2,0,3)    -- 'Lightning Strike'
+    ,(23689,0,0,0,0,0,0,0,4,0,3)    -- 'Heroism'
+    ,(23721,0,0,2048,2048,2048,0,0,0,0,0)    -- 'Arcane Infused'
+    ,(24658,0,0,0,0,0,82192,0,0,0,0)    -- 'Unstable Power'
+    ,(25669,0,0,0,0,0,0,0,1,0,3)    -- 'Decapitate'
+    ,(25899,0,0,0,0,0,0,64,0,0,0)    -- 'Greater Blessing of Sanctuary (Rank 1)'
+    ,(26107,0,7,549764202496,549764202496,549764202496,0,116,0,0,0)    -- 'Symbols of Unending Life Finisher Bonus'
+    ,(26119,0,11,2416967683,2416967683,2416967683,0,0,0,0,0)    -- 'Stormcaller Spelldamage Bonus'
+    ,(26128,0,0,0,0,0,0,8,0,0,0)    -- 'Enigma Resist Bonus'
+    ,(26135,0,0,8388608,8388608,8388608,0,0,0,0,0)    -- 'Battlegear of Eternal Justice'
+    ,(26480,0,0,0,0,0,0,0,3,0,0)    -- 'Badge of the Swarmguard'
+    ,(27419,0,0,0,0,0,0,0,3,0,0)    -- 'Warrior's Resolve'
+    ,(27498,0,0,0,0,0,0,0,3,0,0)    -- 'Crusader's Wrath'
+    ,(27656,0,0,0,0,0,0,0,3,0,0)    -- 'Flame Lash'
+    ,(27787,0,0,0,0,0,0,0,3,0,0)    -- 'Rogue Armor Energize'
+    ,(27811,0,0,0,0,0,0,2,0,0,0)    -- 'Blessed Recovery (Rank 1)'
+    ,(28716,0,7,16,16,16,294912,0,0,0,0)    -- 'Rejuvenation'
+    ,(28719,0,7,32,32,32,0,2,0,0,0)    -- 'Healing Touch'
+    ,(28744,0,7,64,64,64,278528,0,0,0,0)    -- 'Regrowth'
+    ,(28752,0,0,0,0,0,0,2,0,0,0)    -- 'Adrenaline Rush'
+    ,(28789,0,10,24576,24576,24576,0,0,0,0,0)    -- 'Holy Power'
+    ,(28809,0,0,4096,4096,4096,0,2,0,0,0)    -- 'Greater Heal'
+    ,(28812,0,0,0,0,0,0,2,0,0,0)    -- 'Head Rush'
+    ,(28816,0,0,0,0,0,0,0,3,0,0)    -- 'Invigorate'
+    ,(28823,0,0,192,192,192,0,0,0,0,0)    -- 'Totemic Power'
+    ,(28847,0,7,32,32,32,0,0,0,0,0)    -- 'Healing Touch Refund'
+    ,(28849,0,11,128,128,128,0,0,0,0,0)    -- 'Lesser Healing Wave'
+    ,(29062,0,0,0,0,0,0,2,0,0,0)    -- 'Eye of the Storm (Rank 1)'
+    ,(29074,20,0,0,0,0,0,2,0,0,0)    -- 'Master of Elements (Rank 1)'
+    ,(29150,0,0,0,0,0,0,0,3,0,0)    -- 'Electric Discharge'
+    ,(29441,0,0,0,0,0,0,8,0,0,1)    -- 'Magic Absorption (Rank 1)'
+    ,(29501,0,0,0,0,0,0,0,3,0,0)    -- 'Frost Arrow'
+    ,(29624,0,0,0,0,0,0,0,3,0,0)    -- 'Searing Arrow'
+    ,(29625,0,0,0,0,0,0,0,3,0,0)    -- 'Flaming Cannonball'
+    ,(29626,0,0,0,0,0,0,0,3,0,0)    -- 'Shadowbolt'
+    ,(29632,0,0,0,0,0,0,0,3,0,0)    -- 'Shadow Shot'
+    ,(29633,0,0,0,0,0,0,0,3,0,0)    -- 'Fire Blast'
+    ,(29634,0,0,0,0,0,0,0,3,0,0)    -- 'Quill Shot'
+    ,(29635,0,0,0,0,0,0,0,3,0,0)    -- 'Flaming Shell'
+    ,(29636,0,0,0,0,0,0,0,3,0,0)    -- 'Venom Shot'
+    ,(29637,0,0,0,0,0,0,0,3,0,0)    -- 'Keeper's Sting'
+    ,(30003,0,0,0,0,0,0,2048,0,0,0)    -- 'Sheen of Zanza'
+    ,(30160,0,0,0,0,0,0,2,0,0,0)    -- 'Elemental Devastation (Rank 1)'
+    ,(30802,0,0,0,0,0,0,2,0,0,0)    -- 'Unleashed Rage (Rank 1)'
+    ,(30808,0,0,0,0,0,0,2,0,0,0)    -- 'Unleashed Rage (Rank 2)'
+    ,(30809,0,0,0,0,0,0,2,0,0,0)    -- 'Unleashed Rage (Rank 3)'
+    ,(30810,0,0,0,0,0,0,2,0,0,0)    -- 'Unleashed Rage (Rank 4)'
+    ,(30811,0,0,0,0,0,0,2,0,0,0)    -- 'Unleashed Rage (Rank 5)'
+;
+
+-- Insert battleground templates ---------------------------------------------
+INSERT INTO `battleground_template`
+    (`id`, `MinPlayersPerTeam`, `MaxPlayersPerTeam`, `MinLvl`, `MaxLvl`, `AllianceStartLoc`, `AllianceStartO`, `HordeStartLoc`, `HordeStartO`)
+VALUES
+     (1,   20,                  40,                  51,       60,       611,                2.72532,          610,             2.27452)
+    ,(2,   5,                   10,                  10,       60,       769,                3.14159,          770,             3.14159)
+    ,(3,   8,                   15,                  20,       60,       890,                3.40156,          889,             0.263892)
+;
+
+-- Insert area triggers for battlegrounds ------------------------------------
+INSERT INTO `areatrigger_teleport`
+    (`target_position_x`, `target_position_y`, `target_position_z`, `target_map`, `target_orientation`, `id`, `name`)
+VALUES
+     (534.868,            -1087.68,             106.119,            0,            3.35758,              2606,   'Alterac Valley - Horde - Entrance - Outside')
+    ,(98.432,             -182.274,             127.52,             0,            5.02654,              2608,   'Alterac Valley - Alliance - Entrance - Outside')
+    ,(-1198,              -2533,                22,                 0,            0,                    3948,   'Arathi Basin - Refuge Point - Entrance - Outside')
+    ,(-817,               -3509,                73,                 0,            0,                    3949,   'Arathi Basin - Hammerfall - Entrance - Outside')
+;
+
+-- Insert battleground events ------------------------------------------------
+INSERT INTO `battleground_events`
+    (`map`,`event1`,`event2`,`description`)
+VALUES
+     (30,0,0,'Alterac Valley - First Aid Station - Alliance assaulted')
+    ,(30,0,1,'Alterac Valley - First Aid Station - Alliance controlled')
+    ,(30,0,2,'Alterac Valley - First Aid Station - Horde assaulted')
+    ,(30,0,3,'Alterac Valley - First Aid Station - Horde controlled')
+    ,(30,1,0,'Alterac Valley - Stormpike Grave - Alliance assaulted')
+    ,(30,1,1,'Alterac Valley - Stormpike Grave - Alliance controlled')
+    ,(30,1,2,'Alterac Valley - Stormpike Grave - Horde assaulted')
+    ,(30,1,3,'Alterac Valley - Stormpike Grave - Horde controlled')
+    ,(30,2,0,'Alterac Valley - Stoneheart Grave - Alliance assaulted')
+    ,(30,2,1,'Alterac Valley - Stoneheart Grave - Alliance controlled')
+    ,(30,2,2,'Alterac Valley - Stoneheart Grave - Horde assaulted')
+    ,(30,2,3,'Alterac Valley - Stoneheart Grave - Horde controlled')
+    ,(30,3,0,'Alterac Valley - Snowfall Grave - Alliance assaulted')
+    ,(30,3,1,'Alterac Valley - Snowfall Grave - Alliance controlled')
+    ,(30,3,2,'Alterac Valley - Snowfall Grave - Horde assaulted')
+    ,(30,3,3,'Alterac Valley - Snowfall Grave - Horde controlled')
+    ,(30,3,5,'Alterac Valley - Snowfall Grave - Neutral')
+    ,(30,4,0,'Alterac Valley - Iceblood Grave - Alliance assaulted')
+    ,(30,4,1,'Alterac Valley - Iceblood Grave - Alliance controlled')
+    ,(30,4,2,'Alterac Valley - Iceblood Grave - Horde assaulted')
+    ,(30,4,3,'Alterac Valley - Iceblood Grave - Horde controlled')
+    ,(30,5,0,'Alterac Valley - Frostwolf Grave - Alliance assaulted')
+    ,(30,5,1,'Alterac Valley - Frostwolf Grave - Alliance controlled')
+    ,(30,5,2,'Alterac Valley - Frostwolf Grave - Horde assaulted')
+    ,(30,5,3,'Alterac Valley - Frostwolf Grave - Horde controlled')
+    ,(30,6,0,'Alterac Valley - Frostwolf Hut - Alliance assaulted')
+    ,(30,6,1,'Alterac Valley - Frostwolf Hut - Alliance controlled')
+    ,(30,6,2,'Alterac Valley - Frostwolf Hut - Horde assaulted')
+    ,(30,6,3,'Alterac Valley - Frostwolf Hut - Horde controlled')
+    ,(30,7,1,'Alterac Valley - Dun Baldar South - Alliance controlled')
+    ,(30,7,2,'Alterac Valley - Dun Baldar South - Horde assaulted')
+    ,(30,7,3,'Alterac Valley - Dun Baldar South - Horde controlled')
+    ,(30,8,1,'Alterac Valley - Dun Baldar North - Alliance controlled')
+    ,(30,8,2,'Alterac Valley - Dun Baldar North - Horde assaulted')
+    ,(30,8,3,'Alterac Valley - Dun Baldar North - Horde controlled')
+    ,(30,9,1,'Alterac Valley - Icewing Bunker - Alliance controlled')
+    ,(30,9,2,'Alterac Valley - Icewing Bunker - Horde assaulted')
+    ,(30,9,3,'Alterac Valley - Icewing Bunker - Horde controlled')
+    ,(30,10,1,'Alterac Valley - Stoneheart Bunker - Alliance controlled')
+    ,(30,10,2,'Alterac Valley - Stoneheart Bunker - Horde assaulted')
+    ,(30,10,3,'Alterac Valley - Stoneheart Bunker - Horde controlled')
+    ,(30,11,0,'Alterac Valley - Iceblood Tower - Alliance assaulted')
+    ,(30,11,1,'Alterac Valley - Iceblood Tower - Alliance controlled')
+    ,(30,11,3,'Alterac Valley - Iceblood Tower - Horde controlled')
+    ,(30,12,0,'Alterac Valley - Tower Point - Alliance assaulted')
+    ,(30,12,1,'Alterac Valley - Tower Point - Alliance controlled')
+    ,(30,12,3,'Alterac Valley - Tower Point - Horde controlled')
+    ,(30,13,0,'Alterac Valley - Frostwolf East Tower - Alliance assaulted')
+    ,(30,13,1,'Alterac Valley - Frostwolf East Tower - Alliance controlled')
+    ,(30,13,3,'Alterac Valley - Frostwolf East Tower - Horde controlled')
+    ,(30,14,0,'Alterac Valley - Frostwolf West Tower - Alliance assaulted')
+    ,(30,14,1,'Alterac Valley - Frostwolf West Tower - Alliance controlled')
+    ,(30,14,3,'Alterac Valley - Frostwolf West Tower - Horde controlled')
+    ,(30,15,0,'Alterac Valley - First Aid Station - Alliance quest0')
+    ,(30,15,1,'Alterac Valley - First Aid Station - Alliance quest1')
+    ,(30,15,2,'Alterac Valley - First Aid Station - Alliance quest2')
+    ,(30,15,3,'Alterac Valley - First Aid Station - Alliance quest3')
+    ,(30,15,4,'Alterac Valley - First Aid Station - Horde quest0')
+    ,(30,15,5,'Alterac Valley - First Aid Station - Horde quest1')
+    ,(30,15,6,'Alterac Valley - First Aid Station - Horde quest2')
+    ,(30,15,7,'Alterac Valley - First Aid Station - Horde quest3')
+    ,(30,16,0,'Alterac Valley - Stormpike Grave - Alliance quest0')
+    ,(30,16,1,'Alterac Valley - Stormpike Grave - Alliance quest1')
+    ,(30,16,2,'Alterac Valley - Stormpike Grave - Alliance quest2')
+    ,(30,16,3,'Alterac Valley - Stormpike Grave - Alliance quest3')
+    ,(30,16,4,'Alterac Valley - Stormpike Grave - Horde quest0')
+    ,(30,16,5,'Alterac Valley - Stormpike Grave - Horde quest1')
+    ,(30,16,6,'Alterac Valley - Stormpike Grave - Horde quest2')
+    ,(30,16,7,'Alterac Valley - Stormpike Grave - Horde quest3')
+    ,(30,17,0,'Alterac Valley - Stoneheart Grave - Alliance quest0')
+    ,(30,17,1,'Alterac Valley - Stoneheart Grave - Alliance quest1')
+    ,(30,17,2,'Alterac Valley - Stoneheart Grave - Alliance quest2')
+    ,(30,17,3,'Alterac Valley - Stoneheart Grave - Alliance quest3')
+    ,(30,17,4,'Alterac Valley - Stoneheart Grave - Horde quest0')
+    ,(30,17,5,'Alterac Valley - Stoneheart Grave - Horde quest1')
+    ,(30,17,6,'Alterac Valley - Stoneheart Grave - Horde quest2')
+    ,(30,17,7,'Alterac Valley - Stoneheart Grave - Horde quest3')
+    ,(30,18,0,'Alterac Valley - Snowfall Grave - Alliance quest0')
+    ,(30,18,1,'Alterac Valley - Snowfall Grave - Alliance quest1')
+    ,(30,18,2,'Alterac Valley - Snowfall Grave - Alliance quest2')
+    ,(30,18,3,'Alterac Valley - Snowfall Grave - Alliance quest3')
+    ,(30,18,4,'Alterac Valley - Snowfall Grave - Horde quest0')
+    ,(30,18,5,'Alterac Valley - Snowfall Grave - Horde quest1')
+    ,(30,18,6,'Alterac Valley - Snowfall Grave - Horde quest2')
+    ,(30,18,7,'Alterac Valley - Snowfall Grave - Horde quest3')
+    ,(30,19,0,'Alterac Valley - Iceblood Grave - Alliance quest0')
+    ,(30,19,1,'Alterac Valley - Iceblood Grave - Alliance quest1')
+    ,(30,19,2,'Alterac Valley - Iceblood Grave - Alliance quest2')
+    ,(30,19,3,'Alterac Valley - Iceblood Grave - Alliance quest3')
+    ,(30,19,4,'Alterac Valley - Iceblood Grave - Horde quest0')
+    ,(30,19,5,'Alterac Valley - Iceblood Grave - Horde quest1')
+    ,(30,19,6,'Alterac Valley - Iceblood Grave - Horde quest2')
+    ,(30,19,7,'Alterac Valley - Iceblood Grave - Horde quest3')
+    ,(30,20,0,'Alterac Valley - Frostwolf Grave - Alliance quest0')
+    ,(30,20,1,'Alterac Valley - Frostwolf Grave - Alliance quest1')
+    ,(30,20,2,'Alterac Valley - Frostwolf Grave - Alliance quest2')
+    ,(30,20,3,'Alterac Valley - Frostwolf Grave - Alliance quest3')
+    ,(30,20,4,'Alterac Valley - Frostwolf Grave - Horde quest0')
+    ,(30,20,5,'Alterac Valley - Frostwolf Grave - Horde quest1')
+    ,(30,20,6,'Alterac Valley - Frostwolf Grave - Horde quest2')
+    ,(30,20,7,'Alterac Valley - Frostwolf Grave - Horde quest3')
+    ,(30,21,0,'Alterac Valley - Frostwolf Hut - Alliance quest0')
+    ,(30,21,1,'Alterac Valley - Frostwolf Hut - Alliance quest1')
+    ,(30,21,2,'Alterac Valley - Frostwolf Hut - Alliance quest2')
+    ,(30,21,3,'Alterac Valley - Frostwolf Hut - Alliance quest3')
+    ,(30,21,4,'Alterac Valley - Frostwolf Hut - Horde quest0')
+    ,(30,21,5,'Alterac Valley - Frostwolf Hut - Horde quest1')
+    ,(30,21,6,'Alterac Valley - Frostwolf Hut - Horde quest2')
+    ,(30,21,7,'Alterac Valley - Frostwolf Hut - Horde quest3')
+    ,(30,46,0,'Alterac Valley - North Mine Boss - Alliance')
+    ,(30,46,1,'Alterac Valley - North Mine Boss - Horde')
+    ,(30,46,2,'Alterac Valley - North Mine Boss - Neutral')
+    ,(30,47,0,'Alterac Valley - South Mine Boss - Alliance')
+    ,(30,47,1,'Alterac Valley - South Mine Boss - Horde')
+    ,(30,47,2,'Alterac Valley - South Mine Boss - Neutral')
+    ,(30,48,0,'Alterac Valley - Alliance Captain')
+    ,(30,49,0,'Alterac Valley - Horde Captain')
+    ,(30,50,0,'Alterac Valley - North Mine Control - Alliance')
+    ,(30,50,1,'Alterac Valley - North Mine Control - Horde')
+    ,(30,50,2,'Alterac Valley - North Mine Control - Neutral')
+    ,(30,51,0,'Alterac Valley - South Mine Control - Alliance')
+    ,(30,51,1,'Alterac Valley - South Mine Control - Horde')
+    ,(30,51,2,'Alterac Valley - South Mine Control - Neutral')
+    ,(30,52,0,'Alterac Valley - Alliance Marshal - South')
+    ,(30,53,0,'Alterac Valley - Alliance Marshal - North')
+    ,(30,54,0,'Alterac Valley - Alliance Marshal - Icewing Bunker')
+    ,(30,55,0,'Alterac Valley - Alliance Marshal - Stoneheart Bunker')
+    ,(30,56,0,'Alterac Valley - Horde Marshal - Iceblood Tower')
+    ,(30,57,0,'Alterac Valley - Horde Marshal - Tower Point')
+    ,(30,58,0,'Alterac Valley - Horde Marshal - East Tower')
+    ,(30,59,0,'Alterac Valley - Horde Marshal - West Tower')
+    ,(30,60,0,'Alterac Valley - Herald')
+    ,(30,61,0,'Alterac Valley - Alliance Boss')
+    ,(30,62,0,'Alterac Valley - Horde Boss')
+    ,(30,63,0,'Alterac Valley - Alliance Captain - Dead')
+    ,(30,64,0,'Alterac Valley - Alliance Captain - Dead')
+    ,(30,254,0,'Alterac Valley - Doors')
+    ,(489,0,0,'Warsong Gulch - Alliance Flag')
+    ,(489,1,0,'Warsong Gulch - Horde Flag')
+    ,(489,2,0,'Warsong Gulch - Spirit guides spawn')
+    ,(489,254,0,'Warsong Gulch - Doors')
+    ,(529,0,0,'Arathi Basin - Stables - neutral')
+    ,(529,0,1,'Arathi Basin - Stables - contested (Alliance)')
+    ,(529,0,2,'Arathi Basin - Stables - contested (Horde)')
+    ,(529,0,3,'Arathi Basin - Stables - occupied (Alliance)')
+    ,(529,0,4,'Arathi Basin - Stables - occupied (Horde)')
+    ,(529,1,0,'Arathi Basin - Blacksmith - neutral')
+    ,(529,1,1,'Arathi Basin - Blacksmith - contested (Alliance)')
+    ,(529,1,2,'Arathi Basin - Blacksmith - contested (Horde)')
+    ,(529,1,3,'Arathi Basin - Blacksmith - occupied (Alliance)')
+    ,(529,1,4,'Arathi Basin - Blacksmith - occupied (Horde)')
+    ,(529,2,0,'Arathi Basin - Farm - neutral')
+    ,(529,2,1,'Arathi Basin - Farm - contested (Alliance)')
+    ,(529,2,2,'Arathi Basin - Farm - contested (Horde)')
+    ,(529,2,3,'Arathi Basin - Farm - occupied (Alliance)')
+    ,(529,2,4,'Arathi Basin - Farm - occupied (Horde)')
+    ,(529,3,0,'Arathi Basin - Lumber Mill - neutral')
+    ,(529,3,1,'Arathi Basin - Lumber Mill - contested (Alliance)')
+    ,(529,3,2,'Arathi Basin - Lumber Mill - contested (Horde)')
+    ,(529,3,3,'Arathi Basin - Lumber Mill - occupied (Alliance)')
+    ,(529,3,4,'Arathi Basin - Lumber Mill - occupied (Horde)')
+    ,(529,4,0,'Arathi Basin - Gold Mine - neutral')
+    ,(529,4,1,'Arathi Basin - Gold Mine - contested (Alliance)')
+    ,(529,4,2,'Arathi Basin - Gold Mine - contested (Horde)')
+    ,(529,4,3,'Arathi Basin - Gold Mine - occupied (Alliance)')
+    ,(529,4,4,'Arathi Basin - Gold Mine - occupied (Horde)')
+    ,(529,254,0,'Arathi Basin - Doors')
 ;

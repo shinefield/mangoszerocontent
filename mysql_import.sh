@@ -46,22 +46,22 @@ function import ()
 function import_structure ()
 {
     # - Import character database structure --------------------------------------
-    for x in ./character/*.sql; do
+    for x in ./_init/character/*.sql; do
         import $x ${CHARACTER_DATABASE}
     done
 
     # - Import realm list database structure -------------------------------------
-    for x in ./realm/*.sql; do
+    for x in ./_init/realm/*.sql; do
         import $x ${REALM_DATABASE}
     done
 
     # - Import script database structure -----------------------------------------
-    for x in ./script/*.sql; do
+    for x in ./_init/script/*.sql; do
         import $x ${SCRIPT_DATABASE}
     done
 
     # - Import world database structure ------------------------------------------
-    for x in ./world/*.sql; do
+    for x in ./_init/world/*.sql; do
         import $x ${WORLD_DATABASE}
     done
 }
