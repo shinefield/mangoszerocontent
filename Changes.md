@@ -22,6 +22,8 @@ A feature release to address various issues.
   opportunities all over the world. Enjoy our sense for chairity.
 * when logging out in your favourite in, you will now properly take advantage
   of the resting bonus.
+* weekly, monthly and seasonal events have bee added. Note that this is just in
+  preparation for future updates where content for these events will be added.
 
 0.1.2 (2014-08-02)
 ------------------
