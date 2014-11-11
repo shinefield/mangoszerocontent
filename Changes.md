@@ -3,6 +3,10 @@ Changelog
 This document tracks changes in the [mangos-zero database][113] and highlights
 what has been done to bring the database to you.
 
+0.2.0 (2014-12-XX)
+------------------
+This is the first content release of the clean **mangos-zero** database.
+
 0.1.3 (2014-11-11)
 ------------------
 A feature release to address various issues.
