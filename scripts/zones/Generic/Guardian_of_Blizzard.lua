@@ -40,6 +40,7 @@ function Guardian_of_Blizzard.OnEnterCombat(event, creature, target)
     local YellChance = math.random(1, 1)
 
     creature:SendUnitYell("THIS AREA IS OFF LIMITS!", 0)
+    creature:RegisterEvent(Guardian_of_Blizzard.Death_Touch, math.random(4000, 14100), 0)
 end
 
 function Guardian_of_Blizzard.Death_Touch(event, delay, pCall, creature)
@@ -58,7 +59,6 @@ end
 
 function Guardian_of_Blizzard.OnSpawn(event, creature)
     creature:SetAggroEnabled(true)
-    creature:RegisterEvent(Guardian_of_Blizzard.Death_Touch, math.random(4000, 14100), 0)
 end
 
 -- [[ Register creature events                                           ]] --
