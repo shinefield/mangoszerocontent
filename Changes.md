@@ -7,6 +7,15 @@ what has been done to bring the database to you.
 ------------------
 This is the first content release of the clean **mangos-zero** database.
 
+Also starting with this release, scripts for the [Eluna][eluna] Lua engine have
+become a part of the project. This means for any scripted game content you will
+find required scripts in this repository, too.
+
+The following fixes and feature additions have been made in addition:
+
+* support for content localization has been added with German locales now
+  being the first supported locale. Submit pull requests for your locale now!
+
 0.1.3 (2014-11-11)
 ------------------
 A feature release to address various issues.
@@ -59,13 +68,15 @@ content developers to build upon. Also this release was built to test drive
 the update process, and to show best practices for crafting database updates.
 
 
-[1]: http://blizzard.com/ "Blizzard Entertainment Inc. · we love you!"
-[2]: http://blizzard.com/games/wow/ "World of Warcraft - Classic / Vanilla"
-[3]: http://wowpedia.org/Beta#World_of_Warcraft "World of Warcraft - Classic Beta"
+[1]:        http://blizzard.com/ "Blizzard Entertainment Inc. · we love you!"
+[2]:        http://blizzard.com/games/wow/ "World of Warcraft - Classic / Vanilla"
+[3]:        http://wowpedia.org/Beta#World_of_Warcraft "World of Warcraft - Classic Beta"
 
-[100]: http://getmangos.com/ "mangos foundation · project site"
+[100]:      http://getmangos.com/ "mangos foundation · project site"
 
-[110]: http://bitbucket.org/mangoszero "mangos zero · bitbucket organization"
-[111]: http://bitbucket.org/mangoszero/server "mangos zero · server"
-[112]: http://bitbucket.org/mangoszero/scripts "mangos zero · script extensions"
-[113]: http://bitbucket.org/mangoszero/content "mangos-zero · clean database"
+[110]:      http://bitbucket.org/mangoszero "mangos zero · bitbucket organization"
+[111]:      http://bitbucket.org/mangoszero/server "mangos zero · server"
+[112]:      http://bitbucket.org/mangoszero/scripts "mangos zero · script extensions"
+[113]:      http://bitbucket.org/mangoszero/content "mangos-zero · clean database"
+
+[eluna]:    https://github.com/ElunaLuaEngine/Eluna
