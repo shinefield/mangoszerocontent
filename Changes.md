@@ -5,7 +5,13 @@ what has been done to bring the database to you.
 
 0.2.0 (2014-12-XX)
 ------------------
-This is the first content release of the clean **mangos-zero** database.
+This is the first content release of the clean **mangos-zero** database. With it
+we introduce level 1 to 1 content for the following zones:
+
+* Dun Morogh: starting zone for the Dwarf and Gnome races,
+
+Please note that does not include the faction home cities such as *Darnassus*,
+*Ironforge*, *Stormwind*, *Orgrimmar*, *Thunderbluff* and the *Undercity*.
 
 Also starting with this release, scripts for the [Eluna][eluna] Lua engine have
 become a part of the project. This means for any scripted game content you will
