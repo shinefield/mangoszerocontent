@@ -87,11 +87,6 @@ function import_data ()
     for x in ./_updates/world/*.sql; do
          import $x ${WORLD_DATABASE}
     done
-
-    # - Optimize imported data: world --------------------------------------------
-    for x in ./_extras/world/*.sql; do
-         import $x ${WORLD_DATABASE}
-    done
 }
 
 function import_locales ()
@@ -102,7 +97,15 @@ function import_locales ()
     done
 }
 
+function optimize_world ()
+{
+    # - Optimize imported data: world --------------------------------------------
+    for x in ./_extras/world/*.sql; do
+         import $x ${WORLD_DATABASE}
+    done
+}
 # - Do not edit below! Here be dragon! ---------------------------------------
 
 import_data
 import_locales
+optimize_world
