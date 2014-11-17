@@ -91,6 +91,8 @@ dump_struc ${CHARACTER_DATABASE} character  petition_sign
 dump_struc ${CHARACTER_DATABASE} character  pet_aura
 dump_struc ${CHARACTER_DATABASE} character  pet_spell
 dump_struc ${CHARACTER_DATABASE} character  pet_spell_cooldown
+dump_struc ${CHARACTER_DATABASE} character  pvpstats_battlegrounds
+dump_struc ${CHARACTER_DATABASE} character  pvpstats_players
 dump_struc ${CHARACTER_DATABASE} character  saved_variables
 dump_struc ${CHARACTER_DATABASE} character  world
 
